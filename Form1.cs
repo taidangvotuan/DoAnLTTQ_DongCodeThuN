@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -175,6 +175,46 @@ namespace DoAnLTTQ_DongCodeThuN
         private void Tai_v_listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        #endregion
+
+        #region CÁC HÀM CHỨC NĂNG
+        public void Tai_v_HoanVi(ref int a, ref int b)
+        {
+            int iTemp = a;
+            a = b;
+            b = iTemp;
+        }
+        #endregion
+
+        #region KHU VỰC CÁC HÀM SẮP XẾP
+        public void Tai_v_Heapify(int[] arr, int n, int i)
+        {
+            int iLonNhat = i;
+            int iTrai = 2 * i + 1;
+            int iPhai = 2 * i + 1;
+            if (iTrai < n && arr[iTrai] > arr[iLonNhat])
+                iLonNhat = iTrai;
+            if (iPhai < n && arr[iPhai] > arr[iLonNhat])
+                iLonNhat = iPhai;
+            if (iLonNhat != i)
+            {
+                Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
+                Tai_v_Heapify(arr, n, iLonNhat);
+            }
+        }
+
+        public void Tai_v_HeapSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = n / 2; i >= 0; i--)
+                Tai_v_Heapify(arr, n, i);
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                Tai_v_Heapify(arr, i, 0);
+            }
         }
         #endregion
     }
