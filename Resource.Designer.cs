@@ -59,5 +59,45 @@ namespace DoAnLTTQ_DongCodeThuN {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhChonViTriPhanTu {
+            get {
+                object obj = ResourceManager.GetObject("AnhChonViTriPhanTu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhDangChonPhanTu {
+            get {
+                object obj = ResourceManager.GetObject("AnhDangChonPhanTu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhDaSepMang {
+            get {
+                object obj = ResourceManager.GetObject("AnhDaSepMang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhPhanTuMang {
+            get {
+                object obj = ResourceManager.GetObject("AnhPhanTuMang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
