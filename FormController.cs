@@ -21,17 +21,17 @@ namespace DoAnLTTQ_DongCodeThuN
         }
 
 
-        List<int> persistanceArray = null;
+        List<int> m_array = null;
         public void SetNeedToSortArray(int[] a, int n)
         {
             //if (persistanceArray == null)
             //    persistanceArray = new List<int>(n);
 
-            persistanceArray = new List<int>(n);
-            persistanceArray.Clear();
+            m_array = new List<int>(n);
+            m_array.Clear();
             for (int i = 0; i < n; i++)
             {
-                persistanceArray.Add(a[i]);
+                m_array.Add(a[i]);
             }
             InitArrayView();
         }
@@ -39,10 +39,10 @@ namespace DoAnLTTQ_DongCodeThuN
         public void InitArrayView()
         {
             sortingPanel.Controls.Clear();
-            int max = persistanceArray.Max();
-            for(int i = 0; i < persistanceArray.Count; i++)
+            int max = m_array.Max();
+            for(int i = 0; i < m_array.Count; i++)
             {
-                sortingPanel.Controls.Add(Creator.CreateColumn(sortingPanel.Bounds, persistanceArray[i], i, max, persistanceArray.Count));
+                sortingPanel.Controls.Add(Creator.CreateColumn(sortingPanel.Bounds, m_array[i], i, max, m_array.Count));
             }
             //sortingPanel.Controls.Add();
         }
