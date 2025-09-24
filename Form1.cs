@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form1 : Form
     {
+        private FormController controller;
         public Form1()
         {
             InitializeComponent();
@@ -21,14 +14,12 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            controller = new FormController(this);
+            controller.sortingPanel = Controls.Find("SortingVisualizationView", true).First() as Panel;
 
         }
 
         #region KHU VỰC CÁC NÚT BẤM
-        private void Tai_v_NutTao_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
@@ -123,6 +114,20 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC GROUP BOX
+        Random rand = new Random();
+        int[] a = new int[100];
+        private void OnCreateVisualizeChart(object sender, EventArgs e)
+        {
+            
+            
+            int n = rand.Next(10, 20);
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = rand.Next(1, 100);
+            }
+            controller.SetNeedToSortArray(a, n);
+        }
+
         private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
         {
 
@@ -217,5 +222,10 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
         #endregion
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

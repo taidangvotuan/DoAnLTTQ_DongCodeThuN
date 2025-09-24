@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
-            this.NutChayThuatToan = new System.Windows.Forms.Button();
             this.NutTamDungThuatToan = new System.Windows.Forms.Button();
             this.NutKetThucThuatToan = new System.Windows.Forms.Button();
             this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
@@ -47,45 +46,41 @@
             this.LabelChonThuatToan = new System.Windows.Forms.Label();
             this.NutChonThuatToan = new System.Windows.Forms.ComboBox();
             this.Nen = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SortingVisualizationView = new System.Windows.Forms.Panel();
+            this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
+            this.ListBoxCodeC = new System.Windows.Forms.ListBox();
+            this.GroupBoxCacBuocThucHien = new System.Windows.Forms.GroupBox();
+            this.ListBoxCacBuoc = new System.Windows.Forms.ListBox();
             this.GroupBoxYTuong = new System.Windows.Forms.GroupBox();
             this.ListBoxYTuong = new System.Windows.Forms.ListBox();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
             this.GroupBoxChonThuatToan = new System.Windows.Forms.GroupBox();
             this.GroupBoxThanhDieuKhien = new System.Windows.Forms.GroupBox();
-            this.ListBoxCodeC = new System.Windows.Forms.ListBox();
-            this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
-            this.ListBoxCacBuoc = new System.Windows.Forms.ListBox();
-            this.GroupBoxCacBuocThucHien = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.Nen.SuspendLayout();
-            this.GroupBoxYTuong.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             this.GroupBoxCacBuocThucHien.SuspendLayout();
+            this.GroupBoxYTuong.SuspendLayout();
+            this.GroupBoxKhoiTaoMang.SuspendLayout();
+            this.GroupBoxChonThuatToan.SuspendLayout();
+            this.GroupBoxThanhDieuKhien.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // NutChinhTocDoThuatToan
             // 
             this.NutChinhTocDoThuatToan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.NutChinhTocDoThuatToan.Location = new System.Drawing.Point(957, 480);
+            this.NutChinhTocDoThuatToan.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.NutChinhTocDoThuatToan.Location = new System.Drawing.Point(83, 23);
             this.NutChinhTocDoThuatToan.Name = "NutChinhTocDoThuatToan";
-            this.NutChinhTocDoThuatToan.Size = new System.Drawing.Size(428, 56);
+            this.NutChinhTocDoThuatToan.Size = new System.Drawing.Size(374, 56);
             this.NutChinhTocDoThuatToan.TabIndex = 15;
+            this.NutChinhTocDoThuatToan.Value = 5;
             this.NutChinhTocDoThuatToan.Scroll += new System.EventHandler(this.Tai_v_NutChinhTocDoThuatToan_Scroll);
-            // 
-            // NutChayThuatToan
-            // 
-            this.NutChayThuatToan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.NutChayThuatToan.BackColor = System.Drawing.Color.RoyalBlue;
-            this.NutChayThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutChayThuatToan.ForeColor = System.Drawing.Color.Transparent;
-            this.NutChayThuatToan.Location = new System.Drawing.Point(893, 515);
-            this.NutChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutChayThuatToan.Name = "NutChayThuatToan";
-            this.NutChayThuatToan.Size = new System.Drawing.Size(160, 32);
-            this.NutChayThuatToan.TabIndex = 17;
-            this.NutChayThuatToan.Text = "Chạy";
-            this.NutChayThuatToan.UseVisualStyleBackColor = false;
-            this.NutChayThuatToan.Click += new System.EventHandler(this.Tai_v_NutChayThuatToan_Click);
             // 
             // NutTamDungThuatToan
             // 
@@ -94,10 +89,10 @@
             this.NutTamDungThuatToan.BackColor = System.Drawing.Color.RoyalBlue;
             this.NutTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTamDungThuatToan.ForeColor = System.Drawing.Color.Transparent;
-            this.NutTamDungThuatToan.Location = new System.Drawing.Point(1057, 515);
+            this.NutTamDungThuatToan.Location = new System.Drawing.Point(185, 65);
             this.NutTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTamDungThuatToan.Name = "NutTamDungThuatToan";
-            this.NutTamDungThuatToan.Size = new System.Drawing.Size(160, 32);
+            this.NutTamDungThuatToan.Size = new System.Drawing.Size(117, 32);
             this.NutTamDungThuatToan.TabIndex = 18;
             this.NutTamDungThuatToan.Text = "Tạm dừng";
             this.NutTamDungThuatToan.UseVisualStyleBackColor = false;
@@ -109,10 +104,10 @@
             this.NutKetThucThuatToan.BackColor = System.Drawing.Color.RoyalBlue;
             this.NutKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutKetThucThuatToan.ForeColor = System.Drawing.Color.Transparent;
-            this.NutKetThucThuatToan.Location = new System.Drawing.Point(1219, 515);
+            this.NutKetThucThuatToan.Location = new System.Drawing.Point(347, 65);
             this.NutKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutKetThucThuatToan.Name = "NutKetThucThuatToan";
-            this.NutKetThucThuatToan.Size = new System.Drawing.Size(160, 32);
+            this.NutKetThucThuatToan.Size = new System.Drawing.Size(117, 32);
             this.NutKetThucThuatToan.TabIndex = 19;
             this.NutKetThucThuatToan.Text = "Kết thúc";
             this.NutKetThucThuatToan.UseVisualStyleBackColor = false;
@@ -122,8 +117,10 @@
             // 
             this.LabelChuThichSoPhanTu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelChuThichSoPhanTu.AutoSize = true;
+            this.LabelChuThichSoPhanTu.BackColor = System.Drawing.Color.Transparent;
             this.LabelChuThichSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChuThichSoPhanTu.Location = new System.Drawing.Point(55, 491);
+            this.LabelChuThichSoPhanTu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelChuThichSoPhanTu.Location = new System.Drawing.Point(22, 41);
             this.LabelChuThichSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChuThichSoPhanTu.Name = "LabelChuThichSoPhanTu";
             this.LabelChuThichSoPhanTu.Size = new System.Drawing.Size(155, 19);
@@ -135,38 +132,44 @@
             // 
             this.ChonTangDan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChonTangDan.AutoSize = true;
+            this.ChonTangDan.BackColor = System.Drawing.Color.Transparent;
             this.ChonTangDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ChonTangDan.Location = new System.Drawing.Point(638, 516);
+            this.ChonTangDan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChonTangDan.Location = new System.Drawing.Point(131, 63);
             this.ChonTangDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ChonTangDan.Name = "ChonTangDan";
             this.ChonTangDan.Size = new System.Drawing.Size(103, 23);
             this.ChonTangDan.TabIndex = 1;
             this.ChonTangDan.TabStop = true;
             this.ChonTangDan.Text = "Tăng dần";
-            this.ChonTangDan.UseVisualStyleBackColor = true;
+            this.ChonTangDan.UseVisualStyleBackColor = false;
             this.ChonTangDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonTangDan_CheckedChanged);
             // 
             // ChonGiamDan
             // 
             this.ChonGiamDan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChonGiamDan.AutoSize = true;
+            this.ChonGiamDan.BackColor = System.Drawing.Color.Transparent;
             this.ChonGiamDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ChonGiamDan.Location = new System.Drawing.Point(742, 516);
+            this.ChonGiamDan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChonGiamDan.Location = new System.Drawing.Point(235, 63);
             this.ChonGiamDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ChonGiamDan.Name = "ChonGiamDan";
             this.ChonGiamDan.Size = new System.Drawing.Size(104, 23);
             this.ChonGiamDan.TabIndex = 2;
             this.ChonGiamDan.TabStop = true;
             this.ChonGiamDan.Text = "Giảm dần";
-            this.ChonGiamDan.UseVisualStyleBackColor = true;
+            this.ChonGiamDan.UseVisualStyleBackColor = false;
             this.ChonGiamDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonGiamDan_CheckedChanged);
             // 
             // LabelChuThichGiaTriMang
             // 
             this.LabelChuThichGiaTriMang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelChuThichGiaTriMang.AutoSize = true;
+            this.LabelChuThichGiaTriMang.BackColor = System.Drawing.Color.Transparent;
             this.LabelChuThichGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChuThichGiaTriMang.Location = new System.Drawing.Point(55, 538);
+            this.LabelChuThichGiaTriMang.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelChuThichGiaTriMang.Location = new System.Drawing.Point(5, 92);
             this.LabelChuThichGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChuThichGiaTriMang.Name = "LabelChuThichGiaTriMang";
             this.LabelChuThichGiaTriMang.Size = new System.Drawing.Size(155, 19);
@@ -178,8 +181,10 @@
             // 
             this.LabelNhapGiaTriMang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelNhapGiaTriMang.AutoSize = true;
+            this.LabelNhapGiaTriMang.BackColor = System.Drawing.Color.Transparent;
             this.LabelNhapGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(46, 518);
+            this.LabelNhapGiaTriMang.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(-4, 72);
             this.LabelNhapGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapGiaTriMang.Name = "LabelNhapGiaTriMang";
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
@@ -191,8 +196,10 @@
             // 
             this.LabelNhapSoPhanTu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelNhapSoPhanTu.AutoSize = true;
+            this.LabelNhapSoPhanTu.BackColor = System.Drawing.Color.Transparent;
             this.LabelNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelNhapSoPhanTu.Location = new System.Drawing.Point(81, 473);
+            this.LabelNhapSoPhanTu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelNhapSoPhanTu.Location = new System.Drawing.Point(48, 23);
             this.LabelNhapSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapSoPhanTu.Name = "LabelNhapSoPhanTu";
             this.LabelNhapSoPhanTu.Size = new System.Drawing.Size(103, 19);
@@ -206,7 +213,7 @@
             this.NutNhapBangTay.BackColor = System.Drawing.Color.RoyalBlue;
             this.NutNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapBangTay.ForeColor = System.Drawing.Color.Transparent;
-            this.NutNhapBangTay.Location = new System.Drawing.Point(326, 519);
+            this.NutNhapBangTay.Location = new System.Drawing.Point(302, 72);
             this.NutNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapBangTay.Name = "NutNhapBangTay";
             this.NutNhapBangTay.Size = new System.Drawing.Size(120, 32);
@@ -219,8 +226,10 @@
             // 
             this.LabelTocDo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelTocDo.AutoSize = true;
+            this.LabelTocDo.BackColor = System.Drawing.Color.Transparent;
             this.LabelTocDo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelTocDo.Location = new System.Drawing.Point(897, 488);
+            this.LabelTocDo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelTocDo.Location = new System.Drawing.Point(7, 33);
             this.LabelTocDo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelTocDo.Name = "LabelTocDo";
             this.LabelTocDo.Size = new System.Drawing.Size(69, 19);
@@ -232,8 +241,10 @@
             // 
             this.LabelLoaiSapXep.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelLoaiSapXep.AutoSize = true;
+            this.LabelLoaiSapXep.BackColor = System.Drawing.Color.Transparent;
             this.LabelLoaiSapXep.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelLoaiSapXep.Location = new System.Drawing.Point(510, 518);
+            this.LabelLoaiSapXep.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelLoaiSapXep.Location = new System.Drawing.Point(2, 67);
             this.LabelLoaiSapXep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelLoaiSapXep.Name = "LabelLoaiSapXep";
             this.LabelLoaiSapXep.Size = new System.Drawing.Size(114, 19);
@@ -247,7 +258,7 @@
             this.NutNhapNgauNhien.BackColor = System.Drawing.Color.RoyalBlue;
             this.NutNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapNgauNhien.ForeColor = System.Drawing.Color.Transparent;
-            this.NutNhapNgauNhien.Location = new System.Drawing.Point(203, 519);
+            this.NutNhapNgauNhien.Location = new System.Drawing.Point(180, 73);
             this.NutNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapNgauNhien.Name = "NutNhapNgauNhien";
             this.NutNhapNgauNhien.Size = new System.Drawing.Size(120, 32);
@@ -262,14 +273,14 @@
             this.NutTao.BackColor = System.Drawing.Color.RoyalBlue;
             this.NutTao.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTao.ForeColor = System.Drawing.Color.Transparent;
-            this.NutTao.Location = new System.Drawing.Point(326, 472);
+            this.NutTao.Location = new System.Drawing.Point(302, 26);
             this.NutTao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTao.Name = "NutTao";
             this.NutTao.Size = new System.Drawing.Size(120, 32);
             this.NutTao.TabIndex = 0;
             this.NutTao.Text = "Tạo";
             this.NutTao.UseVisualStyleBackColor = false;
-            this.NutTao.Click += new System.EventHandler(this.Tai_v_NutTao_Click);
+            this.NutTao.Click += new System.EventHandler(this.OnCreateVisualizeChart);
             // 
             // TextBoxNhapPhanTu
             // 
@@ -277,7 +288,7 @@
             this.TextBoxNhapPhanTu.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TextBoxNhapPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TextBoxNhapPhanTu.ForeColor = System.Drawing.Color.Transparent;
-            this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(205, 474);
+            this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(185, 26);
             this.TextBoxNhapPhanTu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TextBoxNhapPhanTu.MaxLength = 2;
             this.TextBoxNhapPhanTu.Name = "TextBoxNhapPhanTu";
@@ -289,8 +300,11 @@
             // 
             this.LabelChonThuatToan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelChonThuatToan.AutoSize = true;
+            this.LabelChonThuatToan.BackColor = System.Drawing.Color.Transparent;
             this.LabelChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChonThuatToan.Location = new System.Drawing.Point(509, 487);
+            this.LabelChonThuatToan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelChonThuatToan.ImageKey = "(none)";
+            this.LabelChonThuatToan.Location = new System.Drawing.Point(2, 34);
             this.LabelChonThuatToan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChonThuatToan.Name = "LabelChonThuatToan";
             this.LabelChonThuatToan.Size = new System.Drawing.Size(143, 19);
@@ -313,7 +327,7 @@
             "Merge Sort",
             "Quick Sort",
             "Selection Sort"});
-            this.NutChonThuatToan.Location = new System.Drawing.Point(637, 486);
+            this.NutChonThuatToan.Location = new System.Drawing.Point(130, 33);
             this.NutChonThuatToan.Name = "NutChonThuatToan";
             this.NutChonThuatToan.Size = new System.Drawing.Size(199, 29);
             this.NutChonThuatToan.TabIndex = 12;
@@ -322,37 +336,92 @@
             // Nen
             // 
             this.Nen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Nen.Controls.Add(this.NutChonThuatToan);
-            this.Nen.Controls.Add(this.LabelChonThuatToan);
-            this.Nen.Controls.Add(this.TextBoxNhapPhanTu);
-            this.Nen.Controls.Add(this.NutTao);
-            this.Nen.Controls.Add(this.NutNhapNgauNhien);
-            this.Nen.Controls.Add(this.GroupBoxYTuong);
-            this.Nen.Controls.Add(this.LabelLoaiSapXep);
-            this.Nen.Controls.Add(this.LabelTocDo);
-            this.Nen.Controls.Add(this.NutNhapBangTay);
-            this.Nen.Controls.Add(this.LabelNhapSoPhanTu);
-            this.Nen.Controls.Add(this.LabelNhapGiaTriMang);
-            this.Nen.Controls.Add(this.LabelChuThichGiaTriMang);
-            this.Nen.Controls.Add(this.ChonGiamDan);
-            this.Nen.Controls.Add(this.ChonTangDan);
-            this.Nen.Controls.Add(this.LabelChuThichSoPhanTu);
-            this.Nen.Controls.Add(this.GroupBoxKhoiTaoMang);
-            this.Nen.Controls.Add(this.GroupBoxChonThuatToan);
-            this.Nen.Controls.Add(this.GroupBoxThanhDieuKhien);
-            this.Nen.Location = new System.Drawing.Point(-5, -2);
+            this.Nen.AutoSize = true;
+            this.Nen.Controls.Add(this.panel2);
+            this.Nen.Controls.Add(this.panel1);
+            this.Nen.Location = new System.Drawing.Point(-6, -1);
             this.Nen.Name = "Nen";
-            this.Nen.Size = new System.Drawing.Size(1432, 768);
+            this.Nen.Size = new System.Drawing.Size(1404, 993);
             this.Nen.TabIndex = 21;
             this.Nen.Paint += new System.Windows.Forms.PaintEventHandler(this.Tai_v_Nen_Paint);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.SortingVisualizationView);
+            this.panel1.Location = new System.Drawing.Point(13, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1388, 407);
+            this.panel1.TabIndex = 23;
+            // 
+            // SortingVisualizationView
+            // 
+            this.SortingVisualizationView.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.SortingVisualizationView.Location = new System.Drawing.Point(0, 53);
+            this.SortingVisualizationView.Name = "SortingVisualizationView";
+            this.SortingVisualizationView.Size = new System.Drawing.Size(1388, 312);
+            this.SortingVisualizationView.TabIndex = 23;
+            // 
+            // GroupBoxChuongTrinhCPP
+            // 
+            this.GroupBoxChuongTrinhCPP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
+            this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Blue;
+            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(825, 134);
+            this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
+            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(561, 176);
+            this.GroupBoxChuongTrinhCPP.TabIndex = 15;
+            this.GroupBoxChuongTrinhCPP.TabStop = false;
+            this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
+            this.GroupBoxChuongTrinhCPP.Enter += new System.EventHandler(this.Tai_v_GroupBoxChuongTrinhCPP_Enter);
+            // 
+            // ListBoxCodeC
+            // 
+            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCodeC.FormattingEnabled = true;
+            this.ListBoxCodeC.ItemHeight = 20;
+            this.ListBoxCodeC.Location = new System.Drawing.Point(0, 19);
+            this.ListBoxCodeC.Name = "ListBoxCodeC";
+            this.ListBoxCodeC.Size = new System.Drawing.Size(575, 144);
+            this.ListBoxCodeC.TabIndex = 20;
+            this.ListBoxCodeC.SelectedIndexChanged += new System.EventHandler(this.Tai_v_listBox3_SelectedIndexChanged);
+            // 
+            // GroupBoxCacBuocThucHien
+            // 
+            this.GroupBoxCacBuocThucHien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
+            this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Blue;
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(383, 134);
+            this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
+            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(437, 176);
+            this.GroupBoxCacBuocThucHien.TabIndex = 20;
+            this.GroupBoxCacBuocThucHien.TabStop = false;
+            this.GroupBoxCacBuocThucHien.Text = "Các bước";
+            this.GroupBoxCacBuocThucHien.Enter += new System.EventHandler(this.Tai_v_GroupBoxCacBuocThucHien_Enter);
+            // 
+            // ListBoxCacBuoc
+            // 
+            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCacBuoc.FormattingEnabled = true;
+            this.ListBoxCacBuoc.ItemHeight = 20;
+            this.ListBoxCacBuoc.Location = new System.Drawing.Point(0, 19);
+            this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
+            this.ListBoxCacBuoc.Size = new System.Drawing.Size(436, 144);
+            this.ListBoxCacBuoc.TabIndex = 19;
+            this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_listBox2_SelectedIndexChanged);
+            // 
             // GroupBoxYTuong
             // 
-            this.GroupBoxYTuong.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GroupBoxYTuong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBoxYTuong.BackColor = System.Drawing.Color.Transparent;
             this.GroupBoxYTuong.Controls.Add(this.ListBoxYTuong);
             this.GroupBoxYTuong.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxYTuong.Location = new System.Drawing.Point(17, 572);
+            this.GroupBoxYTuong.Location = new System.Drawing.Point(5, 134);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
             this.GroupBoxYTuong.Size = new System.Drawing.Size(372, 176);
             this.GroupBoxYTuong.TabIndex = 14;
@@ -367,16 +436,23 @@
             this.ListBoxYTuong.ItemHeight = 20;
             this.ListBoxYTuong.Location = new System.Drawing.Point(1, 19);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
-            this.ListBoxYTuong.Size = new System.Drawing.Size(371, 164);
+            this.ListBoxYTuong.Size = new System.Drawing.Size(371, 144);
             this.ListBoxYTuong.TabIndex = 18;
             this.ListBoxYTuong.SelectedIndexChanged += new System.EventHandler(this.Tai_v_listBox1_SelectedIndexChanged);
             // 
             // GroupBoxKhoiTaoMang
             // 
-            this.GroupBoxKhoiTaoMang.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapSoPhanTu);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichSoPhanTu);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutTao);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.TextBoxNhapPhanTu);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapNgauNhien);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichGiaTriMang);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapBangTay);
             this.GroupBoxKhoiTaoMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxKhoiTaoMang.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(17, 450);
+            this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(7, 12);
             this.GroupBoxKhoiTaoMang.Name = "GroupBoxKhoiTaoMang";
             this.GroupBoxKhoiTaoMang.Size = new System.Drawing.Size(459, 116);
             this.GroupBoxKhoiTaoMang.TabIndex = 18;
@@ -386,12 +462,16 @@
             // 
             // GroupBoxChonThuatToan
             // 
-            this.GroupBoxChonThuatToan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GroupBoxChonThuatToan.Controls.Add(this.LabelChonThuatToan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.ChonTangDan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.ChonGiamDan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.LabelLoaiSapXep);
+            this.GroupBoxChonThuatToan.Controls.Add(this.NutChonThuatToan);
             this.GroupBoxChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChonThuatToan.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(482, 450);
+            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(472, 12);
             this.GroupBoxChonThuatToan.Name = "GroupBoxChonThuatToan";
-            this.GroupBoxChonThuatToan.Size = new System.Drawing.Size(380, 116);
+            this.GroupBoxChonThuatToan.Size = new System.Drawing.Size(371, 116);
             this.GroupBoxChonThuatToan.TabIndex = 19;
             this.GroupBoxChonThuatToan.TabStop = false;
             this.GroupBoxChonThuatToan.Text = "Lựa chọn thuật toán";
@@ -399,98 +479,80 @@
             // 
             // GroupBoxThanhDieuKhien
             // 
-            this.GroupBoxThanhDieuKhien.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GroupBoxThanhDieuKhien.Controls.Add(this.button1);
+            this.GroupBoxThanhDieuKhien.Controls.Add(this.NutKetThucThuatToan);
+            this.GroupBoxThanhDieuKhien.Controls.Add(this.LabelTocDo);
+            this.GroupBoxThanhDieuKhien.Controls.Add(this.NutTamDungThuatToan);
+            this.GroupBoxThanhDieuKhien.Controls.Add(this.NutChinhTocDoThuatToan);
             this.GroupBoxThanhDieuKhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxThanhDieuKhien.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxThanhDieuKhien.Location = new System.Drawing.Point(868, 450);
+            this.GroupBoxThanhDieuKhien.Location = new System.Drawing.Point(849, 12);
             this.GroupBoxThanhDieuKhien.Name = "GroupBoxThanhDieuKhien";
-            this.GroupBoxThanhDieuKhien.Size = new System.Drawing.Size(544, 116);
+            this.GroupBoxThanhDieuKhien.Size = new System.Drawing.Size(486, 116);
             this.GroupBoxThanhDieuKhien.TabIndex = 20;
             this.GroupBoxThanhDieuKhien.TabStop = false;
             this.GroupBoxThanhDieuKhien.Text = "Thanh điều khiển";
             this.GroupBoxThanhDieuKhien.Enter += new System.EventHandler(this.Tai_v_GroupBoxThanhDieuKhien_Enter);
             // 
-            // ListBoxCodeC
+            // panel2
             // 
-            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ListBoxCodeC.FormattingEnabled = true;
-            this.ListBoxCodeC.ItemHeight = 20;
-            this.ListBoxCodeC.Location = new System.Drawing.Point(0, 19);
-            this.ListBoxCodeC.Name = "ListBoxCodeC";
-            this.ListBoxCodeC.Size = new System.Drawing.Size(575, 164);
-            this.ListBoxCodeC.TabIndex = 20;
-            this.ListBoxCodeC.SelectedIndexChanged += new System.EventHandler(this.Tai_v_listBox3_SelectedIndexChanged);
+            this.panel2.Controls.Add(this.GroupBoxKhoiTaoMang);
+            this.panel2.Controls.Add(this.GroupBoxChuongTrinhCPP);
+            this.panel2.Controls.Add(this.GroupBoxChonThuatToan);
+            this.panel2.Controls.Add(this.GroupBoxCacBuocThucHien);
+            this.panel2.Controls.Add(this.GroupBoxThanhDieuKhien);
+            this.panel2.Controls.Add(this.GroupBoxYTuong);
+            this.panel2.Location = new System.Drawing.Point(12, 425);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1389, 308);
+            this.panel2.TabIndex = 24;
             // 
-            // GroupBoxChuongTrinhCPP
+            // button1
             // 
-            this.GroupBoxChuongTrinhCPP.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
-            this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(833, 571);
-            this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
-            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(575, 176);
-            this.GroupBoxChuongTrinhCPP.TabIndex = 15;
-            this.GroupBoxChuongTrinhCPP.TabStop = false;
-            this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
-            this.GroupBoxChuongTrinhCPP.Enter += new System.EventHandler(this.Tai_v_GroupBoxChuongTrinhCPP_Enter);
-            // 
-            // ListBoxCacBuoc
-            // 
-            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ListBoxCacBuoc.FormattingEnabled = true;
-            this.ListBoxCacBuoc.ItemHeight = 20;
-            this.ListBoxCacBuoc.Location = new System.Drawing.Point(0, 19);
-            this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
-            this.ListBoxCacBuoc.Size = new System.Drawing.Size(436, 164);
-            this.ListBoxCacBuoc.TabIndex = 19;
-            this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_listBox2_SelectedIndexChanged);
-            // 
-            // GroupBoxCacBuocThucHien
-            // 
-            this.GroupBoxCacBuocThucHien.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
-            this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Blue;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(391, 571);
-            this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
-            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(437, 176);
-            this.GroupBoxCacBuocThucHien.TabIndex = 20;
-            this.GroupBoxCacBuocThucHien.TabStop = false;
-            this.GroupBoxCacBuocThucHien.Text = "Các bước";
-            this.GroupBoxCacBuocThucHien.Enter += new System.EventHandler(this.Tai_v_GroupBoxCacBuocThucHien_Enter);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(7, 65);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 32);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Chạy";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1423, 763);
-            this.Controls.Add(this.GroupBoxCacBuocThucHien);
-            this.Controls.Add(this.GroupBoxChuongTrinhCPP);
-            this.Controls.Add(this.NutKetThucThuatToan);
-            this.Controls.Add(this.NutTamDungThuatToan);
-            this.Controls.Add(this.NutChayThuatToan);
-            this.Controls.Add(this.NutChinhTocDoThuatToan);
+            this.ClientSize = new System.Drawing.Size(1401, 744);
             this.Controls.Add(this.Nen);
-            this.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(50, 47);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Mô phỏng thuật toán";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).EndInit();
             this.Nen.ResumeLayout(false);
-            this.Nen.PerformLayout();
-            this.GroupBoxYTuong.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
             this.GroupBoxCacBuocThucHien.ResumeLayout(false);
+            this.GroupBoxYTuong.ResumeLayout(false);
+            this.GroupBoxKhoiTaoMang.ResumeLayout(false);
+            this.GroupBoxKhoiTaoMang.PerformLayout();
+            this.GroupBoxChonThuatToan.ResumeLayout(false);
+            this.GroupBoxChonThuatToan.PerformLayout();
+            this.GroupBoxThanhDieuKhien.ResumeLayout(false);
+            this.GroupBoxThanhDieuKhien.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
         #endregion
         private System.Windows.Forms.TrackBar NutChinhTocDoThuatToan;
-        private System.Windows.Forms.Button NutChayThuatToan;
         private System.Windows.Forms.Button NutTamDungThuatToan;
         private System.Windows.Forms.Button NutKetThucThuatToan;
         private System.Windows.Forms.Label LabelChuThichSoPhanTu;
@@ -517,5 +579,9 @@
         private System.Windows.Forms.GroupBox GroupBoxKhoiTaoMang;
         private System.Windows.Forms.GroupBox GroupBoxChonThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxThanhDieuKhien;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel SortingVisualizationView;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
     }
 }
