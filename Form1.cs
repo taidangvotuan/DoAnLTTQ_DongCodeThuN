@@ -193,32 +193,68 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC HÀM SẮP XẾP
+        //Sửa hàm Heapify (sai ở chỗ iPhai = 2 * i + 1 thay vì iPhai = 2 * i + 2)
         public void Tai_v_Heapify(int[] arr, int n, int i)
         {
-            int iLonNhat = i;
-            int iTrai = 2 * i + 1;
-            int iPhai = 2 * i + 1;
+            int iLonNhat = i;        // gốc (cha)
+            int iTrai = 2 * i + 1;   // con trái
+            int iPhai = 2 * i + 2;   // con phải
+
             if (iTrai < n && arr[iTrai] > arr[iLonNhat])
                 iLonNhat = iTrai;
+
             if (iPhai < n && arr[iPhai] > arr[iLonNhat])
                 iLonNhat = iPhai;
+
             if (iLonNhat != i)
             {
                 Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
-                Tai_v_Heapify(arr, n, iLonNhat);
+                Tai_v_Heapify(arr, n, iLonNhat); // đệ quy để chắc chắn nhánh con cũng thành heap
             }
         }
 
+        //Sửa hàm thuật toán HeapSort (nên build từ n/2 - 1 thay vì n/2)
         public void Tai_v_HeapSort(int[] arr)
         {
             int n = arr.Length;
-            for (int i = n / 2; i >= 0; i--)
+            for (int i = n / 2 - 1; i >= 0; i--)
                 Tai_v_Heapify(arr, n, i);
 
             for (int i = n - 1; i >= 0; i--)
             {
                 Tai_v_HoanVi(ref arr[0], ref arr[i]);
                 Tai_v_Heapify(arr, i, 0);
+            }
+        }
+
+        public void Binh_v_InsertionSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 1; i < n; i++)
+            {
+                int key = arr[i];
+                int j = i - 1;
+
+                while (j >= 0 && arr[j] > key)
+                {
+                    arr[j + 1] = arr[j];
+                    j = j - 1;
+                }
+                arr[j + 1] = key;
+            }
+        }
+
+        public void Binh_v_SelectionSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int minIdx = i;
+                for (int j = i + 1; j < n; j++)
+                    if (arr[j] < arr[minIdx])
+                        minIdx = j;
+
+                Tai_v_HoanVi(ref arr[minIdx], ref arr[i]);
             }
         }
         #endregion
