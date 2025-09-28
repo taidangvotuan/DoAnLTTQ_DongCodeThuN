@@ -24,62 +24,19 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        #region KHU VỰC CÁC NÚT BẤM
-        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
-        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
-        {
-
-            Form2 f = new Form2();
-            f.Show();
-        }
-
-        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
 
         #region KHU VỰC CÁC LABEL
+
         private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_LabelChuThichSoPhanTu_Click(object sender, EventArgs e)
         {
 
         }
@@ -94,17 +51,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_LabelChuThichSoPhanTu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Tai_v_LabelChonThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_LabelTocDo_Click(object sender, EventArgs e)
         {
 
         }
@@ -113,81 +60,8 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
-        #endregion
 
-        #region KHU VỰC CÁC TEXTBOX
-        private void Tai_v_TextBoxNhapPhanTu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region KHU VỰC CÁC GROUP BOX
-        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_GroupBoxThanhDieuKhien_Enter(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region KHU VỰC NỀN
-        private void Tai_v_Nen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Tai_v_PanelCuaSoChinh_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Tai_v_PanelCuaSoMoPhongThuatToan_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Tai_v_PanelCuaSoDieuKhien_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region KHU VỰC CÁC LISTBOX
-        private void Tai_v_listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void Tai_v_LabelTocDo_Click(object sender, EventArgs e)
         {
 
         }
@@ -340,9 +214,143 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        private void Tai_v_LabelTieuDe_Click(object sender, EventArgs e)
+        #region KHU VỰC CÁC PANEL
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
+        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Show();
+        }
+
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC ẢNH
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC TEXTBOX
+        private void TextBoxNhapPhanTu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

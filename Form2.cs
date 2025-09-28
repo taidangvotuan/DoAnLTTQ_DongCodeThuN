@@ -21,7 +21,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
-
+        #region KHU VỰC CÁC LABEL
         private void LabelDauBang_Click(object sender, EventArgs e)
         {
 
@@ -37,16 +37,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void NutNhap_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void LabelDongNgoac_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
 
+        #region KHU VỰC NÚT BẤM
+        private void NutNhap_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
+
+        #region KHU VỰC CÁC TEXT BOX
         private void TextBoxChiSoMang_TextChanged(object sender, EventArgs e)
         {
 
@@ -56,5 +60,6 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
+        #endregion
     }
 }

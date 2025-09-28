@@ -59,5 +59,15 @@ namespace DoAnLTTQ_DongCodeThuN.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_UIT_updated_svg {
+            get {
+                object obj = ResourceManager.GetObject("Logo_UIT_updated.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

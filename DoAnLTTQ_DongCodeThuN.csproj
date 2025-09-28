@@ -104,6 +104,7 @@
     <Content Include="Resources\AnhDangChonPhanTu.png" />
     <Content Include="Resources\AnhDaSepMang.png" />
     <Content Include="Resources\AnhPhanTuMang.png" />
+    <None Include="Resources\Logo_UIT_updated.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
