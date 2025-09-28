@@ -282,7 +282,7 @@
             this.TextBoxNhapPhanTu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxNhapPhanTu.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TextBoxNhapPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.TextBoxNhapPhanTu.ForeColor = System.Drawing.Color.Transparent;
+            this.TextBoxNhapPhanTu.ForeColor = System.Drawing.Color.Black;
             this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(205, 474);
             this.TextBoxNhapPhanTu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TextBoxNhapPhanTu.MaxLength = 2;
