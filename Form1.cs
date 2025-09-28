@@ -116,7 +116,7 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC TEXTBOX
-        private void Tai_v_textBox1_TextChanged(object sender, EventArgs e)
+        private void Tai_v_TextBoxNhapPhanTu_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -159,6 +159,21 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
+
+        private void Tai_v_PanelCuaSoChinh_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Tai_v_PanelCuaSoMoPhongThuatToan_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Tai_v_PanelCuaSoDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         #endregion
 
         #region KHU VỰC CÁC LISTBOX
@@ -188,34 +203,146 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC HÀM SẮP XẾP
-        public void Tai_v_Heapify(int[] arr, int n, int i)
+        public void Tai_v_HeapifyTangDan(int[] arr, int n, int i)
         {
             int iLonNhat = i;
             int iTrai = 2 * i + 1;
-            int iPhai = 2 * i + 1;
+            int iPhai = 2 * i + 2;
+
             if (iTrai < n && arr[iTrai] > arr[iLonNhat])
                 iLonNhat = iTrai;
+
             if (iPhai < n && arr[iPhai] > arr[iLonNhat])
                 iLonNhat = iPhai;
+
             if (iLonNhat != i)
             {
                 Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
-                Tai_v_Heapify(arr, n, iLonNhat);
+                Tai_v_HeapifyTangDan(arr, n, iLonNhat);
             }
         }
 
-        public void Tai_v_HeapSort(int[] arr)
+        public void Tai_v_HeapifyGiamDan(int[] arr, int n, int i)
+        {
+            int iNhoNhat = i;
+            int iTrai = 2 * i + 1;
+            int iPhai = 2 * i + 2;
+
+            if (iTrai < n && arr[iTrai] < arr[iNhoNhat])
+                iNhoNhat = iTrai;
+
+            if (iPhai < n && arr[iPhai] < arr[iNhoNhat])
+                iNhoNhat = iPhai;
+
+            if (iNhoNhat != i)
+            {
+                Tai_v_HoanVi(ref arr[i], ref arr[iNhoNhat]);
+                Tai_v_HeapifyGiamDan(arr, n, iNhoNhat);
+            }
+        }
+
+        public void Tai_v_HeapSortTangDan(int[] arr)
         {
             int n = arr.Length;
-            for (int i = n / 2; i >= 0; i--)
-                Tai_v_Heapify(arr, n, i);
+            for (int i = n / 2 - 1; i >= 0; i--)
+                Tai_v_HeapifyTangDan(arr, n, i);
 
             for (int i = n - 1; i >= 0; i--)
             {
                 Tai_v_HoanVi(ref arr[0], ref arr[i]);
-                Tai_v_Heapify(arr, i, 0);
+                Tai_v_HeapifyTangDan(arr, i, 0);
             }
         }
+
+        public void Tai_v_HeapSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+                Tai_v_HeapifyGiamDan(arr, n, i);
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                Tai_v_HeapifyGiamDan(arr, i, 0);
+            }
+        }
+
+        public void Binh_v_InsertionSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 1; i < n; i++)
+            {
+                int key = arr[i];
+                int j = i - 1;
+
+                while (j >= 0 && arr[j] > key)
+                {
+                    arr[j + 1] = arr[j];
+                    j = j - 1;
+                }
+                arr[j + 1] = key;
+            }
+        }
+
+        public void Binh_v_SelectionSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int minIdx = i;
+                for (int j = i + 1; j < n; j++)
+                    if (arr[j] < arr[minIdx])
+                        minIdx = j;
+
+                Tai_v_HoanVi(ref arr[minIdx], ref arr[i]);
+            }
+        }
+
+        public void Thinh_v_BubbleSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                    }
+                }
+            }
+        }
+
+        public void Thinh_v_QuickSort(int[] arr, int iLeft, int iRight)
+        {
+            int i = iLeft;
+            int j = iRight;
+            int pivot = arr[(iLeft + iRight) / 2];
+
+            while (i <= j)
+            {
+                while (arr[i] < pivot) i++;
+                while (arr[j] > pivot) j--;
+
+                if (i <= j)
+                {
+                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    i++;
+                    j--;
+                }
+            }
+
+            if (iLeft < j)
+                Thinh_v_QuickSort(arr, iLeft, j);
+
+            if (i < iRight)
+                Thinh_v_QuickSort(arr, i, iRight);
+        }
         #endregion
+
+        private void Tai_v_LabelTieuDe_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
