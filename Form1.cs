@@ -257,6 +257,47 @@ namespace DoAnLTTQ_DongCodeThuN
                 Tai_v_HoanVi(ref arr[minIdx], ref arr[i]);
             }
         }
+
+        public void Thinh_v_BubbleSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                    }
+                }
+            }
+        }
+
+        public void Thinh_v_QuickSort(int[] arr, int iLeft, int iRight)
+        {
+            int i = iLeft;
+            int j = iRight;
+            int pivot = arr[(iLeft + iRight) / 2];
+
+            while (i <= j)
+            {
+                while (arr[i] < pivot) i++;
+                while (arr[j] > pivot) j--;
+
+                if (i <= j)
+                {
+                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    i++;
+                    j--;
+                }
+            }
+
+            if (iLeft < j)
+                Thinh_v_QuickSort(arr, iLeft, j);
+
+            if (i < iRight)
+                Thinh_v_QuickSort(arr, i, iRight);
+        }
         #endregion
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
