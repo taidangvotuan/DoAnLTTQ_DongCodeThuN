@@ -136,6 +136,7 @@
             this.Controls.Add(this.TextBoxGiaTriMang);
             this.Controls.Add(this.TextBoxChiSoMang);
             this.Controls.Add(this.LabelA);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 225);
             this.Name = "Form2";
             this.Text = "Nhập dữ liệu cho mảng";
