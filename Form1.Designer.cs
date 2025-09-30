@@ -103,7 +103,7 @@
             this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
             this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(962, 579);
+            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(962, 589);
             this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
             this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(470, 176);
             this.GroupBoxChuongTrinhCPP.TabIndex = 15;
@@ -163,7 +163,7 @@
             this.PanelNen.Controls.Add(this.ButtonHuongDan);
             this.PanelNen.Location = new System.Drawing.Point(3, 3);
             this.PanelNen.Name = "PanelNen";
-            this.PanelNen.Size = new System.Drawing.Size(240, 752);
+            this.PanelNen.Size = new System.Drawing.Size(240, 762);
             this.PanelNen.TabIndex = 21;
             this.PanelNen.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelNen_Paint);
             // 
@@ -198,7 +198,7 @@
             this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
             this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(595, 579);
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(595, 589);
             this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
             this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(367, 176);
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
@@ -276,7 +276,7 @@
             this.GroupBoxYTuong.Controls.Add(this.ListBoxYTuong);
             this.GroupBoxYTuong.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 579);
+            this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 589);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
             this.GroupBoxYTuong.Size = new System.Drawing.Size(354, 176);
             this.GroupBoxYTuong.TabIndex = 14;
