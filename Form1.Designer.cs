@@ -122,9 +122,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.AliceBlue;
             this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.Logo_UIT_updated_svg;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(236, 188);
+            this.pictureBox1.Size = new System.Drawing.Size(236, 189);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -233,7 +233,7 @@
             this.NutNhapNgauNhien.FlatAppearance.BorderSize = 0;
             this.NutNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapNgauNhien.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapNgauNhien.Location = new System.Drawing.Point(406, 73);
+            this.NutNhapNgauNhien.Location = new System.Drawing.Point(406, 72);
             this.NutNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapNgauNhien.Name = "NutNhapNgauNhien";
             this.NutNhapNgauNhien.Size = new System.Drawing.Size(100, 32);
@@ -247,7 +247,7 @@
             this.TextBoxNhapPhanTu.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TextBoxNhapPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TextBoxNhapPhanTu.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(408, 30);
+            this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(408, 29);
             this.TextBoxNhapPhanTu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TextBoxNhapPhanTu.MaxLength = 2;
             this.TextBoxNhapPhanTu.Name = "TextBoxNhapPhanTu";
@@ -261,7 +261,7 @@
             this.NutTao.FlatAppearance.BorderSize = 0;
             this.NutTao.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTao.ForeColor = System.Drawing.Color.Black;
-            this.NutTao.Location = new System.Drawing.Point(511, 26);
+            this.NutTao.Location = new System.Drawing.Point(511, 25);
             this.NutTao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTao.Name = "NutTao";
             this.NutTao.Size = new System.Drawing.Size(100, 32);
@@ -290,7 +290,7 @@
             this.NutNhapBangTay.FlatAppearance.BorderSize = 0;
             this.NutNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapBangTay.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapBangTay.Location = new System.Drawing.Point(511, 73);
+            this.NutNhapBangTay.Location = new System.Drawing.Point(511, 72);
             this.NutNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapBangTay.Name = "NutNhapBangTay";
             this.NutNhapBangTay.Size = new System.Drawing.Size(100, 32);
@@ -309,7 +309,7 @@
             this.GroupBoxChonThuatToan.Controls.Add(this.ChonGiamDan);
             this.GroupBoxChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChonThuatToan.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(623, 4);
+            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(623, 3);
             this.GroupBoxChonThuatToan.Name = "GroupBoxChonThuatToan";
             this.GroupBoxChonThuatToan.Size = new System.Drawing.Size(348, 116);
             this.GroupBoxChonThuatToan.TabIndex = 19;
@@ -322,7 +322,7 @@
             this.LabelChonThuatToan.AutoSize = true;
             this.LabelChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelChonThuatToan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelChonThuatToan.Location = new System.Drawing.Point(6, 41);
+            this.LabelChonThuatToan.Location = new System.Drawing.Point(6, 40);
             this.LabelChonThuatToan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChonThuatToan.Name = "LabelChonThuatToan";
             this.LabelChonThuatToan.Size = new System.Drawing.Size(143, 19);
@@ -335,7 +335,7 @@
             this.LabelLoaiSapXep.AutoSize = true;
             this.LabelLoaiSapXep.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelLoaiSapXep.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelLoaiSapXep.Location = new System.Drawing.Point(6, 66);
+            this.LabelLoaiSapXep.Location = new System.Drawing.Point(6, 65);
             this.LabelLoaiSapXep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelLoaiSapXep.Name = "LabelLoaiSapXep";
             this.LabelLoaiSapXep.Size = new System.Drawing.Size(114, 19);
@@ -348,7 +348,7 @@
             this.ChonTangDan.AutoSize = true;
             this.ChonTangDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ChonTangDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ChonTangDan.Location = new System.Drawing.Point(135, 65);
+            this.ChonTangDan.Location = new System.Drawing.Point(135, 64);
             this.ChonTangDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ChonTangDan.Name = "ChonTangDan";
             this.ChonTangDan.Size = new System.Drawing.Size(103, 23);
@@ -372,7 +372,7 @@
             "Merge Sort",
             "Quick Sort",
             "Selection Sort"});
-            this.NutChonThuatToan.Location = new System.Drawing.Point(135, 39);
+            this.NutChonThuatToan.Location = new System.Drawing.Point(135, 38);
             this.NutChonThuatToan.Name = "NutChonThuatToan";
             this.NutChonThuatToan.Size = new System.Drawing.Size(188, 29);
             this.NutChonThuatToan.TabIndex = 12;
@@ -383,7 +383,7 @@
             this.ChonGiamDan.AutoSize = true;
             this.ChonGiamDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ChonGiamDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ChonGiamDan.Location = new System.Drawing.Point(231, 65);
+            this.ChonGiamDan.Location = new System.Drawing.Point(231, 64);
             this.ChonGiamDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ChonGiamDan.Name = "ChonGiamDan";
             this.ChonGiamDan.Size = new System.Drawing.Size(104, 23);
@@ -403,7 +403,7 @@
             this.GroupBoxDieuKhien.Controls.Add(this.LabelTocDo);
             this.GroupBoxDieuKhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxDieuKhien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxDieuKhien.Location = new System.Drawing.Point(970, 4);
+            this.GroupBoxDieuKhien.Location = new System.Drawing.Point(970, 3);
             this.GroupBoxDieuKhien.Name = "GroupBoxDieuKhien";
             this.GroupBoxDieuKhien.Size = new System.Drawing.Size(462, 116);
             this.GroupBoxDieuKhien.TabIndex = 20;
@@ -417,7 +417,7 @@
             this.NutKetThucThuatToan.FlatAppearance.BorderSize = 0;
             this.NutKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutKetThucThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutKetThucThuatToan.Location = new System.Drawing.Point(343, 69);
+            this.NutKetThucThuatToan.Location = new System.Drawing.Point(343, 68);
             this.NutKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutKetThucThuatToan.Name = "NutKetThucThuatToan";
             this.NutKetThucThuatToan.Size = new System.Drawing.Size(100, 32);
@@ -433,7 +433,7 @@
             this.NutTamDungThuatToan.FlatAppearance.BorderSize = 0;
             this.NutTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTamDungThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutTamDungThuatToan.Location = new System.Drawing.Point(181, 69);
+            this.NutTamDungThuatToan.Location = new System.Drawing.Point(181, 68);
             this.NutTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTamDungThuatToan.Name = "NutTamDungThuatToan";
             this.NutTamDungThuatToan.Size = new System.Drawing.Size(100, 32);
@@ -448,7 +448,7 @@
             this.NutChayThuatToan.FlatAppearance.BorderSize = 0;
             this.NutChayThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutChayThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutChayThuatToan.Location = new System.Drawing.Point(13, 69);
+            this.NutChayThuatToan.Location = new System.Drawing.Point(13, 68);
             this.NutChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutChayThuatToan.Name = "NutChayThuatToan";
             this.NutChayThuatToan.Size = new System.Drawing.Size(100, 32);
@@ -470,7 +470,7 @@
             this.LabelTocDo.AutoSize = true;
             this.LabelTocDo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelTocDo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelTocDo.Location = new System.Drawing.Point(13, 36);
+            this.LabelTocDo.Location = new System.Drawing.Point(13, 35);
             this.LabelTocDo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelTocDo.Name = "LabelTocDo";
             this.LabelTocDo.Size = new System.Drawing.Size(69, 19);
@@ -487,7 +487,7 @@
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxKhoiTaoMang.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(243, 4);
+            this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(243, 3);
             this.GroupBoxKhoiTaoMang.Name = "GroupBoxKhoiTaoMang";
             this.GroupBoxKhoiTaoMang.Size = new System.Drawing.Size(381, 116);
             this.GroupBoxKhoiTaoMang.TabIndex = 18;
@@ -500,7 +500,7 @@
             this.LabelNhapGiaTriMang.AutoSize = true;
             this.LabelNhapGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelNhapGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 66);
+            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 65);
             this.LabelNhapGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapGiaTriMang.Name = "LabelNhapGiaTriMang";
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
@@ -513,7 +513,7 @@
             this.LabelChuThichGiaTriMang.AutoSize = true;
             this.LabelChuThichGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelChuThichGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelChuThichGiaTriMang.Location = new System.Drawing.Point(17, 82);
+            this.LabelChuThichGiaTriMang.Location = new System.Drawing.Point(17, 81);
             this.LabelChuThichGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChuThichGiaTriMang.Name = "LabelChuThichGiaTriMang";
             this.LabelChuThichGiaTriMang.Size = new System.Drawing.Size(155, 19);
@@ -526,7 +526,7 @@
             this.LabelChuThichSoPhanTu.AutoSize = true;
             this.LabelChuThichSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelChuThichSoPhanTu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelChuThichSoPhanTu.Location = new System.Drawing.Point(14, 41);
+            this.LabelChuThichSoPhanTu.Location = new System.Drawing.Point(14, 40);
             this.LabelChuThichSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelChuThichSoPhanTu.Name = "LabelChuThichSoPhanTu";
             this.LabelChuThichSoPhanTu.Size = new System.Drawing.Size(155, 19);
@@ -539,7 +539,7 @@
             this.LabelNhapSoPhanTu.AutoSize = true;
             this.LabelNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelNhapSoPhanTu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapSoPhanTu.Location = new System.Drawing.Point(40, 26);
+            this.LabelNhapSoPhanTu.Location = new System.Drawing.Point(40, 25);
             this.LabelNhapSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapSoPhanTu.Name = "LabelNhapSoPhanTu";
             this.LabelNhapSoPhanTu.Size = new System.Drawing.Size(103, 19);
