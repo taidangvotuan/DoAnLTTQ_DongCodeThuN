@@ -141,7 +141,7 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        public void Binh_v_InsertionSort(int[] arr)
+        public void Binh_v_InsertionSortTangDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 1; i < n; i++)
@@ -158,7 +158,24 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        public void Binh_v_SelectionSort(int[] arr)
+        public void Binh_v_InsertionSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 1; i < n; i++)
+            {
+                int key = arr[i];
+                int j = i - 1;
+
+                while (j >= 0 && arr[j] < key)
+                {
+                    arr[j + 1] = arr[j];
+                    j = j - 1;
+                }
+                arr[j + 1] = key;
+            }
+        }
+
+        public void Binh_v_SelectionSortTangDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
@@ -172,22 +189,43 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        public void Thinh_v_BubbleSort(int[] arr)
+        public void Binh_v_SelectionSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int maxIdx = i;
+                for (int j = i + 1; j < n; j++)
+                    if (arr[j] > arr[maxIdx])
+                        maxIdx = j;
+
+                Tai_v_HoanVi(ref arr[maxIdx], ref arr[i]);
+            }
+        }
+
+        public void Thinh_v_BubbleSortTangDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 for (int j = 0; j < n - i - 1; j++)
-                {
                     if (arr[j] > arr[j + 1])
-                    {
                         Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
-                    }
-                }
             }
         }
 
-        public void Thinh_v_QuickSort(int[] arr, int iLeft, int iRight)
+        public void Thinh_v_BubbleSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                    if (arr[j] < arr[j + 1])
+                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+            }
+        }
+
+        public void Thinh_v_QuickSortTangDan(int[] arr, int iLeft, int iRight)
         {
             int i = iLeft;
             int j = iRight;
@@ -207,10 +245,36 @@ namespace DoAnLTTQ_DongCodeThuN
             }
 
             if (iLeft < j)
-                Thinh_v_QuickSort(arr, iLeft, j);
+                Thinh_v_QuickSortTangDan(arr, iLeft, j);
 
             if (i < iRight)
-                Thinh_v_QuickSort(arr, i, iRight);
+                Thinh_v_QuickSortTangDan(arr, i, iRight);
+        }
+
+        public void Thinh_v_QuickSortGiamDan(int[] arr, int iLeft, int iRight)
+        {
+            int i = iLeft;
+            int j = iRight;
+            int pivot = arr[(iLeft + iRight) / 2];
+
+            while (i <= j)
+            {
+                while (arr[i] > pivot) i++;
+                while (arr[j] < pivot) j--;
+
+                if (i <= j)
+                {
+                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    i++;
+                    j--;
+                }
+            }
+
+            if (iLeft < j)
+                Thinh_v_QuickSortGiamDan(arr, iLeft, j);
+
+            if (i < iRight)
+                Thinh_v_QuickSortGiamDan(arr, i, iRight);
         }
         #endregion
 
