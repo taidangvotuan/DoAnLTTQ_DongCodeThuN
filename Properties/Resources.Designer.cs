@@ -63,6 +63,46 @@ namespace DoAnLTTQ_DongCodeThuN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AnhPhanTuDangChon {
+            get {
+                object obj = ResourceManager.GetObject("AnhPhanTuDangChon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhPhanTuDaSapXep {
+            get {
+                object obj = ResourceManager.GetObject("AnhPhanTuDaSapXep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhPhanTuMang {
+            get {
+                object obj = ResourceManager.GetObject("AnhPhanTuMang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AnhViTriPhanTuDangChon {
+            get {
+                object obj = ResourceManager.GetObject("AnhViTriPhanTuDangChon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_UIT_updated_svg {
             get {
                 object obj = ResourceManager.GetObject("Logo_UIT_updated.svg", resourceCulture);

@@ -41,7 +41,6 @@
             this.GroupBoxCacBuocThucHien = new System.Windows.Forms.GroupBox();
             this.ThanhDieuKhien = new System.Windows.Forms.Panel();
             this.NutNhapNgauNhien = new System.Windows.Forms.Button();
-            this.TextBoxNhapPhanTu = new System.Windows.Forms.TextBox();
             this.NutTao = new System.Windows.Forms.Button();
             this.GroupBoxYTuong = new System.Windows.Forms.GroupBox();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
@@ -58,11 +57,14 @@
             this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
+            this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
             this.LabelChuThichGiaTriMang = new System.Windows.Forms.Label();
             this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
             this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
+            this.LabelMangA = new System.Windows.Forms.Label();
+            this.LabelChiSo = new System.Windows.Forms.Label();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelNen.SuspendLayout();
@@ -73,6 +75,8 @@
             this.GroupBoxDieuKhien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
+            this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBoxYTuong
@@ -213,7 +217,6 @@
             this.ThanhDieuKhien.Controls.Add(this.GroupBoxCacBuocThucHien);
             this.ThanhDieuKhien.Controls.Add(this.PanelNen);
             this.ThanhDieuKhien.Controls.Add(this.GroupBoxChuongTrinhCPP);
-            this.ThanhDieuKhien.Controls.Add(this.TextBoxNhapPhanTu);
             this.ThanhDieuKhien.Controls.Add(this.NutTao);
             this.ThanhDieuKhien.Controls.Add(this.GroupBoxYTuong);
             this.ThanhDieuKhien.Controls.Add(this.NutNhapBangTay);
@@ -241,19 +244,6 @@
             this.NutNhapNgauNhien.Text = "Ngẫu nhiên";
             this.NutNhapNgauNhien.UseVisualStyleBackColor = false;
             this.NutNhapNgauNhien.Click += new System.EventHandler(this.Tai_v_NutNhapNgauNhien_Click);
-            // 
-            // TextBoxNhapPhanTu
-            // 
-            this.TextBoxNhapPhanTu.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TextBoxNhapPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.TextBoxNhapPhanTu.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxNhapPhanTu.Location = new System.Drawing.Point(408, 29);
-            this.TextBoxNhapPhanTu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TextBoxNhapPhanTu.MaxLength = 2;
-            this.TextBoxNhapPhanTu.Name = "TextBoxNhapPhanTu";
-            this.TextBoxNhapPhanTu.Size = new System.Drawing.Size(96, 27);
-            this.TextBoxNhapPhanTu.TabIndex = 3;
-            this.TextBoxNhapPhanTu.TextChanged += new System.EventHandler(this.TextBoxNhapPhanTu_TextChanged);
             // 
             // NutTao
             // 
@@ -361,6 +351,7 @@
             // NutChonThuatToan
             // 
             this.NutChonThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.NutChonThuatToan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NutChonThuatToan.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutChonThuatToan.ForeColor = System.Drawing.Color.Black;
             this.NutChonThuatToan.FormattingEnabled = true;
@@ -481,6 +472,7 @@
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichGiaTriMang);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichSoPhanTu);
@@ -494,6 +486,15 @@
             this.GroupBoxKhoiTaoMang.TabStop = false;
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
             this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
+            // 
+            // NumericNhapSoPhanTu
+            // 
+            this.NumericNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.NumericNhapSoPhanTu.Location = new System.Drawing.Point(163, 25);
+            this.NumericNhapSoPhanTu.Name = "NumericNhapSoPhanTu";
+            this.NumericNhapSoPhanTu.Size = new System.Drawing.Size(100, 27);
+            this.NumericNhapSoPhanTu.TabIndex = 0;
+            this.NumericNhapSoPhanTu.ValueChanged += new System.EventHandler(this.NumericNhapSoPhanTu_ValueChanged);
             // 
             // LabelNhapGiaTriMang
             // 
@@ -549,11 +550,37 @@
             // 
             // PanelMoPhong
             // 
-            this.PanelMoPhong.Location = new System.Drawing.Point(243, 120);
+            this.PanelMoPhong.Controls.Add(this.LabelChiSo);
+            this.PanelMoPhong.Controls.Add(this.LabelMangA);
+            this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
-            this.PanelMoPhong.Size = new System.Drawing.Size(1185, 459);
+            this.PanelMoPhong.Size = new System.Drawing.Size(1185, 469);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
+            // 
+            // LabelMangA
+            // 
+            this.LabelMangA.AutoSize = true;
+            this.LabelMangA.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.LabelMangA.ForeColor = System.Drawing.Color.Red;
+            this.LabelMangA.Location = new System.Drawing.Point(6, 179);
+            this.LabelMangA.Name = "LabelMangA";
+            this.LabelMangA.Size = new System.Drawing.Size(40, 40);
+            this.LabelMangA.TabIndex = 0;
+            this.LabelMangA.Text = "A";
+            this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
+            // 
+            // LabelChiSo
+            // 
+            this.LabelChiSo.AutoSize = true;
+            this.LabelChiSo.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.LabelChiSo.ForeColor = System.Drawing.Color.Green;
+            this.LabelChiSo.Location = new System.Drawing.Point(3, 311);
+            this.LabelChiSo.Name = "LabelChiSo";
+            this.LabelChiSo.Size = new System.Drawing.Size(100, 33);
+            this.LabelChiSo.TabIndex = 1;
+            this.LabelChiSo.Text = "Chỉ số";
+            this.LabelChiSo.Click += new System.EventHandler(this.LabelChiSo_Click);
             // 
             // Form1
             // 
@@ -573,7 +600,6 @@
             this.PanelNen.ResumeLayout(false);
             this.GroupBoxCacBuocThucHien.ResumeLayout(false);
             this.ThanhDieuKhien.ResumeLayout(false);
-            this.ThanhDieuKhien.PerformLayout();
             this.GroupBoxYTuong.ResumeLayout(false);
             this.GroupBoxChonThuatToan.ResumeLayout(false);
             this.GroupBoxChonThuatToan.PerformLayout();
@@ -582,6 +608,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).EndInit();
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
+            this.PanelMoPhong.ResumeLayout(false);
+            this.PanelMoPhong.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -601,7 +630,6 @@
         private System.Windows.Forms.Button NutNhapNgauNhien;
         private System.Windows.Forms.ComboBox NutChonThuatToan;
         private System.Windows.Forms.Label LabelChonThuatToan;
-        private System.Windows.Forms.TextBox TextBoxNhapPhanTu;
         private System.Windows.Forms.Button NutTao;
         private System.Windows.Forms.GroupBox GroupBoxYTuong;
         private System.Windows.Forms.Label LabelLoaiSapXep;
@@ -621,5 +649,8 @@
         private System.Windows.Forms.TrackBar NutChinhTocDoThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxKhoiTaoMang;
         private System.Windows.Forms.Panel PanelMoPhong;
+        private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
+        private System.Windows.Forms.Label LabelChiSo;
+        private System.Windows.Forms.Label LabelMangA;
     }
 }

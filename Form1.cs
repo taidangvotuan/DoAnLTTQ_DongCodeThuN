@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -17,20 +18,42 @@ namespace DoAnLTTQ_DongCodeThuN
         public Form1()
         {
             InitializeComponent();
+
+            // Vô hiệu hóa các lable, button, checkbox, Radiobutton
+            NutNhapNgauNhien.Enabled = false;
+            NutNhapBangTay.Enabled = false;
+            NutChinhTocDoThuatToan.Enabled = false;
+            NutChayThuatToan.Enabled = false;
+            NutTamDungThuatToan.Enabled = false;
+            NutKetThucThuatToan.Enabled = false;
+            LabelChiSo.Visible = false;
+            LabelMangA.Visible = false;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        #region KHAI BÁO BIẾN
+        public Thread t1;
+        public static Button[] node1;   // Biến minh họa mảng
+        public static int so_phan_tu;   // Số phần tử của mảng
+        public static Label[] chiSo;   // Chỉ số vị trí của mảng
+        public static int[] a;         // Mảng a
+        int toc_Do = 4;                  // Tốc độ, tối đa 10 cấp
+        Boolean tang = true;     // Kiểu sắp xếp
+        Boolean da_Tao_Mang = false;
+        Boolean da_Tao_GT = false;
+        Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
+        Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
+        CodeThuatToan code_C = new CodeThuatToan();       // Code C/C++ cho thuật toán
+        int i;    // Biến này dùng nhiều
+        bool is_run = false;
+        // Các biến thiết lập cho node
+        int khoang_Cach;            // Khoảng cách hai node
+        int kich_Thuoc;             // Kích thước node
+        int co_Chu;                 // Cỡ chữ node
+        int le_Node;                // Căn lề node
+        int le_tren;                // Lề trên cho node
+        #endregion
 
         #region KHU VỰC CÁC LABEL
-
         private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e)
         {
 
@@ -65,23 +88,25 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
-        #endregion
 
-        #region CÁC HÀM CHỨC NĂNG
-        public void Tai_v_HoanVi(ref int a, ref int b)
+        private void LabelMangA_Click(object sender, EventArgs e)
         {
-            int iTemp = a;
-            a = b;
-            b = iTemp;
+
+        }
+
+        private void LabelChiSo_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 
         #region KHU VỰC CÁC HÀM SẮP XẾP
+        #region Heap Sort
         public void Tai_v_HeapifyTangDan(int[] arr, int n, int i)
         {
             int iLonNhat = i;
             int iTrai = 2 * i + 1;
-            int iPhai = 2 * i + 2;
+            int iPhai = iTrai + 1;
 
             if (iTrai < n && arr[iTrai] > arr[iLonNhat])
                 iLonNhat = iTrai;
@@ -100,7 +125,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int iNhoNhat = i;
             int iTrai = 2 * i + 1;
-            int iPhai = 2 * i + 2;
+            int iPhai = iTrai + 2;
 
             if (iTrai < n && arr[iTrai] < arr[iNhoNhat])
                 iNhoNhat = iTrai;
@@ -140,7 +165,9 @@ namespace DoAnLTTQ_DongCodeThuN
                 Tai_v_HeapifyGiamDan(arr, i, 0);
             }
         }
+        #endregion
 
+        #region Insertion Sort
         public void Binh_v_InsertionSortTangDan(int[] arr)
         {
             int n = arr.Length;
@@ -174,7 +201,9 @@ namespace DoAnLTTQ_DongCodeThuN
                 arr[j + 1] = key;
             }
         }
+        #endregion
 
+        #region Selection Sort
         public void Binh_v_SelectionSortTangDan(int[] arr)
         {
             int n = arr.Length;
@@ -202,7 +231,9 @@ namespace DoAnLTTQ_DongCodeThuN
                 Tai_v_HoanVi(ref arr[maxIdx], ref arr[i]);
             }
         }
+        #endregion
 
+        #region Bubble Sort
         public void Thinh_v_BubbleSortTangDan(int[] arr)
         {
             int n = arr.Length;
@@ -224,7 +255,9 @@ namespace DoAnLTTQ_DongCodeThuN
                         Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
             }
         }
+        #endregion
 
+        #region Quick Sort
         public void Thinh_v_QuickSortTangDan(int[] arr, int iLeft, int iRight)
         {
             int i = iLeft;
@@ -276,6 +309,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (i < iRight)
                 Thinh_v_QuickSortGiamDan(arr, i, iRight);
         }
+        #endregion
         #endregion
 
         #region KHU VỰC CÁC PANEL
@@ -348,18 +382,24 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutTao_Click(object sender, EventArgs e)
         {
-
+            NumericNhapSoPhanTu.Focus();
+            try
+            {
+                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            }
+            catch
+            {
+                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+                NumericNhapSoPhanTu.Value = 8;
+                return;
+            }
+            a = new int[so_phan_tu];
+            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
         }
 
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
-        {
-            Form2 f = new Form2();
-            f.Show();
         }
 
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
@@ -408,6 +448,162 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // Hàm reset giá trị của các node về 0;
+        public void reset_node()
+        {
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = 0;
+                node1[i].Text = a[i].ToString();
+            }
+        }
+
+        // Hàm xóa mảng đã tạo
+        public void xoa_Mang(Button[] Node)
+        {
+            Application.DoEvents();
+            this.Invoke((MethodInvoker)delegate
+            {
+                NutNhapBangTay.Enabled = false;
+                NutNhapNgauNhien.Enabled = false;
+                NutChayThuatToan.Enabled = false;
+                if (da_Tao_Mang == true)
+                {
+                    for (i = 0; i < so_phan_tu; i++)
+                    {
+                        this.Controls.Remove(Node[i]);
+                        this.Controls.Remove(chiSo[i]);
+
+                    }
+                    da_Tao_Mang = false;
+                    LabelMangA.Visible = false;
+                    LabelChiSo.Visible = false;
+                }
+            });
+        }
+
+        // Hàm tạo mảng
+        public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
+        {
+            if (so_phan_tu < 2 || so_phan_tu > 10)
+            {
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 10");
+                da_Tao_Mang = false;
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định cho nó bằng 5 cho đẹp
+                return;
+            }
+
+            // Tạo thuộc tính cho node
+            kich_Thuoc = 70;
+            co_Chu = 15;
+            khoang_Cach = 25;
+            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+
+            // Tạo thuộc tính cho node
+            kich_Thuoc = 70;
+            co_Chu = 15;
+            khoang_Cach = 25;
+            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+
+            // Khởi tạo mảng node
+            node1 = new Button[so_phan_tu];
+            chiSo = new Label[so_phan_tu];
+            LabelChiSo.Visible = true;
+            LabelMangA.Visible = true;
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                node1[i] = new Button();
+                node1[i].Text = a[i].ToString();
+                node1[i].TextAlign = ContentAlignment.MiddleCenter;
+                node1[i].Width = kich_Thuoc;
+                node1[i].Height = kich_Thuoc;
+                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc);
+                node1[i].ForeColor = Color.Black;
+                node1[i].Font = new Font(this.Font, FontStyle.Bold);
+                node1[i].Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+                node1[i].FlatStyle = FlatStyle.Flat;
+                node1[i].BackgroundImage = img_nen;
+                node1[i].BackgroundImageLayout = ImageLayout.Stretch;
+                node1[i].FlatAppearance.BorderSize = 0;
+                this.Controls.Add(node1[i]);
+
+                // Tạo nhãn chỉ sổ
+                chiSo[i] = new Label();
+                chiSo[i].TextAlign = ContentAlignment.MiddleCenter;
+                chiSo[i].Text = i.ToString();
+                chiSo[i].Width = kich_Thuoc;
+                chiSo[i].Height = kich_Thuoc;
+                chiSo[i].ForeColor = Color.Black;
+
+                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 270 + khoang_Cach * 3);
+                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 4, FontStyle.Bold);
+                this.Controls.Add(chiSo[i]);
+            }
+            da_Tao_Mang = true; //Xác nhận đã tạo mảng
+        }
+
+        #region NHẬP DỮ LIỆU CHO MẢNG
+
+        // Hàm nhập random
+        private void btn_random_Click(object sender, EventArgs e)
+        {
+            Random rd = new Random();
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = rd.Next(100);
+                node1[i].Text = a[i].ToString();
+            }
+        }
+
+        // Nhập dữ liệu bằng tay
+        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.ShowDialog();
+        }
+        #endregion
+
+        #region CÁC HÀM CHỨC NĂNG
+        public void Tai_v_HoanVi(ref int a, ref int b)
+        {
+            int iTemp = a;
+            a = b;
+            b = iTemp;
+        }
+
+        // Hàm tạm dừng chương trình
+        public void Play_or_Stop()
+        {
+            while (kt_tam_dung == true)
+            {
+                Application.DoEvents();
+                // Câu lệnh gọi cho máy tính thực hiện hành động trống
+            }
+        }
+
+        //Hàm Tạm dừng
+        public void pause()
+        {
+            Play_or_Stop();
+        }
+        #endregion
+
         #region KHU VỰC ẢNH
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -415,13 +611,11 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        #region KHU VỰC TEXTBOX
-        private void TextBoxNhapPhanTu_TextChanged(object sender, EventArgs e)
+        #region KHU VỰC NUMERIC
+        private void NumericNhapSoPhanTu_ValueChanged(object sender, EventArgs e)
         {
 
         }
         #endregion
-
-
     }
 }

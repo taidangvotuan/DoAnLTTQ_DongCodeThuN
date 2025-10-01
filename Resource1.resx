@@ -124,7 +124,7 @@
   <data name="AnhDangChonPhanTu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\AnhDangChonPhanTu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnhDaSepMang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="AnhPhanTuDaSapXep" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\AnhDaSepMang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AnhPhanTuMang" type="System.Resources.ResXFileRef, System.Windows.Forms">
