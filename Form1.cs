@@ -15,6 +15,29 @@ namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form1 : Form
     {
+        #region KHAI BÁO BIẾN
+        public Thread t1;
+        public static Button[] node1;   // Biến minh họa mảng
+        public static int so_phan_tu;   // Số phần tử của mảng
+        public static Label[] chiSo;   // Chỉ số vị trí của mảng
+        public static int[] a;         // Mảng a
+        int toc_Do = 4;                  // Tốc độ, tối đa 10 cấp
+        Boolean tang = true;     // Kiểu sắp xếp
+        Boolean da_Tao_Mang = false;
+        Boolean da_Tao_GT = false;
+        Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
+        Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
+        CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
+        int i;    // Biến này dùng nhiều
+        bool is_run = false;
+        // Các biến thiết lập cho node
+        int khoang_Cach;            // Khoảng cách hai node
+        int kich_Thuoc;             // Kích thước node
+        int co_Chu;                 // Cỡ chữ node
+        int le_Node;                // Căn lề node
+        int le_tren;                // Lề trên cho node
+        #endregion
+
         public Form1()
         {
             InitializeComponent();
@@ -29,29 +52,6 @@ namespace DoAnLTTQ_DongCodeThuN
             LabelChiSo.Visible = false;
             LabelMangA.Visible = false;
         }
-
-        #region KHAI BÁO BIẾN
-        public Thread t1;
-        public static Button[] node1;   // Biến minh họa mảng
-        public static int so_phan_tu;   // Số phần tử của mảng
-        public static Label[] chiSo;   // Chỉ số vị trí của mảng
-        public static int[] a;         // Mảng a
-        int toc_Do = 4;                  // Tốc độ, tối đa 10 cấp
-        Boolean tang = true;     // Kiểu sắp xếp
-        Boolean da_Tao_Mang = false;
-        Boolean da_Tao_GT = false;
-        Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
-        Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
-        CodeThuatToan code_C = new CodeThuatToan();       // Code C/C++ cho thuật toán
-        int i;    // Biến này dùng nhiều
-        bool is_run = false;
-        // Các biến thiết lập cho node
-        int khoang_Cach;            // Khoảng cách hai node
-        int kich_Thuoc;             // Kích thước node
-        int co_Chu;                 // Cỡ chữ node
-        int le_Node;                // Căn lề node
-        int le_tren;                // Lề trên cho node
-        #endregion
 
         #region KHU VỰC CÁC LABEL
         private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 while (j >= 0 && arr[j] > key)
                 {
                     arr[j + 1] = arr[j];
-                    j = j - 1;
+                    j--;
                 }
                 arr[j + 1] = key;
             }
@@ -196,7 +196,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 while (j >= 0 && arr[j] < key)
                 {
                     arr[j + 1] = arr[j];
-                    j = j - 1;
+                    j--;
                 }
                 arr[j + 1] = key;
             }
@@ -419,7 +419,18 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ListBoxCodeC.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+            if (ChonThuatToan == "Heap Sort")
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+            if (ChonThuatToan == "Bubble Sort")
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+            if (ChonThuatToan == "Quick Sort")
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+            if (ChonThuatToan == "Insertion Sort")
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
@@ -429,7 +440,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)

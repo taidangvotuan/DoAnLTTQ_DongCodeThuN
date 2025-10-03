@@ -63,8 +63,8 @@
             this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
             this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
-            this.LabelMangA = new System.Windows.Forms.Label();
             this.LabelChiSo = new System.Windows.Forms.Label();
+            this.LabelMangA = new System.Windows.Forms.Label();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelNen.SuspendLayout();
@@ -84,20 +84,20 @@
             this.ListBoxYTuong.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxYTuong.FormattingEnabled = true;
             this.ListBoxYTuong.ItemHeight = 20;
-            this.ListBoxYTuong.Location = new System.Drawing.Point(3, 19);
+            this.ListBoxYTuong.Location = new System.Drawing.Point(3, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
-            this.ListBoxYTuong.Size = new System.Drawing.Size(345, 164);
+            this.ListBoxYTuong.Size = new System.Drawing.Size(345, 204);
             this.ListBoxYTuong.TabIndex = 18;
             this.ListBoxYTuong.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxYTuong_SelectedIndexChanged);
             // 
             // ListBoxCodeC
             // 
-            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCodeC.FormattingEnabled = true;
-            this.ListBoxCodeC.ItemHeight = 20;
-            this.ListBoxCodeC.Location = new System.Drawing.Point(2, 19);
+            this.ListBoxCodeC.ItemHeight = 18;
+            this.ListBoxCodeC.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCodeC.Name = "ListBoxCodeC";
-            this.ListBoxCodeC.Size = new System.Drawing.Size(462, 164);
+            this.ListBoxCodeC.Size = new System.Drawing.Size(439, 202);
             this.ListBoxCodeC.TabIndex = 20;
             this.ListBoxCodeC.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCodeC_SelectedIndexChanged);
             // 
@@ -107,9 +107,9 @@
             this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
             this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(962, 589);
+            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(985, 544);
             this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
-            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(470, 176);
+            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(447, 222);
             this.GroupBoxChuongTrinhCPP.TabIndex = 15;
             this.GroupBoxChuongTrinhCPP.TabStop = false;
             this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
@@ -167,7 +167,7 @@
             this.PanelNen.Controls.Add(this.ButtonHuongDan);
             this.PanelNen.Location = new System.Drawing.Point(3, 3);
             this.PanelNen.Name = "PanelNen";
-            this.PanelNen.Size = new System.Drawing.Size(240, 762);
+            this.PanelNen.Size = new System.Drawing.Size(240, 765);
             this.PanelNen.TabIndex = 21;
             this.PanelNen.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelNen_Paint);
             // 
@@ -190,9 +190,9 @@
             this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
             this.ListBoxCacBuoc.ItemHeight = 20;
-            this.ListBoxCacBuoc.Location = new System.Drawing.Point(2, 19);
+            this.ListBoxCacBuoc.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
-            this.ListBoxCacBuoc.Size = new System.Drawing.Size(359, 164);
+            this.ListBoxCacBuoc.Size = new System.Drawing.Size(383, 204);
             this.ListBoxCacBuoc.TabIndex = 19;
             this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCacBuoc_SelectedIndexChanged);
             // 
@@ -202,9 +202,9 @@
             this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
             this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(595, 589);
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(595, 544);
             this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
-            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(367, 176);
+            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(391, 222);
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
             this.GroupBoxCacBuocThucHien.TabStop = false;
             this.GroupBoxCacBuocThucHien.Text = "Các bước thực hiện";
@@ -266,9 +266,9 @@
             this.GroupBoxYTuong.Controls.Add(this.ListBoxYTuong);
             this.GroupBoxYTuong.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 589);
+            this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 544);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
-            this.GroupBoxYTuong.Size = new System.Drawing.Size(354, 176);
+            this.GroupBoxYTuong.Size = new System.Drawing.Size(354, 222);
             this.GroupBoxYTuong.TabIndex = 14;
             this.GroupBoxYTuong.TabStop = false;
             this.GroupBoxYTuong.Text = "Ý tưởng";
@@ -554,21 +554,9 @@
             this.PanelMoPhong.Controls.Add(this.LabelMangA);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
-            this.PanelMoPhong.Size = new System.Drawing.Size(1185, 469);
+            this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
-            // 
-            // LabelMangA
-            // 
-            this.LabelMangA.AutoSize = true;
-            this.LabelMangA.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelMangA.ForeColor = System.Drawing.Color.Red;
-            this.LabelMangA.Location = new System.Drawing.Point(6, 179);
-            this.LabelMangA.Name = "LabelMangA";
-            this.LabelMangA.Size = new System.Drawing.Size(40, 40);
-            this.LabelMangA.TabIndex = 0;
-            this.LabelMangA.Text = "A";
-            this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
             // 
             // LabelChiSo
             // 
@@ -581,6 +569,18 @@
             this.LabelChiSo.TabIndex = 1;
             this.LabelChiSo.Text = "Chỉ số";
             this.LabelChiSo.Click += new System.EventHandler(this.LabelChiSo_Click);
+            // 
+            // LabelMangA
+            // 
+            this.LabelMangA.AutoSize = true;
+            this.LabelMangA.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.LabelMangA.ForeColor = System.Drawing.Color.Red;
+            this.LabelMangA.Location = new System.Drawing.Point(6, 179);
+            this.LabelMangA.Name = "LabelMangA";
+            this.LabelMangA.Size = new System.Drawing.Size(40, 38);
+            this.LabelMangA.TabIndex = 0;
+            this.LabelMangA.Text = "A";
+            this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
             // 
             // Form1
             // 
