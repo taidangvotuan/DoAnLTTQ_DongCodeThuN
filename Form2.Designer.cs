@@ -42,7 +42,11 @@
             this.LabelA.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelA.AutoSize = true;
             this.LabelA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.LabelA.Location = new System.Drawing.Point(168, 56);
+=======
+            this.LabelA.Location = new System.Drawing.Point(133, 56);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.LabelA.Name = "LabelA";
             this.LabelA.Size = new System.Drawing.Size(23, 24);
             this.LabelA.TabIndex = 0;
@@ -53,7 +57,11 @@
             // 
             this.TextBoxChiSoMang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxChiSoMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.TextBoxChiSoMang.Location = new System.Drawing.Point(202, 54);
+=======
+            this.TextBoxChiSoMang.Location = new System.Drawing.Point(167, 54);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.TextBoxChiSoMang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TextBoxChiSoMang.MaximumSize = new System.Drawing.Size(31, 27);
             this.TextBoxChiSoMang.MaxLength = 1;
@@ -66,7 +74,11 @@
             // 
             this.TextBoxGiaTriMang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.TextBoxGiaTriMang.Location = new System.Drawing.Point(277, 55);
+=======
+            this.TextBoxGiaTriMang.Location = new System.Drawing.Point(242, 55);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.TextBoxGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TextBoxGiaTriMang.MaximumSize = new System.Drawing.Size(41, 27);
             this.TextBoxGiaTriMang.MaxLength = 2;
@@ -80,7 +92,11 @@
             this.LabelDauBang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelDauBang.AutoSize = true;
             this.LabelDauBang.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.LabelDauBang.Location = new System.Drawing.Point(248, 56);
+=======
+            this.LabelDauBang.Location = new System.Drawing.Point(213, 56);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.LabelDauBang.Name = "LabelDauBang";
             this.LabelDauBang.Size = new System.Drawing.Size(22, 24);
             this.LabelDauBang.TabIndex = 6;
@@ -91,7 +107,11 @@
             // 
             this.NutNhap.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NutNhap.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.NutNhap.Location = new System.Drawing.Point(208, 104);
+=======
+            this.NutNhap.Location = new System.Drawing.Point(173, 104);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.NutNhap.MaximumSize = new System.Drawing.Size(72, 32);
             this.NutNhap.Name = "NutNhap";
             this.NutNhap.Size = new System.Drawing.Size(72, 32);
@@ -105,7 +125,11 @@
             this.LabelMoNgoac.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelMoNgoac.AutoSize = true;
             this.LabelMoNgoac.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.LabelMoNgoac.Location = new System.Drawing.Point(187, 54);
+=======
+            this.LabelMoNgoac.Location = new System.Drawing.Point(152, 54);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.LabelMoNgoac.Name = "LabelMoNgoac";
             this.LabelMoNgoac.Size = new System.Drawing.Size(17, 24);
             this.LabelMoNgoac.TabIndex = 8;
@@ -117,7 +141,11 @@
             this.LabelDongNgoac.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelDongNgoac.AutoSize = true;
             this.LabelDongNgoac.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+<<<<<<< HEAD
             this.LabelDongNgoac.Location = new System.Drawing.Point(230, 54);
+=======
+            this.LabelDongNgoac.Location = new System.Drawing.Point(195, 54);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.LabelDongNgoac.Name = "LabelDongNgoac";
             this.LabelDongNgoac.Size = new System.Drawing.Size(17, 24);
             this.LabelDongNgoac.TabIndex = 9;
@@ -128,7 +156,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(482, 178);
+=======
+            this.ClientSize = new System.Drawing.Size(413, 178);
+>>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
             this.Controls.Add(this.LabelDongNgoac);
             this.Controls.Add(this.LabelMoNgoac);
             this.Controls.Add(this.NutNhap);
@@ -136,6 +168,7 @@
             this.Controls.Add(this.TextBoxGiaTriMang);
             this.Controls.Add(this.TextBoxChiSoMang);
             this.Controls.Add(this.LabelA);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 225);
             this.Name = "Form2";
             this.Text = "Nhập dữ liệu cho mảng";
