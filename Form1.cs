@@ -1,22 +1,17 @@
-﻿using System;
-<<<<<<< HEAD
-=======
+﻿using System.Threading;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
->>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
 using System.Linq;
 using System.Windows.Forms;
+using System;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form1 : Form
     {
-<<<<<<< HEAD
-        private FormController controller;
-=======
         #region KHAI BÁO BIẾN
         public Thread t1;
         public static Button[] node1;   // Biến minh họa mảng
@@ -41,7 +36,6 @@ namespace DoAnLTTQ_DongCodeThuN
         int le_tren;                // Lề trên cho node
         #endregion
 
->>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
         public Form1()
         {
             InitializeComponent();
@@ -57,66 +51,6 @@ namespace DoAnLTTQ_DongCodeThuN
             LabelMangA.Visible = false;
         }
 
-<<<<<<< HEAD
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            controller = new FormController(this);
-            controller.sortingPanel = Controls.Find("SortingVisualizationView", true).First() as Panel;
-
-        }
-
-        #region KHU VỰC CÁC NÚT BẤM
-
-        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
-        {
-
-            Form2 f = new Form2();
-            f.Show();
-        }
-
-        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-=======
->>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
         #region KHU VỰC CÁC LABEL
         private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e)
         {
@@ -394,23 +328,6 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-<<<<<<< HEAD
-        #region KHU VỰC CÁC GROUP BOX
-        Random rand = new Random();
-        int[] a = new int[100];
-        private void OnCreateVisualizeChart(object sender, EventArgs e)
-        {
-            
-            
-            int n = rand.Next(10, 20);
-            for (int i = 0; i < a.Length; i++)
-            {
-                a[i] = rand.Next(1, 100);
-            }
-            controller.SetNeedToSortArray(a, n);
-        }
-
-=======
         #region KHU VỰC CÁC LISTBOX
         private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -429,7 +346,6 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC GROUPBOX
->>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
         private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
         {
 

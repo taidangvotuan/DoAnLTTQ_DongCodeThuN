@@ -48,12 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Components\ColumnComponent.cs" />
     <Compile Include="Components\TestComponent.cs" />
-=======
     <Compile Include="CodeThuatToan.cs" />
->>>>>>> 122a418c07cbceea0d7b1a5ecdebb5c958a5f830
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
