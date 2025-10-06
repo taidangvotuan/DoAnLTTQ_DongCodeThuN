@@ -28,6 +28,7 @@ namespace DoAnLTTQ_DongCodeThuN
         Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
         Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
         CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
+        YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
         int i;    // Biến này dùng nhiều
         bool is_run = false;
         // Các biến thiết lập cho node
@@ -420,17 +421,37 @@ namespace DoAnLTTQ_DongCodeThuN
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
             string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
             if (ChonThuatToan == "Selection Sort")
+            {
                 Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
             if (ChonThuatToan == "Heap Sort")
+            {
                 Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
             if (ChonThuatToan == "Bubble Sort")
+            {
                 Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
             if (ChonThuatToan == "Quick Sort")
+            {
                 Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
             if (ChonThuatToan == "Insertion Sort")
+            {
                 Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }     
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
