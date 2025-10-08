@@ -10,6 +10,11 @@ using System;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
+    
+    // Dung nhet het tinh nang vao 1 file
+    // Chia file ra de quan ly hon
+    
+    // Dung Form1 de tuong tac voi lop FormController
     public partial class Form1 : Form
     {
         #region KHAI BÁO BIẾN
@@ -35,7 +40,7 @@ namespace DoAnLTTQ_DongCodeThuN
         int le_Node;                // Căn lề node
         int le_tren;                // Lề trên cho node
         #endregion
-
+        FormController controller;
         public Form1()
         {
             InitializeComponent();
@@ -44,11 +49,13 @@ namespace DoAnLTTQ_DongCodeThuN
             NutNhapNgauNhien.Enabled = false;
             NutNhapBangTay.Enabled = false;
             NutChinhTocDoThuatToan.Enabled = false;
-            NutChayThuatToan.Enabled = false;
+            NutChayThuatToan.Enabled = true;
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
             LabelChiSo.Visible = false;
             LabelMangA.Visible = false;
+
+            controller = new FormController(this);
         }
 
         #region KHU VỰC CÁC LABEL
@@ -380,19 +387,20 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutTao_Click(object sender, EventArgs e)
         {
-            NumericNhapSoPhanTu.Focus();
-            try
-            {
-                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
-            }
-            catch
-            {
-                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
-                NumericNhapSoPhanTu.Value = 8;
-                return;
-            }
-            a = new int[so_phan_tu];
-            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            //NumericNhapSoPhanTu.Focus();
+            //try
+            //{
+            //    so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+            //    NumericNhapSoPhanTu.Value = 8;
+            //    return;
+            //}
+            //a = new int[so_phan_tu];
+            //Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            controller.Create();
         }
 
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
@@ -402,7 +410,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
-
+            controller.Start();
         }
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
@@ -649,6 +657,23 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            FormController.OnUpdate?.Invoke();
+        }
+
+        private void SortingPanelView_Paint(object sender, PaintEventArgs e)
+        {
+            
+            //Graphics graphics = e.Graphics;
+            //Brush brush = new SolidBrush(Color.Blue);
+            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
+            //graphics.Clear(Color.White);
+            //graphics.Dispose();
 
         }
     }

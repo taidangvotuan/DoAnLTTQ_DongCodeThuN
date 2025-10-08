@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ListBoxYTuong = new System.Windows.Forms.ListBox();
             this.ListBoxCodeC = new System.Windows.Forms.ListBox();
             this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
@@ -63,8 +64,10 @@
             this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
             this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
+            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.LabelChiSo = new System.Windows.Forms.Label();
             this.LabelMangA = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelNen.SuspendLayout();
@@ -553,6 +556,7 @@
             // 
             // PanelMoPhong
             // 
+            this.PanelMoPhong.Controls.Add(this.SortingPanelView);
             this.PanelMoPhong.Controls.Add(this.LabelChiSo);
             this.PanelMoPhong.Controls.Add(this.LabelMangA);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
@@ -560,6 +564,14 @@
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
+            // 
+            // SortingPanelView
+            // 
+            this.SortingPanelView.Location = new System.Drawing.Point(151, 41);
+            this.SortingPanelView.Name = "SortingPanelView";
+            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
+            this.SortingPanelView.TabIndex = 2;
+            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
             // LabelChiSo
             // 
@@ -585,13 +597,19 @@
             this.LabelMangA.Text = "A";
             this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 763);
             this.Controls.Add(this.ThanhDieuKhien);
-            this.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(50, 47);
@@ -656,5 +674,7 @@
         private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
         private System.Windows.Forms.Label LabelChiSo;
         private System.Windows.Forms.Label LabelMangA;
+        private System.Windows.Forms.Panel SortingPanelView;
+        private System.Windows.Forms.Timer timer1;
     }
 }

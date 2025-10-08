@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
+    // de de nhin hon, ong dat bien string roi bo het thuat toan vao
+    // hoac dung File.ReadAllLines de doc file ben ngoai
     class CodeThuatToan
     {
         public void HeapSort(System.Windows.Forms.ListBox list_Code, Boolean tang)
         {
             // Hàm swap
+            
             list_Code.Items.Add("void Swap(int& a, int& b)");
             list_Code.Items.Add("{");
             list_Code.Items.Add("    int temp = a;");
