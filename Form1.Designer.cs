@@ -86,7 +86,7 @@
             this.ListBoxYTuong.ItemHeight = 18;
             this.ListBoxYTuong.Location = new System.Drawing.Point(2, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
-            this.ListBoxYTuong.Size = new System.Drawing.Size(353, 202);
+            this.ListBoxYTuong.Size = new System.Drawing.Size(373, 202);
             this.ListBoxYTuong.TabIndex = 18;
             this.ListBoxYTuong.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxYTuong_SelectedIndexChanged);
             // 
@@ -192,9 +192,9 @@
             this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
             this.ListBoxCacBuoc.ItemHeight = 18;
-            this.ListBoxCacBuoc.Location = new System.Drawing.Point(2, 18);
+            this.ListBoxCacBuoc.Location = new System.Drawing.Point(1, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
-            this.ListBoxCacBuoc.Size = new System.Drawing.Size(376, 202);
+            this.ListBoxCacBuoc.Size = new System.Drawing.Size(358, 202);
             this.ListBoxCacBuoc.TabIndex = 19;
             this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCacBuoc_SelectedIndexChanged);
             // 
@@ -204,9 +204,9 @@
             this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
             this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(603, 544);
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(622, 544);
             this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
-            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(383, 222);
+            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(364, 222);
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
             this.GroupBoxCacBuocThucHien.TabStop = false;
             this.GroupBoxCacBuocThucHien.Text = "Các bước thực hiện";
@@ -237,7 +237,7 @@
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Yellow;
             this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 544);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
-            this.GroupBoxYTuong.Size = new System.Drawing.Size(362, 222);
+            this.GroupBoxYTuong.Size = new System.Drawing.Size(381, 222);
             this.GroupBoxYTuong.TabIndex = 14;
             this.GroupBoxYTuong.TabStop = false;
             this.GroupBoxYTuong.Text = "Ý tưởng";

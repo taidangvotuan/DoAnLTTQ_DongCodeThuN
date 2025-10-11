@@ -261,9 +261,149 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region Merge Sort
+        public void Tai_v_MergeTangDan(int[] arr, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1; // số phần tử mảng con trái
+            int n2 = right - mid;    // số phần tử mảng con phải
+
+            // Tạo mảng tạm
+            int[] arrLeft = new int[n1];
+            int[] arrRight = new int[n2];
+
+            // Sao chép dữ liệu vào mảng tạm
+            for (int i = 0; i < n1; i++)
+                arrLeft[i] = arr[left + i];
+            for (int j = 0; j < n2; j++)
+                arrRight[j] = arr[mid + 1 + j];
+
+            // Gộp 2 mảng tạm vào mảng chính
+            int iLeft = 0;  // chỉ số mảng trái
+            int iRight = 0;  // chỉ số mảng phải
+            int k = left; // vị trí bắt đầu gộp
+
+            while (iLeft < n1 && iRight < n2)
+            {
+                if (arrLeft[iLeft] <= arrRight[iRight])
+                {
+                    arr[k] = arrLeft[iLeft];
+                    iLeft++;
+                }
+                else
+                {
+                    arr[k] = arrRight[iRight];
+                    iRight++;
+                }
+                k++;
+            }
+
+            // Sao chép phần còn lại (nếu có)
+            while (iLeft < n1)
+            {
+                arr[k] = arrLeft[iLeft];
+                iLeft++;
+                k++;
+            }
+
+            while (iRight < n2)
+            {
+                arr[k] = arrRight[iRight];
+                iRight++;
+                k++;
+            }
+        }
+
+        public void Tai_v_MergeGiamDan(int[] arr, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1; // số phần tử mảng con trái
+            int n2 = right - mid;    // số phần tử mảng con phải
+
+            // Tạo mảng tạm
+            int[] arrLeft = new int[n1];
+            int[] arrRight = new int[n2];
+
+            // Sao chép dữ liệu vào mảng tạm
+            for (int i = 0; i < n1; i++)
+                arrLeft[i] = arr[left + i];
+            for (int j = 0; j < n2; j++)
+                arrRight[j] = arr[mid + 1 + j];
+
+            // Gộp 2 mảng tạm vào mảng chính
+            int iLeft = 0;  // chỉ số mảng trái
+            int iRight = 0;  // chỉ số mảng phải
+            int k = left; // vị trí bắt đầu gộp
+
+            while (iLeft < n1 && iRight < n2)
+            {
+                if (arrLeft[iLeft] >= arrRight[iRight])
+                {
+                    arr[k] = arrLeft[iLeft];
+                    iLeft++;
+                }
+                else
+                {
+                    arr[k] = arrRight[iRight];
+                    iRight++;
+                }
+                k++;
+            }
+
+            // Sao chép phần còn lại (nếu có)
+            while (iLeft < n1)
+            {
+                arr[k] = arrLeft[iLeft];
+                iLeft++;
+                k++;
+            }
+
+            while (iRight < n2)
+            {
+                arr[k] = arrRight[iRight];
+                iRight++;
+                k++;
+            }
+        }
+
+        public void Tai_v_MergeSortTangDan(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                Tai_v_MergeSortTangDan(arr, left, mid);
+                Tai_v_MergeSortTangDan(arr, mid + 1, right);
+                Tai_v_MergeTangDan(arr, left, mid, right);
+            }
+        }
+
+        public void Tai_v_MergeSortGiamDan(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                Tai_v_MergeSortGiamDan(arr, left, mid);
+                Tai_v_MergeSortGiamDan(arr, mid + 1, right);
+                Tai_v_MergeGiamDan(arr, left, mid, right);
+            }
+        }
         #endregion
 
         #region Interchange Sort
+        public void Tai_v_InterchangeSortTangDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = i + 1; j < n; j++)
+                    if (arr[i] > arr[j])
+                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+        }
+
+        public void Tai_v_InterchangeSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = i + 1; j < n; j++)
+                    if (arr[i] < arr[j])
+                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+        }
         #endregion
 
         #region Quick Sort
@@ -462,7 +602,19 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 Code_CPP.InsertionSort(ListBoxCodeC, tang);
                 YTuong_CPP.InsertionSort(ListBoxYTuong);
-            }     
+            }
+
+            if (ChonThuatToan == "Interchange Sort")
+            {
+                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
+                YTuong_CPP.InterchangeSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Merge Sort")
+            {
+                Code_CPP.MergeSort(ListBoxCodeC, tang);
+                YTuong_CPP.MergeSort(ListBoxYTuong);
+            }
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
