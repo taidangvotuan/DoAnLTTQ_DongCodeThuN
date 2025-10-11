@@ -260,6 +260,12 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
+        #region Merge Sort
+        #endregion
+
+        #region Interchange Sort
+        #endregion
+
         #region Quick Sort
         public void Thinh_v_QuickSortTangDan(int[] arr, int iLeft, int iRight)
         {
