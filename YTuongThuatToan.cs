@@ -43,7 +43,6 @@ namespace DoAnLTTQ_DongCodeThuN
             list_Idea.Items.Add("tưởng là không gian cần sắp xếp đã được sắp xếp");
             list_Idea.Items.Add("một phần và ta chỉ cần thêm giá trị mới vào không");
             list_Idea.Items.Add("gian này sao cho không gian mới được sắp xếp.");
-
         }
     }
 }

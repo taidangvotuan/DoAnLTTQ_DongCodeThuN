@@ -52,6 +52,8 @@ namespace DoAnLTTQ_DongCodeThuN
             NutKetThucThuatToan.Enabled = false;
             LabelChiSo.Visible = false;
             LabelMangA.Visible = false;
+            ChonGiamDan.Enabled = false;
+            ChonTangDan.Enabled = false;
         }
 
         #region KHU VỰC CÁC LABEL
@@ -383,6 +385,9 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutTao_Click(object sender, EventArgs e)
         {
+            da_Tao_GT = false;
+            if (da_Tao_Mang)
+                xoa_Mang(node1);
             NumericNhapSoPhanTu.Focus();
             try
             {
@@ -531,33 +536,40 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 10");
                 da_Tao_Mang = false;
-                NumericNhapSoPhanTu.Value = 5;   // Mặc định cho nó bằng 5 cho đẹp
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
                 return;
             }
 
             // Tạo thuộc tính cho node
             kich_Thuoc = 70;
-            co_Chu = 15;
-            khoang_Cach = 25;
-            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+            co_Chu = 14;
+            khoang_Cach = 15;
 
-            // Tạo thuộc tính cho node
-            kich_Thuoc = 70;
-            co_Chu = 15;
-            khoang_Cach = 25;
-            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+            // Tính lề trái để căn giữa hàng phần tử
+            le_Node = (1185 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+
+            // Dọn dẹp phần tử cũ (nếu có)
+            if (node1 != null)
+            {
+                foreach (Button btn in node1)
+                    if (btn != null && PanelMoPhong.Controls.Contains(btn))
+                        PanelMoPhong.Controls.Remove(btn);
+            }
+
+            if (chiSo != null)
+            {
+                foreach (Label lbl in chiSo)
+                    if (lbl != null && PanelMoPhong.Controls.Contains(lbl))
+                        PanelMoPhong.Controls.Remove(lbl);
+            }
 
             // Khởi tạo mảng node
             node1 = new Button[so_phan_tu];
             chiSo = new Label[so_phan_tu];
+
             LabelChiSo.Visible = true;
             LabelMangA.Visible = true;
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChinhTocDoThuatToan.Enabled = true;
-            NutChayThuatToan.Enabled = true;
-            NutTamDungThuatToan.Enabled = true;
-            NutKetThucThuatToan.Enabled = true;
+
             for (int i = 0; i < so_phan_tu; i++)
             {
                 node1[i] = new Button();
@@ -565,7 +577,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 node1[i].TextAlign = ContentAlignment.MiddleCenter;
                 node1[i].Width = kich_Thuoc;
                 node1[i].Height = kich_Thuoc;
-                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc);
+                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
                 node1[i].ForeColor = Color.Black;
                 node1[i].Font = new Font(this.Font, FontStyle.Bold);
                 node1[i].Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
@@ -573,7 +585,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 node1[i].BackgroundImage = img_nen;
                 node1[i].BackgroundImageLayout = ImageLayout.Stretch;
                 node1[i].FlatAppearance.BorderSize = 0;
-                this.Controls.Add(node1[i]);
+                PanelMoPhong.Controls.Add(node1[i]);
 
                 // Tạo nhãn chỉ sổ
                 chiSo[i] = new Label();
@@ -583,11 +595,21 @@ namespace DoAnLTTQ_DongCodeThuN
                 chiSo[i].Height = kich_Thuoc;
                 chiSo[i].ForeColor = Color.Black;
 
-                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 270 + khoang_Cach * 3);
-                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 4, FontStyle.Bold);
-                this.Controls.Add(chiSo[i]);
+                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 290 + khoang_Cach * 3);
+                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 2, FontStyle.Bold);
+                PanelMoPhong.Controls.Add(chiSo[i]);
             }
             da_Tao_Mang = true; //Xác nhận đã tạo mảng
+            LabelChiSo.Visible = true;
+            LabelMangA.Visible = true;
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            ChonTangDan.Enabled = true;
         }
 
         #region NHẬP DỮ LIỆU CHO MẢNG
@@ -619,6 +641,53 @@ namespace DoAnLTTQ_DongCodeThuN
             b = iTemp;
         }
 
+        // Hàm tạo một node simple, với text = !
+        public Button create_node(Button node, String t)
+        {
+            node = new Button();
+            node.Text = t;
+            node.TextAlign = ContentAlignment.MiddleCenter;
+            node.Width = kich_Thuoc;
+            node.Height = kich_Thuoc;
+            node.ForeColor = Color.Black;
+            node.Font = new Font(this.Font, FontStyle.Bold);
+            node.Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+            node.FlatStyle = FlatStyle.Flat;
+            node.BackgroundImage = Properties.Resources.AnhPhanTuMang;
+            node.BackgroundImageLayout = ImageLayout.Stretch;
+            node.FlatAppearance.BorderSize = 0;
+            return node;
+        }
+
+        // Hàm set màu node
+        public void set_node_color(Control t, System.Drawing.Image img_nen)
+        {
+            t.BackgroundImage = img_nen;
+            t.BackgroundImageLayout = ImageLayout.Stretch;
+            t.Refresh();
+        }
+
+        // Hàm đổi giá trị của hai node
+        public void swap_button(int t1, int t2)
+        {
+
+            Button Temp = node1[t1];
+            node1[t1] = node1[t2];
+            node1[t2] = Temp;
+        }
+
+        // Hàm vô hiệu hóa các nút khởi tạo khi ctrinh chạy
+        public void KhoiChay()
+        {
+            NutTao.Enabled = false;
+            NutNhapNgauNhien.Enabled = false;
+            NutNhapBangTay.Enabled = false;
+            NutChonThuatToan.Enabled = false;
+            ChonTangDan.Enabled = false;
+            ChonGiamDan.Enabled = false;
+            NutChayThuatToan.Enabled = false;
+        }
+
         // Hàm tạm dừng chương trình
         public void Play_or_Stop()
         {
@@ -632,7 +701,11 @@ namespace DoAnLTTQ_DongCodeThuN
         //Hàm Tạm dừng
         public void pause()
         {
-            Play_or_Stop();
+            if (sap_Xep_Tung_Buoc == true)
+            {
+                kt_tam_dung = true;
+                Play_or_Stop();
+            }
         }
         #endregion
 
