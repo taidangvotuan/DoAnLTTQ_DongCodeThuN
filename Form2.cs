@@ -21,7 +21,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         int index = 0;
 
-        /*private void btn_nhap_Click(object sender, EventArgs e)
+        private void btn_nhap_Click(object sender, EventArgs e)
         {
             int value;
             Boolean kiemtra = true;
@@ -60,7 +60,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 TextBoxGiaTriMang.Text = "0";
                 return;
             }
-        }*/
+        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
