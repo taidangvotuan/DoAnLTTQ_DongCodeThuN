@@ -184,7 +184,7 @@ namespace DoAnLTTQ_DongCodeThuN
             catch
             {
                 MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
-                NumericNhapSoPhanTu.Value = 8;
+                NumericNhapSoPhanTu.Value = 5;
                 return;
             }
             a = new int[so_phan_tu];
@@ -690,9 +690,9 @@ namespace DoAnLTTQ_DongCodeThuN
         // Hàm tạo mảng
         public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
         {
-            if (so_phan_tu < 2 || so_phan_tu > 10)
+            if (so_phan_tu < 2 || so_phan_tu > 12)
             {
-                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 10");
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
                 da_Tao_Mang = false;
                 NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
                 return;
