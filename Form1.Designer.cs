@@ -520,7 +520,7 @@
             this.LabelChuThichSoPhanTu.Name = "LabelChuThichSoPhanTu";
             this.LabelChuThichSoPhanTu.Size = new System.Drawing.Size(155, 19);
             this.LabelChuThichSoPhanTu.TabIndex = 9;
-            this.LabelChuThichSoPhanTu.Text = "(Giá trị từ 2 đến 10)";
+            this.LabelChuThichSoPhanTu.Text = "(Giá trị từ 2 đến 12)";
             this.LabelChuThichSoPhanTu.Click += new System.EventHandler(this.Tai_v_LabelChuThichSoPhanTu_Click);
             // 
             // LabelNhapSoPhanTu
