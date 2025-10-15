@@ -56,6 +56,8 @@ namespace DoAnLTTQ_DongCodeThuN
             LabelMangA.Visible = false;
 
             controller = new FormController(this);
+            ChonGiamDan.Enabled = false;
+            ChonTangDan.Enabled = false;
         }
 
         #region KHU VỰC CÁC LABEL
@@ -100,6 +102,188 @@ namespace DoAnLTTQ_DongCodeThuN
         }
 
         private void LabelChiSo_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC PANEL
+
+        private void PanelNen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
+        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+            da_Tao_GT = false;
+            if (da_Tao_Mang)
+                xoa_Mang(node1);
+            NumericNhapSoPhanTu.Focus();
+            try
+            {
+                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            }
+            catch
+            {
+                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+                NumericNhapSoPhanTu.Value = 5;
+                return;
+            }
+            a = new int[so_phan_tu];
+            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Heap Sort")
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Bubble Sort")
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Quick Sort")
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Insertion Sort")
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Interchange Sort")
+            {
+                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
+                YTuong_CPP.InterchangeSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Merge Sort")
+            {
+                Code_CPP.MergeSort(ListBoxCodeC, tang);
+                YTuong_CPP.MergeSort(ListBoxYTuong);
+            }
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
         {
 
         }
@@ -259,6 +443,152 @@ namespace DoAnLTTQ_DongCodeThuN
                     if (arr[j] < arr[j + 1])
                         Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
             }
+        }
+        #endregion
+
+        #region Merge Sort
+        public void Tai_v_MergeTangDan(int[] arr, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1; // số phần tử mảng con trái
+            int n2 = right - mid;    // số phần tử mảng con phải
+
+            // Tạo mảng tạm
+            int[] arrLeft = new int[n1];
+            int[] arrRight = new int[n2];
+
+            // Sao chép dữ liệu vào mảng tạm
+            for (int i = 0; i < n1; i++)
+                arrLeft[i] = arr[left + i];
+            for (int j = 0; j < n2; j++)
+                arrRight[j] = arr[mid + 1 + j];
+
+            // Gộp 2 mảng tạm vào mảng chính
+            int iLeft = 0;  // chỉ số mảng trái
+            int iRight = 0;  // chỉ số mảng phải
+            int k = left; // vị trí bắt đầu gộp
+
+            while (iLeft < n1 && iRight < n2)
+            {
+                if (arrLeft[iLeft] <= arrRight[iRight])
+                {
+                    arr[k] = arrLeft[iLeft];
+                    iLeft++;
+                }
+                else
+                {
+                    arr[k] = arrRight[iRight];
+                    iRight++;
+                }
+                k++;
+            }
+
+            // Sao chép phần còn lại (nếu có)
+            while (iLeft < n1)
+            {
+                arr[k] = arrLeft[iLeft];
+                iLeft++;
+                k++;
+            }
+
+            while (iRight < n2)
+            {
+                arr[k] = arrRight[iRight];
+                iRight++;
+                k++;
+            }
+        }
+
+        public void Tai_v_MergeGiamDan(int[] arr, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1; // số phần tử mảng con trái
+            int n2 = right - mid;    // số phần tử mảng con phải
+
+            // Tạo mảng tạm
+            int[] arrLeft = new int[n1];
+            int[] arrRight = new int[n2];
+
+            // Sao chép dữ liệu vào mảng tạm
+            for (int i = 0; i < n1; i++)
+                arrLeft[i] = arr[left + i];
+            for (int j = 0; j < n2; j++)
+                arrRight[j] = arr[mid + 1 + j];
+
+            // Gộp 2 mảng tạm vào mảng chính
+            int iLeft = 0;  // chỉ số mảng trái
+            int iRight = 0;  // chỉ số mảng phải
+            int k = left; // vị trí bắt đầu gộp
+
+            while (iLeft < n1 && iRight < n2)
+            {
+                if (arrLeft[iLeft] >= arrRight[iRight])
+                {
+                    arr[k] = arrLeft[iLeft];
+                    iLeft++;
+                }
+                else
+                {
+                    arr[k] = arrRight[iRight];
+                    iRight++;
+                }
+                k++;
+            }
+
+            // Sao chép phần còn lại (nếu có)
+            while (iLeft < n1)
+            {
+                arr[k] = arrLeft[iLeft];
+                iLeft++;
+                k++;
+            }
+
+            while (iRight < n2)
+            {
+                arr[k] = arrRight[iRight];
+                iRight++;
+                k++;
+            }
+        }
+
+        public void Tai_v_MergeSortTangDan(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                Tai_v_MergeSortTangDan(arr, left, mid);
+                Tai_v_MergeSortTangDan(arr, mid + 1, right);
+                Tai_v_MergeTangDan(arr, left, mid, right);
+            }
+        }
+
+        public void Tai_v_MergeSortGiamDan(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                Tai_v_MergeSortGiamDan(arr, left, mid);
+                Tai_v_MergeSortGiamDan(arr, mid + 1, right);
+                Tai_v_MergeGiamDan(arr, left, mid, right);
+            }
+        }
+        #endregion
+
+        #region Interchange Sort
+        public void Tai_v_InterchangeSortTangDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = i + 1; j < n; j++)
+                    if (arr[i] > arr[j])
+                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+        }
+
+        public void Tai_v_InterchangeSortGiamDan(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = i + 1; j < n; j++)
+                    if (arr[i] < arr[j])
+                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
         }
         #endregion
 
@@ -532,37 +862,44 @@ namespace DoAnLTTQ_DongCodeThuN
         // Hàm tạo mảng
         public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
         {
-            if (so_phan_tu < 2 || so_phan_tu > 10)
+            if (so_phan_tu < 2 || so_phan_tu > 12)
             {
-                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 10");
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
                 da_Tao_Mang = false;
-                NumericNhapSoPhanTu.Value = 5;   // Mặc định cho nó bằng 5 cho đẹp
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
                 return;
             }
 
             // Tạo thuộc tính cho node
             kich_Thuoc = 70;
-            co_Chu = 15;
-            khoang_Cach = 25;
-            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+            co_Chu = 14;
+            khoang_Cach = 15;
 
-            // Tạo thuộc tính cho node
-            kich_Thuoc = 70;
-            co_Chu = 15;
-            khoang_Cach = 25;
-            le_Node = (1350 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+            // Tính lề trái để căn giữa hàng phần tử
+            le_Node = (1185 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+
+            // Dọn dẹp phần tử cũ (nếu có)
+            if (node1 != null)
+            {
+                foreach (Button btn in node1)
+                    if (btn != null && PanelMoPhong.Controls.Contains(btn))
+                        PanelMoPhong.Controls.Remove(btn);
+            }
+
+            if (chiSo != null)
+            {
+                foreach (Label lbl in chiSo)
+                    if (lbl != null && PanelMoPhong.Controls.Contains(lbl))
+                        PanelMoPhong.Controls.Remove(lbl);
+            }
 
             // Khởi tạo mảng node
             node1 = new Button[so_phan_tu];
             chiSo = new Label[so_phan_tu];
+
             LabelChiSo.Visible = true;
             LabelMangA.Visible = true;
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChinhTocDoThuatToan.Enabled = true;
-            NutChayThuatToan.Enabled = true;
-            NutTamDungThuatToan.Enabled = true;
-            NutKetThucThuatToan.Enabled = true;
+
             for (int i = 0; i < so_phan_tu; i++)
             {
                 node1[i] = new Button();
@@ -570,7 +907,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 node1[i].TextAlign = ContentAlignment.MiddleCenter;
                 node1[i].Width = kich_Thuoc;
                 node1[i].Height = kich_Thuoc;
-                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc);
+                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
                 node1[i].ForeColor = Color.Black;
                 node1[i].Font = new Font(this.Font, FontStyle.Bold);
                 node1[i].Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
@@ -578,7 +915,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 node1[i].BackgroundImage = img_nen;
                 node1[i].BackgroundImageLayout = ImageLayout.Stretch;
                 node1[i].FlatAppearance.BorderSize = 0;
-                this.Controls.Add(node1[i]);
+                PanelMoPhong.Controls.Add(node1[i]);
 
                 // Tạo nhãn chỉ sổ
                 chiSo[i] = new Label();
@@ -588,11 +925,21 @@ namespace DoAnLTTQ_DongCodeThuN
                 chiSo[i].Height = kich_Thuoc;
                 chiSo[i].ForeColor = Color.Black;
 
-                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 270 + khoang_Cach * 3);
-                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 4, FontStyle.Bold);
-                this.Controls.Add(chiSo[i]);
+                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 290 + khoang_Cach * 3);
+                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 2, FontStyle.Bold);
+                PanelMoPhong.Controls.Add(chiSo[i]);
             }
             da_Tao_Mang = true; //Xác nhận đã tạo mảng
+            LabelChiSo.Visible = true;
+            LabelMangA.Visible = true;
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            ChonTangDan.Enabled = true;
         }
 
         #region NHẬP DỮ LIỆU CHO MẢNG
@@ -624,6 +971,53 @@ namespace DoAnLTTQ_DongCodeThuN
             b = iTemp;
         }
 
+        // Hàm tạo một node simple, với text = !
+        public Button create_node(Button node, String t)
+        {
+            node = new Button();
+            node.Text = t;
+            node.TextAlign = ContentAlignment.MiddleCenter;
+            node.Width = kich_Thuoc;
+            node.Height = kich_Thuoc;
+            node.ForeColor = Color.Black;
+            node.Font = new Font(this.Font, FontStyle.Bold);
+            node.Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+            node.FlatStyle = FlatStyle.Flat;
+            node.BackgroundImage = Properties.Resources.AnhPhanTuMang;
+            node.BackgroundImageLayout = ImageLayout.Stretch;
+            node.FlatAppearance.BorderSize = 0;
+            return node;
+        }
+
+        // Hàm set màu node
+        public void set_node_color(Control t, System.Drawing.Image img_nen)
+        {
+            t.BackgroundImage = img_nen;
+            t.BackgroundImageLayout = ImageLayout.Stretch;
+            t.Refresh();
+        }
+
+        // Hàm đổi giá trị của hai node
+        public void swap_button(int t1, int t2)
+        {
+
+            Button Temp = node1[t1];
+            node1[t1] = node1[t2];
+            node1[t2] = Temp;
+        }
+
+        // Hàm vô hiệu hóa các nút khởi tạo khi ctrinh chạy
+        public void KhoiChay()
+        {
+            NutTao.Enabled = false;
+            NutNhapNgauNhien.Enabled = false;
+            NutNhapBangTay.Enabled = false;
+            NutChonThuatToan.Enabled = false;
+            ChonTangDan.Enabled = false;
+            ChonGiamDan.Enabled = false;
+            NutChayThuatToan.Enabled = false;
+        }
+
         // Hàm tạm dừng chương trình
         public void Play_or_Stop()
         {
@@ -637,7 +1031,11 @@ namespace DoAnLTTQ_DongCodeThuN
         //Hàm Tạm dừng
         public void pause()
         {
-            Play_or_Stop();
+            if (sap_Xep_Tung_Buoc == true)
+            {
+                kt_tam_dung = true;
+                Play_or_Stop();
+            }
         }
         #endregion
 

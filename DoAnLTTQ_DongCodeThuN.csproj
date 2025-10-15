@@ -90,10 +90,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,10 +104,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AnhChonViTriPhanTu.png" />
-    <Content Include="Resources\AnhDangChonPhanTu.png" />
-    <Content Include="Resources\AnhDaSepMang.png" />
-    <Content Include="Resources\AnhPhanTuMang.png" />
+    <Content Include="Resources\AnhChonViTriPhanTu-removebg-preview.png" />
+    <Content Include="Resources\AnhDangChonPhanTu-removebg-preview.png" />
+    <Content Include="Resources\AnhDaSepMang-removebg-preview.png" />
+    <Content Include="Resources\AnhPhanTuMang-removebg-preview.png" />
     <None Include="Resources\Logo_UIT_updated.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
