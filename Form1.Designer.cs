@@ -1,4 +1,6 @@
-﻿namespace DoAnLTTQ_DongCodeThuN
+﻿using System;
+
+namespace DoAnLTTQ_DongCodeThuN
 {
     partial class Form1
     {
@@ -608,11 +610,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 763);
             this.Controls.Add(this.ThanhDieuKhien);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -640,6 +641,11 @@
             this.PanelMoPhong.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
         #endregion
         private System.Windows.Forms.ListBox ListBoxYTuong;
