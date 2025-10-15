@@ -1,4 +1,5 @@
 ﻿using DoAnLTTQ_DongCodeThuN.Components;
+using DoAnLTTQ_DongCodeThuN.ThuatToan;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,43 +11,55 @@ using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    internal class FormController
+    public class FormController
     {
         public Form mainForm;
         public Panel sortingPanel;
 
+        public static Action OnUpdate;
+
         public FormController(Form m_form) 
         {
             this.mainForm = m_form;
+            // "SortingPanelView" la ten cua panel dung de the hien thuat toan sap xep
+            // DUNG DOI TEN CUA PANEL NAY
+            sortingPanel = mainForm.Controls.Find("SortingPanelView", true).First() as Panel;
+            //OnUpdate += Update;
         }
+        public void SetSpeed(float speed) { }
 
 
         List<int> m_array = null;
         public void SetNeedToSortArray(int[] a, int n)
         {
-            //if (persistanceArray == null)
-            //    persistanceArray = new List<int>(n);
-
             m_array = new List<int>(n);
             m_array.Clear();
             for (int i = 0; i < n; i++)
             {
                 m_array.Add(a[i]);
             }
-            InitArrayView();
+            //Create();
         }
 
-        public void InitArrayView()
+        SortingVisualizationView visualizationView;
+        public void Create()
         {
-            sortingPanel.Controls.Clear();
-            int max = m_array.Max();
-            for(int i = 0; i < m_array.Count; i++)
-            {
-                sortingPanel.Controls.Add(Creator.CreateColumn(sortingPanel.Bounds, m_array[i], i, max, m_array.Count));
-            }
-            //sortingPanel.Controls.Add();
+            Random rnd = new Random((int)DateTime.Now.Ticks);
+            int n = rnd.Next(6, 8);
+            int[] a = new int[n+1];
+            for(int i = 0; i < n; i++)
+                a[i] = rnd.Next(1, 16);
+            
+            SetNeedToSortArray(a, n);
+
+            visualizationView = new SortingVisualizationView(m_array, sortingPanel);
+
         }
 
+        public void Start()
+        {
+            AlgorithmExecutor.BubbleSort(visualizationView);
+        }
 
     }
 }

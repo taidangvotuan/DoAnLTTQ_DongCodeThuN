@@ -1,76 +1,72 @@
-﻿using System;
+﻿using System.Threading;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
+    
+    // Dung nhet het tinh nang vao 1 file
+    // Chia file ra de quan ly hon
+    
+    // Dung Form1 de tuong tac voi lop FormController
     public partial class Form1 : Form
     {
-        private FormController controller;
+        #region KHAI BÁO BIẾN
+        public Thread t1;
+        public static Button[] node1;   // Biến minh họa mảng
+        public static int so_phan_tu;   // Số phần tử của mảng
+        public static Label[] chiSo;   // Chỉ số vị trí của mảng
+        public static int[] a;         // Mảng a
+        int toc_Do = 4;                  // Tốc độ, tối đa 10 cấp
+        Boolean tang = true;     // Kiểu sắp xếp
+        Boolean da_Tao_Mang = false;
+        Boolean da_Tao_GT = false;
+        Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
+        Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
+        CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
+        YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
+        int i;    // Biến này dùng nhiều
+        bool is_run = false;
+        // Các biến thiết lập cho node
+        int khoang_Cach;            // Khoảng cách hai node
+        int kich_Thuoc;             // Kích thước node
+        int co_Chu;                 // Cỡ chữ node
+        int le_Node;                // Căn lề node
+        int le_tren;                // Lề trên cho node
+        #endregion
+        FormController controller;
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            // Vô hiệu hóa các lable, button, checkbox, Radiobutton
+            NutNhapNgauNhien.Enabled = false;
+            NutNhapBangTay.Enabled = false;
+            NutChinhTocDoThuatToan.Enabled = false;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = false;
+            NutKetThucThuatToan.Enabled = false;
+            LabelChiSo.Visible = false;
+            LabelMangA.Visible = false;
+
             controller = new FormController(this);
-            controller.sortingPanel = Controls.Find("SortingVisualizationView", true).First() as Panel;
-
+            ChonGiamDan.Enabled = false;
+            ChonTangDan.Enabled = false;
         }
-
-        #region KHU VỰC CÁC NÚT BẤM
-
-        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
-        {
-
-            Form2 f = new Form2();
-            f.Show();
-        }
-
-        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
 
         #region KHU VỰC CÁC LABEL
         private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_LabelChuThichSoPhanTu_Click(object sender, EventArgs e)
         {
 
         }
@@ -85,12 +81,12 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_LabelChuThichSoPhanTu_Click(object sender, EventArgs e)
+        private void Tai_v_LabelChonThuatToan_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Tai_v_LabelChonThuatToan_Click(object sender, EventArgs e)
+        private void Tai_v_LabelLoaiSapXep_Click(object sender, EventArgs e)
         {
 
         }
@@ -100,34 +96,53 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_LabelLoaiSapXep_Click(object sender, EventArgs e)
+        private void LabelMangA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelChiSo_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
-        #region KHU VỰC CÁC TEXTBOX
-        private void Tai_v_textBox1_TextChanged(object sender, EventArgs e)
+        #region KHU VỰC CÁC PANEL
+
+        private void PanelNen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
         {
 
         }
         #endregion
 
-        #region KHU VỰC CÁC GROUP BOX
-        Random rand = new Random();
-        int[] a = new int[100];
-        private void OnCreateVisualizeChart(object sender, EventArgs e)
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            
-            int n = rand.Next(10, 20);
-            for (int i = 0; i < a.Length; i++)
-            {
-                a[i] = rand.Next(1, 100);
-            }
-            controller.SetNeedToSortArray(a, n);
+
         }
 
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
         private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
         {
 
@@ -153,42 +168,124 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_GroupBoxThanhDieuKhien_Enter(object sender, EventArgs e)
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
         {
 
         }
         #endregion
 
-        #region KHU VỰC NỀN
-        private void Tai_v_Nen_Paint(object sender, PaintEventArgs e)
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+            da_Tao_GT = false;
+            if (da_Tao_Mang)
+                xoa_Mang(node1);
+            NumericNhapSoPhanTu.Focus();
+            try
+            {
+                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            }
+            catch
+            {
+                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+                NumericNhapSoPhanTu.Value = 5;
+                return;
+            }
+            a = new int[so_phan_tu];
+            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
 
         }
-        #endregion
 
-        #region KHU VỰC CÁC LISTBOX
-        private void Tai_v_listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Tai_v_listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Tai_v_listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
 
         }
-        #endregion
 
-        #region CÁC HÀM CHỨC NĂNG
-        public void Tai_v_HoanVi(ref int a, ref int b)
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int iTemp = a;
-            a = b;
-            b = iTemp;
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Heap Sort")
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Bubble Sort")
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Quick Sort")
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Insertion Sort")
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Interchange Sort")
+            {
+                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
+                YTuong_CPP.InterchangeSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Merge Sort")
+            {
+                Code_CPP.MergeSort(ListBoxCodeC, tang);
+                YTuong_CPP.MergeSort(ListBoxYTuong);
+            }
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 
@@ -550,8 +647,428 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
         #endregion
 
+        #region KHU VỰC CÁC PANEL
+
+        private void PanelNen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
+        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+            //NumericNhapSoPhanTu.Focus();
+            //try
+            //{
+            //    so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+            //    NumericNhapSoPhanTu.Value = 8;
+            //    return;
+            //}
+            //a = new int[so_phan_tu];
+            //Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            controller.Create();
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
+        {
+            controller.Start();
+        }
+
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Heap Sort")
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Bubble Sort")
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Quick Sort")
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Insertion Sort")
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }     
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // Hàm reset giá trị của các node về 0;
+        public void reset_node()
+        {
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = 0;
+                node1[i].Text = a[i].ToString();
+            }
+        }
+
+        // Hàm xóa mảng đã tạo
+        public void xoa_Mang(Button[] Node)
+        {
+            Application.DoEvents();
+            this.Invoke((MethodInvoker)delegate
+            {
+                NutNhapBangTay.Enabled = false;
+                NutNhapNgauNhien.Enabled = false;
+                NutChayThuatToan.Enabled = false;
+                if (da_Tao_Mang == true)
+                {
+                    for (i = 0; i < so_phan_tu; i++)
+                    {
+                        this.Controls.Remove(Node[i]);
+                        this.Controls.Remove(chiSo[i]);
+
+                    }
+                    da_Tao_Mang = false;
+                    LabelMangA.Visible = false;
+                    LabelChiSo.Visible = false;
+                }
+            });
+        }
+
+        // Hàm tạo mảng
+        public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
+        {
+            if (so_phan_tu < 2 || so_phan_tu > 12)
+            {
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
+                da_Tao_Mang = false;
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
+                return;
+            }
+
+            // Tạo thuộc tính cho node
+            kich_Thuoc = 70;
+            co_Chu = 14;
+            khoang_Cach = 15;
+
+            // Tính lề trái để căn giữa hàng phần tử
+            le_Node = (1185 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
+
+            // Dọn dẹp phần tử cũ (nếu có)
+            if (node1 != null)
+            {
+                foreach (Button btn in node1)
+                    if (btn != null && PanelMoPhong.Controls.Contains(btn))
+                        PanelMoPhong.Controls.Remove(btn);
+            }
+
+            if (chiSo != null)
+            {
+                foreach (Label lbl in chiSo)
+                    if (lbl != null && PanelMoPhong.Controls.Contains(lbl))
+                        PanelMoPhong.Controls.Remove(lbl);
+            }
+
+            // Khởi tạo mảng node
+            node1 = new Button[so_phan_tu];
+            chiSo = new Label[so_phan_tu];
+
+            LabelChiSo.Visible = true;
+            LabelMangA.Visible = true;
+
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                node1[i] = new Button();
+                node1[i].Text = a[i].ToString();
+                node1[i].TextAlign = ContentAlignment.MiddleCenter;
+                node1[i].Width = kich_Thuoc;
+                node1[i].Height = kich_Thuoc;
+                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
+                node1[i].ForeColor = Color.Black;
+                node1[i].Font = new Font(this.Font, FontStyle.Bold);
+                node1[i].Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+                node1[i].FlatStyle = FlatStyle.Flat;
+                node1[i].BackgroundImage = img_nen;
+                node1[i].BackgroundImageLayout = ImageLayout.Stretch;
+                node1[i].FlatAppearance.BorderSize = 0;
+                PanelMoPhong.Controls.Add(node1[i]);
+
+                // Tạo nhãn chỉ sổ
+                chiSo[i] = new Label();
+                chiSo[i].TextAlign = ContentAlignment.MiddleCenter;
+                chiSo[i].Text = i.ToString();
+                chiSo[i].Width = kich_Thuoc;
+                chiSo[i].Height = kich_Thuoc;
+                chiSo[i].ForeColor = Color.Black;
+
+                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 290 + khoang_Cach * 3);
+                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 2, FontStyle.Bold);
+                PanelMoPhong.Controls.Add(chiSo[i]);
+            }
+            da_Tao_Mang = true; //Xác nhận đã tạo mảng
+            LabelChiSo.Visible = true;
+            LabelMangA.Visible = true;
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            ChonTangDan.Enabled = true;
+        }
+
+        #region NHẬP DỮ LIỆU CHO MẢNG
+
+        // Hàm nhập random
+        private void btn_random_Click(object sender, EventArgs e)
+        {
+            Random rd = new Random();
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = rd.Next(100);
+                node1[i].Text = a[i].ToString();
+            }
+        }
+
+        // Nhập dữ liệu bằng tay
+        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.ShowDialog();
+        }
+        #endregion
+
+        #region CÁC HÀM CHỨC NĂNG
+        public void Tai_v_HoanVi(ref int a, ref int b)
+        {
+            int iTemp = a;
+            a = b;
+            b = iTemp;
+        }
+
+        // Hàm tạo một node simple, với text = !
+        public Button create_node(Button node, String t)
+        {
+            node = new Button();
+            node.Text = t;
+            node.TextAlign = ContentAlignment.MiddleCenter;
+            node.Width = kich_Thuoc;
+            node.Height = kich_Thuoc;
+            node.ForeColor = Color.Black;
+            node.Font = new Font(this.Font, FontStyle.Bold);
+            node.Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+            node.FlatStyle = FlatStyle.Flat;
+            node.BackgroundImage = Properties.Resources.AnhPhanTuMang;
+            node.BackgroundImageLayout = ImageLayout.Stretch;
+            node.FlatAppearance.BorderSize = 0;
+            return node;
+        }
+
+        // Hàm set màu node
+        public void set_node_color(Control t, System.Drawing.Image img_nen)
+        {
+            t.BackgroundImage = img_nen;
+            t.BackgroundImageLayout = ImageLayout.Stretch;
+            t.Refresh();
+        }
+
+        // Hàm đổi giá trị của hai node
+        public void swap_button(int t1, int t2)
+        {
+
+            Button Temp = node1[t1];
+            node1[t1] = node1[t2];
+            node1[t2] = Temp;
+        }
+
+        // Hàm vô hiệu hóa các nút khởi tạo khi ctrinh chạy
+        public void KhoiChay()
+        {
+            NutTao.Enabled = false;
+            NutNhapNgauNhien.Enabled = false;
+            NutNhapBangTay.Enabled = false;
+            NutChonThuatToan.Enabled = false;
+            ChonTangDan.Enabled = false;
+            ChonGiamDan.Enabled = false;
+            NutChayThuatToan.Enabled = false;
+        }
+
+        #region KHU VỰC CÁC HÀM SẮP XẾP
+        public void Tai_v_Heapify(int[] arr, int n, int i)
+        {
+            int iLonNhat = i;
+            int iTrai = 2 * i + 1;
+            int iPhai = 2 * i + 1;
+            if (iTrai < n && arr[iTrai] > arr[iLonNhat])
+                iLonNhat = iTrai;
+            if (iPhai < n && arr[iPhai] > arr[iLonNhat])
+                iLonNhat = iPhai;
+            if (iLonNhat != i)
+            {
+                Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
+                Tai_v_Heapify(arr, n, iLonNhat);
+            }
+        }
+
+        public void Tai_v_HeapSort(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = n / 2; i >= 0; i--)
+                Tai_v_Heapify(arr, n, i);
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                Tai_v_Heapify(arr, i, 0);
+            }
+        }
+        #endregion
+        #endregion
+
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            FormController.OnUpdate?.Invoke();
+        }
+
+        private void SortingPanelView_Paint(object sender, PaintEventArgs e)
+        {
+            
+            //Graphics graphics = e.Graphics;
+            //Brush brush = new SolidBrush(Color.Blue);
+            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
+            //graphics.Clear(Color.White);
+            //graphics.Dispose();
 
         }
     }
