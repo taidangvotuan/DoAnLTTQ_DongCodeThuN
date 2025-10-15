@@ -479,25 +479,6 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
         #endregion
 
-        #region KHU VỰC CÁC PANEL
-
-        private void PanelNen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        #endregion
-        #endregion
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
