@@ -638,6 +638,11 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
+        private void NumericNhapSoPhanTu_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
         {
 
