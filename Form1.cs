@@ -1,18 +1,20 @@
-﻿using System;
+﻿using System.Threading;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
+    
+    // Dung nhet het tinh nang vao 1 file
+    // Chia file ra de quan ly hon
+    
+    // Dung Form1 de tuong tac voi lop FormController
     public partial class Form1 : Form
     {
         #region KHAI BÁO BIẾN
@@ -38,7 +40,7 @@ namespace DoAnLTTQ_DongCodeThuN
         int le_Node;                // Căn lề node
         int le_tren;                // Lề trên cho node
         #endregion
-
+        FormController controller;
         public Form1()
         {
             InitializeComponent();
@@ -47,11 +49,13 @@ namespace DoAnLTTQ_DongCodeThuN
             NutNhapNgauNhien.Enabled = false;
             NutNhapBangTay.Enabled = false;
             NutChinhTocDoThuatToan.Enabled = false;
-            NutChayThuatToan.Enabled = false;
+            NutChayThuatToan.Enabled = true;
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
             LabelChiSo.Visible = false;
             LabelMangA.Visible = false;
+
+            controller = new FormController(this);
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
         }
@@ -643,6 +647,174 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
         #endregion
 
+        #region KHU VỰC CÁC PANEL
+
+        private void PanelNen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
+        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+            //NumericNhapSoPhanTu.Focus();
+            //try
+            //{
+            //    so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+            //    NumericNhapSoPhanTu.Value = 8;
+            //    return;
+            //}
+            //a = new int[so_phan_tu];
+            //Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            controller.Create();
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
+        {
+            controller.Start();
+        }
+
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Heap Sort")
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Bubble Sort")
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Quick Sort")
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Insertion Sort")
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }     
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -880,5 +1052,27 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
         #endregion
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            FormController.OnUpdate?.Invoke();
+        }
+
+        private void SortingPanelView_Paint(object sender, PaintEventArgs e)
+        {
+            
+            //Graphics graphics = e.Graphics;
+            //Brush brush = new SolidBrush(Color.Blue);
+            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
+            //graphics.Clear(Color.White);
+            //graphics.Dispose();
+
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ListBoxYTuong = new System.Windows.Forms.ListBox();
             this.ListBoxCodeC = new System.Windows.Forms.ListBox();
             this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
@@ -63,8 +64,10 @@
             this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
+            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.LabelChiSo = new System.Windows.Forms.Label();
             this.LabelMangA = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelNen.SuspendLayout();
@@ -290,6 +293,7 @@
             // ChonTangDan
             // 
             this.ChonTangDan.AutoSize = true;
+            this.ChonTangDan.BackColor = System.Drawing.Color.Transparent;
             this.ChonTangDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ChonTangDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ChonTangDan.Location = new System.Drawing.Point(135, 64);
@@ -299,7 +303,7 @@
             this.ChonTangDan.TabIndex = 1;
             this.ChonTangDan.TabStop = true;
             this.ChonTangDan.Text = "Tăng dần";
-            this.ChonTangDan.UseVisualStyleBackColor = true;
+            this.ChonTangDan.UseVisualStyleBackColor = false;
             this.ChonTangDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonTangDan_CheckedChanged);
             // 
             // NutChonThuatToan
@@ -327,6 +331,7 @@
             // ChonGiamDan
             // 
             this.ChonGiamDan.AutoSize = true;
+            this.ChonGiamDan.BackColor = System.Drawing.Color.Transparent;
             this.ChonGiamDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ChonGiamDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ChonGiamDan.Location = new System.Drawing.Point(231, 64);
@@ -336,7 +341,7 @@
             this.ChonGiamDan.TabIndex = 2;
             this.ChonGiamDan.TabStop = true;
             this.ChonGiamDan.Text = "Giảm dần";
-            this.ChonGiamDan.UseVisualStyleBackColor = true;
+            this.ChonGiamDan.UseVisualStyleBackColor = false;
             this.ChonGiamDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonGiamDan_CheckedChanged);
             // 
             // GroupBoxDieuKhien
@@ -414,6 +419,7 @@
             // LabelTocDo
             // 
             this.LabelTocDo.AutoSize = true;
+            this.LabelTocDo.BackColor = System.Drawing.Color.Transparent;
             this.LabelTocDo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelTocDo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LabelTocDo.Location = new System.Drawing.Point(13, 35);
@@ -553,6 +559,7 @@
             // 
             // PanelMoPhong
             // 
+            this.PanelMoPhong.Controls.Add(this.SortingPanelView);
             this.PanelMoPhong.Controls.Add(this.LabelChiSo);
             this.PanelMoPhong.Controls.Add(this.LabelMangA);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
@@ -560,6 +567,14 @@
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
+            // 
+            // SortingPanelView
+            // 
+            this.SortingPanelView.Location = new System.Drawing.Point(151, 41);
+            this.SortingPanelView.Name = "SortingPanelView";
+            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
+            this.SortingPanelView.TabIndex = 2;
+            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
             // LabelChiSo
             // 
@@ -585,18 +600,26 @@
             this.LabelMangA.Text = "A";
             this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 763);
             this.Controls.Add(this.ThanhDieuKhien);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(50, 51);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Mô phỏng thuật toán";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
@@ -656,5 +679,7 @@
         private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
         private System.Windows.Forms.Label LabelChiSo;
         private System.Windows.Forms.Label LabelMangA;
+        private System.Windows.Forms.Panel SortingPanelView;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
+    // de de nhin hon, ong dat bien string roi bo het thuat toan vao
+    // hoac dung File.ReadAllLines de doc file ben ngoai
     class CodeThuatToan
     {
         private void AddCodeToListBox(System.Windows.Forms.ListBox list, string code)
@@ -17,65 +20,53 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void HeapSort(System.Windows.Forms.ListBox list_Code, Boolean tang)
         {
-            list_Code.Items.Clear(); // Xóa nội dung cũ
+            // Hàm swap
+            
+            list_Code.Items.Add("void Swap(int& a, int& b)");
+            list_Code.Items.Add("{");
+            list_Code.Items.Add("    int temp = a;");
+            list_Code.Items.Add("    a = b;");
+            list_Code.Items.Add("    b = temp;");
+            list_Code.Items.Add("}");
 
-            string SwapFunc =
-@"void Swap(int& a, int& b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}";
-
-            string HeapifyTang =
-@"void Heapify(int arr[], int n, int i)
-{
-    int max = i;
-    int left = 2 * i + 1;
-    int right = left + 1;
-    if (left < n && arr[left] > arr[max])
-        max = left;
-    if (right < n && arr[right] > arr[max])
-        max = right;
-    if (max != i)
-    {
-        Swap(arr[i], arr[max]);
-        Heapify(arr, n, max);
-    }
-}";
-
-            string HeapifyGiam =
-@"void Heapify(int arr[], int n, int i)
-{
-    int min = i;
-    int left = 2 * i + 1;
-    int right = left + 1;
-    if (left < n && arr[left] < arr[min])
-        min = left;
-    if (right < n && arr[right] < arr[min])
-        min = right;
-    if (min != i)
-    {
-        Swap(arr[i], arr[min]);
-        Heapify(arr, n, min);
-    }
-}";
-
-            string HeapSortMain =
-@"void HeapSort(int arr[], int n)
-{
-    for (int i = n / 2 - 1; i >= 0; i--)
-        Heapify(arr, n, i);
-    for (int j = n - 1; j > 0; j--)
-    {
-        Swap(arr[0], arr[j]);
-        Heapify(arr, j, 0);
-    }
-}";
-            // Hiển thị vào ListBox
-            AddCodeToListBox(list_Code, SwapFunc);
-            list_Code.Items.Add("");
-            AddCodeToListBox(list_Code, tang ? HeapifyTang : HeapifyGiam);
+            list_Code.Items.Add("void Heapify(int arr[], int n, int i)");
+            list_Code.Items.Add("{");
+            if (tang)
+            {
+                list_Code.Items.Add("    int max = i;");
+                list_Code.Items.Add("    int left = 2 * i + 1;");
+                list_Code.Items.Add("    int right = left + 1;");
+                list_Code.Items.Add("    if (left < n && arr[left] > arr[max])");
+                list_Code.Items.Add("        max = left;");
+                list_Code.Items.Add("    if (right < n && arr[right] > arr[max])");
+                list_Code.Items.Add("        max = right;");
+                list_Code.Items.Add("    if (max != i)");
+                list_Code.Items.Add("    {");
+                list_Code.Items.Add("        Swap(arr[i], arr[max]);");
+                list_Code.Items.Add("        Heapify(arr, n, max);");
+                list_Code.Items.Add("    }");
+                list_Code.Items.Add("}");
+            }
+            else
+            {
+                list_Code.Items.Add("   int min = i;");
+                list_Code.Items.Add("   int left = i * 2 + 1;");
+                list_Code.Items.Add("	int right = left + 1;");
+                list_Code.Items.Add("	if (left < n && arr[left] < arr[min])");
+                list_Code.Items.Add("	{");
+                list_Code.Items.Add("		min = left;");
+                list_Code.Items.Add("	}");
+                list_Code.Items.Add("	if (right < n && arr[right] < arr[min])");
+                list_Code.Items.Add("	{");
+                list_Code.Items.Add("		min = right;");
+                list_Code.Items.Add("	}");
+                list_Code.Items.Add("	if (min != i)");
+                list_Code.Items.Add("	{");
+                list_Code.Items.Add("		Swap(arr[i], arr[min]);");
+                list_Code.Items.Add("		Heapify(arr, n, min);");
+                list_Code.Items.Add("	}");
+                list_Code.Items.Add("}");
+            }
             list_Code.Items.Add("");
             AddCodeToListBox(list_Code, HeapSortMain);
         }
