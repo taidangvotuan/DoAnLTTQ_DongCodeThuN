@@ -477,6 +477,155 @@ namespace DoAnLTTQ_DongCodeThuN
                 Thinh_v_QuickSortGiamDan(arr, i, iRight);
         }
         #endregion
+
+        #region KHU VỰC CÁC LISTBOX
+        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC GROUPBOX
+        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region KHU VỰC CÁC NÚT BẤM
+        private void Tai_v_NutTao_Click(object sender, EventArgs e)
+        {
+            NumericNhapSoPhanTu.Focus();
+            try
+            {
+                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            }
+            catch
+            {
+               MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+               NumericNhapSoPhanTu.Value = 8;
+               return;
+            }
+            a = new int[so_phan_tu];
+            //Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            controller.Create();
+        }
+
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
+        {
+            controller.Start();
+        }
+
+        private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort")
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Heap Sort")
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Bubble Sort")
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Quick Sort")
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+                
+            if (ChonThuatToan == "Insertion Sort")
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }     
+        }
+
+        private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         private void Form1_Load(object sender, EventArgs e)
@@ -498,6 +647,8 @@ namespace DoAnLTTQ_DongCodeThuN
                 node1[i].Text = a[i].ToString();
             }
         }
+
+
 
         // Hàm xóa mảng đã tạo
         public void xoa_Mang(Button[] Node)
