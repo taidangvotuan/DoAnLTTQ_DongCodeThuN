@@ -915,7 +915,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             FormController.OnUpdate?.Invoke();
@@ -929,7 +928,6 @@ namespace DoAnLTTQ_DongCodeThuN
             //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
             //graphics.Clear(Color.White);
             //graphics.Dispose();
-
         }
     }
 }
