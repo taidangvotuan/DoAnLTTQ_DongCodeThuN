@@ -604,7 +604,19 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 Code_CPP.InsertionSort(ListBoxCodeC, tang);
                 YTuong_CPP.InsertionSort(ListBoxYTuong);
-            }     
+            }
+
+            if (ChonThuatToan == "Interchange Sort")
+            {
+                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
+                YTuong_CPP.InterchangeSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Merge Sort")
+            {
+                Code_CPP.MergeSort(ListBoxCodeC, tang);
+                YTuong_CPP.MergeSort(ListBoxYTuong);
+            }
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
