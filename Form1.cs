@@ -24,11 +24,11 @@ namespace DoAnLTTQ_DongCodeThuN
         public static Label[] chiSo;   // Chỉ số vị trí của mảng
         public static int[] a;         // Mảng a
         int toc_Do = 4;                  // Tốc độ, tối đa 10 cấp
-        Boolean tang = true;     // Kiểu sắp xếp
-        Boolean da_Tao_Mang = false;
-        Boolean da_Tao_GT = false;
-        Boolean kt_tam_dung = false;     //Biến kiểm tra tạm dừng
-        Boolean sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
+        bool tang = true;     // Kiểu sắp xếp
+        bool da_Tao_Mang = false;
+        bool da_Tao_GT = false;
+        bool kt_tam_dung = false;     //Biến kiểm tra tạm dừng
+        bool sap_Xep_Tung_Buoc = true;        // Biến kiểm tra sắp xếp từng bước hay nhanh
         CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
         YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
         int i;    // Biến này dùng nhiều
@@ -58,6 +58,11 @@ namespace DoAnLTTQ_DongCodeThuN
             controller = new FormController(this);
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         #region KHU VỰC CÁC LABEL
@@ -583,52 +588,57 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        private void ThayDoiCodeKhiChonTangHoacGiam()
         {
             ListBoxCodeC.Items.Clear();
             ListBoxYTuong.Items.Clear();
             string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
-            if (ChonThuatToan == "Selection Sort")
+            if (ChonThuatToan == "Selection Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.SelectionSort(ListBoxCodeC, tang);
                 YTuong_CPP.SelectionSort(ListBoxYTuong);
             }
-                
-            if (ChonThuatToan == "Heap Sort")
+
+            if (ChonThuatToan == "Heap Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.HeapSort(ListBoxCodeC, tang);
                 YTuong_CPP.HeapSort(ListBoxYTuong);
             }
-                
-            if (ChonThuatToan == "Bubble Sort")
+
+            if (ChonThuatToan == "Bubble Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.BubbleSort(ListBoxCodeC, tang);
                 YTuong_CPP.BubbleSort(ListBoxYTuong);
             }
-                
-            if (ChonThuatToan == "Quick Sort")
+
+            if (ChonThuatToan == "Quick Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.QuickSort(ListBoxCodeC, tang);
                 YTuong_CPP.QuickSort(ListBoxYTuong);
             }
-                
-            if (ChonThuatToan == "Insertion Sort")
+
+            if (ChonThuatToan == "Insertion Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.InsertionSort(ListBoxCodeC, tang);
                 YTuong_CPP.InsertionSort(ListBoxYTuong);
             }
 
-            if (ChonThuatToan == "Interchange Sort")
+            if (ChonThuatToan == "Interchange Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.InterchangeSort(ListBoxCodeC, tang);
                 YTuong_CPP.InterchangeSort(ListBoxYTuong);
             }
 
-            if (ChonThuatToan == "Merge Sort")
+            if (ChonThuatToan == "Merge Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
             {
                 Code_CPP.MergeSort(ListBoxCodeC, tang);
                 YTuong_CPP.MergeSort(ListBoxYTuong);
             }
+        }
+
+        private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ThayDoiCodeKhiChonTangHoacGiam();
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
@@ -638,12 +648,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (ChonTangDan.Checked)
+            {
+                tang = true;
+                ThayDoiCodeKhiChonTangHoacGiam();
+            }
         }
 
         private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (ChonGiamDan.Checked)
+            {
+                tang = false;
+                ThayDoiCodeKhiChonTangHoacGiam();
+            }
         }
 
         private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
@@ -656,11 +674,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
         #endregion
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void NumericNhapSoPhanTu_ValueChanged(object sender, EventArgs e)
         {

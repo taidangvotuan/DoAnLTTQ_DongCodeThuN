@@ -18,7 +18,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 list.Items.Add(line);
         }
 
-        public void HeapSort(System.Windows.Forms.ListBox list_Code, Boolean tang)
+        public void HeapSort(System.Windows.Forms.ListBox list_Code, bool tang)
         {
             // Hàm swap
             list_Code.Items.Clear(); // Xóa nội dung cũ
@@ -84,7 +84,7 @@ namespace DoAnLTTQ_DongCodeThuN
             AddCodeToListBox(list_Code, HeapSortMain);
         }
         
-        public void MergeSort(System.Windows.Forms.ListBox list_Code, Boolean tang)
+        public void MergeSort(System.Windows.Forms.ListBox list_Code, bool tang)
         {
             list_Code.Items.Clear(); // Xóa nội dung cũ
 
