@@ -535,19 +535,19 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutTao_Click(object sender, EventArgs e)
         {
-            //NumericNhapSoPhanTu.Focus();
-            //try
-            //{
-            //    so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
-            //    NumericNhapSoPhanTu.Value = 8;
-            //    return;
-            //}
-            //a = new int[so_phan_tu];
-            //Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
+            NumericNhapSoPhanTu.Focus();
+            try
+            {
+                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
+            }
+            catch
+            {
+                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
+                NumericNhapSoPhanTu.Value = 5;
+                return;
+            }
+            a = new int[so_phan_tu];
+            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
             controller.Create();
         }
 
