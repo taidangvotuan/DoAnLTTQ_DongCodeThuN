@@ -553,7 +553,19 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
+            Random rd = new Random();
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = rd.Next(20);
+                node1[i].Text = a[i].ToString();
 
+            }
+
+            // Mở các nút bấm
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            da_Tao_GT = true;
+            NutChonThuatToan.Enabled = true;
         }
 
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
