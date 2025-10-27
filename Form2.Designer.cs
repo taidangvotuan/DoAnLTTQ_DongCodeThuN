@@ -28,113 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LabelA = new System.Windows.Forms.Label();
             this.TextBoxChiSoMang = new System.Windows.Forms.TextBox();
-            this.TextBoxGiaTriMang = new System.Windows.Forms.TextBox();
-            this.LabelDauBang = new System.Windows.Forms.Label();
             this.NutNhap = new System.Windows.Forms.Button();
-            this.LabelMoNgoac = new System.Windows.Forms.Label();
-            this.LabelDongNgoac = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // LabelA
-            // 
-            this.LabelA.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LabelA.AutoSize = true;
-            this.LabelA.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelA.Location = new System.Drawing.Point(104, 129);
-            this.LabelA.Name = "LabelA";
-            this.LabelA.Size = new System.Drawing.Size(46, 44);
-            this.LabelA.TabIndex = 0;
-            this.LabelA.Text = "A";
-            this.LabelA.Click += new System.EventHandler(this.LabelA_Click);
             // 
             // TextBoxChiSoMang
             // 
             this.TextBoxChiSoMang.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextBoxChiSoMang.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.TextBoxChiSoMang.Location = new System.Drawing.Point(170, 124);
+            this.TextBoxChiSoMang.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.TextBoxChiSoMang.Location = new System.Drawing.Point(0, 173);
             this.TextBoxChiSoMang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TextBoxChiSoMang.MaxLength = 2;
+            this.TextBoxChiSoMang.MaxLength = 59;
             this.TextBoxChiSoMang.Name = "TextBoxChiSoMang";
-            this.TextBoxChiSoMang.Size = new System.Drawing.Size(54, 50);
+            this.TextBoxChiSoMang.Size = new System.Drawing.Size(644, 30);
             this.TextBoxChiSoMang.TabIndex = 4;
             this.TextBoxChiSoMang.TextChanged += new System.EventHandler(this.TextBoxChiSoMang_TextChanged);
-            // 
-            // TextBoxGiaTriMang
-            // 
-            this.TextBoxGiaTriMang.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextBoxGiaTriMang.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.TextBoxGiaTriMang.Location = new System.Drawing.Point(288, 125);
-            this.TextBoxGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TextBoxGiaTriMang.MaxLength = 2;
-            this.TextBoxGiaTriMang.Name = "TextBoxGiaTriMang";
-            this.TextBoxGiaTriMang.Size = new System.Drawing.Size(54, 50);
-            this.TextBoxGiaTriMang.TabIndex = 5;
-            this.TextBoxGiaTriMang.TextChanged += new System.EventHandler(this.TextBoxGiaTriMang_TextChanged);
-            // 
-            // LabelDauBang
-            // 
-            this.LabelDauBang.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LabelDauBang.AutoSize = true;
-            this.LabelDauBang.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelDauBang.Location = new System.Drawing.Point(246, 130);
-            this.LabelDauBang.Name = "LabelDauBang";
-            this.LabelDauBang.Size = new System.Drawing.Size(41, 44);
-            this.LabelDauBang.TabIndex = 6;
-            this.LabelDauBang.Text = "=";
-            this.LabelDauBang.Click += new System.EventHandler(this.LabelDauBang_Click);
             // 
             // NutNhap
             // 
             this.NutNhap.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NutNhap.BackColor = System.Drawing.Color.DodgerBlue;
-            this.NutNhap.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.NutNhap.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhap.ForeColor = System.Drawing.Color.Yellow;
-            this.NutNhap.Location = new System.Drawing.Point(170, 203);
+            this.NutNhap.Location = new System.Drawing.Point(276, 223);
             this.NutNhap.Name = "NutNhap";
-            this.NutNhap.Size = new System.Drawing.Size(130, 55);
+            this.NutNhap.Size = new System.Drawing.Size(112, 46);
             this.NutNhap.TabIndex = 7;
             this.NutNhap.Text = "Nhập";
             this.NutNhap.UseVisualStyleBackColor = false;
             this.NutNhap.Click += new System.EventHandler(this.NutNhap_Click);
             // 
-            // LabelMoNgoac
+            // label1
             // 
-            this.LabelMoNgoac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LabelMoNgoac.AutoSize = true;
-            this.LabelMoNgoac.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelMoNgoac.Location = new System.Drawing.Point(140, 125);
-            this.LabelMoNgoac.Name = "LabelMoNgoac";
-            this.LabelMoNgoac.Size = new System.Drawing.Size(31, 44);
-            this.LabelMoNgoac.TabIndex = 8;
-            this.LabelMoNgoac.Text = "[";
-            this.LabelMoNgoac.Click += new System.EventHandler(this.LabelMoNgoac_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(11, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(542, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "(Giá trị của mỗi phần tử trong mảng phải nằm trong khoảng từ 0 đến 99)";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // LabelDongNgoac
+            // label2
             // 
-            this.LabelDongNgoac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LabelDongNgoac.AutoSize = true;
-            this.LabelDongNgoac.Font = new System.Drawing.Font("Arial", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelDongNgoac.Location = new System.Drawing.Point(224, 125);
-            this.LabelDongNgoac.Name = "LabelDongNgoac";
-            this.LabelDongNgoac.Size = new System.Drawing.Size(31, 44);
-            this.LabelDongNgoac.TabIndex = 9;
-            this.LabelDongNgoac.Text = "]";
-            this.LabelDongNgoac.Click += new System.EventHandler(this.LabelDongNgoac_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(11, 114);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(324, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Hãy nhập danh sách các giá trị của mảng ";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 374);
-            this.Controls.Add(this.LabelDongNgoac);
-            this.Controls.Add(this.LabelMoNgoac);
+            this.ClientSize = new System.Drawing.Size(646, 374);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.NutNhap);
-            this.Controls.Add(this.LabelDauBang);
-            this.Controls.Add(this.TextBoxGiaTriMang);
             this.Controls.Add(this.TextBoxChiSoMang);
-            this.Controls.Add(this.LabelA);
             this.Name = "Form2";
             this.Text = "Nhập dữ liệu cho mảng";
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -144,13 +100,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label LabelA;
         private System.Windows.Forms.TextBox TextBoxChiSoMang;
-        private System.Windows.Forms.TextBox TextBoxGiaTriMang;
-        private System.Windows.Forms.Label LabelDauBang;
         private System.Windows.Forms.Button NutNhap;
-        private System.Windows.Forms.Label LabelMoNgoac;
-        private System.Windows.Forms.Label LabelDongNgoac;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

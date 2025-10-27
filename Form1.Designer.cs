@@ -60,7 +60,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapNgauNhien = new System.Windows.Forms.Button();
             this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
-            this.LabelChuThichGiaTriMang = new System.Windows.Forms.Label();
             this.NutTao = new System.Windows.Forms.Button();
             this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
             this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
@@ -438,7 +437,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapNgauNhien);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichGiaTriMang);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutTao);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapSoPhanTu);
@@ -482,26 +480,13 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang.AutoSize = true;
             this.LabelNhapGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelNhapGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 65);
+            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 74);
             this.LabelNhapGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapGiaTriMang.Name = "LabelNhapGiaTriMang";
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
             this.LabelNhapGiaTriMang.TabIndex = 7;
             this.LabelNhapGiaTriMang.Text = "Tạo giá trị cho mảng:";
             this.LabelNhapGiaTriMang.Click += new System.EventHandler(this.Tai_v_LabelNhapGiaTriMang_Click);
-            // 
-            // LabelChuThichGiaTriMang
-            // 
-            this.LabelChuThichGiaTriMang.AutoSize = true;
-            this.LabelChuThichGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChuThichGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelChuThichGiaTriMang.Location = new System.Drawing.Point(17, 81);
-            this.LabelChuThichGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LabelChuThichGiaTriMang.Name = "LabelChuThichGiaTriMang";
-            this.LabelChuThichGiaTriMang.Size = new System.Drawing.Size(155, 19);
-            this.LabelChuThichGiaTriMang.TabIndex = 8;
-            this.LabelChuThichGiaTriMang.Text = "(Giá trị từ 0 đến 99)";
-            this.LabelChuThichGiaTriMang.Click += new System.EventHandler(this.Tai_v_LabelChuThichGiaTriMang_Click);
             // 
             // NutTao
             // 
@@ -670,7 +655,6 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.Button NutNhapBangTay;
         private System.Windows.Forms.Label LabelNhapSoPhanTu;
         private System.Windows.Forms.Label LabelNhapGiaTriMang;
-        private System.Windows.Forms.Label LabelChuThichGiaTriMang;
         private System.Windows.Forms.RadioButton ChonGiamDan;
         private System.Windows.Forms.RadioButton ChonTangDan;
         private System.Windows.Forms.Label LabelChuThichSoPhanTu;

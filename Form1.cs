@@ -81,11 +81,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
         }
 
-        private void Tai_v_LabelChuThichGiaTriMang_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Tai_v_LabelChonThuatToan_Click(object sender, EventArgs e)
         {
 
