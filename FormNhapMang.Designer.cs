@@ -1,6 +1,6 @@
 ﻿namespace DoAnLTTQ_DongCodeThuN
 {
-    partial class Form2
+    partial class FormNhapMang
     {
         /// <summary>
         /// Required designer variable.

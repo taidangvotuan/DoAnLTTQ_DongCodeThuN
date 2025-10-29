@@ -2,7 +2,7 @@
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    partial class Form1
+    partial class Form_main
     {
         /// <summary>
         /// Required designer variable.
@@ -58,17 +58,14 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
             this.NutNhapNgauNhien = new System.Windows.Forms.Button();
-            this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
-            this.NutTao = new System.Windows.Forms.Button();
-            this.LabelChuThichSoPhanTu = new System.Windows.Forms.Label();
-            this.LabelNhapSoPhanTu = new System.Windows.Forms.Label();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
             this.SortingPanelView = new System.Windows.Forms.Panel();
             this.LabelChiSo = new System.Windows.Forms.Label();
             this.LabelMangA = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelNen.SuspendLayout();
@@ -79,7 +76,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxDieuKhien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
             this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -435,11 +431,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapNgauNhien);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutTao);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelChuThichSoPhanTu);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapBangTay);
             this.GroupBoxKhoiTaoMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxKhoiTaoMang.ForeColor = System.Drawing.Color.Yellow;
@@ -457,30 +449,21 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapNgauNhien.FlatAppearance.BorderSize = 0;
             this.NutNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapNgauNhien.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapNgauNhien.Location = new System.Drawing.Point(163, 67);
+            this.NutNhapNgauNhien.Location = new System.Drawing.Point(11, 62);
             this.NutNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapNgauNhien.Name = "NutNhapNgauNhien";
-            this.NutNhapNgauNhien.Size = new System.Drawing.Size(100, 32);
+            this.NutNhapNgauNhien.Size = new System.Drawing.Size(178, 32);
             this.NutNhapNgauNhien.TabIndex = 4;
             this.NutNhapNgauNhien.Text = "Ngẫu nhiên";
             this.NutNhapNgauNhien.UseVisualStyleBackColor = false;
             this.NutNhapNgauNhien.Click += new System.EventHandler(this.Tai_v_NutNhapNgauNhien_Click);
-            // 
-            // NumericNhapSoPhanTu
-            // 
-            this.NumericNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NumericNhapSoPhanTu.Location = new System.Drawing.Point(163, 25);
-            this.NumericNhapSoPhanTu.Name = "NumericNhapSoPhanTu";
-            this.NumericNhapSoPhanTu.Size = new System.Drawing.Size(100, 27);
-            this.NumericNhapSoPhanTu.TabIndex = 0;
-            this.NumericNhapSoPhanTu.ValueChanged += new System.EventHandler(this.NumericNhapSoPhanTu_ValueChanged);
             // 
             // LabelNhapGiaTriMang
             // 
             this.LabelNhapGiaTriMang.AutoSize = true;
             this.LabelNhapGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelNhapGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 74);
+            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 35);
             this.LabelNhapGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapGiaTriMang.Name = "LabelNhapGiaTriMang";
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
@@ -488,57 +471,16 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang.Text = "Tạo giá trị cho mảng:";
             this.LabelNhapGiaTriMang.Click += new System.EventHandler(this.Tai_v_LabelNhapGiaTriMang_Click);
             // 
-            // NutTao
-            // 
-            this.NutTao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutTao.FlatAppearance.BorderSize = 0;
-            this.NutTao.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutTao.ForeColor = System.Drawing.Color.Black;
-            this.NutTao.Location = new System.Drawing.Point(268, 22);
-            this.NutTao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutTao.Name = "NutTao";
-            this.NutTao.Size = new System.Drawing.Size(100, 32);
-            this.NutTao.TabIndex = 0;
-            this.NutTao.Text = "Tạo";
-            this.NutTao.UseVisualStyleBackColor = false;
-            this.NutTao.Click += new System.EventHandler(this.Tai_v_NutTao_Click);
-            // 
-            // LabelChuThichSoPhanTu
-            // 
-            this.LabelChuThichSoPhanTu.AutoSize = true;
-            this.LabelChuThichSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChuThichSoPhanTu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelChuThichSoPhanTu.Location = new System.Drawing.Point(14, 40);
-            this.LabelChuThichSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LabelChuThichSoPhanTu.Name = "LabelChuThichSoPhanTu";
-            this.LabelChuThichSoPhanTu.Size = new System.Drawing.Size(155, 19);
-            this.LabelChuThichSoPhanTu.TabIndex = 9;
-            this.LabelChuThichSoPhanTu.Text = "(Giá trị từ 2 đến 12)";
-            this.LabelChuThichSoPhanTu.Click += new System.EventHandler(this.Tai_v_LabelChuThichSoPhanTu_Click);
-            // 
-            // LabelNhapSoPhanTu
-            // 
-            this.LabelNhapSoPhanTu.AutoSize = true;
-            this.LabelNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelNhapSoPhanTu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapSoPhanTu.Location = new System.Drawing.Point(40, 25);
-            this.LabelNhapSoPhanTu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LabelNhapSoPhanTu.Name = "LabelNhapSoPhanTu";
-            this.LabelNhapSoPhanTu.Size = new System.Drawing.Size(103, 19);
-            this.LabelNhapSoPhanTu.TabIndex = 6;
-            this.LabelNhapSoPhanTu.Text = "Số phần tử:";
-            this.LabelNhapSoPhanTu.Click += new System.EventHandler(this.Tai_v_LabelNhapSoPhanTu_Click);
-            // 
             // NutNhapBangTay
             // 
             this.NutNhapBangTay.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.NutNhapBangTay.FlatAppearance.BorderSize = 0;
             this.NutNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapBangTay.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapBangTay.Location = new System.Drawing.Point(268, 67);
+            this.NutNhapBangTay.Location = new System.Drawing.Point(193, 62);
             this.NutNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapBangTay.Name = "NutNhapBangTay";
-            this.NutNhapBangTay.Size = new System.Drawing.Size(100, 32);
+            this.NutNhapBangTay.Size = new System.Drawing.Size(178, 32);
             this.NutNhapBangTay.TabIndex = 5;
             this.NutNhapBangTay.Text = "Bằng tay";
             this.NutNhapBangTay.UseVisualStyleBackColor = false;
@@ -593,7 +535,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -604,7 +546,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(50, 51);
-            this.Name = "Form1";
+            this.Name = "Form_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Mô phỏng thuật toán";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -621,7 +563,6 @@ namespace DoAnLTTQ_DongCodeThuN
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).EndInit();
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
             this.PanelMoPhong.ResumeLayout(false);
             this.PanelMoPhong.PerformLayout();
             this.ResumeLayout(false);
@@ -630,8 +571,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
+
         #endregion
         private System.Windows.Forms.ListBox ListBoxYTuong;
         private System.Windows.Forms.ListBox ListBoxCodeC;
@@ -645,19 +586,15 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.ListBox ListBoxCacBuoc;
         private System.Windows.Forms.GroupBox GroupBoxCacBuocThucHien;
         private System.Windows.Forms.Panel ThanhDieuKhien;
-        private System.Windows.Forms.Button NutNhapNgauNhien;
         private System.Windows.Forms.ComboBox NutChonThuatToan;
         private System.Windows.Forms.Label LabelChonThuatToan;
-        private System.Windows.Forms.Button NutTao;
         private System.Windows.Forms.GroupBox GroupBoxYTuong;
         private System.Windows.Forms.Label LabelLoaiSapXep;
         private System.Windows.Forms.Label LabelTocDo;
         private System.Windows.Forms.Button NutNhapBangTay;
-        private System.Windows.Forms.Label LabelNhapSoPhanTu;
         private System.Windows.Forms.Label LabelNhapGiaTriMang;
         private System.Windows.Forms.RadioButton ChonGiamDan;
         private System.Windows.Forms.RadioButton ChonTangDan;
-        private System.Windows.Forms.Label LabelChuThichSoPhanTu;
         private System.Windows.Forms.GroupBox GroupBoxChonThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxDieuKhien;
         private System.Windows.Forms.Button NutKetThucThuatToan;
@@ -666,10 +603,11 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.TrackBar NutChinhTocDoThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxKhoiTaoMang;
         private System.Windows.Forms.Panel PanelMoPhong;
-        private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
         private System.Windows.Forms.Label LabelChiSo;
         private System.Windows.Forms.Label LabelMangA;
         private System.Windows.Forms.Panel SortingPanelView;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button NutNhapNgauNhien;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

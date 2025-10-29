@@ -1,12 +1,13 @@
-﻿using System.Threading;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
-using System;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
@@ -15,7 +16,7 @@ namespace DoAnLTTQ_DongCodeThuN
     // Chia file ra de quan ly hon
     
     // Dung Form1 de tuong tac voi lop FormController
-    public partial class Form1 : Form
+    public partial class Form_main : Form
     {
         #region KHAI BÁO BIẾN
         public Thread t1;
@@ -41,13 +42,11 @@ namespace DoAnLTTQ_DongCodeThuN
         int le_tren;                // Lề trên cho node
         #endregion
         FormController controller;
-        public Form1()
+        public Form_main()
         {
             InitializeComponent();
 
             // Vô hiệu hóa các lable, button, checkbox, Radiobutton
-            NutNhapNgauNhien.Enabled = false;
-            NutNhapBangTay.Enabled = false;
             NutChinhTocDoThuatToan.Enabled = false;
             NutChayThuatToan.Enabled = true;
             NutTamDungThuatToan.Enabled = false;
@@ -533,26 +532,10 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC NÚT BẤM
-        private void Tai_v_NutTao_Click(object sender, EventArgs e)
-        {
-            NumericNhapSoPhanTu.Focus();
-            try
-            {
-                so_phan_tu = Convert.ToInt32(NumericNhapSoPhanTu.Value);
-            }
-            catch
-            {
-                MessageBox.Show("Số phần tử vừa nhập vào không hợp lệ!");
-                NumericNhapSoPhanTu.Value = 5;
-                return;
-            }
-            a = new int[so_phan_tu];
-            Tai_v_TaoMang(150, Properties.Resources.AnhPhanTuMang);
-            controller.Create();
-        }
-
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
+            FormNhapNgauNhien f = new FormNhapNgauNhien();
+            f.ShowDialog();
             Random rd = new Random();
             for (int i = 0; i < so_phan_tu; i++)
             {
@@ -661,7 +644,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ButtonHuongDan_Click(object sender, EventArgs e)
         {
-
+            FormHuongDan f = new FormHuongDan();
+            f.Show();
         }
 
         private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
@@ -717,13 +701,13 @@ namespace DoAnLTTQ_DongCodeThuN
         // Hàm tạo mảng
         public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
         {
-            if (so_phan_tu < 2 || so_phan_tu > 12)
+            /*if (so_phan_tu < 2 || so_phan_tu > 12)
             {
                 MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
                 da_Tao_Mang = false;
                 NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
                 return;
-            }
+            }*/
 
             // Tạo thuộc tính cho node
             kich_Thuoc = 70;
@@ -813,7 +797,7 @@ namespace DoAnLTTQ_DongCodeThuN
         // Nhập dữ liệu bằng tay
         private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2();
+            FormNhapMang f = new FormNhapMang();
             f.ShowDialog();
         }
         #endregion
@@ -864,7 +848,6 @@ namespace DoAnLTTQ_DongCodeThuN
         // Hàm vô hiệu hóa các nút khởi tạo khi ctrinh chạy
         public void KhoiChay()
         {
-            NutTao.Enabled = false;
             NutNhapNgauNhien.Enabled = false;
             NutNhapBangTay.Enabled = false;
             NutChonThuatToan.Enabled = false;
@@ -917,7 +900,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void SortingPanelView_Paint(object sender, PaintEventArgs e)
         {
-            
             //Graphics graphics = e.Graphics;
             //Brush brush = new SolidBrush(Color.Blue);
             //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));

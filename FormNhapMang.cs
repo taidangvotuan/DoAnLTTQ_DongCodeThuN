@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    public partial class Form2 : Form
+    public partial class FormNhapMang : Form
     {
         int[] A = new int[12];  // Mảng tối đa 12 phần tử
         int n = 0;
         bool daNhap = false;
         int index = 0;
 
-        public Form2()
+        public FormNhapMang()
         {
             InitializeComponent();
             //TextBoxGiaTriMang.Focus();
@@ -62,7 +62,7 @@ namespace DoAnLTTQ_DongCodeThuN
             daNhap = true;
 
             // Vẽ lại mảng
-            panel1.Invalidate();
+            //panel1.Invalidate();
             try
             {
                 index = Convert.ToInt32(TextBoxChiSoMang.Text);
@@ -73,7 +73,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 TextBoxChiSoMang.Text = "0";
                 return;
             }
-            if (index > Form1.so_phan_tu - 1 || index < 0)
+            if (index > Form_main.so_phan_tu - 1 || index < 0)
             {
                 MessageBox.Show("Không có phần tử thứ " + index);
                 TextBoxChiSoMang.Text = "0";
@@ -120,7 +120,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 //TextBoxChiSoMang.Text = "0";
                 return;
             }
-            if (index > Form1.so_phan_tu - 1 || index < 0)
+            if (index > Form_main.so_phan_tu - 1 || index < 0)
             {
                 MessageBox.Show("Không có phần tử thứ " + index);
                 //TextBoxChiSoMang.Text = "0";
@@ -151,11 +151,11 @@ namespace DoAnLTTQ_DongCodeThuN
                 //Form1.a[index] = value;
                 //Form1.node1[index].Text = value.ToString();
                 // Đoạn này cho nó nhấp nháy 1 cái khi nhận giá trị
-                Form1.node1[index].BackgroundImage = Properties.Resources.AnhPhanTuDangChon;
-                Form1.node1[index].Refresh();
+                Form_main.node1[index].BackgroundImage = Properties.Resources.AnhPhanTuDangChon;
+                Form_main.node1[index].Refresh();
                 Thread.Sleep(500);
-                Form1.node1[index].BackgroundImage = Properties.Resources.AnhPhanTuMang;
-                Form1.node1[index].Refresh();
+                Form_main.node1[index].BackgroundImage = Properties.Resources.AnhPhanTuMang;
+                Form_main.node1[index].Refresh();
 
                 //this.TextBoxGiaTriMang.Text = "0";
                 //this.TextBoxGiaTriMang.Focus();
