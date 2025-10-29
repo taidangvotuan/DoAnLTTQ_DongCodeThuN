@@ -21,5 +21,32 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NutNhap_Click(object sender, EventArgs e)
+        {
+            /*Random rd = new Random();
+            for (int i = 0; i < so_phan_tu; i++)
+            {
+                a[i] = rd.Next(100);
+                node1[i].Text = a[i].ToString();
+
+            }
+
+            // Mở các nút bấm
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            da_Tao_GT = true;
+            NutChonThuatToan.Enabled = true;*/
+        }
     }
 }

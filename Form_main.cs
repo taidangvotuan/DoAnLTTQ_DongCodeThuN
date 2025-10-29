@@ -535,20 +535,7 @@ namespace DoAnLTTQ_DongCodeThuN
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
             FormNhapNgauNhien f = new FormNhapNgauNhien();
-            f.ShowDialog();
-            Random rd = new Random();
-            for (int i = 0; i < so_phan_tu; i++)
-            {
-                a[i] = rd.Next(20);
-                node1[i].Text = a[i].ToString();
-
-            }
-
-            // Mở các nút bấm
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
-            da_Tao_GT = true;
-            NutChonThuatToan.Enabled = true;
+            f.ShowDialog(); 
         }
 
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
@@ -650,7 +637,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ButtonTacGia_Click(object sender, EventArgs e)
         {
-
+            FormTacGia f = new FormTacGia();
+            f.Show();
         }
         #endregion
 

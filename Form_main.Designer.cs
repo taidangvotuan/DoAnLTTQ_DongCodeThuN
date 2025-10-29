@@ -365,10 +365,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutKetThucThuatToan.FlatAppearance.BorderSize = 0;
             this.NutKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutKetThucThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutKetThucThuatToan.Location = new System.Drawing.Point(343, 68);
+            this.NutKetThucThuatToan.Location = new System.Drawing.Point(314, 68);
             this.NutKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutKetThucThuatToan.Name = "NutKetThucThuatToan";
-            this.NutKetThucThuatToan.Size = new System.Drawing.Size(100, 32);
+            this.NutKetThucThuatToan.Size = new System.Drawing.Size(130, 32);
             this.NutKetThucThuatToan.TabIndex = 19;
             this.NutKetThucThuatToan.Text = "Kết thúc";
             this.NutKetThucThuatToan.UseVisualStyleBackColor = false;
@@ -381,10 +381,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutTamDungThuatToan.FlatAppearance.BorderSize = 0;
             this.NutTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTamDungThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutTamDungThuatToan.Location = new System.Drawing.Point(181, 68);
+            this.NutTamDungThuatToan.Location = new System.Drawing.Point(164, 68);
             this.NutTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTamDungThuatToan.Name = "NutTamDungThuatToan";
-            this.NutTamDungThuatToan.Size = new System.Drawing.Size(100, 32);
+            this.NutTamDungThuatToan.Size = new System.Drawing.Size(130, 32);
             this.NutTamDungThuatToan.TabIndex = 18;
             this.NutTamDungThuatToan.Text = "Tạm dừng";
             this.NutTamDungThuatToan.UseVisualStyleBackColor = false;
@@ -399,7 +399,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutChayThuatToan.Location = new System.Drawing.Point(13, 68);
             this.NutChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutChayThuatToan.Name = "NutChayThuatToan";
-            this.NutChayThuatToan.Size = new System.Drawing.Size(100, 32);
+            this.NutChayThuatToan.Size = new System.Drawing.Size(130, 32);
             this.NutChayThuatToan.TabIndex = 17;
             this.NutChayThuatToan.Text = "Chạy";
             this.NutChayThuatToan.UseVisualStyleBackColor = false;
