@@ -48,7 +48,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Vô hiệu hóa các lable, button, checkbox, Radiobutton
             NutChinhTocDoThuatToan.Enabled = false;
-            NutChayThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = false;
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
             LabelChiSo.Visible = false;
@@ -101,6 +101,16 @@ namespace DoAnLTTQ_DongCodeThuN
         }
 
         private void LabelChiSo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelSoPhanTu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelKhoangGiaTriPhanTu_Click(object sender, EventArgs e)
         {
 
         }
@@ -532,12 +542,6 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC NÚT BẤM
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
-        {
-            FormNhapNgauNhien f = new FormNhapNgauNhien();
-            f.ShowDialog(); 
-        }
-
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
             controller.Start();
@@ -689,13 +693,13 @@ namespace DoAnLTTQ_DongCodeThuN
         // Hàm tạo mảng
         public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
         {
-            /*if (so_phan_tu < 2 || so_phan_tu > 12)
+            if (so_phan_tu < 2 || so_phan_tu > 12)
             {
                 MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
                 da_Tao_Mang = false;
                 NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
                 return;
-            }*/
+            }
 
             // Tạo thuộc tính cho node
             kich_Thuoc = 70;
@@ -772,19 +776,43 @@ namespace DoAnLTTQ_DongCodeThuN
         #region NHẬP DỮ LIỆU CHO MẢNG
 
         // Hàm nhập random
-        private void btn_random_Click(object sender, EventArgs e)
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
+            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
+            if (so_phan_tu < 2 || so_phan_tu > 12)
+            {
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
+                da_Tao_Mang = false;
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
+                so_phan_tu = 5;
+                return;
+            }
             Random rd = new Random();
             for (int i = 0; i < so_phan_tu; i++)
             {
                 a[i] = rd.Next(100);
                 node1[i].Text = a[i].ToString();
+
             }
+            // Mở các nút bấm
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            da_Tao_GT = true;
+            NutChonThuatToan.Enabled = true;
         }
 
         // Nhập dữ liệu bằng tay
         private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
         {
+            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
+            if (so_phan_tu < 2 || so_phan_tu > 12)
+            {
+                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
+                da_Tao_Mang = false;
+                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
+                so_phan_tu = 5;
+                return;
+            }
             FormNhapMang f = new FormNhapMang();
             f.ShowDialog();
         }
@@ -894,5 +922,6 @@ namespace DoAnLTTQ_DongCodeThuN
             //graphics.Clear(Color.White);
             //graphics.Dispose();
         }
+
     }
 }

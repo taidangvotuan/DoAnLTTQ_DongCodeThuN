@@ -57,6 +57,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
+            this.LabelKhoangGiaTriPhanTu = new System.Windows.Forms.Label();
+            this.LabelSoPhanTu = new System.Windows.Forms.Label();
+            this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
             this.NutNhapNgauNhien = new System.Windows.Forms.Button();
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
@@ -76,6 +79,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxDieuKhien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
             this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -253,9 +257,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChonThuatToan.Controls.Add(this.ChonGiamDan);
             this.GroupBoxChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChonThuatToan.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(623, 3);
+            this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(546, 3);
             this.GroupBoxChonThuatToan.Name = "GroupBoxChonThuatToan";
-            this.GroupBoxChonThuatToan.Size = new System.Drawing.Size(348, 116);
+            this.GroupBoxChonThuatToan.Size = new System.Drawing.Size(340, 116);
             this.GroupBoxChonThuatToan.TabIndex = 19;
             this.GroupBoxChonThuatToan.TabStop = false;
             this.GroupBoxChonThuatToan.Text = "Lựa chọn thuật toán";
@@ -351,9 +355,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxDieuKhien.Controls.Add(this.LabelTocDo);
             this.GroupBoxDieuKhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxDieuKhien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxDieuKhien.Location = new System.Drawing.Point(970, 3);
+            this.GroupBoxDieuKhien.Location = new System.Drawing.Point(885, 3);
             this.GroupBoxDieuKhien.Name = "GroupBoxDieuKhien";
-            this.GroupBoxDieuKhien.Size = new System.Drawing.Size(462, 116);
+            this.GroupBoxDieuKhien.Size = new System.Drawing.Size(544, 116);
             this.GroupBoxDieuKhien.TabIndex = 20;
             this.GroupBoxDieuKhien.TabStop = false;
             this.GroupBoxDieuKhien.Text = "Thanh điều khiển";
@@ -365,10 +369,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutKetThucThuatToan.FlatAppearance.BorderSize = 0;
             this.NutKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutKetThucThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutKetThucThuatToan.Location = new System.Drawing.Point(314, 68);
+            this.NutKetThucThuatToan.Location = new System.Drawing.Point(367, 68);
             this.NutKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutKetThucThuatToan.Name = "NutKetThucThuatToan";
-            this.NutKetThucThuatToan.Size = new System.Drawing.Size(130, 32);
+            this.NutKetThucThuatToan.Size = new System.Drawing.Size(165, 32);
             this.NutKetThucThuatToan.TabIndex = 19;
             this.NutKetThucThuatToan.Text = "Kết thúc";
             this.NutKetThucThuatToan.UseVisualStyleBackColor = false;
@@ -381,10 +385,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutTamDungThuatToan.FlatAppearance.BorderSize = 0;
             this.NutTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutTamDungThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutTamDungThuatToan.Location = new System.Drawing.Point(164, 68);
+            this.NutTamDungThuatToan.Location = new System.Drawing.Point(192, 68);
             this.NutTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutTamDungThuatToan.Name = "NutTamDungThuatToan";
-            this.NutTamDungThuatToan.Size = new System.Drawing.Size(130, 32);
+            this.NutTamDungThuatToan.Size = new System.Drawing.Size(165, 32);
             this.NutTamDungThuatToan.TabIndex = 18;
             this.NutTamDungThuatToan.Text = "Tạm dừng";
             this.NutTamDungThuatToan.UseVisualStyleBackColor = false;
@@ -396,10 +400,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutChayThuatToan.FlatAppearance.BorderSize = 0;
             this.NutChayThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutChayThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutChayThuatToan.Location = new System.Drawing.Point(13, 68);
+            this.NutChayThuatToan.Location = new System.Drawing.Point(15, 68);
             this.NutChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutChayThuatToan.Name = "NutChayThuatToan";
-            this.NutChayThuatToan.Size = new System.Drawing.Size(130, 32);
+            this.NutChayThuatToan.Size = new System.Drawing.Size(165, 32);
             this.NutChayThuatToan.TabIndex = 17;
             this.NutChayThuatToan.Text = "Chạy";
             this.NutChayThuatToan.UseVisualStyleBackColor = false;
@@ -409,7 +413,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.NutChinhTocDoThuatToan.Location = new System.Drawing.Point(67, 33);
             this.NutChinhTocDoThuatToan.Name = "NutChinhTocDoThuatToan";
-            this.NutChinhTocDoThuatToan.Size = new System.Drawing.Size(384, 56);
+            this.NutChinhTocDoThuatToan.Size = new System.Drawing.Size(471, 56);
             this.NutChinhTocDoThuatToan.TabIndex = 15;
             this.NutChinhTocDoThuatToan.Scroll += new System.EventHandler(this.Tai_v_NutChinhTocDoThuatToan_Scroll);
             // 
@@ -430,6 +434,9 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapNgauNhien);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapBangTay);
@@ -437,11 +444,44 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.ForeColor = System.Drawing.Color.Yellow;
             this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(243, 3);
             this.GroupBoxKhoiTaoMang.Name = "GroupBoxKhoiTaoMang";
-            this.GroupBoxKhoiTaoMang.Size = new System.Drawing.Size(381, 116);
+            this.GroupBoxKhoiTaoMang.Size = new System.Drawing.Size(304, 116);
             this.GroupBoxKhoiTaoMang.TabIndex = 18;
             this.GroupBoxKhoiTaoMang.TabStop = false;
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
             this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
+            // 
+            // LabelKhoangGiaTriPhanTu
+            // 
+            this.LabelKhoangGiaTriPhanTu.AutoSize = true;
+            this.LabelKhoangGiaTriPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.LabelKhoangGiaTriPhanTu.ForeColor = System.Drawing.Color.Transparent;
+            this.LabelKhoangGiaTriPhanTu.Location = new System.Drawing.Point(47, 37);
+            this.LabelKhoangGiaTriPhanTu.Name = "LabelKhoangGiaTriPhanTu";
+            this.LabelKhoangGiaTriPhanTu.Size = new System.Drawing.Size(155, 19);
+            this.LabelKhoangGiaTriPhanTu.TabIndex = 26;
+            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 12)";
+            this.LabelKhoangGiaTriPhanTu.Click += new System.EventHandler(this.LabelKhoangGiaTriPhanTu_Click);
+            // 
+            // LabelSoPhanTu
+            // 
+            this.LabelSoPhanTu.AutoSize = true;
+            this.LabelSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.LabelSoPhanTu.ForeColor = System.Drawing.Color.Transparent;
+            this.LabelSoPhanTu.Location = new System.Drawing.Point(9, 20);
+            this.LabelSoPhanTu.Name = "LabelSoPhanTu";
+            this.LabelSoPhanTu.Size = new System.Drawing.Size(228, 19);
+            this.LabelSoPhanTu.TabIndex = 25;
+            this.LabelSoPhanTu.Text = "Nhập số phần tử của mảng:";
+            this.LabelSoPhanTu.Click += new System.EventHandler(this.LabelSoPhanTu_Click);
+            // 
+            // NumericNhapSoPhanTu
+            // 
+            this.NumericNhapSoPhanTu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.NumericNhapSoPhanTu.Location = new System.Drawing.Point(208, 19);
+            this.NumericNhapSoPhanTu.Name = "NumericNhapSoPhanTu";
+            this.NumericNhapSoPhanTu.Size = new System.Drawing.Size(80, 27);
+            this.NumericNhapSoPhanTu.TabIndex = 24;
+            this.NumericNhapSoPhanTu.ValueChanged += new System.EventHandler(this.NumericNhapSoPhanTu_ValueChanged);
             // 
             // NutNhapNgauNhien
             // 
@@ -449,10 +489,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapNgauNhien.FlatAppearance.BorderSize = 0;
             this.NutNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapNgauNhien.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapNgauNhien.Location = new System.Drawing.Point(11, 62);
+            this.NutNhapNgauNhien.Location = new System.Drawing.Point(11, 78);
             this.NutNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapNgauNhien.Name = "NutNhapNgauNhien";
-            this.NutNhapNgauNhien.Size = new System.Drawing.Size(178, 32);
+            this.NutNhapNgauNhien.Size = new System.Drawing.Size(138, 32);
             this.NutNhapNgauNhien.TabIndex = 4;
             this.NutNhapNgauNhien.Text = "Ngẫu nhiên";
             this.NutNhapNgauNhien.UseVisualStyleBackColor = false;
@@ -463,7 +503,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang.AutoSize = true;
             this.LabelNhapGiaTriMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.LabelNhapGiaTriMang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 35);
+            this.LabelNhapGiaTriMang.Location = new System.Drawing.Point(7, 59);
             this.LabelNhapGiaTriMang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNhapGiaTriMang.Name = "LabelNhapGiaTriMang";
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
@@ -477,10 +517,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapBangTay.FlatAppearance.BorderSize = 0;
             this.NutNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhapBangTay.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapBangTay.Location = new System.Drawing.Point(193, 62);
+            this.NutNhapBangTay.Location = new System.Drawing.Point(155, 78);
             this.NutNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NutNhapBangTay.Name = "NutNhapBangTay";
-            this.NutNhapBangTay.Size = new System.Drawing.Size(178, 32);
+            this.NutNhapBangTay.Size = new System.Drawing.Size(138, 32);
             this.NutNhapBangTay.TabIndex = 5;
             this.NutNhapBangTay.Text = "Bằng tay";
             this.NutNhapBangTay.UseVisualStyleBackColor = false;
@@ -563,6 +603,7 @@ namespace DoAnLTTQ_DongCodeThuN
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).EndInit();
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
             this.PanelMoPhong.ResumeLayout(false);
             this.PanelMoPhong.PerformLayout();
             this.ResumeLayout(false);
@@ -609,5 +650,8 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button NutNhapNgauNhien;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label LabelSoPhanTu;
+        private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
+        private System.Windows.Forms.Label LabelKhoangGiaTriPhanTu;
     }
 }
