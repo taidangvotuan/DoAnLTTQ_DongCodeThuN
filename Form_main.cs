@@ -690,17 +690,26 @@ namespace DoAnLTTQ_DongCodeThuN
             });
         }
 
-        // Hàm tạo mảng
-        public void Tai_v_TaoMang(int kc, System.Drawing.Image img_nen)
+        #region NHẬP DỮ LIỆU CHO MẢNG
+        // Hàm nhập random
+        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
+            // Lấy số phần tử từ NumericUpDown
+            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
+
+            int kc = 200;
+            Image img_nen = Properties.Resources.AnhPhanTuMang;
+            // Kiểm tra điều kiện hợp lệ
             if (so_phan_tu < 2 || so_phan_tu > 12)
             {
-                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
-                da_Tao_Mang = false;
-                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
+                MessageBox.Show("Số phần tử phải nằm trong khoảng từ 2 đến 12!");
+                NumericNhapSoPhanTu.Value = 5;
+                so_phan_tu = 5;
                 return;
             }
 
+            // 1. Cấp phát lại mảng dữ liệu và node hiển thị
+            a = new int[so_phan_tu];
             // Tạo thuộc tính cho node
             kich_Thuoc = 70;
             co_Chu = 14;
@@ -731,10 +740,12 @@ namespace DoAnLTTQ_DongCodeThuN
             LabelChiSo.Visible = true;
             LabelMangA.Visible = true;
 
+            Random rd = new Random();
             for (int i = 0; i < so_phan_tu; i++)
             {
+                a[i] = rd.Next(100);           // Tạo giá trị ngẫu nhiên
                 node1[i] = new Button();
-                node1[i].Text = a[i].ToString();
+                node1[i].Text = a[i].ToString();  // Hiển thị ngay trên nút
                 node1[i].TextAlign = ContentAlignment.MiddleCenter;
                 node1[i].Width = kich_Thuoc;
                 node1[i].Height = kich_Thuoc;
@@ -760,6 +771,8 @@ namespace DoAnLTTQ_DongCodeThuN
                 chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 2, FontStyle.Bold);
                 PanelMoPhong.Controls.Add(chiSo[i]);
             }
+
+            // Mở các nút bấm
             da_Tao_Mang = true; //Xác nhận đã tạo mảng
             LabelChiSo.Visible = true;
             LabelMangA.Visible = true;
@@ -771,33 +784,6 @@ namespace DoAnLTTQ_DongCodeThuN
             NutKetThucThuatToan.Enabled = true;
             ChonGiamDan.Enabled = true;
             ChonTangDan.Enabled = true;
-        }
-
-        #region NHẬP DỮ LIỆU CHO MẢNG
-        // Hàm nhập random
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
-        {
-            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
-            if (so_phan_tu < 2 || so_phan_tu > 12)
-            {
-                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 12");
-                da_Tao_Mang = false;
-                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
-                so_phan_tu = 5;
-                return;
-            }
-            Random rd = new Random();
-            for (int i = 0; i < so_phan_tu; i++)
-            {
-                a[i] = rd.Next(100);
-                node1[i].Text = a[i].ToString();
-
-            }
-            // Mở các nút bấm
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
-            da_Tao_GT = true;
-            NutChonThuatToan.Enabled = true;
         }
 
         // Nhập dữ liệu bằng tay
@@ -915,11 +901,11 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void SortingPanelView_Paint(object sender, PaintEventArgs e)
         {
-            Graphics graphics = e.Graphics;
-            Brush brush = new SolidBrush(Color.Blue);
-            graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
-            graphics.Clear(Color.White);
-            graphics.Dispose();
+            //Graphics graphics = e.Graphics;
+            //Brush brush = new SolidBrush(Color.Blue);
+            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
+            //graphics.Clear(Color.White);
+            //graphics.Dispose();
         }
     }
 }
