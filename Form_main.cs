@@ -11,10 +11,9 @@ using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    
     // Dung nhet het tinh nang vao 1 file
     // Chia file ra de quan ly hon
-    
+
     // Dung Form1 de tuong tac voi lop FormController
     public partial class Form_main : Form
     {
@@ -41,6 +40,7 @@ namespace DoAnLTTQ_DongCodeThuN
         int le_Node;                // Căn lề node
         int le_tren;                // Lề trên cho node
         #endregion
+
         FormController controller;
         public Form_main()
         {
@@ -774,7 +774,6 @@ namespace DoAnLTTQ_DongCodeThuN
         }
 
         #region NHẬP DỮ LIỆU CHO MẢNG
-
         // Hàm nhập random
         private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
         {
@@ -916,12 +915,11 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void SortingPanelView_Paint(object sender, PaintEventArgs e)
         {
-            //Graphics graphics = e.Graphics;
-            //Brush brush = new SolidBrush(Color.Blue);
-            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
-            //graphics.Clear(Color.White);
-            //graphics.Dispose();
+            Graphics graphics = e.Graphics;
+            Brush brush = new SolidBrush(Color.Blue);
+            graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
+            graphics.Clear(Color.White);
+            graphics.Dispose();
         }
-
     }
 }
