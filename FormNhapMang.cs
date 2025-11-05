@@ -69,7 +69,7 @@ namespace DoAnLTTQ_DongCodeThuN
             }
             catch
             {
-                MessageBox.Show("Chỉ số không hợp lệ!");
+                MessageBox.Show("Giá trị không hợp lệ!");
                 TextBoxChiSoMang.Text = "0";
                 return;
             }
