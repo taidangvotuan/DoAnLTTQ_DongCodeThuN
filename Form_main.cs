@@ -51,12 +51,20 @@ namespace DoAnLTTQ_DongCodeThuN
             NutChayThuatToan.Enabled = false;
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
-            LabelChiSo.Visible = false;
-            LabelMangA.Visible = false;
 
             controller = new FormController(this);
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
+        }
+
+        public void ClearPanelMoPhong()
+        {
+            PanelMoPhong.Controls.Clear();
+        }
+
+        public void AddControlToPanel(Control c)
+        {
+            PanelMoPhong.Controls.Add(c);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -684,8 +692,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
                     }
                     da_Tao_Mang = false;
-                    LabelMangA.Visible = false;
-                    LabelChiSo.Visible = false;
                 }
             });
         }
@@ -737,9 +743,6 @@ namespace DoAnLTTQ_DongCodeThuN
             node1 = new Button[so_phan_tu];
             chiSo = new Label[so_phan_tu];
 
-            LabelChiSo.Visible = true;
-            LabelMangA.Visible = true;
-
             Random rd = new Random();
             for (int i = 0; i < so_phan_tu; i++)
             {
@@ -774,8 +777,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Mở các nút bấm
             da_Tao_Mang = true; //Xác nhận đã tạo mảng
-            LabelChiSo.Visible = true;
-            LabelMangA.Visible = true;
             NutNhapNgauNhien.Enabled = true;
             NutNhapBangTay.Enabled = true;
             NutChinhTocDoThuatToan.Enabled = true;
@@ -855,6 +856,28 @@ namespace DoAnLTTQ_DongCodeThuN
             ChonTangDan.Enabled = false;
             ChonGiamDan.Enabled = false;
             NutChayThuatToan.Enabled = false;
+        }
+
+        public void MoTatCaNutDieuKhien()
+        {
+            GroupBoxChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+        }
+
+        public void XoaNoiDungPanelMoPhong()
+        {
+            PanelMoPhong.Controls.Clear();
+        }
+
+        public void ThemVaoPanelMoPhong(Control control)
+        {
+            PanelMoPhong.Controls.Add(control);
         }
 
         #region KHU VỰC CÁC HÀM SẮP XẾP

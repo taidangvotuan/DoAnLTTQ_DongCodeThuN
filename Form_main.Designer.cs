@@ -65,8 +65,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
             this.SortingPanelView = new System.Windows.Forms.Panel();
-            this.LabelChiSo = new System.Windows.Forms.Label();
-            this.LabelMangA = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
@@ -529,8 +527,6 @@ namespace DoAnLTTQ_DongCodeThuN
             // PanelMoPhong
             // 
             this.PanelMoPhong.Controls.Add(this.SortingPanelView);
-            this.PanelMoPhong.Controls.Add(this.LabelChiSo);
-            this.PanelMoPhong.Controls.Add(this.LabelMangA);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
@@ -539,35 +535,11 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
-            this.SortingPanelView.Location = new System.Drawing.Point(151, 41);
+            this.SortingPanelView.Location = new System.Drawing.Point(155, 23);
             this.SortingPanelView.Name = "SortingPanelView";
             this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
             this.SortingPanelView.TabIndex = 2;
             this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
-            // 
-            // LabelChiSo
-            // 
-            this.LabelChiSo.AutoSize = true;
-            this.LabelChiSo.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelChiSo.ForeColor = System.Drawing.Color.Green;
-            this.LabelChiSo.Location = new System.Drawing.Point(5, 356);
-            this.LabelChiSo.Name = "LabelChiSo";
-            this.LabelChiSo.Size = new System.Drawing.Size(100, 33);
-            this.LabelChiSo.TabIndex = 1;
-            this.LabelChiSo.Text = "Chỉ số";
-            this.LabelChiSo.Click += new System.EventHandler(this.LabelChiSo_Click);
-            // 
-            // LabelMangA
-            // 
-            this.LabelMangA.AutoSize = true;
-            this.LabelMangA.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.LabelMangA.ForeColor = System.Drawing.Color.Red;
-            this.LabelMangA.Location = new System.Drawing.Point(10, 203);
-            this.LabelMangA.Name = "LabelMangA";
-            this.LabelMangA.Size = new System.Drawing.Size(40, 38);
-            this.LabelMangA.TabIndex = 0;
-            this.LabelMangA.Text = "A";
-            this.LabelMangA.Click += new System.EventHandler(this.LabelMangA_Click);
             // 
             // timer1
             // 
@@ -605,7 +577,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
             this.PanelMoPhong.ResumeLayout(false);
-            this.PanelMoPhong.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -644,8 +615,6 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.TrackBar NutChinhTocDoThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxKhoiTaoMang;
         private System.Windows.Forms.Panel PanelMoPhong;
-        private System.Windows.Forms.Label LabelChiSo;
-        private System.Windows.Forms.Label LabelMangA;
         private System.Windows.Forms.Panel SortingPanelView;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button NutNhapNgauNhien;
