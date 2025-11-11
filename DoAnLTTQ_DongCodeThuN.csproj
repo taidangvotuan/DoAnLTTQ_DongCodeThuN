@@ -52,28 +52,46 @@
     <Compile Include="Components\SortingView.cs" />
     <Compile Include="CodeThuatToan.cs" />
     <Compile Include="Components\ViewConfigCalculate.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormTacGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormTacGia.Designer.cs">
+      <DependentUpon>FormTacGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Form_main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Form_main.Designer.cs">
+      <DependentUpon>Form_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNhapMang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNhapMang.Designer.cs">
+      <DependentUpon>FormNhapMang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHuongDan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHuongDan.Designer.cs">
+      <DependentUpon>FormHuongDan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuatToan\AlgorithmExecutor.cs" />
     <Compile Include="YTuongThuatToan.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormTacGia.resx">
+      <DependentUpon>FormTacGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_main.resx">
+      <DependentUpon>Form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNhapMang.resx">
+      <DependentUpon>FormNhapMang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHuongDan.resx">
+      <DependentUpon>FormHuongDan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
