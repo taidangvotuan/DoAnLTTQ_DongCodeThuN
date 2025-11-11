@@ -78,7 +78,6 @@ namespace DoAnLTTQ_DongCodeThuN
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
-            this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBoxYTuong
@@ -432,6 +431,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.SortingPanelView);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
@@ -526,7 +526,6 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // PanelMoPhong
             // 
-            this.PanelMoPhong.Controls.Add(this.SortingPanelView);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
@@ -535,7 +534,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
-            this.SortingPanelView.Location = new System.Drawing.Point(155, 23);
+            this.SortingPanelView.Location = new System.Drawing.Point(155, 95);
             this.SortingPanelView.Name = "SortingPanelView";
             this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
             this.SortingPanelView.TabIndex = 2;
@@ -576,7 +575,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
-            this.PanelMoPhong.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

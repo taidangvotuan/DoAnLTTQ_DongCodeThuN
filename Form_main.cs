@@ -703,8 +703,6 @@ namespace DoAnLTTQ_DongCodeThuN
             // Lấy số phần tử từ NumericUpDown
             so_phan_tu = (int)NumericNhapSoPhanTu.Value;
 
-            int kc = 200;
-            Image img_nen = Properties.Resources.AnhPhanTuMang;
             // Kiểm tra điều kiện hợp lệ
             if (so_phan_tu < 2 || so_phan_tu > 12)
             {
@@ -714,69 +712,90 @@ namespace DoAnLTTQ_DongCodeThuN
                 return;
             }
 
-            // 1. Cấp phát lại mảng dữ liệu và node hiển thị
-            a = new int[so_phan_tu];
-            // Tạo thuộc tính cho node
-            kich_Thuoc = 70;
-            co_Chu = 14;
-            khoang_Cach = 15;
+            // Dọn dẹp toàn bộ panel trước khi vẽ lại
+            if (PanelMoPhong.Controls.Count > 0)
+                PanelMoPhong.Controls.Clear();
+
+            // Các thông số hiển thị
+            int kc = 200;                // Tọa độ y cơ sở
+            kich_Thuoc = 70;             // Kích thước mỗi ô
+            co_Chu = 14;                 // Cỡ chữ trên nút
+            khoang_Cach = 15;            // Khoảng cách giữa các nút
+            Image img_nen = Properties.Resources.AnhPhanTuMang;
 
             // Tính lề trái để căn giữa hàng phần tử
             le_Node = (1185 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
 
-            // Dọn dẹp phần tử cũ (nếu có)
-            if (node1 != null)
-            {
-                foreach (Button btn in node1)
-                    if (btn != null && PanelMoPhong.Controls.Contains(btn))
-                        PanelMoPhong.Controls.Remove(btn);
-            }
+            // Hiển thị tên mảng "A"
+            Label lblTenMang = new Label();
+            lblTenMang.Text = "A";
+            lblTenMang.Font = new Font("Arial", 20, FontStyle.Bold);
+            lblTenMang.ForeColor = Color.Red;
+            lblTenMang.AutoSize = true;
+            lblTenMang.Location = new Point(le_Node - 60, kc + 50);
+            PanelMoPhong.Controls.Add(lblTenMang);
 
-            if (chiSo != null)
-            {
-                foreach (Label lbl in chiSo)
-                    if (lbl != null && PanelMoPhong.Controls.Contains(lbl))
-                        PanelMoPhong.Controls.Remove(lbl);
-            }
+            // Hiển thị chữ "Chỉ số"
+            Label lblChiSo = new Label();
+            lblChiSo.Text = "Chỉ số";
+            lblChiSo.Font = new Font("Arial", 16, FontStyle.Bold);
+            lblChiSo.ForeColor = Color.Green;
+            lblChiSo.AutoSize = true;
+            lblChiSo.Location = new Point(le_Node - 90, kc + kich_Thuoc + 80);
+            PanelMoPhong.Controls.Add(lblChiSo);
 
-            // Khởi tạo mảng node
+            // Khởi tạo mảng dữ liệu
+            a = new int[so_phan_tu];
             node1 = new Button[so_phan_tu];
             chiSo = new Label[so_phan_tu];
 
             Random rd = new Random();
+
             for (int i = 0; i < so_phan_tu; i++)
             {
-                a[i] = rd.Next(100);           // Tạo giá trị ngẫu nhiên
+                // Sinh giá trị ngẫu nhiên
+                a[i] = rd.Next(100);
+
+                // Tạo button thể hiện phần tử
                 node1[i] = new Button();
-                node1[i].Text = a[i].ToString();  // Hiển thị ngay trên nút
+                node1[i].Text = a[i].ToString();
                 node1[i].TextAlign = ContentAlignment.MiddleCenter;
                 node1[i].Width = kich_Thuoc;
                 node1[i].Height = kich_Thuoc;
                 node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
                 node1[i].ForeColor = Color.Black;
-                node1[i].Font = new Font(this.Font, FontStyle.Bold);
-                node1[i].Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
+                node1[i].Font = new Font("Arial", co_Chu, FontStyle.Bold);
                 node1[i].FlatStyle = FlatStyle.Flat;
                 node1[i].BackgroundImage = img_nen;
                 node1[i].BackgroundImageLayout = ImageLayout.Stretch;
                 node1[i].FlatAppearance.BorderSize = 0;
                 PanelMoPhong.Controls.Add(node1[i]);
 
-                // Tạo nhãn chỉ sổ
+                // Tạo nhãn chỉ số dưới mỗi phần tử
                 chiSo[i] = new Label();
                 chiSo[i].TextAlign = ContentAlignment.MiddleCenter;
                 chiSo[i].Text = i.ToString();
                 chiSo[i].Width = kich_Thuoc;
-                chiSo[i].Height = kich_Thuoc;
+                chiSo[i].Height = 25;
                 chiSo[i].ForeColor = Color.Black;
-
-                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 290 + khoang_Cach * 3);
-                chiSo[i].Font = new System.Drawing.Font("Arial", co_Chu - 2, FontStyle.Bold);
+                chiSo[i].Font = new Font("Arial", co_Chu - 2, FontStyle.Bold);
+                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + kich_Thuoc + 82);
                 PanelMoPhong.Controls.Add(chiSo[i]);
+
+                // Hiển thị nhãn “Giá trị: X” bên dưới nút
+                /*Label lblGiaTri = new Label();
+                lblGiaTri.Text = $"Giá trị: {a[i]}";
+                lblGiaTri.TextAlign = ContentAlignment.MiddleCenter;
+                lblGiaTri.Width = kich_Thuoc;
+                lblGiaTri.Height = 20;
+                lblGiaTri.ForeColor = Color.Blue;
+                lblGiaTri.Font = new Font("Arial", co_Chu - 3, FontStyle.Regular);
+                lblGiaTri.Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + kich_Thuoc + 90);
+                PanelMoPhong.Controls.Add(lblGiaTri);*/
             }
 
-            // Mở các nút bấm
-            da_Tao_Mang = true; //Xác nhận đã tạo mảng
+            // 5️⃣ Kích hoạt các nút điều khiển
+            da_Tao_Mang = true;
             NutNhapNgauNhien.Enabled = true;
             NutNhapBangTay.Enabled = true;
             NutChinhTocDoThuatToan.Enabled = true;
@@ -786,6 +805,7 @@ namespace DoAnLTTQ_DongCodeThuN
             ChonGiamDan.Enabled = true;
             ChonTangDan.Enabled = true;
         }
+
 
         // Nhập dữ liệu bằng tay
         private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
@@ -879,37 +899,6 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             PanelMoPhong.Controls.Add(control);
         }
-
-        #region KHU VỰC CÁC HÀM SẮP XẾP
-        public void Tai_v_Heapify(int[] arr, int n, int i)
-        {
-            int iLonNhat = i;
-            int iTrai = 2 * i + 1;
-            int iPhai = 2 * i + 1;
-            if (iTrai < n && arr[iTrai] > arr[iLonNhat])
-                iLonNhat = iTrai;
-            if (iPhai < n && arr[iPhai] > arr[iLonNhat])
-                iLonNhat = iPhai;
-            if (iLonNhat != i)
-            {
-                Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
-                Tai_v_Heapify(arr, n, iLonNhat);
-            }
-        }
-
-        public void Tai_v_HeapSort(int[] arr)
-        {
-            int n = arr.Length;
-            for (int i = n / 2; i >= 0; i--)
-                Tai_v_Heapify(arr, n, i);
-
-            for (int i = n - 1; i >= 0; i--)
-            {
-                Tai_v_HoanVi(ref arr[0], ref arr[i]);
-                Tai_v_Heapify(arr, i, 0);
-            }
-        }
-        #endregion
         #endregion
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
