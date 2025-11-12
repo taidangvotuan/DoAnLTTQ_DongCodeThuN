@@ -51,15 +51,12 @@ namespace DoAnLTTQ_DongCodeThuN
                 a[i] = rnd.Next(1, 16);
             
             SetNeedToSortArray(a, n);
-
             visualizationView = new SortingVisualizationView(m_array, sortingPanel);
-
         }
 
         public void Start()
         {
             AlgorithmExecutor.BubbleSort(visualizationView);
         }
-
     }
 }

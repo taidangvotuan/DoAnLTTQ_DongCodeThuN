@@ -14,10 +14,12 @@ namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class FormNhapMang : Form
     {
-        int[] A = new int[12];  // Mảng tối đa 12 phần tử
+        #region KHAI BÁO BIẾN
+        int[] A = new int[20];  // Mảng tối đa 20 phần tử
         int n = 0;
         bool daNhap = false;
         int index = 0;
+        #endregion
 
         public FormNhapMang()
         {
@@ -25,87 +27,11 @@ namespace DoAnLTTQ_DongCodeThuN
             //TextBoxGiaTriMang.Focus();
         }
 
-        private void btn_nhap_Click(object sender, EventArgs e)
-        {
-            int value;
-            Boolean kiemtra = true;
-            string input = TextBoxNhapMang.Text.Trim();
-
-
-            if (string.IsNullOrEmpty(input))
-            {
-                MessageBox.Show("Vui lòng nhập dãy số cho mảng!", "Lỗi nhập");
-                return;
-            }
-
-            // Tách theo dấu cách hoặc tab
-            string[] parts = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-            // Kiểm tra giới hạn phần tử
-            if (parts.Length > 12)
-            {
-                MessageBox.Show("Mảng chỉ chứa tối đa 12 phần tử!", "Lỗi");
-                return;
-            }
-
-            // Chuyển và kiểm tra từng giá trị
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (!int.TryParse(parts[i], out A[i]) || A[i] < 0 || A[i] > 99)
-                {
-                    MessageBox.Show($"Giá trị thứ {i + 1} không hợp lệ! (phải trong 0–99)", "Lỗi");
-                    return;
-                }
-            }
-
-            n = parts.Length;
-            daNhap = true;
-
-            // Vẽ lại mảng
-            //panel1.Invalidate();
-            try
-            {
-                index = Convert.ToInt32(TextBoxNhapMang.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Giá trị không hợp lệ!");
-                TextBoxNhapMang.Text = "0";
-                return;
-            }
-            if (index > Form_main.so_phan_tu - 1 || index < 0)
-            {
-                MessageBox.Show("Không có phần tử thứ " + index);
-                TextBoxNhapMang.Text = "0";
-                return;
-            }
-
-            try
-            {
-                //value = Convert.ToInt32(TextBoxGiaTriMang.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Giá trị nhập vào không hợp lệ!");
-                kiemtra = false;
-                //TextBoxGiaTriMang.Text = "0";
-                return;
-            }
-            /*if (value < 0 || value > 99)
-            {
-                MessageBox.Show("Giá trị nhập vào không hợp lệ!");
-                kiemtra = false;
-                //TextBoxGiaTriMang.Text = "0";
-                return;
-            }*/
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
 
-        #region KHU VỰC NÚT BẤM
         private void NutNhap_Click(object sender, EventArgs e)
         {
             string input = TextBoxNhapMang.Text.Trim();
@@ -124,7 +50,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (soNhap > nMain)
             {
-                MessageBox.Show($"Bạn đã nhập quá số phần tử ({nMain})!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Bạn đã nhập quá số phần tử (Tối đa {nMain} phần tử)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -153,7 +79,13 @@ namespace DoAnLTTQ_DongCodeThuN
             for (int i = 0; i < nMain; i++)
                 Form_main.a[i] = A[i];
 
-            // Tạo node hiển thị (như hình bạn gửi)
+            Form mainForm = Application.OpenForms["Form_main"];
+            if (mainForm is Form_main fMain)
+            {
+                fMain.VeLaiSortingPanelView(); // <-- đây là quan trọng
+            }
+
+            /*// Tạo node hiển thị (như hình bạn gửi)
             Form_main.node1 = new Button[nMain];
             Form_main.chiSo = new Label[nMain];
 
@@ -163,15 +95,6 @@ namespace DoAnLTTQ_DongCodeThuN
             int co_Chu = 14;
             int khoang_Cach = 15;
             int le_Node = (1185 - kich_Thuoc * nMain - khoang_Cach * (nMain - 1)) / 2;
-
-            // --- Gán mảng này sang Form_main để hiển thị ---
-            Form_main.a = new int[nMain];
-            for (int i = 0; i < nMain; i++)
-                Form_main.a[i] = A[i];
-
-            // Tạo node hiển thị (như hình bạn gửi)
-            Form_main.node1 = new Button[nMain];
-            Form_main.chiSo = new Label[nMain];
 
             // Xóa phần cũ
             Form mainForm = Application.OpenForms["Form_main"];
@@ -229,12 +152,9 @@ namespace DoAnLTTQ_DongCodeThuN
                     Form_main.node1[i] = btn;
                     Form_main.chiSo[i] = lbl;
                 }
-            }
-
+            }*/
             this.Close();
         }
-
-        #endregion
 
         #region KHU VỰC CÁC TEXT BOX
         private void TextBoxChiSoMang_TextChanged(object sender, EventArgs e)
@@ -243,6 +163,7 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
+        #region KHU VỰC CÁC LABEL
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -262,5 +183,6 @@ namespace DoAnLTTQ_DongCodeThuN
         {
 
         }
+        #endregion
     }
 }

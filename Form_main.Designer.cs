@@ -457,7 +457,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelKhoangGiaTriPhanTu.Name = "LabelKhoangGiaTriPhanTu";
             this.LabelKhoangGiaTriPhanTu.Size = new System.Drawing.Size(155, 19);
             this.LabelKhoangGiaTriPhanTu.TabIndex = 26;
-            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 12)";
+            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 20)";
             this.LabelKhoangGiaTriPhanTu.Click += new System.EventHandler(this.LabelKhoangGiaTriPhanTu_Click);
             // 
             // LabelSoPhanTu
@@ -535,9 +535,9 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
-            this.SortingPanelView.Location = new System.Drawing.Point(0, 0);
+            this.SortingPanelView.Location = new System.Drawing.Point(2, 0);
             this.SortingPanelView.Name = "SortingPanelView";
-            this.SortingPanelView.Size = new System.Drawing.Size(1185, 422);
+            this.SortingPanelView.Size = new System.Drawing.Size(1187, 422);
             this.SortingPanelView.TabIndex = 2;
             this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
