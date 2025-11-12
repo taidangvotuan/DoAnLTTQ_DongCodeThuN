@@ -57,7 +57,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
-            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.LabelKhoangGiaTriPhanTu = new System.Windows.Forms.Label();
             this.LabelSoPhanTu = new System.Windows.Forms.Label();
             this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
@@ -65,6 +64,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
+            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
@@ -448,14 +448,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
             this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
             // 
-            // SortingPanelView
-            // 
-            this.SortingPanelView.Location = new System.Drawing.Point(155, 33);
-            this.SortingPanelView.Name = "SortingPanelView";
-            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
-            this.SortingPanelView.TabIndex = 2;
-            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
-            // 
             // LabelKhoangGiaTriPhanTu
             // 
             this.LabelKhoangGiaTriPhanTu.AutoSize = true;
@@ -540,6 +532,14 @@ namespace DoAnLTTQ_DongCodeThuN
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
+            // 
+            // SortingPanelView
+            // 
+            this.SortingPanelView.Location = new System.Drawing.Point(0, 0);
+            this.SortingPanelView.Name = "SortingPanelView";
+            this.SortingPanelView.Size = new System.Drawing.Size(1185, 422);
+            this.SortingPanelView.TabIndex = 2;
+            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
             // timer1
             // 
