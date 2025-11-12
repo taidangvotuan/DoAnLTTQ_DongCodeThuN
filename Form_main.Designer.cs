@@ -57,6 +57,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
+            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.LabelKhoangGiaTriPhanTu = new System.Windows.Forms.Label();
             this.LabelSoPhanTu = new System.Windows.Forms.Label();
             this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
@@ -64,7 +65,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
             this.NutNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
-            this.SortingPanelView = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
@@ -78,6 +78,7 @@ namespace DoAnLTTQ_DongCodeThuN
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
+            this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBoxYTuong
@@ -431,7 +432,6 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.SortingPanelView);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
@@ -447,6 +447,14 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.TabStop = false;
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
             this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
+            // 
+            // SortingPanelView
+            // 
+            this.SortingPanelView.Location = new System.Drawing.Point(155, 33);
+            this.SortingPanelView.Name = "SortingPanelView";
+            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
+            this.SortingPanelView.TabIndex = 2;
+            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
             // LabelKhoangGiaTriPhanTu
             // 
@@ -526,19 +534,12 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // PanelMoPhong
             // 
+            this.PanelMoPhong.Controls.Add(this.SortingPanelView);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
             this.PanelMoPhong.TabIndex = 22;
             this.PanelMoPhong.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMoPhong_Paint);
-            // 
-            // SortingPanelView
-            // 
-            this.SortingPanelView.Location = new System.Drawing.Point(155, 95);
-            this.SortingPanelView.Name = "SortingPanelView";
-            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
-            this.SortingPanelView.TabIndex = 2;
-            this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
             // timer1
             // 
@@ -560,7 +561,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.Name = "Form_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Mô phỏng thuật toán";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelNen.ResumeLayout(false);
@@ -575,6 +576,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
+            this.PanelMoPhong.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

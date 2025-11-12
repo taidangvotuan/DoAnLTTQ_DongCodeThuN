@@ -13,9 +13,9 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         public int maxElement;
         public int numberOfElements;
 
-
         readonly int COLUMN_WIDTH = 10;
         readonly int SPACING = 5;
+
         public ViewConfig(Rectangle parentBound, int maxElement, int numberOfElements)
         {
             this.parentBound = parentBound;
@@ -45,7 +45,5 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         {
             return index * (COLUMN_WIDTH + SPACING) + m_padding / 2;
         }
-
-
     }
 }

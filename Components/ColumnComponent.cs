@@ -78,9 +78,5 @@ namespace DoAnLTTQ_DongCodeThuN.Components
             }
             _element.Location = new Point(pos, _element.Location.Y);
         }
-
-        
-
-
     }
 }

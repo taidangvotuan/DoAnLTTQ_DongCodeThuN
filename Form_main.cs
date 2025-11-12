@@ -11,9 +11,6 @@ using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    // Dung nhet het tinh nang vao 1 file
-    // Chia file ra de quan ly hon
-
     // Dung Form1 de tuong tac voi lop FormController
     public partial class Form_main : Form
     {
@@ -55,6 +52,7 @@ namespace DoAnLTTQ_DongCodeThuN
             controller = new FormController(this);
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
+            SortingPanelView.Paint += SortingPanelView_Paint;
         }
 
         public void ClearPanelMoPhong()
@@ -67,9 +65,9 @@ namespace DoAnLTTQ_DongCodeThuN
             PanelMoPhong.Controls.Add(c);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
-
+            SortingPanelView.Paint += SortingPanelView_Paint;
         }
 
         #region KHU VỰC CÁC LABEL
@@ -713,7 +711,7 @@ namespace DoAnLTTQ_DongCodeThuN
             }
 
             // Dọn dẹp toàn bộ panel trước khi vẽ lại
-            if (PanelMoPhong.Controls.Count > 0)
+            /*if (PanelMoPhong.Controls.Count > 0)
                 PanelMoPhong.Controls.Clear();
 
             // Các thông số hiển thị
@@ -742,16 +740,21 @@ namespace DoAnLTTQ_DongCodeThuN
             lblChiSo.ForeColor = Color.Green;
             lblChiSo.AutoSize = true;
             lblChiSo.Location = new Point(le_Node - 90, kc + kich_Thuoc + 80);
-            PanelMoPhong.Controls.Add(lblChiSo);
+            PanelMoPhong.Controls.Add(lblChiSo);*/
 
             // Khởi tạo mảng dữ liệu
             a = new int[so_phan_tu];
-            node1 = new Button[so_phan_tu];
-            chiSo = new Label[so_phan_tu];
+            //node1 = new Button[so_phan_tu];
+            //chiSo = new Label[so_phan_tu];
 
             Random rd = new Random();
-
             for (int i = 0; i < so_phan_tu; i++)
+                a[i] = rd.Next(100);
+
+            // Yêu cầu SortingPanelView vẽ lại
+            SortingPanelView.Invalidate(); // => sẽ gọi SortingPanelView_Paint
+
+            /*for (int i = 0; i < so_phan_tu; i++)
             {
                 // Sinh giá trị ngẫu nhiên
                 a[i] = rd.Next(100);
@@ -783,7 +786,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 PanelMoPhong.Controls.Add(chiSo[i]);
 
                 // Hiển thị nhãn “Giá trị: X” bên dưới nút
-                /*Label lblGiaTri = new Label();
+                Label lblGiaTri = new Label();
                 lblGiaTri.Text = $"Giá trị: {a[i]}";
                 lblGiaTri.TextAlign = ContentAlignment.MiddleCenter;
                 lblGiaTri.Width = kich_Thuoc;
@@ -791,22 +794,11 @@ namespace DoAnLTTQ_DongCodeThuN
                 lblGiaTri.ForeColor = Color.Blue;
                 lblGiaTri.Font = new Font("Arial", co_Chu - 3, FontStyle.Regular);
                 lblGiaTri.Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + kich_Thuoc + 90);
-                PanelMoPhong.Controls.Add(lblGiaTri);*/
-            }
-
-            // 5️⃣ Kích hoạt các nút điều khiển
-            da_Tao_Mang = true;
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChinhTocDoThuatToan.Enabled = true;
-            NutChayThuatToan.Enabled = true;
-            NutTamDungThuatToan.Enabled = true;
-            NutKetThucThuatToan.Enabled = true;
-            ChonGiamDan.Enabled = true;
-            ChonTangDan.Enabled = true;
+                PanelMoPhong.Controls.Add(lblGiaTri);
+            }*/
+            MoTatCaNutDieuKhien();
         }
-
-
+ 
         // Nhập dữ liệu bằng tay
         private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
         {
@@ -913,11 +905,39 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void SortingPanelView_Paint(object sender, PaintEventArgs e)
         {
-            //Graphics graphics = e.Graphics;
-            //Brush brush = new SolidBrush(Color.Blue);
-            //graphics.FillRectangle(brush, new Rectangle(0, 0, 100, 100));
-            //graphics.Clear(Color.White);
-            //graphics.Dispose();
+            if (a == null || a.Length == 0)
+                return;
+
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Clear(Color.White);
+
+            int n = a.Length;
+            int panelWidth = SortingPanelView.Width;
+            int panelHeight = SortingPanelView.Height;
+
+            int barWidth = panelWidth / (n * 2);
+            int maxVal = a.Max();
+            int xStart = (panelWidth - n * barWidth * 2) / 2;
+
+            Font font = new Font("Arial", 12, FontStyle.Bold);
+            Brush barBrush = Brushes.Blue;
+            Brush textBrush = Brushes.Black;
+
+            for (int i = 0; i < n; i++)
+            {
+                float heightRatio = (float)a[i] / maxVal;
+                int barHeight = (int)(heightRatio * (panelHeight - 100));
+
+                int x = xStart + i * barWidth * 2;
+                int y = panelHeight - barHeight - 50;
+
+                g.FillRectangle(barBrush, x, y, barWidth, barHeight);
+
+                string valueStr = a[i].ToString();
+                SizeF textSize = g.MeasureString(valueStr, font);
+                g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
+            }
         }
     }
 }

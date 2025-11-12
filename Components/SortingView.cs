@@ -11,10 +11,12 @@ namespace DoAnLTTQ_DongCodeThuN.Components
 {
     //public class ViewConfig
     //{
+    //public class ViewConfig
+    //{
     //    public Rectangle parentBound;
     //    public int maxElement;
     //    public int numberOfElements;
-        
+
 
     //    readonly int COLUMN_WIDTH = 10;
     //    readonly int SPACING = 5;
@@ -49,6 +51,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
     //        return index * (COLUMN_WIDTH + SPACING) + m_padding / 2;
     //    }
     //}
+    //}
 
     public class SortingVisualizationView
     {
@@ -56,7 +59,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
 
         public List<int> listInt;
         List<ColumnNode> nodes;
-        public SortingVisualizationView(List<int> arr, Panel sortingPanel) 
+        public SortingVisualizationView(List<int> arr, Panel sortingPanel)
         {
             listInt = new List<int>(arr);
             mainView = sortingPanel;
@@ -127,7 +130,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
                 return;
             nodes[index_1].SetState(State.SELECTED);
             nodes[index_2].SetState(State.SELECTED);
-            
+
             // thay doi vi tri 2 phan tu truc quan tren man hinh
             // su dung task cua 
             //Console.WriteLine("lol");
@@ -156,7 +159,5 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         {
             nodes[index]?.SetState(state);
         }
-
-
     }
 }
