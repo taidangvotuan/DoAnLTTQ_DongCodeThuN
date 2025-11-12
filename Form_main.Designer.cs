@@ -127,7 +127,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.AliceBlue;
-            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.Logo_UIT_updated_svg;
+            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.AnhUIT;
             this.pictureBox1.Location = new System.Drawing.Point(1, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(236, 189);

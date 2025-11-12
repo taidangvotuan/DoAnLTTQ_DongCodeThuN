@@ -82,77 +82,9 @@ namespace DoAnLTTQ_DongCodeThuN
             Form mainForm = Application.OpenForms["Form_main"];
             if (mainForm is Form_main fMain)
             {
-                fMain.VeLaiSortingPanelView(); // <-- đây là quan trọng
+                fMain.VeLaiSortingPanelView();
+                fMain.MoTatCaNutDieuKhien();
             }
-
-            /*// Tạo node hiển thị (như hình bạn gửi)
-            Form_main.node1 = new Button[nMain];
-            Form_main.chiSo = new Label[nMain];
-
-            Image img_nen = DoAnLTTQ_DongCodeThuN.Properties.Resources.AnhPhanTuMang;
-            int kc = 200;
-            int kich_Thuoc = 70;
-            int co_Chu = 14;
-            int khoang_Cach = 15;
-            int le_Node = (1185 - kich_Thuoc * nMain - khoang_Cach * (nMain - 1)) / 2;
-
-            // Xóa phần cũ
-            Form mainForm = Application.OpenForms["Form_main"];
-            if (mainForm is Form_main fMain)
-            {
-                if (fMain != null)
-                    fMain.XoaNoiDungPanelMoPhong();
-
-                // Hiển thị chữ "A" (tên mảng)
-                Label lblTenMang = new Label();
-                lblTenMang.Text = "A";
-                lblTenMang.Font = new Font("Arial", 20, FontStyle.Bold);
-                lblTenMang.ForeColor = Color.Red;
-                lblTenMang.AutoSize = true;
-                lblTenMang.Location = new Point(le_Node - 60, kc + 50);
-                fMain.ThemVaoPanelMoPhong(lblTenMang);
-
-                // Hiển thị chữ "Chỉ số"
-                Label lblChiSo = new Label();
-                lblChiSo.Text = "Chỉ số";
-                lblChiSo.Font = new Font("Arial", 16, FontStyle.Bold);
-                lblChiSo.ForeColor = Color.Green;
-                lblChiSo.AutoSize = true;
-                lblChiSo.Location = new Point(le_Node - 90, 290 + khoang_Cach * 4);
-                fMain.ThemVaoPanelMoPhong(lblChiSo);
-
-                for (int i = 0; i < nMain; i++)
-                {
-                    // Nút giá trị
-                    Button btn = new Button();
-                    btn.Text = A[i].ToString();
-                    btn.TextAlign = ContentAlignment.MiddleCenter;
-                    btn.Width = kich_Thuoc;
-                    btn.Height = kich_Thuoc;
-                    btn.Font = new Font("Arial", co_Chu, FontStyle.Bold);
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.FlatAppearance.BorderSize = 0;
-                    btn.BackgroundImage = img_nen;
-                    btn.BackgroundImageLayout = ImageLayout.Stretch;
-                    btn.Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
-
-                    // Label chỉ số
-                    Label lbl = new Label();
-                    lbl.Text = i.ToString();
-                    lbl.TextAlign = ContentAlignment.MiddleCenter;
-                    lbl.Width = kich_Thuoc;
-                    lbl.Height = kich_Thuoc;
-                    lbl.Font = new Font("Arial", co_Chu - 2, FontStyle.Bold);
-                    lbl.Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, 290 + khoang_Cach * 3);
-
-                    fMain.ThemVaoPanelMoPhong(btn);
-                    fMain.ThemVaoPanelMoPhong(lbl);
-                    fMain.MoTatCaNutDieuKhien();
-
-                    Form_main.node1[i] = btn;
-                    Form_main.chiSo[i] = lbl;
-                }
-            }*/
             this.Close();
         }
 

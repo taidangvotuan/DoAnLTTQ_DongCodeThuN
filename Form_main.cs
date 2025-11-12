@@ -28,14 +28,8 @@ namespace DoAnLTTQ_DongCodeThuN
         CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
         YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
         int i;                                  // Biến này dùng nhiều (biến chỉ số)
-        bool is_run = false;
-                                                // Các biến thiết lập cho node
-        int khoang_Cach;                        // Khoảng cách hai node
-        int kich_Thuoc;                         // Kích thước node
-        int co_Chu;                             // Cỡ chữ node
-        int le_Node;                            // Căn lề node
-        int le_tren;                            // Lề trên cho node
-        FormController controller;
+        bool is_run = false;                    // Cờ kiểm tra thuật toán còn chạy không
+        FormController controller;              // Tạo controller để chạy thuật toán
         #endregion
 
         public Form_main()
@@ -716,77 +710,15 @@ namespace DoAnLTTQ_DongCodeThuN
                 return;
             }
 
-            // Dọn dẹp toàn bộ panel trước khi vẽ lại
-            /*if (PanelMoPhong.Controls.Count > 0)
-                PanelMoPhong.Controls.Clear();
-
-            // Các thông số hiển thị
-            int kc = 200;                // Tọa độ y cơ sở
-            kich_Thuoc = 70;             // Kích thước mỗi ô
-            co_Chu = 14;                 // Cỡ chữ trên nút
-            khoang_Cach = 15;            // Khoảng cách giữa các nút
-            Image img_nen = Properties.Resources.AnhPhanTuMang;
-
-            // Tính lề trái để căn giữa hàng phần tử
-            le_Node = (1185 - kich_Thuoc * so_phan_tu - khoang_Cach * (so_phan_tu - 1)) / 2;
-
-            // Hiển thị tên mảng "A"
-            Label lblTenMang = new Label();
-            lblTenMang.Text = "A";
-            lblTenMang.Font = new Font("Arial", 20, FontStyle.Bold);
-            lblTenMang.ForeColor = Color.Red;
-            lblTenMang.AutoSize = true;
-            lblTenMang.Location = new Point(le_Node - 60, kc + 50);
-            PanelMoPhong.Controls.Add(lblTenMang);
-
-            // Hiển thị chữ "Chỉ số"
-            Label lblChiSo = new Label();
-            lblChiSo.Text = "Chỉ số";
-            lblChiSo.Font = new Font("Arial", 16, FontStyle.Bold);
-            lblChiSo.ForeColor = Color.Green;
-            lblChiSo.AutoSize = true;
-            lblChiSo.Location = new Point(le_Node - 90, kc + kich_Thuoc + 80);
-            PanelMoPhong.Controls.Add(lblChiSo);*/
-
             // Khởi tạo mảng dữ liệu
             a = new int[so_phan_tu];
-            //node1 = new Button[so_phan_tu];
-            //chiSo = new Label[so_phan_tu];
 
             Random rd = new Random();
             for (int i = 0; i < so_phan_tu; i++)
                 a[i] = rd.Next(100);
 
             // Yêu cầu SortingPanelView vẽ lại
-            SortingPanelView.Invalidate(); // => sẽ gọi SortingPanelView_Paint
-
-            /*Copy vao vong for random
-                // Tạo button thể hiện phần tử
-                node1[i] = new Button();
-                node1[i].Text = a[i].ToString();
-                node1[i].TextAlign = ContentAlignment.MiddleCenter;
-                node1[i].Width = kich_Thuoc;
-                node1[i].Height = kich_Thuoc;
-                node1[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + 30);
-                node1[i].ForeColor = Color.Black;
-                node1[i].Font = new Font("Arial", co_Chu, FontStyle.Bold);
-                node1[i].FlatStyle = FlatStyle.Flat;
-                node1[i].BackgroundImage = img_nen;
-                node1[i].BackgroundImageLayout = ImageLayout.Stretch;
-                node1[i].FlatAppearance.BorderSize = 0;
-                PanelMoPhong.Controls.Add(node1[i]);
-
-                // Tạo nhãn chỉ số dưới mỗi phần tử
-                chiSo[i] = new Label();
-                chiSo[i].TextAlign = ContentAlignment.MiddleCenter;
-                chiSo[i].Text = i.ToString();
-                chiSo[i].Width = kich_Thuoc;
-                chiSo[i].Height = 25;
-                chiSo[i].ForeColor = Color.Black;
-                chiSo[i].Font = new Font("Arial", co_Chu - 2, FontStyle.Bold);
-                chiSo[i].Location = new Point(le_Node + (kich_Thuoc + khoang_Cach) * i, kc + kich_Thuoc + 82);
-                PanelMoPhong.Controls.Add(chiSo[i]);*/
-
+            SortingPanelView.Invalidate(); // Sẽ gọi hàm SortingPanelView_Paint
             MoTatCaNutDieuKhien();
         }
  
@@ -845,51 +777,6 @@ namespace DoAnLTTQ_DongCodeThuN
                 }
             });
         }
-
-        public void ClearPanelMoPhong()
-        {
-            PanelMoPhong.Controls.Clear();
-        }
-
-        public void AddControlToPanel(Control c)
-        {
-            PanelMoPhong.Controls.Add(c);
-        }
-
-        // Hàm tạo một node simple, với text = !
-        public Button create_node(Button node, String t)
-        {
-            node = new Button();
-            node.Text = t;
-            node.TextAlign = ContentAlignment.MiddleCenter;
-            node.Width = kich_Thuoc;
-            node.Height = kich_Thuoc;
-            node.ForeColor = Color.Black;
-            node.Font = new Font(this.Font, FontStyle.Bold);
-            node.Font = new System.Drawing.Font("Arial", co_Chu, FontStyle.Bold);
-            node.FlatStyle = FlatStyle.Flat;
-            node.BackgroundImage = Properties.Resources.AnhPhanTuMang;
-            node.BackgroundImageLayout = ImageLayout.Stretch;
-            node.FlatAppearance.BorderSize = 0;
-            return node;
-        }
-
-        // Hàm set màu node
-        public void set_node_color(Control t, System.Drawing.Image img_nen)
-        {
-            t.BackgroundImage = img_nen;
-            t.BackgroundImageLayout = ImageLayout.Stretch;
-            t.Refresh();
-        }
-
-        // Hàm đổi giá trị của hai node
-        public void swap_button(int t1, int t2)
-        {
-
-            Button Temp = node1[t1];
-            node1[t1] = node1[t2];
-            node1[t2] = Temp;
-        }
         #endregion
 
         #region CÁC HÀM CHỨC NĂNG ĐỂ TRUY CẬP PRIVATE
@@ -915,18 +802,6 @@ namespace DoAnLTTQ_DongCodeThuN
             NutTamDungThuatToan.Enabled = true;
             NutKetThucThuatToan.Enabled = true;
             NutChinhTocDoThuatToan.Enabled = true;
-        }
-
-        // Hàm xóa nội dung mô phỏng
-        public void XoaNoiDungPanelMoPhong()
-        {
-            PanelMoPhong.Controls.Clear();
-        }
-
-        // Hàm thêm vào cửa sổ mô phỏng
-        public void ThemVaoPanelMoPhong(Control control)
-        {
-            PanelMoPhong.Controls.Add(control);
         }
 
         // Hàm vẽ lại cửa sổ sắp xếp (đối với nhập mảng bằng tay)
