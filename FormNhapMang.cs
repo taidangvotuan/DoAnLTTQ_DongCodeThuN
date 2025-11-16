@@ -83,7 +83,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (mainForm is Form_main fMain)
             {
                 fMain.VeLaiSortingPanelView();
-                fMain.MoTatCaNutDieuKhien();
+                fMain.MoCacNutLuaChonThuatToan();
             }
             this.Close();
         }

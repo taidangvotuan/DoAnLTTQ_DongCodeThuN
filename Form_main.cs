@@ -42,7 +42,8 @@ namespace DoAnLTTQ_DongCodeThuN
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
 
-            controller = new FormController(this);
+            FormController controller = new FormController(this);
+            NutChonThuatToan.Enabled = false;
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
             SortingPanelView.Paint += SortingPanelView_Paint;
@@ -575,69 +576,28 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
+            KiemTraDieuKienChonThuatToan();
             controller.Start();
         }
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
-
+            KiemTraDieuKienChonThuatToan();
         }
 
         private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ThayDoiCodeKhiChonTangHoacGiam()
-        {
-            ListBoxCodeC.Items.Clear();
-            ListBoxYTuong.Items.Clear();
-            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
-            if (ChonThuatToan == "Selection Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.SelectionSort(ListBoxCodeC, tang);
-                YTuong_CPP.SelectionSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Heap Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.HeapSort(ListBoxCodeC, tang);
-                YTuong_CPP.HeapSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Bubble Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.BubbleSort(ListBoxCodeC, tang);
-                YTuong_CPP.BubbleSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Quick Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.QuickSort(ListBoxCodeC, tang);
-                YTuong_CPP.QuickSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Insertion Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.InsertionSort(ListBoxCodeC, tang);
-                YTuong_CPP.InsertionSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Interchange Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
-                YTuong_CPP.InterchangeSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Merge Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.MergeSort(ListBoxCodeC, tang);
-                YTuong_CPP.MergeSort(ListBoxYTuong);
-            }
+            KiemTraDieuKienChonThuatToan();
         }
 
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (NutChonThuatToan.SelectedIndex >= 0)
+            {
+                ChonTangDan.Enabled = true;
+                ChonGiamDan.Enabled = true;
+            }
+            KiemTraDieuKienChonThuatToan();
             ThayDoiCodeKhiChonTangHoacGiam();
         }
 
@@ -648,6 +608,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
+            KiemTraDieuKienChonThuatToan();
+            
             if (ChonTangDan.Checked)
             {
                 tang = true;
@@ -657,6 +619,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
         {
+            KiemTraDieuKienChonThuatToan();
             if (ChonGiamDan.Checked)
             {
                 tang = false;
@@ -719,7 +682,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Yêu cầu SortingPanelView vẽ lại
             SortingPanelView.Invalidate(); // Sẽ gọi hàm SortingPanelView_Paint
-            MoTatCaNutDieuKhien();
+            MoCacNutLuaChonThuatToan();
         }
  
         // Nhập dữ liệu bằng tay
@@ -777,6 +740,71 @@ namespace DoAnLTTQ_DongCodeThuN
                 }
             });
         }
+
+        private void ThayDoiCodeKhiChonTangHoacGiam()
+        {
+            ListBoxCodeC.Items.Clear();
+            ListBoxYTuong.Items.Clear();
+            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
+            if (ChonThuatToan == "Selection Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.SelectionSort(ListBoxCodeC, tang);
+                YTuong_CPP.SelectionSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Heap Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.HeapSort(ListBoxCodeC, tang);
+                YTuong_CPP.HeapSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Bubble Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.BubbleSort(ListBoxCodeC, tang);
+                YTuong_CPP.BubbleSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Quick Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.QuickSort(ListBoxCodeC, tang);
+                YTuong_CPP.QuickSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Insertion Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.InsertionSort(ListBoxCodeC, tang);
+                YTuong_CPP.InsertionSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Interchange Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
+                YTuong_CPP.InterchangeSort(ListBoxYTuong);
+            }
+
+            if (ChonThuatToan == "Merge Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            {
+                Code_CPP.MergeSort(ListBoxCodeC, tang);
+                YTuong_CPP.MergeSort(ListBoxYTuong);
+            }
+        }
+
+        private void KiemTraDieuKienChonThuatToan()
+        {
+            bool daChonKieuSapXep = ChonTangDan.Checked || ChonGiamDan.Checked;
+            bool daChonThuatToan = NutChonThuatToan != null;
+
+            if (daChonKieuSapXep && daChonThuatToan)
+                MoCacNutDieuKhien();
+            else
+            {
+                // KHÓA các nút điều khiển
+                NutChayThuatToan.Enabled = false;
+                NutTamDungThuatToan.Enabled = false;
+                NutKetThucThuatToan.Enabled = false;
+                NutChinhTocDoThuatToan.Enabled = false;
+            }
+        }
         #endregion
 
         #region CÁC HÀM CHỨC NĂNG ĐỂ TRUY CẬP PRIVATE
@@ -791,13 +819,16 @@ namespace DoAnLTTQ_DongCodeThuN
             NutChayThuatToan.Enabled = false;
         }
 
-        // Hàm mở tất cả các nút điều khiển
-        public void MoTatCaNutDieuKhien()
+        // Hàm mở tất cả các nút lựa chọn thuật toán
+        public void MoCacNutLuaChonThuatToan()
         {
             GroupBoxChonThuatToan.Enabled = true;
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
             NutChonThuatToan.Enabled = true;
+        }
+
+        // Hàm mở tất cả các nút điều khiển
+        public void MoCacNutDieuKhien()
+        {
             NutChayThuatToan.Enabled = true;
             NutTamDungThuatToan.Enabled = true;
             NutKetThucThuatToan.Enabled = true;

@@ -32,7 +32,6 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
                     view.SetState(j, State.NORMAL);
                     view.SetState(j + 1, State.NORMAL);
                 }
-
             }
         }
     }
