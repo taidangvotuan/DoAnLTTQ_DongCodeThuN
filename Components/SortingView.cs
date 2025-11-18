@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
+using System.Linq; 
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -56,6 +56,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
     public class SortingVisualizationView
     {
         Panel mainView;
+        public int delayTime = 200;
 
         public List<int> listInt;
         List<ColumnNode> nodes;
@@ -97,8 +98,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         //    await Task.Delay(1000);
         //    await Swap(0, 2);
         //}
-
-
 
         ViewConfig config;
         public void InitArrayView()
@@ -158,6 +157,19 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         public void SetState(int index, State state)
         {
             nodes[index]?.SetState(state);
+        }
+
+        public async Task SetState(List<int> arr, int i, int j)
+        {
+            // Hoán vị
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+            // Gọi invalidate/redraw
+            this.Invalidate();
+
+            await Task.Delay(delayTime); // Delay để thấy animation
         }
     }
 }

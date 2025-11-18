@@ -35,6 +35,7 @@ namespace DoAnLTTQ_DongCodeThuN
         public Form_main()
         {
             InitializeComponent();
+            controller = new FormController(this);
 
             // Vô hiệu hóa các lable, button, checkbox, Radiobutton
             NutChinhTocDoThuatToan.Enabled = false;
@@ -42,7 +43,6 @@ namespace DoAnLTTQ_DongCodeThuN
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
 
-            FormController controller = new FormController(this);
             NutChonThuatToan.Enabled = false;
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
@@ -431,7 +431,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (iLeft < j)
                 Thinh_v_QuickSortTangDan(arr, iLeft, j);
-
             if (i < iRight)
                 Thinh_v_QuickSortTangDan(arr, i, iRight);
         }
@@ -577,6 +576,7 @@ namespace DoAnLTTQ_DongCodeThuN
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
             KiemTraDieuKienChonThuatToan();
+            controller.Create();
             controller.Start();
         }
 

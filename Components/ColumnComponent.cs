@@ -15,7 +15,9 @@ namespace DoAnLTTQ_DongCodeThuN.Components
     {
         NORMAL,
         SELECTED,
-        NOR
+        NOR,
+        PIVOT,
+        MIN
     }
 
 
