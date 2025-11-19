@@ -78,6 +78,7 @@ namespace DoAnLTTQ_DongCodeThuN
             ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
+            this.PanelMoPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBoxYTuong
@@ -126,7 +127,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.AliceBlue;
-            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.Logo_UIT_updated_svg;
+            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.AnhUIT;
             this.pictureBox1.Location = new System.Drawing.Point(1, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(236, 189);
@@ -431,7 +432,6 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.SortingPanelView);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
@@ -457,7 +457,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelKhoangGiaTriPhanTu.Name = "LabelKhoangGiaTriPhanTu";
             this.LabelKhoangGiaTriPhanTu.Size = new System.Drawing.Size(155, 19);
             this.LabelKhoangGiaTriPhanTu.TabIndex = 26;
-            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 12)";
+            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 20)";
             this.LabelKhoangGiaTriPhanTu.Click += new System.EventHandler(this.LabelKhoangGiaTriPhanTu_Click);
             // 
             // LabelSoPhanTu
@@ -526,6 +526,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // PanelMoPhong
             // 
+            this.PanelMoPhong.Controls.Add(this.SortingPanelView);
             this.PanelMoPhong.Location = new System.Drawing.Point(243, 119);
             this.PanelMoPhong.Name = "PanelMoPhong";
             this.PanelMoPhong.Size = new System.Drawing.Size(1185, 422);
@@ -534,9 +535,9 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
-            this.SortingPanelView.Location = new System.Drawing.Point(155, 95);
+            this.SortingPanelView.Location = new System.Drawing.Point(2, 0);
             this.SortingPanelView.Name = "SortingPanelView";
-            this.SortingPanelView.Size = new System.Drawing.Size(944, 230);
+            this.SortingPanelView.Size = new System.Drawing.Size(1187, 422);
             this.SortingPanelView.TabIndex = 2;
             this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
@@ -560,7 +561,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.Name = "Form_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Mô phỏng thuật toán";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelNen.ResumeLayout(false);
@@ -575,6 +576,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
+            this.PanelMoPhong.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

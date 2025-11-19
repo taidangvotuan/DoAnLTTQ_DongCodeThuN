@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
+using System.Linq; 
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,10 +11,12 @@ namespace DoAnLTTQ_DongCodeThuN.Components
 {
     //public class ViewConfig
     //{
+    //public class ViewConfig
+    //{
     //    public Rectangle parentBound;
     //    public int maxElement;
     //    public int numberOfElements;
-        
+
 
     //    readonly int COLUMN_WIDTH = 10;
     //    readonly int SPACING = 5;
@@ -49,14 +51,16 @@ namespace DoAnLTTQ_DongCodeThuN.Components
     //        return index * (COLUMN_WIDTH + SPACING) + m_padding / 2;
     //    }
     //}
+    //}
 
     public class SortingVisualizationView
     {
         Panel mainView;
+        public int delayTime = 200;
 
         public List<int> listInt;
         List<ColumnNode> nodes;
-        public SortingVisualizationView(List<int> arr, Panel sortingPanel) 
+        public SortingVisualizationView(List<int> arr, Panel sortingPanel)
         {
             listInt = new List<int>(arr);
             mainView = sortingPanel;
@@ -95,8 +99,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         //    await Swap(0, 2);
         //}
 
-
-
         ViewConfig config;
         public void InitArrayView()
         {
@@ -127,7 +129,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
                 return;
             nodes[index_1].SetState(State.SELECTED);
             nodes[index_2].SetState(State.SELECTED);
-            
+
             // thay doi vi tri 2 phan tu truc quan tren man hinh
             // su dung task cua 
             //Console.WriteLine("lol");
@@ -157,6 +159,17 @@ namespace DoAnLTTQ_DongCodeThuN.Components
             nodes[index]?.SetState(state);
         }
 
+        public async Task SetState(List<int> arr, int i, int j)
+        {
+            // Hoán vị
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
 
+            // Gọi invalidate/redraw
+            //this.Invalidate();
+
+            await Task.Delay(delayTime); // Delay để thấy animation
+        }
     }
 }

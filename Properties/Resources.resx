@@ -118,19 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AnhPhanTuDangChon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnhDangChonPhanTu-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AnhPhanTuDaSapXep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnhDaSepMang-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AnhPhanTuMang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnhPhanTuMang-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AnhViTriPhanTuDangChon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnhChonViTriPhanTu-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_UIT_updated.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo_UIT_updated.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnhUIT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AnhUIT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
