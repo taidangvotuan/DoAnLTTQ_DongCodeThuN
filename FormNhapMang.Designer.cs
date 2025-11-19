@@ -104,9 +104,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(30, 144);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(539, 25);
+            this.label4.Size = new System.Drawing.Size(659, 25);
             this.label4.TabIndex = 13;
-            this.label4.Text = "- Các phần tử cách nhau bằng một dấu cách, ví dụ: 1 2 3 4 5.";
+            this.label4.Text = "- Mỗi giá trị của các phần tử cách nhau bằng một dấu cách, ví dụ: 1 2 3 4 5.";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // FormNhapMang

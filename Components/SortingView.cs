@@ -167,7 +167,7 @@ namespace DoAnLTTQ_DongCodeThuN.Components
             arr[j] = temp;
 
             // Gọi invalidate/redraw
-            this.Invalidate();
+            //this.Invalidate();
 
             await Task.Delay(delayTime); // Delay để thấy animation
         }

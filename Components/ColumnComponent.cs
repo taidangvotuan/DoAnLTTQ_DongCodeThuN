@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN.Components
 {
-
     public enum State
     {
         NORMAL,
@@ -19,7 +18,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         PIVOT,
         MIN
     }
-
 
     public class ColumnNode
     {
@@ -35,7 +33,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
             this.value = value;
             _element = new PictureBox();
         }
-
 
         public void CreateElement()
         {
@@ -80,5 +77,41 @@ namespace DoAnLTTQ_DongCodeThuN.Components
             }
             _element.Location = new Point(pos, _element.Location.Y);
         }
+
+        /*private void EnsureStates()
+        {
+            if (states == null || states.Length != listInt.Count)
+                states = Enumerable.Repeat(State.NORMAL, listInt.Count).ToArray();
+        }
+
+        // Utility to call Invalidate on UI thread safely
+        private void SafeInvalidate()
+        {
+            if (this.IsDisposed) return;
+            if (this.InvokeRequired)
+                this.Invoke(new Action(() => this.Invalidate()));
+            else
+                this.Invalidate();
+        }
+
+        // Highlight indices for a short time (set state = COMPARE), then revert
+        public async Task Highlight(params int[] indices)
+        {
+            if (indices == null || indices.Length == 0) return;
+            EnsureStates();
+            // set
+            foreach (var i in indices)
+                if (i >= 0 && i < states.Length) states[i] = State.COMPARE;
+
+            SafeInvalidate();
+            await Task.Delay(delayTime);
+
+            // revert to NORMAL (but avoid stomping other states: we keep SWAP/PIVOT)
+            foreach (var i in indices)
+                if (i >= 0 && i < states.Length && states[i] == State.COMPARE) states[i] = State.NORMAL;
+
+            SafeInvalidate();
+        }
+        */
     }
 }

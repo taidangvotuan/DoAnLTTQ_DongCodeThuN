@@ -37,7 +37,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         }
         #endregion
 
-        #region QUICKSORT
+        #region QUICK SORT
         public async static Task QuickSort(SortingVisualizationView view, int left, int right)
         {
             if (left >= right) return;
@@ -127,5 +127,35 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
                         await view.SetState(arr, i, j);
         }
         #endregion
+
+        // Con nhung thuat toan con lai thi co gang viet thuat toan mo phong sap xep
+        /*public async static void InsertionSort(SortingVisualizationView view)
+        {
+            List<int> arr = view.listInt;
+            int n = arr.Count;
+
+            for (int i = 1; i < n; i++)
+            {
+                int key = arr[i];
+                int j = i - 1;
+
+                await view.Highlight(i);
+
+                while (j >= 0 && arr[j] > key)
+                {
+                    arr[j + 1] = arr[j];
+                    view.Invalidate();
+                    await Task.Delay(view.delayTime);
+
+                    j--;
+                }
+
+                arr[j + 1] = key;
+                view.Invalidate();
+                await Task.Delay(view.delayTime);
+            }
+        }*/
+
+
     }
 }
