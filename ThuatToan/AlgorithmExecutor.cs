@@ -129,33 +129,194 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         #endregion
 
         // Con nhung thuat toan con lai thi co gang viet thuat toan mo phong sap xep
-        /*public async static void InsertionSort(SortingVisualizationView view)
+        #region INSERTION SORT
+        public async static void InsertionSort(SortingVisualizationView view)
         {
             List<int> arr = view.listInt;
             int n = arr.Count;
 
             for (int i = 1; i < n; i++)
             {
-                int key = arr[i];
-                int j = i - 1;
+                int j = i;
 
-                await view.Highlight(i);
+                // Đánh dấu phần tử đang xét
+                view.SetState(i, State.NOR);
+                await Task.Delay(view.delayTime);
 
-                while (j >= 0 && arr[j] > key)
+                // Bắt đầu dịch sang trái
+                while (j > 0 && arr[j] < arr[j - 1])
                 {
-                    arr[j + 1] = arr[j];
-                    view.Invalidate();
+                    // Highlight 2 phần tử
+                    view.SetState(j, State.COMPARE);
+                    view.SetState(j - 1, State.COMPARE);
                     await Task.Delay(view.delayTime);
+
+                    // Swap trực quan
+                    await view.Swap(j, j - 1);
+
+                    // Reset màu
+                    view.SetState(j, State.NORMAL);
+                    view.SetState(j - 1, State.NORMAL);
 
                     j--;
                 }
 
-                arr[j + 1] = key;
-                view.Invalidate();
+                // Reset chỉ số i sau khi xong
+                view.SetState(i, State.NORMAL);
+            }
+        }
+        #endregion
+
+        #region MERGE SORT
+        public async static void MergeSort(SortingVisualizationView view)
+        {
+            List<int> arr = view.listInt;
+            await MergeSortRecursive(view, arr, 0, arr.Count - 1);
+        }
+
+        private static async Task MergeSortRecursive(SortingVisualizationView view, List<int> arr, int left, int right)
+        {
+            if (left >= right)
+                return;
+
+            int mid = (left + right) / 2;
+
+            // Chia nửa trái
+            await MergeSortRecursive(view, arr, left, mid);
+
+            // Chia nửa phải
+            await MergeSortRecursive(view, arr, mid + 1, right);
+
+            // Trộn lại
+            await Merge(view, arr, left, mid, right);
+        }
+
+        private static async Task Merge(SortingVisualizationView view, List<int> arr, int left, int mid, int right)
+        {
+            int i = left;
+            int j = mid + 1;
+
+            List<int> temp = new List<int>();
+
+            // Highlight hai vùng đang merge
+            for (int k = left; k <= right; k++)
+            {
+                view.SetState(k, State.NOR);
+            }
+            await Task.Delay(view.delayTime);
+
+            // Merge bằng so sánh
+            while (i <= mid && j <= right)
+            {
+                view.SetState(i, State.COMPARE);
+                view.SetState(j, State.COMPARE);
+                await Task.Delay(view.delayTime);
+
+                if (arr[i] <= arr[j])
+                {
+                    temp.Add(arr[i]);
+                    view.SetState(i, State.NORMAL);
+                    i++;
+                }
+                else
+                {
+                    temp.Add(arr[j]);
+                    view.SetState(j, State.NORMAL);
+                    j++;
+                }
+            }
+
+            // Thêm phần còn lại của nửa trái
+            while (i <= mid)
+            {
+                temp.Add(arr[i]);
+                i++;
+            }
+
+            // Thêm phần còn lại của nửa phải
+            while (j <= right)
+            {
+                temp.Add(arr[j]);
+                j++;
+            }
+
+            // Cập nhật vào arr + giao diện
+            for (int k = 0; k < temp.Count; k++)
+            {
+                arr[left + k] = temp[k];
+                view.SetValue(left + k, temp[k]);   // cập nhật trực quan
                 await Task.Delay(view.delayTime);
             }
-        }*/
 
+            // Reset trạng thái
+            for (int k = left; k <= right; k++)
+                view.SetState(k, State.NORMAL);
+        }
 
+        #endregion
+
+        #region HEAP SORT
+        public async static void HeapSort(SortingVisualizationView view)
+        {
+            List<int> arr = view.listInt;
+            int n = arr.Count;
+
+            // --- Xây dựng max-heap ---
+            for (int i = n / 2 - 1; i >= 0; i--)
+                await Heapify(view, arr, n, i);
+
+            // --- Trích dần từng phần tử khỏi heap ---
+            for (int i = n - 1; i > 0; i--)
+            {
+                // Highlight root và phần tử cuối
+                view.SetState(0, State.COMPARE);
+                view.SetState(i, State.COMPARE);
+                await Task.Delay(view.delayTime);
+
+                // Hoán đổi root với phần tử cuối
+                await view.Swap(0, i);
+
+                // Reset màu
+                view.SetState(0, State.NORMAL);
+                view.SetState(i, State.NORMAL);
+
+                // Gọi heapify lên heap rút gọn
+                await Heapify(view, arr, i, 0);
+            }
+        }
+
+        private static async Task Heapify(SortingVisualizationView view, List<int> arr, int n, int i)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            // So sánh với con trái
+            if (left < n && arr[left] > arr[largest])
+                largest = left;
+
+            // So sánh với con phải
+            if (right < n && arr[right] > arr[largest])
+                largest = right;
+
+            // Nếu cần đổi chỗ
+            if (largest != i)
+            {
+                // Highlight
+                view.SetState(i, State.COMPARE);
+                view.SetState(largest, State.COMPARE);
+                await Task.Delay(view.delayTime);
+
+                await view.Swap(i, largest);
+
+                // Reset màu
+                view.SetState(i, State.NORMAL);
+                view.SetState(largest, State.NORMAL);
+
+                // Đệ quy tiếp tục hiệu chỉnh
+                await Heapify(view, arr, n, largest);
+            }
+        }
+        #endregion
     }
 }

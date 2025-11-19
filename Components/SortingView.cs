@@ -171,5 +171,11 @@ namespace DoAnLTTQ_DongCodeThuN.Components
 
             await Task.Delay(delayTime); // Delay để thấy animation
         }
+
+        public void SetValue(int index, int value)
+        {
+            listInt[index] = value;
+            //thís.Invalidate(); // vẽ lại
+        }
     }
 }

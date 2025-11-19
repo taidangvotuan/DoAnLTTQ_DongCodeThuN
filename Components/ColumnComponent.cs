@@ -16,7 +16,8 @@ namespace DoAnLTTQ_DongCodeThuN.Components
         SELECTED,
         NOR,
         PIVOT,
-        MIN
+        MIN,
+        COMPARE
     }
 
     public class ColumnNode
