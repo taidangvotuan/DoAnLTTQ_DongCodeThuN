@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
@@ -30,6 +31,11 @@ namespace DoAnLTTQ_DongCodeThuN
         int i;                                  // Biến này dùng nhiều (biến chỉ số)
         bool is_run = false;                    // Cờ kiểm tra thuật toán còn chạy không
         FormController controller;              // Tạo controller để chạy thuật toán
+        int Binh_i_ViTriSwap1 = -1;          // Vị trí cột thứ 1 đang hoán vị (Bình)
+        int Binh_i_ViTriSwap2 = -1;          // Vị trí cột thứ 2 đang hoán vị (Bình)
+        bool Binh_b_DangAnimation = false;   // Cờ cho biết đang chạy animation hoán vị (Bình)
+        int Binh_i_AnimationStep = 0;        // Bước hiện tại của animation (Bình)
+        int Binh_i_AnimationStepMax = 1;     // Số bước tối đa của animation (Bình)
         #endregion
 
         public Form_main()
@@ -37,7 +43,15 @@ namespace DoAnLTTQ_DongCodeThuN
             InitializeComponent();
             controller = new FormController(this);
 
-            // Vô hiệu hóa các lable, button, checkbox, Radiobutton
+            // Bật double-buffer cho panel vẽ cột
+            typeof(Panel).InvokeMember(
+                "DoubleBuffered",
+                BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                null,
+                SortingPanelView,
+                new object[] { true });
+
+            // Vô hiệu hóa các label, button, checkbox, Radiobutton
             NutChinhTocDoThuatToan.Enabled = false;
             NutChayThuatToan.Enabled = false;
             NutTamDungThuatToan.Enabled = false;
@@ -51,7 +65,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Form_Load(object sender, EventArgs e)
         {
-            SortingPanelView.Paint += SortingPanelView_Paint;
+            // SortingPanelView.Paint += SortingPanelView_Paint;
         }
 
         #region KHU VỰC CÁC LABEL
@@ -122,7 +136,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (iLonNhat != i)
             {
-                Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
+                Binh_v_HoanViTheoViTri(arr, i, iLonNhat);
+                if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, n, iLonNhat);
             }
         }
@@ -141,7 +156,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (iNhoNhat != i)
             {
-                Tai_v_HoanVi(ref arr[i], ref arr[iNhoNhat]);
+                Binh_v_HoanViTheoViTri(arr, i, iNhoNhat);
+                if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, n, iNhoNhat);
             }
         }
@@ -150,11 +166,16 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n = arr.Length;
             for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, n, i);
+            }
 
             for (int i = n - 1; i >= 0; i--)
             {
-                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                if (!is_run) return;
+                Binh_v_HoanViTheoViTri(arr, 0, i);
+                if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, i, 0);
             }
         }
@@ -163,11 +184,16 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n = arr.Length;
             for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, n, i);
+            }
 
             for (int i = n - 1; i >= 0; i--)
             {
-                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                if (!is_run) return;
+                Binh_v_HoanViTheoViTri(arr, 0, i);
+                if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, i, 0);
             }
         }
@@ -215,12 +241,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 int minIdx = i;
                 for (int j = i + 1; j < n; j++)
                     if (arr[j] < arr[minIdx])
                         minIdx = j;
 
-                Tai_v_HoanVi(ref arr[minIdx], ref arr[i]);
+                if (minIdx != i)
+                    Binh_v_HoanViTheoViTri(arr, minIdx, i);
             }
         }
 
@@ -229,12 +258,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 int maxIdx = i;
                 for (int j = i + 1; j < n; j++)
                     if (arr[j] > arr[maxIdx])
                         maxIdx = j;
 
-                Tai_v_HoanVi(ref arr[maxIdx], ref arr[i]);
+                if (maxIdx != i)
+                    Binh_v_HoanViTheoViTri(arr, maxIdx, i);
             }
         }
         #endregion
@@ -245,9 +277,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[j] > arr[j + 1])
-                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                        Binh_v_HoanViTheoViTri(arr, j, j + 1);
+                }
             }
         }
 
@@ -256,9 +294,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[j] < arr[j + 1])
-                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                        Binh_v_HoanViTheoViTri(arr, j, j + 1);
+                }
             }
         }
         #endregion
@@ -394,73 +438,105 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
+
                 for (int j = i + 1; j < n; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[i] > arr[j])
-                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                        Binh_v_HoanViTheoViTri(arr, i, j);
+                }
+            }
         }
 
         public void Tai_v_InterchangeSortGiamDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
+
                 for (int j = i + 1; j < n; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[i] < arr[j])
-                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                        Binh_v_HoanViTheoViTri(arr, i, j);
+                }
+            }
         }
         #endregion
 
         #region Quick Sort
         public void Thinh_v_QuickSortTangDan(int[] arr, int iLeft, int iRight)
         {
+            if (!is_run) return;
+
             int i = iLeft;
             int j = iRight;
             int pivot = arr[(iLeft + iRight) / 2];
 
-            while (i <= j)
+            while (i <= j && is_run)
             {
-                while (arr[i] < pivot) i++;
-                while (arr[j] > pivot) j--;
+                while (i <= iRight && arr[i] < pivot) i++;
+                while (j >= iLeft && arr[j] > pivot) j--;
 
                 if (i <= j)
                 {
-                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    if (i != j)
+                        Binh_v_HoanViTheoViTri(arr, i, j);
                     i++;
                     j--;
                 }
             }
 
+            if (!is_run) return;
+
             if (iLeft < j)
                 Thinh_v_QuickSortTangDan(arr, iLeft, j);
+
+            if (!is_run) return;
+
             if (i < iRight)
                 Thinh_v_QuickSortTangDan(arr, i, iRight);
         }
 
         public void Thinh_v_QuickSortGiamDan(int[] arr, int iLeft, int iRight)
         {
+            if (!is_run) return;
+
             int i = iLeft;
             int j = iRight;
             int pivot = arr[(iLeft + iRight) / 2];
 
-            while (i <= j)
+            while (i <= j && is_run)
             {
-                while (arr[i] > pivot) i++;
-                while (arr[j] < pivot) j--;
+                while (i <= iRight && arr[i] > pivot) i++;
+                while (j >= iLeft && arr[j] < pivot) j--;
 
                 if (i <= j)
                 {
-                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    if (i != j)
+                        Binh_v_HoanViTheoViTri(arr, i, j);
                     i++;
                     j--;
                 }
             }
 
+            if (!is_run) return;
+
             if (iLeft < j)
                 Thinh_v_QuickSortGiamDan(arr, iLeft, j);
+
+            if (!is_run) return;
 
             if (i < iRight)
                 Thinh_v_QuickSortGiamDan(arr, i, iRight);
         }
         #endregion
+
         #endregion
 
         #region KHU VỰC CÁC PANEL
@@ -499,26 +575,72 @@ namespace DoAnLTTQ_DongCodeThuN
             int panelHeight = SortingPanelView.Height;
 
             int barWidth = panelWidth / (n * 2);
+            if (barWidth <= 0) barWidth = 1;
             int maxVal = a.Max();
+            if (maxVal == 0) maxVal = 1;
             int xStart = (panelWidth - n * barWidth * 2) / 2;
 
-            Font font = new Font("Arial", 12, FontStyle.Bold);
-            Brush barBrush = Brushes.Blue;
-            Brush textBrush = Brushes.Black;
-
-            for (int i = 0; i < n; i++)
+            using (Font font = new Font("Arial", 12, FontStyle.Bold))
             {
-                float heightRatio = (float)a[i] / maxVal;
-                int barHeight = (int)(heightRatio * (panelHeight - 100));
+                Brush barBrush = Brushes.Blue;
+                Brush highlightBrush = Brushes.Red;
+                Brush textBrush = Brushes.Black;
 
-                int x = xStart + i * barWidth * 2;
-                int y = panelHeight - barHeight - 50;
+                float t = 0f;
+                if (Binh_b_DangAnimation && Binh_i_AnimationStepMax > 0)
+                {
+                    t = (float)Binh_i_AnimationStep / (float)Binh_i_AnimationStepMax;
+                    if (t < 0f) t = 0f;
+                    if (t > 1f) t = 1f;
+                }
 
-                g.FillRectangle(barBrush, x, y, barWidth, barHeight);
+                for (int i = 0; i < n; i++)
+                {
+                    float heightRatio = (float)a[i] / (float)maxVal;
+                    int barHeight = (int)(heightRatio * (panelHeight - 100));
 
-                string valueStr = a[i].ToString();
-                SizeF textSize = g.MeasureString(valueStr, font);
-                g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
+                    int baseX = xStart + i * barWidth * 2;
+                    int x = baseX;
+
+                    // Nếu đang animation thì nội suy vị trí 2 cột đang hoán vị (Bình)
+                    if (Binh_b_DangAnimation && (i == Binh_i_ViTriSwap1 || i == Binh_i_ViTriSwap2))
+                    {
+                        int indexFrom, indexTo;
+
+                        if (i == Binh_i_ViTriSwap1)
+                        {
+                            indexFrom = Binh_i_ViTriSwap1;
+                            indexTo = Binh_i_ViTriSwap2;
+                        }
+                        else
+                        {
+                            indexFrom = Binh_i_ViTriSwap2;
+                            indexTo = Binh_i_ViTriSwap1;
+                        }
+
+                        int fromX = xStart + indexFrom * barWidth * 2;
+                        int toX = xStart + indexTo * barWidth * 2;
+
+                        x = (int)(fromX + (toX - fromX) * t);
+                    }
+
+                    int y = panelHeight - barHeight - 50;
+
+                    Brush brushToUse = barBrush;
+                    if (i == Binh_i_ViTriSwap1 || i == Binh_i_ViTriSwap2)
+                        brushToUse = highlightBrush;
+
+                    g.FillRectangle(brushToUse, x, y, barWidth, barHeight);
+
+                    string valueStr = a[i].ToString();
+                    SizeF textSize = g.MeasureString(valueStr, font);
+                    g.DrawString(
+                        valueStr,
+                        font,
+                        textBrush,
+                        x + (barWidth - textSize.Width) / 2,
+                        panelHeight - 40);
+                }
             }
         }
         #endregion
@@ -575,20 +697,126 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
+            if (a == null || a.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa khởi tạo mảng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (NutChonThuatToan.SelectedItem == null)
+            {
+                MessageBox.Show("Bạn chưa chọn thuật toán!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ChonTangDan.Checked && !ChonGiamDan.Checked)
+            {
+                MessageBox.Show("Bạn chưa chọn kiểu sắp xếp!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            is_run = true;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            KhoiChay();
+
+            string tenThuatToan = NutChonThuatToan.SelectedItem.ToString();
+
+            if (tenThuatToan == "Bubble Sort")
+            {
+                if (tang) Thinh_v_BubbleSortTangDan(a);
+                else Thinh_v_BubbleSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Heap Sort")
+            {
+                if (tang) Tai_v_HeapSortTangDan(a);
+                else Tai_v_HeapSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Insertion Sort")
+            {
+                if (tang) Binh_v_InsertionSortTangDan(a);
+                else Binh_v_InsertionSortGiamDan(a);
+                VeLaiSortingPanelView();
+            }
+            else if (tenThuatToan == "Interchange Sort")
+            {
+                if (tang) Tai_v_InterchangeSortTangDan(a);
+                else Tai_v_InterchangeSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Merge Sort")
+            {
+                if (tang) Tai_v_MergeSortTangDan(a, 0, a.Length - 1);
+                else Tai_v_MergeSortGiamDan(a, 0, a.Length - 1);
+                VeLaiSortingPanelView();
+            }
+            else if (tenThuatToan == "Quick Sort")
+            {
+                if (tang) Thinh_v_QuickSortTangDan(a, 0, a.Length - 1);
+                else Thinh_v_QuickSortGiamDan(a, 0, a.Length - 1);
+            }
+            else if (tenThuatToan == "Selection Sort")
+            {
+                if (tang) Binh_v_SelectionSortTangDan(a);
+                else Binh_v_SelectionSortGiamDan(a);
+            }
+
+            is_run = false;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            VeLaiSortingPanelView();
+
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
             KiemTraDieuKienChonThuatToan();
-            controller.Create();
-            controller.Start();
         }
+
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
-            KiemTraDieuKienChonThuatToan();
+            if (!is_run)
+                return;
+
+            kt_tam_dung = !kt_tam_dung;
+            NutTamDungThuatToan.Text = kt_tam_dung ? "Tiếp tục" : "Tạm dừng";
         }
+
 
         private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
+            if (!is_run)
+                return;
+
+            is_run = false;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            VeLaiSortingPanelView();
+
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
             KiemTraDieuKienChonThuatToan();
         }
+
 
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -603,13 +831,15 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
         {
-
+            toc_Do = NutChinhTocDoThuatToan.Value;
+            if (toc_Do < 1) toc_Do = 1;
         }
+
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
             KiemTraDieuKienChonThuatToan();
-            
+
             if (ChonTangDan.Checked)
             {
                 tang = true;
@@ -684,7 +914,7 @@ namespace DoAnLTTQ_DongCodeThuN
             SortingPanelView.Invalidate(); // Sẽ gọi hàm SortingPanelView_Paint
             MoCacNutLuaChonThuatToan();
         }
- 
+
         // Nhập dữ liệu bằng tay
         private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
         {
@@ -708,6 +938,50 @@ namespace DoAnLTTQ_DongCodeThuN
             int iTemp = a;
             a = b;
             b = iTemp;
+        }
+
+        // Hàm hoán vị có hiệu ứng mô phỏng cột đang hoán vị (Bình)
+        public void Binh_v_HoanViTheoViTri(int[] arr, int i, int j)
+        {
+            if (!is_run) return;
+
+            // Ghi nhận 2 vị trí cần hoán đổi
+            Binh_i_ViTriSwap1 = i;
+            Binh_i_ViTriSwap2 = j;
+
+            // Setup animation
+            Binh_i_AnimationStep = 0;
+            Binh_i_AnimationStepMax = 15;   // càng lớn animation càng mượt
+            Binh_b_DangAnimation = true;
+
+            // Chạy animation
+            for (int step = 0; step <= Binh_i_AnimationStepMax; step++)
+            {
+                if (!is_run) return;
+
+                Binh_i_AnimationStep = step;
+
+                SortingPanelView.Invoke(new Action(() =>
+                {
+                    SortingPanelView.Refresh();
+                }));
+
+                Thread.Sleep(10 * (11 - toc_Do)); // tốc độ animation phụ thuộc TrackBar
+            }
+
+            // Kết thúc animation
+            Binh_b_DangAnimation = false;
+
+            // --- Thực hiện hoán vị giá trị trong mảng ---
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+            // Vẽ lại sau swap
+            SortingPanelView.Invoke(new Action(() =>
+            {
+                SortingPanelView.Refresh();
+            }));
         }
 
         // Hàm reset giá trị của các node về 0;
