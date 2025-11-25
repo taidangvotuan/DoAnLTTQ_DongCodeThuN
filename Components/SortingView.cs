@@ -11,8 +11,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
 {
     //public class ViewConfig
     //{
-    //public class ViewConfig
-    //{
     //    public Rectangle parentBound;
     //    public int maxElement;
     //    public int numberOfElements;
@@ -50,7 +48,6 @@ namespace DoAnLTTQ_DongCodeThuN.Components
     //    {
     //        return index * (COLUMN_WIDTH + SPACING) + m_padding / 2;
     //    }
-    //}
     //}
 
     public class SortingVisualizationView

@@ -48,49 +48,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_main\Form_main_SortingAlgorithm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_main\Form_main_CodeToolBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Components\ColumnComponent.cs" />
     <Compile Include="Components\SortingView.cs" />
-    <Compile Include="CodeThuatToan.cs" />
+    <Compile Include="ThuatToan\CodeThuatToan.cs" />
     <Compile Include="Components\ViewConfigCalculate.cs" />
-    <Compile Include="FormTacGia.cs">
+    <Compile Include="CacFormChucNang\FormTacGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTacGia.Designer.cs">
+    <Compile Include="CacFormChucNang\FormTacGia.Designer.cs">
       <DependentUpon>FormTacGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_main.cs">
+    <Compile Include="Form_main\Form_main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_main.Designer.cs">
+    <Compile Include="Form_main\Form_main.Designer.cs">
       <DependentUpon>Form_main.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNhapMang.cs">
+    <Compile Include="CacFormChucNang\FormNhapMang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNhapMang.Designer.cs">
+    <Compile Include="CacFormChucNang\FormNhapMang.Designer.cs">
       <DependentUpon>FormNhapMang.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHuongDan.cs">
+    <Compile Include="CacFormChucNang\FormHuongDan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHuongDan.Designer.cs">
+    <Compile Include="CacFormChucNang\FormHuongDan.Designer.cs">
       <DependentUpon>FormHuongDan.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormController.cs" />
+    <Compile Include="ThuatToan\FormController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuatToan\AlgorithmExecutor.cs" />
-    <Compile Include="YTuongThuatToan.cs" />
-    <EmbeddedResource Include="FormTacGia.resx">
+    <Compile Include="ThuatToan\YTuongThuatToan.cs" />
+    <EmbeddedResource Include="CacFormChucNang\FormTacGia.resx">
       <DependentUpon>FormTacGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_main.resx">
+    <EmbeddedResource Include="Form_main\Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNhapMang.resx">
+    <EmbeddedResource Include="CacFormChucNang\FormNhapMang.resx">
       <DependentUpon>FormNhapMang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHuongDan.resx">
+    <EmbeddedResource Include="CacFormChucNang\FormHuongDan.resx">
       <DependentUpon>FormHuongDan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -119,5 +125,6 @@
   <ItemGroup>
     <Content Include="Resources\AnhUIT.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

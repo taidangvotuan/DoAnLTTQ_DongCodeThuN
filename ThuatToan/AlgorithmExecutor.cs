@@ -128,7 +128,6 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         }
         #endregion
 
-        // Con nhung thuat toan con lai thi co gang viet thuat toan mo phong sap xep
         #region INSERTION SORT
         public async static void InsertionSort(SortingVisualizationView view)
         {
