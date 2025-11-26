@@ -137,6 +137,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (iLonNhat != i)
             {
                 Binh_v_HoanViTheoViTri(arr, i, iLonNhat);
+                //fff
                 if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, n, iLonNhat);
             }
