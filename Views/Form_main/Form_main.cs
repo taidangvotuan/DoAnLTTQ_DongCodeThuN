@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -30,12 +31,22 @@ namespace DoAnLTTQ_DongCodeThuN
         int i;                                  // Biến này dùng nhiều (biến chỉ số)
         bool is_run = false;                    // Cờ kiểm tra thuật toán còn chạy không
         FormController controller;              // Tạo controller để chạy thuật toán
+        int Binh_i_ViTriSwap1 = -1;          // Vị trí cột thứ 1 đang hoán vị (Bình)
+        int Binh_i_ViTriSwap2 = -1;          // Vị trí cột thứ 2 đang hoán vị (Bình)
+        bool Binh_b_DangAnimation = false;   // Cờ cho biết đang chạy animation hoán vị (Bình)
+        int Binh_i_AnimationStep = 0;        // Bước hiện tại của animation (Bình)
+        int Binh_i_AnimationStepMax = 1;     // Số bước tối đa của animation (Bình)
         #endregion
 
         public Form_main()
         {
             InitializeComponent();
             controller = new FormController(this);
+
+            // Bật double-buffer cho panel vẽ cột
+            typeof(Panel).InvokeMember(
+                "DoubleBuffered",
+                BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, SortingPanelView, new object[] { true });
 
             // Vô hiệu hóa các lable, button, checkbox, Radiobutton
             NutChinhTocDoThuatToan.Enabled = false;

@@ -1,14 +1,58 @@
 ﻿using System;
+using System.Threading;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form_main
     {
-        public void Tai_v_HoanVi(ref int a, ref int b)
+        /*public void Tai_v_HoanVi(ref int a, ref int b)
         {
             int temp = a;
             a = b;
             b = temp;
+        }*/
+        // Hàm hoán vị có hiệu ứng mô phỏng cột đang hoán vị (Bình)
+        public void Binh_v_HoanViTheoViTri(int[] arr, int i, int j)
+        {
+            if (!is_run) return;
+
+            // Ghi nhận 2 vị trí cần hoán đổi
+            Binh_i_ViTriSwap1 = i;
+            Binh_i_ViTriSwap2 = j;
+
+            // Setup animation
+            Binh_i_AnimationStep = 0;
+            Binh_i_AnimationStepMax = 15;   // càng lớn animation càng mượt
+            Binh_b_DangAnimation = true;
+
+            // Chạy animation
+            for (int step = 0; step <= Binh_i_AnimationStepMax; step++)
+            {
+                if (!is_run) return;
+
+                Binh_i_AnimationStep = step;
+
+                SortingPanelView.Invoke(new Action(() =>
+                {
+                    SortingPanelView.Refresh();
+                }));
+
+                Thread.Sleep(10 * (11 - toc_Do)); // tốc độ animation phụ thuộc TrackBar
+            }
+
+            // Kết thúc animation
+            Binh_b_DangAnimation = false;
+
+            // --- Thực hiện hoán vị giá trị trong mảng ---
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+            // Vẽ lại sau swap
+            SortingPanelView.Invoke(new Action(() =>
+            {
+                SortingPanelView.Refresh();
+            }));
         }
 
         #region Heap Sort
@@ -26,7 +70,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (iLonNhat != i)
             {
-                Tai_v_HoanVi(ref arr[i], ref arr[iLonNhat]);
+                Binh_v_HoanViTheoViTri(arr, i, iLonNhat);
+                if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, n, iLonNhat);
             }
         }
@@ -45,7 +90,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (iNhoNhat != i)
             {
-                Tai_v_HoanVi(ref arr[i], ref arr[iNhoNhat]);
+                Binh_v_HoanViTheoViTri(arr, i, iNhoNhat);
+                if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, n, iNhoNhat);
             }
         }
@@ -58,7 +104,10 @@ namespace DoAnLTTQ_DongCodeThuN
 
             for (int i = n - 1; i >= 0; i--)
             {
-                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                if (!is_run) return;
+                Binh_v_HoanViTheoViTri(arr, 0, i);
+
+                if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, i, 0);
             }
         }
@@ -71,7 +120,10 @@ namespace DoAnLTTQ_DongCodeThuN
 
             for (int i = n - 1; i >= 0; i--)
             {
-                Tai_v_HoanVi(ref arr[0], ref arr[i]);
+                if (!is_run) return;
+                Binh_v_HoanViTheoViTri(arr, 0, i);
+
+                if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, i, 0);
             }
         }
@@ -119,12 +171,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 int minIdx = i;
                 for (int j = i + 1; j < n; j++)
                     if (arr[j] < arr[minIdx])
                         minIdx = j;
 
-                Tai_v_HoanVi(ref arr[minIdx], ref arr[i]);
+                if (minIdx != i)
+                    Binh_v_HoanViTheoViTri(arr, minIdx, i);
             }
         }
 
@@ -133,12 +188,15 @@ namespace DoAnLTTQ_DongCodeThuN
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
+                if (!is_run) return;
+
                 int maxIdx = i;
                 for (int j = i + 1; j < n; j++)
                     if (arr[j] > arr[maxIdx])
                         maxIdx = j;
 
-                Tai_v_HoanVi(ref arr[maxIdx], ref arr[i]);
+                if (maxIdx != i)
+                    Binh_v_HoanViTheoViTri(arr, maxIdx, i);
             }
         }
         #endregion
@@ -148,18 +206,32 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
                 for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[j] > arr[j + 1])
-                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                        Binh_v_HoanViTheoViTri(arr, j, j + 1);
+                }                    
+            }
         }
 
         public void Thinh_v_BubbleSortGiamDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
                 for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[j] < arr[j + 1])
-                        Tai_v_HoanVi(ref arr[j], ref arr[j + 1]);
+                    Binh_v_HoanViTheoViTri(arr, j, j + 1);
+                }
+            }
         }
         #endregion
 
@@ -232,40 +304,57 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
                 for (int j = i + 1; j < n; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[i] > arr[j])
-                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    Binh_v_HoanViTheoViTri(arr, i, j);
+                }
+            }
         }
 
         public void Tai_v_InterchangeSortGiamDan(int[] arr)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
+            {
+                if (!is_run) return;
                 for (int j = i + 1; j < n; j++)
+                {
+                    if (!is_run) return;
+
                     if (arr[i] < arr[j])
-                        Tai_v_HoanVi(ref arr[i], ref arr[j]);
+                    Binh_v_HoanViTheoViTri(arr, i, j);
+                }
+            }
         }
         #endregion
 
         #region Quick Sort
         public void Thinh_v_QuickSortTangDan(int[] arr, int left, int right)
         {
+            if (!is_run) return;
+
             int i = left;
             int j = right;
             int pivot = arr[(left + right) / 2];
 
-            while (i <= j)
+            while (i <= j && is_run)
             {
-                while (arr[i] < pivot) i++;
-                while (arr[j] > pivot) j--;
-                if (i <= j)
-                {
-                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
-                    i++; j--;
-                }
+                while (i <= right && arr[i] < pivot) i++;
+                while (j >= left && arr[j] > pivot) j--;
+                if (i != j)
+                    Binh_v_HoanViTheoViTri(arr, i, j);
+                i++; j--;
             }
 
+            if (!is_run) return;
             if (left < j) Thinh_v_QuickSortTangDan(arr, left, j);
+
+            if (!is_run) return;
             if (i < right) Thinh_v_QuickSortTangDan(arr, i, right);
         }
 
@@ -275,18 +364,19 @@ namespace DoAnLTTQ_DongCodeThuN
             int j = right;
             int pivot = arr[(left + right) / 2];
 
-            while (i <= j)
+            while (i <= j && is_run)
             {
-                while (arr[i] > pivot) i++;
-                while (arr[j] < pivot) j--;
-                if (i <= j)
-                {
-                    Tai_v_HoanVi(ref arr[i], ref arr[j]);
-                    i++; j--;
-                }
+                while (i <= right && arr[i] > pivot) i++;
+                while (j >= left && arr[j] < pivot) j--;
+                if (i != j)
+                    Binh_v_HoanViTheoViTri(arr, i, j);
+                i++; j--;
             }
 
+            if (!is_run) return;
             if (left < j) Thinh_v_QuickSortGiamDan(arr, left, j);
+
+            if (!is_run) return;
             if (i < right) Thinh_v_QuickSortGiamDan(arr, i, right);
         }
         #endregion
