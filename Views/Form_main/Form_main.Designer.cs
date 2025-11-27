@@ -494,7 +494,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapNgauNhien.TabIndex = 4;
             this.NutNhapNgauNhien.Text = "Ngẫu nhiên";
             this.NutNhapNgauNhien.UseVisualStyleBackColor = false;
-            this.NutNhapNgauNhien.Click += new System.EventHandler(this.Tai_v_NutNhapNgauNhien_Click);
+            this.NutNhapNgauNhien.Click += new System.EventHandler(this.NhapNgauNhien);
             // 
             // LabelNhapGiaTriMang
             // 
@@ -522,7 +522,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NutNhapBangTay.TabIndex = 5;
             this.NutNhapBangTay.Text = "Bằng tay";
             this.NutNhapBangTay.UseVisualStyleBackColor = false;
-            this.NutNhapBangTay.Click += new System.EventHandler(this.Tai_v_NutNhapBangTay_Click);
+            this.NutNhapBangTay.Click += new System.EventHandler(this.NhapBangTay);
             // 
             // PanelMoPhong
             // 

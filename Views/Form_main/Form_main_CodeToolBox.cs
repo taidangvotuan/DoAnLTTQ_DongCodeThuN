@@ -55,26 +55,72 @@ namespace DoAnLTTQ_DongCodeThuN
             int panelHeight = SortingPanelView.Height;
 
             int barWidth = panelWidth / (n * 2);
+            if (barWidth <= 0) barWidth = 1;
             int maxVal = a.Max();
+            if (maxVal == 0) maxVal = 1;
             int xStart = (panelWidth - n * barWidth * 2) / 2;
 
-            Font font = new Font("Arial", 12, FontStyle.Bold);
-            Brush barBrush = Brushes.Blue;
-            Brush textBrush = Brushes.Black;
-
-            for (int i = 0; i < n; i++)
+            using (Font font = new Font("Arial", 12, FontStyle.Bold))
             {
-                float heightRatio = (float)a[i] / maxVal;
-                int barHeight = (int)(heightRatio * (panelHeight - 100));
+                Brush barBrush = Brushes.Blue;
+                Brush highlightBrush = Brushes.Red;
+                Brush textBrush = Brushes.Black;
 
-                int x = xStart + i * barWidth * 2;
-                int y = panelHeight - barHeight - 50;
+                float t = 0f;
+                if (Binh_b_DangAnimation && Binh_i_AnimationStepMax > 0)
+                {
+                    t = (float)Binh_i_AnimationStep / (float)Binh_i_AnimationStepMax;
+                    if (t < 0f) t = 0f;
+                    if (t > 1f) t = 1f;
+                }
 
-                g.FillRectangle(barBrush, x, y, barWidth, barHeight);
+                for (int i = 0; i < n; i++)
+                {
+                    float heightRatio = (float)a[i] / (float)maxVal;
+                    int barHeight = (int)(heightRatio * (panelHeight - 100));
 
-                string valueStr = a[i].ToString();
-                SizeF textSize = g.MeasureString(valueStr, font);
-                g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
+                    int baseX = xStart + i * barWidth * 2;
+                    int x = baseX;
+
+                    // Nếu đang animation thì nội suy vị trí 2 cột đang hoán vị (Bình)
+                    if (Binh_b_DangAnimation && (i == Binh_i_ViTriSwap1 || i == Binh_i_ViTriSwap2))
+                    {
+                        int indexFrom, indexTo;
+
+                        if (i == Binh_i_ViTriSwap1)
+                        {
+                            indexFrom = Binh_i_ViTriSwap1;
+                            indexTo = Binh_i_ViTriSwap2;
+                        }
+                        else
+                        {
+                            indexFrom = Binh_i_ViTriSwap2;
+                            indexTo = Binh_i_ViTriSwap1;
+                        }
+
+                        int fromX = xStart + indexFrom * barWidth * 2;
+                        int toX = xStart + indexTo * barWidth * 2;
+
+                        x = (int)(fromX + (toX - fromX) * t);
+                    }
+
+                    int y = panelHeight - barHeight - 50;
+
+                    Brush brushToUse = barBrush;
+                    if (i == Binh_i_ViTriSwap1 || i == Binh_i_ViTriSwap2)
+                        brushToUse = highlightBrush;
+
+                    g.FillRectangle(brushToUse, x, y, barWidth, barHeight);
+
+                    string valueStr = a[i].ToString();
+                    SizeF textSize = g.MeasureString(valueStr, font);
+                    g.DrawString(
+                        valueStr,
+                        font,
+                        textBrush,
+                        x + (barWidth - textSize.Width) / 2,
+                        panelHeight - 40);
+                }
             }
         }
         #endregion
@@ -131,18 +177,121 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
+            if (a == null || a.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa khởi tạo mảng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (NutChonThuatToan.SelectedItem == null)
+            {
+                MessageBox.Show("Bạn chưa chọn thuật toán!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ChonTangDan.Checked && !ChonGiamDan.Checked)
+            {
+                MessageBox.Show("Bạn chưa chọn kiểu sắp xếp!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            is_run = true;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            KhoiChay();
+
+            string tenThuatToan = NutChonThuatToan.SelectedItem.ToString();
+
+            if (tenThuatToan == "Bubble Sort")
+            {
+                if (tang) Thinh_v_BubbleSortTangDan(a);
+                else Thinh_v_BubbleSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Heap Sort")
+            {
+                if (tang) Tai_v_HeapSortTangDan(a);
+                else Tai_v_HeapSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Insertion Sort")
+            {
+                if (tang) Binh_v_InsertionSortTangDan(a);
+                else Binh_v_InsertionSortGiamDan(a);
+                VeLaiSortingPanelView();
+            }
+            else if (tenThuatToan == "Interchange Sort")
+            {
+                if (tang) Tai_v_InterchangeSortTangDan(a);
+                else Tai_v_InterchangeSortGiamDan(a);
+            }
+            else if (tenThuatToan == "Merge Sort")
+            {
+                if (tang) Tai_v_MergeSortTangDan(a, 0, a.Length - 1);
+                else Tai_v_MergeSortGiamDan(a, 0, a.Length - 1);
+                VeLaiSortingPanelView();
+            }
+            else if (tenThuatToan == "Quick Sort")
+            {
+                if (tang) Thinh_v_QuickSortTangDan(a, 0, a.Length - 1);
+                else Thinh_v_QuickSortGiamDan(a, 0, a.Length - 1);
+            }
+            else if (tenThuatToan == "Selection Sort")
+            {
+                if (tang) Binh_v_SelectionSortTangDan(a);
+                else Binh_v_SelectionSortGiamDan(a);
+            }
+
+            is_run = false;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            VeLaiSortingPanelView();
+
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
             KiemTraDieuKienChonThuatToan();
-            controller.Create();
-            controller.Start();
         }
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
-            KiemTraDieuKienChonThuatToan();
+            if (!is_run)
+                return;
+
+            kt_tam_dung = !kt_tam_dung;
+            NutTamDungThuatToan.Text = kt_tam_dung ? "Tiếp tục" : "Tạm dừng";
         }
 
         private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
+            if (!is_run)
+                return;
+
+            is_run = false;
+            kt_tam_dung = false;
+            Binh_b_DangAnimation = false;
+            Binh_i_ViTriSwap1 = -1;
+            Binh_i_ViTriSwap2 = -1;
+            NutTamDungThuatToan.Text = "Tạm dừng";
+
+            VeLaiSortingPanelView();
+
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
             KiemTraDieuKienChonThuatToan();
         }
 
@@ -159,7 +308,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
         {
-
+            toc_Do = NutChinhTocDoThuatToan.Value;
+            if (toc_Do < 1) toc_Do = 1;
         }
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)

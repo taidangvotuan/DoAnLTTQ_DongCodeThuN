@@ -67,7 +67,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         #region NHẬP DỮ LIỆU CHO MẢNG
         // Hàm nhập ngẫu nhiên
-        private void Tai_v_NutNhapNgauNhien_Click(object sender, EventArgs e)
+        private void NhapNgauNhien(object sender, EventArgs e)
         {
             // Lấy số phần tử từ NumericUpDown
             so_phan_tu = (int)NumericNhapSoPhanTu.Value;
@@ -94,7 +94,7 @@ namespace DoAnLTTQ_DongCodeThuN
         }
  
         // Nhập dữ liệu bằng tay
-        private void Tai_v_NutNhapBangTay_Click(object sender, EventArgs e)
+        private void NhapBangTay(object sender, EventArgs e)
         {
             so_phan_tu = (int)NumericNhapSoPhanTu.Value;
             if (so_phan_tu < 2 || so_phan_tu > 20)
@@ -206,6 +206,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 NutChinhTocDoThuatToan.Enabled = false;
             }
         }
+
         #endregion
 
         #region CÁC HÀM CHỨC NĂNG ĐỂ TRUY CẬP THUỘC TÍNH/PHƯƠNG THỨC PRIVATE
