@@ -1,16 +1,62 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form_main
     {
+        // Biến đếm số bước
+        int Thinh_dem_buoc = 0;
+
+        // Hàm kiểm tra tạm dừng
+        public void Thinh_v_KiemTraTamDung()
+        {
+            while (kt_tam_dung && is_run)
+            {
+                Application.DoEvents();
+                Thread.Sleep(50);
+            }
+        }
+
+        // Hàm reset và in log ban đầu
+        public void Thinh_v_BatDauLog(int[] arr)
+        {
+            Thinh_dem_buoc = 0;
+            ListBoxCacBuoc.Invoke(new Action(() =>
+            {
+                ListBoxCacBuoc.Items.Clear();
+                string chuoiMang = string.Join("  ", arr);
+                ListBoxCacBuoc.Items.Add($"Dãy chưa sắp : {chuoiMang}");
+                ListBoxCacBuoc.Update();
+            }));
+        }
+
+        // Hàm ghi lại các bước hoán vị
+        public void Thinh_v_GhiBuoc(int[] arr)
+        {
+            Thinh_dem_buoc++;
+            string chuoiMang = string.Join("  ", arr);
+            string noiDung = $"Bước {Thinh_dem_buoc} : {chuoiMang}";
+
+            ListBoxCacBuoc.Invoke(new Action(() =>
+            {
+                ListBoxCacBuoc.Items.Add(noiDung);
+                ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                ListBoxCacBuoc.Update();
+            }));
+
+            Application.DoEvents();
+        }
+
         /*public void Tai_v_HoanVi(ref int a, ref int b)
         {
             int temp = a;
             a = b;
             b = temp;
         }*/
+
         // Hàm hoán vị có hiệu ứng mô phỏng cột đang hoán vị (Bình)
         public void Binh_v_HoanViTheoViTri(int[] arr, int i, int j)
         {
@@ -30,6 +76,8 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 if (!is_run) return;
 
+                Thinh_v_KiemTraTamDung();
+
                 Binh_i_AnimationStep = step;
 
                 SortingPanelView.Invoke(new Action(() =>
@@ -38,6 +86,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 }));
 
                 Thread.Sleep(10 * (11 - toc_Do)); // tốc độ animation phụ thuộc TrackBar
+                Application.DoEvents();
             }
 
             // Kết thúc animation
@@ -53,20 +102,22 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 SortingPanelView.Refresh();
             }));
+
+            Thinh_v_GhiBuoc(arr);
         }
 
         #region Heap Sort
         public void Tai_v_HeapifyTangDan(int[] arr, int n, int i)
         {
+            if (!is_run) return;
+            Thinh_v_KiemTraTamDung();
+
             int iLonNhat = i;
             int iTrai = 2 * i + 1;
             int iPhai = iTrai + 1;
 
-            if (iTrai < n && arr[iTrai] > arr[iLonNhat])
-                iLonNhat = iTrai;
-
-            if (iPhai < n && arr[iPhai] > arr[iLonNhat])
-                iLonNhat = iPhai;
+            if (iTrai < n && arr[iTrai] > arr[iLonNhat]) iLonNhat = iTrai;
+            if (iPhai < n && arr[iPhai] > arr[iLonNhat]) iLonNhat = iPhai;
 
             if (iLonNhat != i)
             {
@@ -78,15 +129,15 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Tai_v_HeapifyGiamDan(int[] arr, int n, int i)
         {
+            if (!is_run) return;
+            Thinh_v_KiemTraTamDung();
+
             int iNhoNhat = i;
             int iTrai = 2 * i + 1;
-            int iPhai = iTrai + 2;
+            int iPhai = iTrai + 1; // ĐÃ SỬA: iTrai + 2 thành iTrai + 1
 
-            if (iTrai < n && arr[iTrai] < arr[iNhoNhat])
-                iNhoNhat = iTrai;
-
-            if (iPhai < n && arr[iPhai] < arr[iNhoNhat])
-                iNhoNhat = iPhai;
+            if (iTrai < n && arr[iTrai] < arr[iNhoNhat]) iNhoNhat = iTrai;
+            if (iPhai < n && arr[iPhai] < arr[iNhoNhat]) iNhoNhat = iPhai;
 
             if (iNhoNhat != i)
             {
@@ -98,15 +149,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Tai_v_HeapSortTangDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
                 Tai_v_HeapifyTangDan(arr, n, i);
+            }
 
             for (int i = n - 1; i >= 0; i--)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
                 Binh_v_HoanViTheoViTri(arr, 0, i);
-
                 if (!is_run) return;
                 Tai_v_HeapifyTangDan(arr, i, 0);
             }
@@ -114,15 +170,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Tai_v_HeapSortGiamDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
                 Tai_v_HeapifyGiamDan(arr, n, i);
+            }
 
             for (int i = n - 1; i >= 0; i--)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
                 Binh_v_HoanViTheoViTri(arr, 0, i);
-
                 if (!is_run) return;
                 Tai_v_HeapifyGiamDan(arr, i, 0);
             }
@@ -132,12 +193,12 @@ namespace DoAnLTTQ_DongCodeThuN
         #region Insertion Sort
         public void Binh_v_InsertionSortTangDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 1; i < n; i++)
             {
                 int key = arr[i];
                 int j = i - 1;
-
                 while (j >= 0 && arr[j] > key)
                 {
                     arr[j + 1] = arr[j];
@@ -149,12 +210,12 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Binh_v_InsertionSortGiamDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 1; i < n; i++)
             {
                 int key = arr[i];
                 int j = i - 1;
-
                 while (j >= 0 && arr[j] < key)
                 {
                     arr[j + 1] = arr[j];
@@ -168,15 +229,20 @@ namespace DoAnLTTQ_DongCodeThuN
         #region Selection Sort
         public void Binh_v_SelectionSortTangDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
 
                 int minIdx = i;
                 for (int j = i + 1; j < n; j++)
-                    if (arr[j] < arr[minIdx])
-                        minIdx = j;
+                {
+                    if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
+                    if (arr[j] < arr[minIdx]) minIdx = j;
+                }
 
                 if (minIdx != i)
                     Binh_v_HoanViTheoViTri(arr, minIdx, i);
@@ -185,15 +251,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Binh_v_SelectionSortGiamDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
 
                 int maxIdx = i;
                 for (int j = i + 1; j < n; j++)
-                    if (arr[j] > arr[maxIdx])
-                        maxIdx = j;
+                {
+                    if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
+                    if (arr[j] > arr[maxIdx]) maxIdx = j;
+                }
 
                 if (maxIdx != i)
                     Binh_v_HoanViTheoViTri(arr, maxIdx, i);
@@ -204,32 +275,40 @@ namespace DoAnLTTQ_DongCodeThuN
         #region Bubble Sort
         public void Thinh_v_BubbleSortTangDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
+
                 for (int j = 0; j < n - i - 1; j++)
                 {
                     if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
 
                     if (arr[j] > arr[j + 1])
                         Binh_v_HoanViTheoViTri(arr, j, j + 1);
-                }                    
+                }
             }
         }
 
         public void Thinh_v_BubbleSortGiamDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
+
                 for (int j = 0; j < n - i - 1; j++)
                 {
                     if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
 
                     if (arr[j] < arr[j + 1])
-                    Binh_v_HoanViTheoViTri(arr, j, j + 1);
+                        Binh_v_HoanViTheoViTri(arr, j, j + 1);
                 }
             }
         }
@@ -240,18 +319,12 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n1 = mid - left + 1;
             int n2 = right - mid;
-
             int[] arrLeft = new int[n1];
             int[] arrRight = new int[n2];
-
             for (int i = 0; i < n1; i++) arrLeft[i] = arr[left + i];
             for (int j = 0; j < n2; j++) arrRight[j] = arr[mid + 1 + j];
-
             int iL = 0, iR = 0, k = left;
-
-            while (iL < n1 && iR < n2)
-                arr[k++] = (arrLeft[iL] <= arrRight[iR]) ? arrLeft[iL++] : arrRight[iR++];
-
+            while (iL < n1 && iR < n2) arr[k++] = (arrLeft[iL] <= arrRight[iR]) ? arrLeft[iL++] : arrRight[iR++];
             while (iL < n1) arr[k++] = arrLeft[iL++];
             while (iR < n2) arr[k++] = arrRight[iR++];
         }
@@ -260,24 +333,19 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             int n1 = mid - left + 1;
             int n2 = right - mid;
-
             int[] arrLeft = new int[n1];
             int[] arrRight = new int[n2];
-
             for (int i = 0; i < n1; i++) arrLeft[i] = arr[left + i];
             for (int j = 0; j < n2; j++) arrRight[j] = arr[mid + 1 + j];
-
             int iL = 0, iR = 0, k = left;
-
-            while (iL < n1 && iR < n2)
-                arr[k++] = (arrLeft[iL] >= arrRight[iR]) ? arrLeft[iL++] : arrRight[iR++];
-
+            while (iL < n1 && iR < n2) arr[k++] = (arrLeft[iL] >= arrRight[iR]) ? arrLeft[iL++] : arrRight[iR++];
             while (iL < n1) arr[k++] = arrLeft[iL++];
             while (iR < n2) arr[k++] = arrRight[iR++];
         }
 
         public void Tai_v_MergeSortTangDan(int[] arr, int left, int right)
         {
+            if (left == 0 && right == arr.Length - 1) Thinh_v_BatDauLog(arr);
             if (left < right)
             {
                 int mid = (left + right) / 2;
@@ -289,6 +357,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Tai_v_MergeSortGiamDan(int[] arr, int left, int right)
         {
+            if (left == 0 && right == arr.Length - 1) Thinh_v_BatDauLog(arr);
             if (left < right)
             {
                 int mid = (left + right) / 2;
@@ -302,32 +371,40 @@ namespace DoAnLTTQ_DongCodeThuN
         #region Interchange Sort
         public void Tai_v_InterchangeSortTangDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
+
                 for (int j = i + 1; j < n; j++)
                 {
                     if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
 
                     if (arr[i] > arr[j])
-                    Binh_v_HoanViTheoViTri(arr, i, j);
+                        Binh_v_HoanViTheoViTri(arr, i, j);
                 }
             }
         }
 
         public void Tai_v_InterchangeSortGiamDan(int[] arr)
         {
+            Thinh_v_BatDauLog(arr);
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 if (!is_run) return;
+                Thinh_v_KiemTraTamDung();
+
                 for (int j = i + 1; j < n; j++)
                 {
                     if (!is_run) return;
+                    Thinh_v_KiemTraTamDung();
 
                     if (arr[i] < arr[j])
-                    Binh_v_HoanViTheoViTri(arr, i, j);
+                        Binh_v_HoanViTheoViTri(arr, i, j);
                 }
             }
         }
@@ -336,7 +413,10 @@ namespace DoAnLTTQ_DongCodeThuN
         #region Quick Sort
         public void Thinh_v_QuickSortTangDan(int[] arr, int left, int right)
         {
+            if (left == 0 && right == arr.Length - 1) Thinh_v_BatDauLog(arr);
+
             if (!is_run) return;
+            Thinh_v_KiemTraTamDung();
 
             int i = left;
             int j = right;
@@ -344,11 +424,15 @@ namespace DoAnLTTQ_DongCodeThuN
 
             while (i <= j && is_run)
             {
+                Thinh_v_KiemTraTamDung();
+
                 while (i <= right && arr[i] < pivot) i++;
                 while (j >= left && arr[j] > pivot) j--;
-                if (i != j)
-                    Binh_v_HoanViTheoViTri(arr, i, j);
-                i++; j--;
+                if (i <= j)
+                {
+                    if (i != j) Binh_v_HoanViTheoViTri(arr, i, j);
+                    i++; j--;
+                }
             }
 
             if (!is_run) return;
@@ -360,17 +444,26 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void Thinh_v_QuickSortGiamDan(int[] arr, int left, int right)
         {
+            if (left == 0 && right == arr.Length - 1) Thinh_v_BatDauLog(arr);
+
+            if (!is_run) return;
+            Thinh_v_KiemTraTamDung();
+
             int i = left;
             int j = right;
             int pivot = arr[(left + right) / 2];
 
             while (i <= j && is_run)
             {
+                Thinh_v_KiemTraTamDung();
+
                 while (i <= right && arr[i] > pivot) i++;
                 while (j >= left && arr[j] < pivot) j--;
-                if (i != j)
-                    Binh_v_HoanViTheoViTri(arr, i, j);
-                i++; j--;
+                if (i <= j)
+                {
+                    if (i != j) Binh_v_HoanViTheoViTri(arr, i, j);
+                    i++; j--;
+                }
             }
 
             if (!is_run) return;
