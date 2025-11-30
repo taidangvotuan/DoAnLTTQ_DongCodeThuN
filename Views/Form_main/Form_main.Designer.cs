@@ -193,6 +193,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
+            this.ListBoxCacBuoc.HorizontalScrollbar = true;
             this.ListBoxCacBuoc.ItemHeight = 18;
             this.ListBoxCacBuoc.Location = new System.Drawing.Point(1, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
