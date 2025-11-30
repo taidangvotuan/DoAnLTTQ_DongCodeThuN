@@ -58,8 +58,12 @@ namespace DoAnLTTQ_DongCodeThuN
                     SortingPanelView.Refresh();
                 }));
 
-                // Tốc độ animation phụ thuộc TrackBar
-                Thread.Sleep(10 * (11 - toc_Do));
+                // Tốc độ animation phụ thuộc TrackBar – luôn đọc speed mới nhất
+                int speed = toc_Do;
+                if (speed < 1) speed = 1;
+                if (speed > 10) speed = 10;
+
+                Thread.Sleep(10 * (11 - speed));
             }
 
             // Kết thúc animation
@@ -342,8 +346,12 @@ namespace DoAnLTTQ_DongCodeThuN
                 SortingPanelView.Refresh();
             }));
 
-            // Chậm lại (Merge vốn nhanh hơn Bubble/Quick)
-            Thread.Sleep(20 * (11 - toc_Do));
+            // Tạm dừng theo tốc độ TrackBar (tương tự các animation khác) – luôn đọc speed mới nhất
+            int speed = toc_Do;
+            if (speed < 1) speed = 1;
+            if (speed > 10) speed = 10;
+
+            Thread.Sleep(20 * (11 - speed));
         }
 
         public void Tai_v_MergeTangDan(int[] arr, int left, int mid, int right)

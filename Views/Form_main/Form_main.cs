@@ -20,7 +20,7 @@ namespace DoAnLTTQ_DongCodeThuN
         public static int so_phan_tu;           // Số phần tử của mảng
         public static Label[] chiSo;            // Chỉ số vị trí của mảng
         public static int[] a;                  // Mảng a
-        int toc_Do = 4;                         // Tốc độ, tối đa 10 cấp
+        volatile int toc_Do = 4;               // Tốc độ, tối đa 10 cấp (dùng volatile để thread khác thấy ngay)
         bool tang = true;                       // Kiểu sắp xếp
         bool da_Tao_Mang = false;
         bool da_Tao_GT = false;
@@ -92,7 +92,7 @@ namespace DoAnLTTQ_DongCodeThuN
             SortingPanelView.Invalidate(); // Sẽ gọi hàm SortingPanelView_Paint
             MoCacNutLuaChonThuatToan();
         }
- 
+
         // Nhập dữ liệu bằng tay
         private void NhapBangTay(object sender, EventArgs e)
         {
