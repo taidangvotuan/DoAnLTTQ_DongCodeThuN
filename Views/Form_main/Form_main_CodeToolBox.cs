@@ -278,6 +278,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (!is_run)
                 return;
 
+            // Dừng toàn bộ thuật toán / animation
             is_run = false;
             kt_tam_dung = false;
             Binh_b_DangAnimation = false;
@@ -285,8 +286,23 @@ namespace DoAnLTTQ_DongCodeThuN
             Binh_i_ViTriSwap2 = -1;
             NutTamDungThuatToan.Text = "Tạm dừng";
 
+            // Sắp xếp nhanh để ra kết quả cuối cùng
+            if (a != null && a.Length > 0)
+            {
+                if (tang)
+                {
+                    Array.Sort(a);
+                }
+                else
+                {
+                    Array.Sort(a);
+                    Array.Reverse(a);
+                }
+            }
+
             VeLaiSortingPanelView();
 
+            // Mở lại các nút lựa chọn
             NutNhapNgauNhien.Enabled = true;
             NutNhapBangTay.Enabled = true;
             NutChonThuatToan.Enabled = true;
