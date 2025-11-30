@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    // de de nhin hon, ong dat bien string roi bo het thuat toan vao
-    // hoac dung File.ReadAllLines de doc file ben ngoai
     class CodeThuatToan
     {
         private void AddCodeToListBox(System.Windows.Forms.ListBox list, string code)

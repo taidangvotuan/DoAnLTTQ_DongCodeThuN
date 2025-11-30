@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -23,9 +16,7 @@ namespace DoAnLTTQ_DongCodeThuN
         volatile int toc_Do = 4;                // Tốc độ, tối đa 10 cấp (dùng volatile để thread khác thấy ngay)
         bool tang = true;                       // Kiểu sắp xếp
         bool da_Tao_Mang = false;
-        bool da_Tao_GT = false;
         bool kt_tam_dung = false;               // Biến kiểm tra tạm dừng
-        bool sap_Xep_Tung_Buoc = true;          // Biến kiểm tra sắp xếp từng bước hay nhanh
         CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
         YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
         int i;                                  // Biến này dùng nhiều (biến chỉ số)
