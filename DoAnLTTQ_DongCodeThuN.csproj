@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\AnhUIT.png" />
+    <None Include="Resources\Screenshot 2025-11-25 1902261.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -69,5 +69,15 @@ namespace DoAnLTTQ_DongCodeThuN.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2025_11_25_190226 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot 2025-11-25 190226", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -285,8 +285,21 @@ namespace DoAnLTTQ_DongCodeThuN
             Binh_i_ViTriSwap2 = -1;
             NutTamDungThuatToan.Text = "Tạm dừng";
 
+            // Sắp xếp nhanh để ra kết quả cuối cùng
+            if (a != null && a.Length > 0)
+            {
+                if (tang)
+                    Array.Sort(a);
+                else
+                {
+                    Array.Sort(a);
+                    Array.Reverse(a);
+                }
+            }
+
             VeLaiSortingPanelView();
 
+            // Mở lại các nút lựa chọn
             NutNhapNgauNhien.Enabled = true;
             NutNhapBangTay.Enabled = true;
             NutChonThuatToan.Enabled = true;
