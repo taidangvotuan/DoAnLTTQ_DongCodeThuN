@@ -406,7 +406,10 @@ namespace DoAnLTTQ_DongCodeThuN
             if (speed < 1) speed = 1;
             if (speed > 10) speed = 10;
 
-            Thread.Sleep(20 * (11 - speed));
+            Thread.Sleep(20 * (11 - speed));    
+
+            // --- BỔ SUNG DÒNG NÀY ĐỂ HIỆN BƯỚC VÀO LISTBOX ---
+            Thinh_v_GhiBuoc(arr);
         }
 
         public void Tai_v_MergeTangDan(int[] arr, int left, int mid, int right)
