@@ -83,9 +83,10 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxYTuong
             // 
-            this.ListBoxYTuong.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxYTuong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxYTuong.FormattingEnabled = true;
-            this.ListBoxYTuong.ItemHeight = 18;
+            this.ListBoxYTuong.IntegralHeight = false;
+            this.ListBoxYTuong.ItemHeight = 28;
             this.ListBoxYTuong.Location = new System.Drawing.Point(2, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
             this.ListBoxYTuong.Size = new System.Drawing.Size(373, 202);
@@ -96,6 +97,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCodeC.FormattingEnabled = true;
+            this.ListBoxCodeC.IntegralHeight = false;
             this.ListBoxCodeC.ItemHeight = 18;
             this.ListBoxCodeC.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCodeC.Name = "ListBoxCodeC";
@@ -191,10 +193,11 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxCacBuoc
             // 
-            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
             this.ListBoxCacBuoc.HorizontalScrollbar = true;
-            this.ListBoxCacBuoc.ItemHeight = 18;
+            this.ListBoxCacBuoc.IntegralHeight = false;
+            this.ListBoxCacBuoc.ItemHeight = 28;
             this.ListBoxCacBuoc.Location = new System.Drawing.Point(1, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
             this.ListBoxCacBuoc.Size = new System.Drawing.Size(358, 202);
