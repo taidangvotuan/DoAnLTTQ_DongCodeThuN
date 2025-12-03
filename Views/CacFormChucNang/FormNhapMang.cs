@@ -276,7 +276,10 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (confirmResult == DialogResult.Yes)
             {
-                // CẬP NHẬT MẢNG VÀO Form_main
+                // Khởi tạo Array trước khi gán
+                Array = validationResult.Values.ToArray();
+
+                // Cập nhật mảng vào Form_main
                 Form_main.a = Array;
                 Form_main.so_phan_tu = Array.Length;
 

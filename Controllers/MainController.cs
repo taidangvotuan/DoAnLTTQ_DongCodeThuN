@@ -113,7 +113,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
                 return;
             }
 
-            if (!view.TangDan && !view.TangDan) // Kiểm tra có chọn kiểu sắp xếp
+            if (!view.TangDan && !view.GiamDan) // Kiểm tra có chọn kiểu sắp xếp
             {
                 view.HienThiThongBao("Bạn chưa chọn kiểu sắp xếp!", "Thông báo",
                     MessageBoxIcon.Warning);

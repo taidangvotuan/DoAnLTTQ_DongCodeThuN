@@ -76,10 +76,9 @@ namespace DoAnLTTQ_DongCodeThuN
         }
 
         public string ThuatToanDaChon => ComboBox_ChonThuatToan.SelectedItem?.ToString();
-
         public int TocDo => TrackBar_ChinhTocDoThuatToan.Value;
-
         public bool TangDan => RadioButton_TangDan.Checked;
+        public bool GiamDan => RadioButton_GiamDan.Checked;
 
         #endregion
 

@@ -21,6 +21,7 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         string ThuatToanDaChon { get; }
         int TocDo { get; }
         bool TangDan { get; }
+        bool GiamDan { get; }
 
         // Methods - Controller gọi để cập nhật UI
         void VeLaiSortingPanel();
