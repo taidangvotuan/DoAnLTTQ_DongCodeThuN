@@ -63,9 +63,9 @@ namespace DoAnLTTQ_DongCodeThuN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AnhUIT {
+        internal static System.Drawing.Bitmap AnhTacGia {
             get {
-                object obj = ResourceManager.GetObject("AnhUIT", resourceCulture);
+                object obj = ResourceManager.GetObject("AnhTacGia", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace DoAnLTTQ_DongCodeThuN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Screenshot_2025_11_25_190226 {
+        internal static System.Drawing.Bitmap AnhUIT {
             get {
-                object obj = ResourceManager.GetObject("Screenshot 2025-11-25 190226", resourceCulture);
+                object obj = ResourceManager.GetObject("AnhUIT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

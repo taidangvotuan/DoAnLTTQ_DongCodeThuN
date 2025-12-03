@@ -76,10 +76,7 @@ namespace DoAnLTTQ_DongCodeThuN
         private void TextBoxNhapMang_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép: số, space, backspace, delete
-            if (!char.IsDigit(e.KeyChar) &&
-                e.KeyChar != ' ' &&
-                e.KeyChar != (char)Keys.Back &&
-                e.KeyChar != (char)Keys.Delete)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
             {
                 e.Handled = true;
                 ShowError("Chỉ được nhập số và dấu cách!");
@@ -286,64 +283,6 @@ namespace DoAnLTTQ_DongCodeThuN
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
-            /*string input = TextBoxNhapMang.Text.Trim();
-
-            if (string.IsNullOrEmpty(input))
-            {
-                MessageBox.Show("Vui lòng nhập dãy số cho mảng!", "Lỗi nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Tách chuỗi thành mảng số theo dấu cách hoặc tab
-            string[] parts = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-            int soNhap = parts.Length;
-            if (soNhap != SoPhanTu)
-            {
-                MessageBox.Show($"Bạn phải nhập đúng {SoPhanTu} phần tử!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            /*int nMain = Form_main.SoPhanTu;  // số phần tử đã chọn ở Form_main
-            int soNhap = parts.Length;
-
-            if (soNhap > nMain)
-            {
-                MessageBox.Show($"Bạn đã nhập quá số phần tử (Tối đa {nMain} phần tử)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }*/
-
-            // Gán giá trị đã nhập
-            /*for (int i = 0; i < soNhap; i++)
-            {
-                if (!int.TryParse(parts[i], out A[i]) || A[i] < 0 || A[i] > 99)
-                {
-                    MessageBox.Show($"Giá trị thứ {i + 1} không hợp lệ (phải nằm trong 0–99)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-
-            // Gán phần còn lại bằng 0 nếu chưa nhập đủ
-            //for (int i = soNhap; i < nMain; i++)
-            //    A[i] = 0;
-
-            //n = nMain;
-
-            // Hiển thị mảng ra màn hình (cho người dùng xem lại)
-            string ketQua = string.Join(" ", A.Take(n));
-            MessageBox.Show($"Mảng sau khi nhập là:\n{ketQua}", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // --- Gán mảng này sang Form_main để hiển thị ---
-            Form_main.a = new int[nMain];
-            for (int i = 0; i < nMain; i++)
-                Form_main.a[i] = A[i];
-
-            Form mainForm = Application.OpenForms["Form_main"];
-            if (mainForm is Form_main fMain)
-            {
-                fMain.VeLaiSortingPanelView();
-                fMain.MoCacNutLuaChonThuatToan();
-            }
-            this.Close();*/
         }
         #endregion
 

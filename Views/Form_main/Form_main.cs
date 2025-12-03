@@ -34,13 +34,13 @@ namespace DoAnLTTQ_DongCodeThuN
                 null, SortingPanelView, new object[] { true });
 
             // Vô hiệu hóa controls ban đầu
-            NutChinhTocDoThuatToan.Enabled = false;
-            NutChayThuatToan.Enabled = false;
-            NutTamDungThuatToan.Enabled = false;
-            NutKetThucThuatToan.Enabled = false;
-            NutChonThuatToan.Enabled = false;
-            ChonGiamDan.Enabled = false;
-            ChonTangDan.Enabled = false;
+            TrackBar_ChinhTocDoThuatToan.Enabled = false;
+            ButtonChayThuatToan.Enabled = false;
+            ButtonTamDungThuatToan.Enabled = false;
+            ButtonKetThucThuatToan.Enabled = false;
+            ComboBox_ChonThuatToan.Enabled = false;
+            RadioButton_GiamDan.Enabled = false;
+            RadioButton_TangDan.Enabled = false;
 
             SortingPanelView.Paint += SortingPanelView_Paint;
         }
@@ -75,11 +75,11 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        public string ThuatToanDaChon => NutChonThuatToan.SelectedItem?.ToString();
+        public string ThuatToanDaChon => ComboBox_ChonThuatToan.SelectedItem?.ToString();
 
-        public int TocDo => NutChinhTocDoThuatToan.Value;
+        public int TocDo => TrackBar_ChinhTocDoThuatToan.Value;
 
-        public bool TangDan => ChonTangDan.Checked;
+        public bool TangDan => RadioButton_TangDan.Checked;
 
         #endregion
 
@@ -157,34 +157,34 @@ namespace DoAnLTTQ_DongCodeThuN
         public void MoCacNutLuaChonThuatToan()
         {
             GroupBoxChonThuatToan.Enabled = true;
-            NutChonThuatToan.Enabled = true;
+            ComboBox_ChonThuatToan.Enabled = true;
         }
 
         public void MoCacNutDieuKhien()
         {
-            NutChayThuatToan.Enabled = true;
-            NutTamDungThuatToan.Enabled = true;
-            NutKetThucThuatToan.Enabled = true;
-            NutChinhTocDoThuatToan.Enabled = true;
+            ButtonChayThuatToan.Enabled = true;
+            ButtonTamDungThuatToan.Enabled = true;
+            ButtonKetThucThuatToan.Enabled = true;
+            TrackBar_ChinhTocDoThuatToan.Enabled = true;
         }
 
         public void KhoiChay()
         {
-            NutNhapNgauNhien.Enabled = false;
-            NutNhapBangTay.Enabled = false;
-            NutChonThuatToan.Enabled = false;
-            ChonTangDan.Enabled = false;
-            ChonGiamDan.Enabled = false;
-            NutChayThuatToan.Enabled = false;
+            ButtonNhapNgauNhien.Enabled = false;
+            ButtonNhapBangTay.Enabled = false;
+            ComboBox_ChonThuatToan.Enabled = false;
+            RadioButton_TangDan.Enabled = false;
+            RadioButton_GiamDan.Enabled = false;
+            ButtonChayThuatToan.Enabled = false;
         }
 
         public void KhoaChay()
         {
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChonThuatToan.Enabled = true;
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
+            ButtonNhapNgauNhien.Enabled = true;
+            ButtonNhapBangTay.Enabled = true;
+            ComboBox_ChonThuatToan.Enabled = true;
+            RadioButton_TangDan.Enabled = true;
+            RadioButton_GiamDan.Enabled = true;
             KiemTraDieuKienChonThuatToan();
         }
 
@@ -259,17 +259,17 @@ namespace DoAnLTTQ_DongCodeThuN
         #region PRIVATE HELPER METHODS
         private void KiemTraDieuKienChonThuatToan()
         {
-            bool daChonKieuSapXep = ChonTangDan.Checked || ChonGiamDan.Checked;
-            bool daChonThuatToan = NutChonThuatToan.SelectedIndex >= 0;
+            bool daChonKieuSapXep = RadioButton_TangDan.Checked || RadioButton_GiamDan.Checked;
+            bool daChonThuatToan = ComboBox_ChonThuatToan.SelectedIndex >= 0;
 
             if (daChonKieuSapXep && daChonThuatToan)
                 MoCacNutDieuKhien();
             else
             {
-                NutChayThuatToan.Enabled = false;
-                NutTamDungThuatToan.Enabled = false;
-                NutKetThucThuatToan.Enabled = false;
-                NutChinhTocDoThuatToan.Enabled = false;
+                ButtonChayThuatToan.Enabled = false;
+                ButtonTamDungThuatToan.Enabled = false;
+                ButtonKetThucThuatToan.Enabled = false;
+                TrackBar_ChinhTocDoThuatToan.Enabled = false;
             }
         }
         #endregion

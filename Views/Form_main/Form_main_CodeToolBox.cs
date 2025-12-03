@@ -170,146 +170,25 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
-            /*if (a == null || a.Length == 0)
-            {
-                MessageBox.Show("Bạn chưa khởi tạo mảng!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (NutChonThuatToan.SelectedItem == null)
-            {
-                MessageBox.Show("Bạn chưa chọn thuật toán!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!ChonTangDan.Checked && !ChonGiamDan.Checked)
-            {
-                MessageBox.Show("Bạn chưa chọn kiểu sắp xếp!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            is_run = true;
-            kt_tam_dung = false;
-            Binh_b_DangAnimation = false;
-            Binh_i_ViTriSwap1 = -1;
-            Binh_i_ViTriSwap2 = -1;
-            NutTamDungThuatToan.Text = "Tạm dừng";
-
-            KhoiChay();
-
-            string tenThuatToan = NutChonThuatToan.SelectedItem.ToString();
-
-            if (tenThuatToan == "Bubble Sort")
-            {
-                if (tang) Thinh_v_BubbleSortTangDan(a);
-                else Thinh_v_BubbleSortGiamDan(a);
-            }
-            else if (tenThuatToan == "Heap Sort")
-            {
-                if (tang) Tai_v_HeapSortTangDan(a);
-                else Tai_v_HeapSortGiamDan(a);
-            }
-            else if (tenThuatToan == "Insertion Sort")
-            {
-                if (tang) Binh_v_InsertionSortTangDan(a);
-                else Binh_v_InsertionSortGiamDan(a);
-                VeLaiSortingPanelView();
-            }
-            else if (tenThuatToan == "Interchange Sort")
-            {
-                if (tang) Tai_v_InterchangeSortTangDan(a);
-                else Tai_v_InterchangeSortGiamDan(a);
-            }
-            else if (tenThuatToan == "Merge Sort")
-            {
-                if (tang) Tai_v_MergeSortTangDan(a, 0, a.Length - 1);
-                else Tai_v_MergeSortGiamDan(a, 0, a.Length - 1);
-                VeLaiSortingPanelView();
-            }
-            else if (tenThuatToan == "Quick Sort")
-            {
-                if (tang) Thinh_v_QuickSortTangDan(a, 0, a.Length - 1);
-                else Thinh_v_QuickSortGiamDan(a, 0, a.Length - 1);
-            }
-            else if (tenThuatToan == "Selection Sort")
-            {
-                if (tang) Binh_v_SelectionSortTangDan(a);
-                else Binh_v_SelectionSortGiamDan(a);
-            }
-
-            is_run = false;
-            kt_tam_dung = false;
-            Binh_b_DangAnimation = false;
-            Binh_i_ViTriSwap1 = -1;
-            Binh_i_ViTriSwap2 = -1;
-            NutTamDungThuatToan.Text = "Tạm dừng";
-
-            VeLaiSortingPanelView();
-
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChonThuatToan.Enabled = true;
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
-            KiemTraDieuKienChonThuatToan();*/
             ChayThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
-            /*if (!is_run)
-                return;
-
-            kt_tam_dung = !kt_tam_dung;
-            NutTamDungThuatToan.Text = kt_tam_dung ? "Tiếp tục" : "Tạm dừng";*/
             TamDungThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
-            /*if (!is_run)
-                return;
-
-            is_run = false;
-            kt_tam_dung = false;
-            Binh_b_DangAnimation = false;
-            Binh_i_ViTriSwap1 = -1;
-            Binh_i_ViTriSwap2 = -1;
-            NutTamDungThuatToan.Text = "Tạm dừng";
-
-            // Sắp xếp nhanh để ra kết quả cuối cùng
-            if (a != null && a.Length > 0)
-            {
-                if (tang)
-                    Array.Sort(a);
-                else
-                {
-                    Array.Sort(a);
-                    Array.Reverse(a);
-                }
-            }
-
-            VeLaiSortingPanelView();
-
-            // Mở lại các nút lựa chọn
-            NutNhapNgauNhien.Enabled = true;
-            NutNhapBangTay.Enabled = true;
-            NutChonThuatToan.Enabled = true;
-            ChonTangDan.Enabled = true;
-            ChonGiamDan.Enabled = true;
-            KiemTraDieuKienChonThuatToan();*/
             KetThucThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (NutChonThuatToan.SelectedIndex >= 0)
+            if (ComboBox_ChonThuatToan.SelectedIndex >= 0)
             {
-                ChonTangDan.Enabled = true;
-                ChonGiamDan.Enabled = true;
+                RadioButton_TangDan.Enabled = true;
+                RadioButton_GiamDan.Enabled = true;
             }
             ThuatToanChanged?.Invoke(this, e);
             KiemTraDieuKienChonThuatToan();
@@ -317,21 +196,12 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
         {
-            /*toc_Do = NutChinhTocDoThuatToan.Value;
-            if (toc_Do < 1) toc_Do = 1;*/
             TocDoChanged?.Invoke(this, e);
         }
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
-            /*KiemTraDieuKienChonThuatToan();
-
-            if (ChonTangDan.Checked)
-            {
-                tang = true;
-                ThayDoiCodeKhiChonTangHoacGiam();
-            }*/
-            if (ChonTangDan.Checked)
+            if (RadioButton_TangDan.Checked)
             {
                 KieuSapXepChanged?.Invoke(this, e);
                 KiemTraDieuKienChonThuatToan();
@@ -340,13 +210,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
         {
-            /*KiemTraDieuKienChonThuatToan();
-            if (ChonGiamDan.Checked)
-            {
-                tang = false;
-                ThayDoiCodeKhiChonTangHoacGiam();
-            }*/
-            if (ChonGiamDan.Checked)
+            if (RadioButton_GiamDan.Checked)
             {
                 KieuSapXepChanged?.Invoke(this, e);
                 KiemTraDieuKienChonThuatToan();

@@ -47,22 +47,22 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChonThuatToan = new System.Windows.Forms.GroupBox();
             this.LabelChonThuatToan = new System.Windows.Forms.Label();
             this.LabelLoaiSapXep = new System.Windows.Forms.Label();
-            this.ChonTangDan = new System.Windows.Forms.RadioButton();
-            this.NutChonThuatToan = new System.Windows.Forms.ComboBox();
-            this.ChonGiamDan = new System.Windows.Forms.RadioButton();
+            this.RadioButton_TangDan = new System.Windows.Forms.RadioButton();
+            this.ComboBox_ChonThuatToan = new System.Windows.Forms.ComboBox();
+            this.RadioButton_GiamDan = new System.Windows.Forms.RadioButton();
             this.GroupBoxDieuKhien = new System.Windows.Forms.GroupBox();
-            this.NutKetThucThuatToan = new System.Windows.Forms.Button();
-            this.NutTamDungThuatToan = new System.Windows.Forms.Button();
-            this.NutChayThuatToan = new System.Windows.Forms.Button();
-            this.NutChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
+            this.ButtonKetThucThuatToan = new System.Windows.Forms.Button();
+            this.ButtonTamDungThuatToan = new System.Windows.Forms.Button();
+            this.ButtonChayThuatToan = new System.Windows.Forms.Button();
+            this.TrackBar_ChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
             this.LabelKhoangGiaTriPhanTu = new System.Windows.Forms.Label();
             this.LabelSoPhanTu = new System.Windows.Forms.Label();
             this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
-            this.NutNhapNgauNhien = new System.Windows.Forms.Button();
+            this.ButtonNhapNgauNhien = new System.Windows.Forms.Button();
             this.LabelNhapGiaTriMang = new System.Windows.Forms.Label();
-            this.NutNhapBangTay = new System.Windows.Forms.Button();
+            this.ButtonNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
             this.SortingPanelView = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -75,7 +75,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxYTuong.SuspendLayout();
             this.GroupBoxChonThuatToan.SuspendLayout();
             this.GroupBoxDieuKhien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_ChinhTocDoThuatToan)).BeginInit();
             this.GroupBoxKhoiTaoMang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
             this.PanelMoPhong.SuspendLayout();
@@ -254,9 +254,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChonThuatToan.BackColor = System.Drawing.Color.CornflowerBlue;
             this.GroupBoxChonThuatToan.Controls.Add(this.LabelChonThuatToan);
             this.GroupBoxChonThuatToan.Controls.Add(this.LabelLoaiSapXep);
-            this.GroupBoxChonThuatToan.Controls.Add(this.ChonTangDan);
-            this.GroupBoxChonThuatToan.Controls.Add(this.NutChonThuatToan);
-            this.GroupBoxChonThuatToan.Controls.Add(this.ChonGiamDan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.RadioButton_TangDan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.ComboBox_ChonThuatToan);
+            this.GroupBoxChonThuatToan.Controls.Add(this.RadioButton_GiamDan);
             this.GroupBoxChonThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChonThuatToan.ForeColor = System.Drawing.Color.Yellow;
             this.GroupBoxChonThuatToan.Location = new System.Drawing.Point(546, 3);
@@ -293,31 +293,30 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelLoaiSapXep.Text = "Loại sắp xếp:";
             this.LabelLoaiSapXep.Click += new System.EventHandler(this.Tai_v_LabelLoaiSapXep_Click);
             // 
-            // ChonTangDan
+            // RadioButton_TangDan
             // 
-            this.ChonTangDan.AutoSize = true;
-            this.ChonTangDan.BackColor = System.Drawing.Color.Transparent;
-            this.ChonTangDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ChonTangDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ChonTangDan.Location = new System.Drawing.Point(135, 64);
-            this.ChonTangDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ChonTangDan.Name = "ChonTangDan";
-            this.ChonTangDan.Size = new System.Drawing.Size(103, 23);
-            this.ChonTangDan.TabIndex = 1;
-            this.ChonTangDan.TabStop = true;
-            this.ChonTangDan.Text = "Tăng dần";
-            this.ChonTangDan.UseVisualStyleBackColor = false;
-            this.ChonTangDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonTangDan_CheckedChanged);
+            this.RadioButton_TangDan.AutoSize = true;
+            this.RadioButton_TangDan.BackColor = System.Drawing.Color.Transparent;
+            this.RadioButton_TangDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.RadioButton_TangDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RadioButton_TangDan.Location = new System.Drawing.Point(135, 64);
+            this.RadioButton_TangDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RadioButton_TangDan.Name = "RadioButton_TangDan";
+            this.RadioButton_TangDan.Size = new System.Drawing.Size(103, 23);
+            this.RadioButton_TangDan.TabIndex = 1;
+            this.RadioButton_TangDan.TabStop = true;
+            this.RadioButton_TangDan.Text = "Tăng dần";
+            this.RadioButton_TangDan.UseVisualStyleBackColor = false;
+            this.RadioButton_TangDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonTangDan_CheckedChanged);
             // 
-            // NutChonThuatToan
+            // ComboBox_ChonThuatToan
             // 
-            this.NutChonThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutChonThuatToan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NutChonThuatToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NutChonThuatToan.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutChonThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutChonThuatToan.FormattingEnabled = true;
-            this.NutChonThuatToan.Items.AddRange(new object[] {
+            this.ComboBox_ChonThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ComboBox_ChonThuatToan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_ChonThuatToan.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ComboBox_ChonThuatToan.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_ChonThuatToan.FormattingEnabled = true;
+            this.ComboBox_ChonThuatToan.Items.AddRange(new object[] {
             "Bubble Sort",
             "Heap Sort",
             "Insertion Sort",
@@ -325,35 +324,35 @@ namespace DoAnLTTQ_DongCodeThuN
             "Merge Sort",
             "Quick Sort",
             "Selection Sort"});
-            this.NutChonThuatToan.Location = new System.Drawing.Point(135, 38);
-            this.NutChonThuatToan.Name = "NutChonThuatToan";
-            this.NutChonThuatToan.Size = new System.Drawing.Size(188, 29);
-            this.NutChonThuatToan.TabIndex = 12;
-            this.NutChonThuatToan.SelectedIndexChanged += new System.EventHandler(this.Tai_v_NutChonThuatToan_SelectedIndexChanged);
+            this.ComboBox_ChonThuatToan.Location = new System.Drawing.Point(135, 38);
+            this.ComboBox_ChonThuatToan.Name = "ComboBox_ChonThuatToan";
+            this.ComboBox_ChonThuatToan.Size = new System.Drawing.Size(188, 29);
+            this.ComboBox_ChonThuatToan.TabIndex = 12;
+            this.ComboBox_ChonThuatToan.SelectedIndexChanged += new System.EventHandler(this.Tai_v_NutChonThuatToan_SelectedIndexChanged);
             // 
-            // ChonGiamDan
+            // RadioButton_GiamDan
             // 
-            this.ChonGiamDan.AutoSize = true;
-            this.ChonGiamDan.BackColor = System.Drawing.Color.Transparent;
-            this.ChonGiamDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ChonGiamDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ChonGiamDan.Location = new System.Drawing.Point(231, 64);
-            this.ChonGiamDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ChonGiamDan.Name = "ChonGiamDan";
-            this.ChonGiamDan.Size = new System.Drawing.Size(104, 23);
-            this.ChonGiamDan.TabIndex = 2;
-            this.ChonGiamDan.TabStop = true;
-            this.ChonGiamDan.Text = "Giảm dần";
-            this.ChonGiamDan.UseVisualStyleBackColor = false;
-            this.ChonGiamDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonGiamDan_CheckedChanged);
+            this.RadioButton_GiamDan.AutoSize = true;
+            this.RadioButton_GiamDan.BackColor = System.Drawing.Color.Transparent;
+            this.RadioButton_GiamDan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.RadioButton_GiamDan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RadioButton_GiamDan.Location = new System.Drawing.Point(231, 64);
+            this.RadioButton_GiamDan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RadioButton_GiamDan.Name = "RadioButton_GiamDan";
+            this.RadioButton_GiamDan.Size = new System.Drawing.Size(104, 23);
+            this.RadioButton_GiamDan.TabIndex = 2;
+            this.RadioButton_GiamDan.TabStop = true;
+            this.RadioButton_GiamDan.Text = "Giảm dần";
+            this.RadioButton_GiamDan.UseVisualStyleBackColor = false;
+            this.RadioButton_GiamDan.CheckedChanged += new System.EventHandler(this.Tai_v_ChonGiamDan_CheckedChanged);
             // 
             // GroupBoxDieuKhien
             // 
             this.GroupBoxDieuKhien.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.GroupBoxDieuKhien.Controls.Add(this.NutKetThucThuatToan);
-            this.GroupBoxDieuKhien.Controls.Add(this.NutTamDungThuatToan);
-            this.GroupBoxDieuKhien.Controls.Add(this.NutChayThuatToan);
-            this.GroupBoxDieuKhien.Controls.Add(this.NutChinhTocDoThuatToan);
+            this.GroupBoxDieuKhien.Controls.Add(this.ButtonKetThucThuatToan);
+            this.GroupBoxDieuKhien.Controls.Add(this.ButtonTamDungThuatToan);
+            this.GroupBoxDieuKhien.Controls.Add(this.ButtonChayThuatToan);
+            this.GroupBoxDieuKhien.Controls.Add(this.TrackBar_ChinhTocDoThuatToan);
             this.GroupBoxDieuKhien.Controls.Add(this.LabelTocDo);
             this.GroupBoxDieuKhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxDieuKhien.ForeColor = System.Drawing.Color.Yellow;
@@ -365,59 +364,59 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxDieuKhien.Text = "Thanh điều khiển";
             this.GroupBoxDieuKhien.Enter += new System.EventHandler(this.Tai_v_GroupBoxDieuKhien_Enter);
             // 
-            // NutKetThucThuatToan
+            // ButtonKetThucThuatToan
             // 
-            this.NutKetThucThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutKetThucThuatToan.FlatAppearance.BorderSize = 0;
-            this.NutKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutKetThucThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutKetThucThuatToan.Location = new System.Drawing.Point(367, 68);
-            this.NutKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutKetThucThuatToan.Name = "NutKetThucThuatToan";
-            this.NutKetThucThuatToan.Size = new System.Drawing.Size(165, 32);
-            this.NutKetThucThuatToan.TabIndex = 19;
-            this.NutKetThucThuatToan.Text = "Kết thúc";
-            this.NutKetThucThuatToan.UseVisualStyleBackColor = false;
-            this.NutKetThucThuatToan.Click += new System.EventHandler(this.Tai_v_NutKetThucThuatToan_Click);
+            this.ButtonKetThucThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonKetThucThuatToan.FlatAppearance.BorderSize = 0;
+            this.ButtonKetThucThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonKetThucThuatToan.ForeColor = System.Drawing.Color.Black;
+            this.ButtonKetThucThuatToan.Location = new System.Drawing.Point(367, 68);
+            this.ButtonKetThucThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonKetThucThuatToan.Name = "ButtonKetThucThuatToan";
+            this.ButtonKetThucThuatToan.Size = new System.Drawing.Size(165, 32);
+            this.ButtonKetThucThuatToan.TabIndex = 19;
+            this.ButtonKetThucThuatToan.Text = "Kết thúc";
+            this.ButtonKetThucThuatToan.UseVisualStyleBackColor = false;
+            this.ButtonKetThucThuatToan.Click += new System.EventHandler(this.Tai_v_NutKetThucThuatToan_Click);
             // 
-            // NutTamDungThuatToan
+            // ButtonTamDungThuatToan
             // 
-            this.NutTamDungThuatToan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.NutTamDungThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutTamDungThuatToan.FlatAppearance.BorderSize = 0;
-            this.NutTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutTamDungThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutTamDungThuatToan.Location = new System.Drawing.Point(192, 68);
-            this.NutTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutTamDungThuatToan.Name = "NutTamDungThuatToan";
-            this.NutTamDungThuatToan.Size = new System.Drawing.Size(165, 32);
-            this.NutTamDungThuatToan.TabIndex = 18;
-            this.NutTamDungThuatToan.Text = "Tạm dừng";
-            this.NutTamDungThuatToan.UseVisualStyleBackColor = false;
-            this.NutTamDungThuatToan.Click += new System.EventHandler(this.Tai_v_NutTamDungThuatToan_Click);
+            this.ButtonTamDungThuatToan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonTamDungThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonTamDungThuatToan.FlatAppearance.BorderSize = 0;
+            this.ButtonTamDungThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonTamDungThuatToan.ForeColor = System.Drawing.Color.Black;
+            this.ButtonTamDungThuatToan.Location = new System.Drawing.Point(192, 68);
+            this.ButtonTamDungThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonTamDungThuatToan.Name = "ButtonTamDungThuatToan";
+            this.ButtonTamDungThuatToan.Size = new System.Drawing.Size(165, 32);
+            this.ButtonTamDungThuatToan.TabIndex = 18;
+            this.ButtonTamDungThuatToan.Text = "Tạm dừng";
+            this.ButtonTamDungThuatToan.UseVisualStyleBackColor = false;
+            this.ButtonTamDungThuatToan.Click += new System.EventHandler(this.Tai_v_NutTamDungThuatToan_Click);
             // 
-            // NutChayThuatToan
+            // ButtonChayThuatToan
             // 
-            this.NutChayThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutChayThuatToan.FlatAppearance.BorderSize = 0;
-            this.NutChayThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutChayThuatToan.ForeColor = System.Drawing.Color.Black;
-            this.NutChayThuatToan.Location = new System.Drawing.Point(15, 68);
-            this.NutChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutChayThuatToan.Name = "NutChayThuatToan";
-            this.NutChayThuatToan.Size = new System.Drawing.Size(165, 32);
-            this.NutChayThuatToan.TabIndex = 17;
-            this.NutChayThuatToan.Text = "Chạy";
-            this.NutChayThuatToan.UseVisualStyleBackColor = false;
-            this.NutChayThuatToan.Click += new System.EventHandler(this.Tai_v_NutChayThuatToan_Click);
+            this.ButtonChayThuatToan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonChayThuatToan.FlatAppearance.BorderSize = 0;
+            this.ButtonChayThuatToan.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonChayThuatToan.ForeColor = System.Drawing.Color.Black;
+            this.ButtonChayThuatToan.Location = new System.Drawing.Point(15, 68);
+            this.ButtonChayThuatToan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonChayThuatToan.Name = "ButtonChayThuatToan";
+            this.ButtonChayThuatToan.Size = new System.Drawing.Size(165, 32);
+            this.ButtonChayThuatToan.TabIndex = 17;
+            this.ButtonChayThuatToan.Text = "Chạy";
+            this.ButtonChayThuatToan.UseVisualStyleBackColor = false;
+            this.ButtonChayThuatToan.Click += new System.EventHandler(this.Tai_v_NutChayThuatToan_Click);
             // 
-            // NutChinhTocDoThuatToan
+            // TrackBar_ChinhTocDoThuatToan
             // 
-            this.NutChinhTocDoThuatToan.Location = new System.Drawing.Point(67, 33);
-            this.NutChinhTocDoThuatToan.Name = "NutChinhTocDoThuatToan";
-            this.NutChinhTocDoThuatToan.Size = new System.Drawing.Size(471, 56);
-            this.NutChinhTocDoThuatToan.TabIndex = 15;
-            this.NutChinhTocDoThuatToan.Scroll += new System.EventHandler(this.Tai_v_NutChinhTocDoThuatToan_Scroll);
+            this.TrackBar_ChinhTocDoThuatToan.Location = new System.Drawing.Point(67, 33);
+            this.TrackBar_ChinhTocDoThuatToan.Name = "TrackBar_ChinhTocDoThuatToan";
+            this.TrackBar_ChinhTocDoThuatToan.Size = new System.Drawing.Size(471, 56);
+            this.TrackBar_ChinhTocDoThuatToan.TabIndex = 15;
+            this.TrackBar_ChinhTocDoThuatToan.Scroll += new System.EventHandler(this.Tai_v_NutChinhTocDoThuatToan_Scroll);
             // 
             // LabelTocDo
             // 
@@ -439,9 +438,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapNgauNhien);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.ButtonNhapNgauNhien);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelNhapGiaTriMang);
-            this.GroupBoxKhoiTaoMang.Controls.Add(this.NutNhapBangTay);
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.ButtonNhapBangTay);
             this.GroupBoxKhoiTaoMang.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxKhoiTaoMang.ForeColor = System.Drawing.Color.Yellow;
             this.GroupBoxKhoiTaoMang.Location = new System.Drawing.Point(243, 3);
@@ -485,20 +484,20 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NumericNhapSoPhanTu.TabIndex = 24;
             this.NumericNhapSoPhanTu.ValueChanged += new System.EventHandler(this.NumericNhapSoPhanTu_ValueChanged);
             // 
-            // NutNhapNgauNhien
+            // ButtonNhapNgauNhien
             // 
-            this.NutNhapNgauNhien.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutNhapNgauNhien.FlatAppearance.BorderSize = 0;
-            this.NutNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutNhapNgauNhien.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapNgauNhien.Location = new System.Drawing.Point(11, 78);
-            this.NutNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutNhapNgauNhien.Name = "NutNhapNgauNhien";
-            this.NutNhapNgauNhien.Size = new System.Drawing.Size(138, 32);
-            this.NutNhapNgauNhien.TabIndex = 4;
-            this.NutNhapNgauNhien.Text = "Ngẫu nhiên";
-            this.NutNhapNgauNhien.UseVisualStyleBackColor = false;
-            this.NutNhapNgauNhien.Click += new System.EventHandler(this.NhapNgauNhien);
+            this.ButtonNhapNgauNhien.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonNhapNgauNhien.FlatAppearance.BorderSize = 0;
+            this.ButtonNhapNgauNhien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonNhapNgauNhien.ForeColor = System.Drawing.Color.Black;
+            this.ButtonNhapNgauNhien.Location = new System.Drawing.Point(11, 78);
+            this.ButtonNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonNhapNgauNhien.Name = "ButtonNhapNgauNhien";
+            this.ButtonNhapNgauNhien.Size = new System.Drawing.Size(138, 32);
+            this.ButtonNhapNgauNhien.TabIndex = 4;
+            this.ButtonNhapNgauNhien.Text = "Ngẫu nhiên";
+            this.ButtonNhapNgauNhien.UseVisualStyleBackColor = false;
+            this.ButtonNhapNgauNhien.Click += new System.EventHandler(this.NhapNgauNhien);
             // 
             // LabelNhapGiaTriMang
             // 
@@ -513,20 +512,20 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang.Text = "Tạo giá trị cho mảng:";
             this.LabelNhapGiaTriMang.Click += new System.EventHandler(this.Tai_v_LabelNhapGiaTriMang_Click);
             // 
-            // NutNhapBangTay
+            // ButtonNhapBangTay
             // 
-            this.NutNhapBangTay.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NutNhapBangTay.FlatAppearance.BorderSize = 0;
-            this.NutNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.NutNhapBangTay.ForeColor = System.Drawing.Color.Black;
-            this.NutNhapBangTay.Location = new System.Drawing.Point(155, 78);
-            this.NutNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NutNhapBangTay.Name = "NutNhapBangTay";
-            this.NutNhapBangTay.Size = new System.Drawing.Size(138, 32);
-            this.NutNhapBangTay.TabIndex = 5;
-            this.NutNhapBangTay.Text = "Bằng tay";
-            this.NutNhapBangTay.UseVisualStyleBackColor = false;
-            this.NutNhapBangTay.Click += new System.EventHandler(this.NhapBangTay);
+            this.ButtonNhapBangTay.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonNhapBangTay.FlatAppearance.BorderSize = 0;
+            this.ButtonNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonNhapBangTay.ForeColor = System.Drawing.Color.Black;
+            this.ButtonNhapBangTay.Location = new System.Drawing.Point(155, 78);
+            this.ButtonNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonNhapBangTay.Name = "ButtonNhapBangTay";
+            this.ButtonNhapBangTay.Size = new System.Drawing.Size(138, 32);
+            this.ButtonNhapBangTay.TabIndex = 5;
+            this.ButtonNhapBangTay.Text = "Bằng tay";
+            this.ButtonNhapBangTay.UseVisualStyleBackColor = false;
+            this.ButtonNhapBangTay.Click += new System.EventHandler(this.NhapBangTay);
             // 
             // PanelMoPhong
             // 
@@ -576,7 +575,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChonThuatToan.PerformLayout();
             this.GroupBoxDieuKhien.ResumeLayout(false);
             this.GroupBoxDieuKhien.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NutChinhTocDoThuatToan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_ChinhTocDoThuatToan)).EndInit();
             this.GroupBoxKhoiTaoMang.ResumeLayout(false);
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
@@ -602,26 +601,26 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.ListBox ListBoxCacBuoc;
         private System.Windows.Forms.GroupBox GroupBoxCacBuocThucHien;
         private System.Windows.Forms.Panel ThanhDieuKhien;
-        private System.Windows.Forms.ComboBox NutChonThuatToan;
+        private System.Windows.Forms.ComboBox ComboBox_ChonThuatToan;
         private System.Windows.Forms.Label LabelChonThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxYTuong;
         private System.Windows.Forms.Label LabelLoaiSapXep;
         private System.Windows.Forms.Label LabelTocDo;
-        private System.Windows.Forms.Button NutNhapBangTay;
+        private System.Windows.Forms.Button ButtonNhapBangTay;
         private System.Windows.Forms.Label LabelNhapGiaTriMang;
-        private System.Windows.Forms.RadioButton ChonGiamDan;
-        private System.Windows.Forms.RadioButton ChonTangDan;
+        private System.Windows.Forms.RadioButton RadioButton_GiamDan;
+        private System.Windows.Forms.RadioButton RadioButton_TangDan;
         private System.Windows.Forms.GroupBox GroupBoxChonThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxDieuKhien;
-        private System.Windows.Forms.Button NutKetThucThuatToan;
-        private System.Windows.Forms.Button NutTamDungThuatToan;
-        private System.Windows.Forms.Button NutChayThuatToan;
-        private System.Windows.Forms.TrackBar NutChinhTocDoThuatToan;
+        private System.Windows.Forms.Button ButtonKetThucThuatToan;
+        private System.Windows.Forms.Button ButtonTamDungThuatToan;
+        private System.Windows.Forms.Button ButtonChayThuatToan;
+        private System.Windows.Forms.TrackBar TrackBar_ChinhTocDoThuatToan;
         private System.Windows.Forms.GroupBox GroupBoxKhoiTaoMang;
         private System.Windows.Forms.Panel PanelMoPhong;
         private System.Windows.Forms.Panel SortingPanelView;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button NutNhapNgauNhien;
+        private System.Windows.Forms.Button ButtonNhapNgauNhien;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label LabelSoPhanTu;
         private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;

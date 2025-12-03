@@ -34,7 +34,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.Screenshot_2025_11_25_190226;
+            this.pictureBox1.Image = global::DoAnLTTQ_DongCodeThuN.Properties.Resources.AnhTacGia;
             this.pictureBox1.Location = new System.Drawing.Point(3, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(615, 714);
