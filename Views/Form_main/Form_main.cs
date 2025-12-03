@@ -92,13 +92,9 @@ namespace DoAnLTTQ_DongCodeThuN
         public void RefreshSortingPanel()
         {
             if (SortingPanelView.InvokeRequired)
-            {
                 SortingPanelView.Invoke(new Action(() => SortingPanelView.Refresh()));
-            }
             else
-            {
                 SortingPanelView.Refresh();
-            }
         }
 
         public void HienThiListBoxYTuong(string[] items)
@@ -144,13 +140,9 @@ namespace DoAnLTTQ_DongCodeThuN
         public void XoaListBoxCacBuoc()
         {
             if (ListBoxCacBuoc.InvokeRequired)
-            {
                 ListBoxCacBuoc.Invoke(new Action(() => ListBoxCacBuoc.Items.Clear()));
-            }
             else
-            {
                 ListBoxCacBuoc.Items.Clear();
-            }
         }
 
         public void MoCacNutLuaChonThuatToan()
@@ -210,7 +202,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             // Gọi FormNhapMang
             int soPhanTu = (int)NumericNhapSoPhanTu.Value;
-            if (soPhanTu < 2 || soPhanTu > 20)
+            if (soPhanTu < 2 || soPhanTu > 50)
             {
                 MessageBox.Show("Số phần tử phải từ 2 đến 20", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NumericNhapSoPhanTu.Value = 5;

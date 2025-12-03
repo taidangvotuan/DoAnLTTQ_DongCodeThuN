@@ -51,14 +51,13 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         #endregion
 
         #region EVENT HANDLERS
-
         private void OnNhapNgauNhien(object sender, EventArgs e)
         {
             try
             {
                 int soPhanTu = view.SoPhanTu;
 
-                if (soPhanTu < 2 || soPhanTu > 20)
+                if (soPhanTu < 2 || soPhanTu > 50)
                 {
                     view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi",
                         MessageBoxIcon.Warning);
@@ -83,7 +82,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             int soPhanTu = view.SoPhanTu;
 
-            if (soPhanTu < 2 || soPhanTu > 20)
+            if (soPhanTu < 2 || soPhanTu > 50)
             {
                 view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi",
                     MessageBoxIcon.Warning);
@@ -108,15 +107,13 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             string thuatToan = view.ThuatToanDaChon;
             if (string.IsNullOrEmpty(thuatToan))
             {
-                view.HienThiThongBao("Bạn chưa chọn thuật toán!", "Thông báo",
-                    MessageBoxIcon.Warning);
+                view.HienThiThongBao("Bạn chưa chọn thuật toán!", "Thông báo", MessageBoxIcon.Warning);
                 return;
             }
 
             if (!view.TangDan && !view.GiamDan) // Kiểm tra có chọn kiểu sắp xếp
             {
-                view.HienThiThongBao("Bạn chưa chọn kiểu sắp xếp!", "Thông báo",
-                    MessageBoxIcon.Warning);
+                view.HienThiThongBao("Bạn chưa chọn kiểu sắp xếp!", "Thông báo", MessageBoxIcon.Warning);
                 return;
             }
 
