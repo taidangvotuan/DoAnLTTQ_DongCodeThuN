@@ -1,207 +1,173 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
+using DoAnLTTQ_DongCodeThuN.Views.Interfaces;
+using DoAnLTTQ_DongCodeThuN.Controllers;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
-    public partial class Form_main : Form
+    public partial class Form_main : Form, IMainView
     {
-        #region KHAI BÁO BIẾN
-        public Thread t1;
-        public static Button[] node1;           // Biến minh họa mảng
-        public static int so_phan_tu;           // Số phần tử của mảng
-        public static Label[] chiSo;            // Chỉ số vị trí của mảng
-        public static int[] a;                  // Mảng a
-        volatile int toc_Do = 4;                // Tốc độ, tối đa 10 cấp (dùng volatile để thread khác thấy ngay)
-        bool tang = true;                       // Kiểu sắp xếp
-        bool da_Tao_Mang = false;
-        bool kt_tam_dung = false;               // Biến kiểm tra tạm dừng
-        CodeThuatToan Code_CPP = new CodeThuatToan();       // Code C/C++ cho thuật toán
-        YTuongThuatToan YTuong_CPP = new YTuongThuatToan();
-        int i;                                  // Biến này dùng nhiều (biến chỉ số)
-        bool is_run = false;                    // Cờ kiểm tra thuật toán còn chạy không
-        FormController controller;              // Tạo controller để chạy thuật toán
-        int Binh_i_ViTriSwap1 = -1;          // Vị trí cột thứ 1 đang hoán vị (Bình)
-        int Binh_i_ViTriSwap2 = -1;          // Vị trí cột thứ 2 đang hoán vị (Bình)
-        bool Binh_b_DangAnimation = false;   // Cờ cho biết đang chạy animation hoán vị (Bình)
-        int Binh_i_AnimationStep = 0;        // Bước hiện tại của animation (Bình)
-        int Binh_i_AnimationStepMax = 1;     // Số bước tối đa của animation (Bình)
+        #region KHAI BÁO CONTROLLER VÀ BIẾN CŨ
+
+        private MainController controller; // Controller MVC
+
+        // GIỮ NGUYÊN CÁC BIẾN CŨ ĐỂ TƯƠNG THÍCH
+        public static int[] a;
+        public static int so_phan_tu;
+
         #endregion
+
+        #region CONSTRUCTOR
 
         public Form_main()
         {
             InitializeComponent();
-            controller = new FormController(this);
 
-            // Bật double-buffer cho panel vẽ cột
+            // Khởi tạo Controller
+            controller = new MainController(this);
+
+            // Setup double-buffer
             typeof(Panel).InvokeMember(
                 "DoubleBuffered",
-                BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, SortingPanelView, new object[] { true });
+                BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                null, SortingPanelView, new object[] { true });
 
-            // Vô hiệu hóa các lable, button, checkbox, Radiobutton
+            // Vô hiệu hóa controls ban đầu
             NutChinhTocDoThuatToan.Enabled = false;
             NutChayThuatToan.Enabled = false;
             NutTamDungThuatToan.Enabled = false;
             NutKetThucThuatToan.Enabled = false;
-
             NutChonThuatToan.Enabled = false;
             ChonGiamDan.Enabled = false;
             ChonTangDan.Enabled = false;
+
             SortingPanelView.Paint += SortingPanelView_Paint;
         }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            SortingPanelView.Paint += SortingPanelView_Paint;
-        }
-
-        #region NHẬP DỮ LIỆU CHO MẢNG
-        // Hàm nhập ngẫu nhiên
-        private void NhapNgauNhien(object sender, EventArgs e)
-        {
-            // Lấy số phần tử từ NumericUpDown
-            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
-
-            // Kiểm tra điều kiện hợp lệ
-            if (so_phan_tu < 2 || so_phan_tu > 20)
-            {
-                MessageBox.Show("Số phần tử phải nằm trong khoảng từ 2 đến 20!");
-                NumericNhapSoPhanTu.Value = 5;
-                so_phan_tu = 5;
-                return;
-            }
-
-            // Khởi tạo mảng dữ liệu
-            a = new int[so_phan_tu];
-
-            Random rd = new Random();
-            for (int i = 0; i < so_phan_tu; i++)
-                a[i] = rd.Next(100);
-
-            // Yêu cầu SortingPanelView vẽ lại
-            SortingPanelView.Invalidate(); // Sẽ gọi hàm SortingPanelView_Paint
-            MoCacNutLuaChonThuatToan();
-        }
- 
-        // Nhập dữ liệu bằng tay
-        private void NhapBangTay(object sender, EventArgs e)
-        {
-            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
-            if (so_phan_tu < 2 || so_phan_tu > 20)
-            {
-                MessageBox.Show(" Số phần tử phải nằm trong khoảng từ 2 đến 20");
-                da_Tao_Mang = false;
-                NumericNhapSoPhanTu.Value = 5;   // Mặc định bằng 5 cho đẹp
-                so_phan_tu = 5;
-                return;
-            }
-            FormNhapMang f = new FormNhapMang();
-            f.ShowDialog();
-        }
         #endregion
 
-        #region CÁC HÀM CHỨC NĂNG
-        // Hàm reset giá trị của các node về 0;
-        public void reset_node()
+        #region IMPLEMENT IMainView - EVENTS
+        public event EventHandler NhapNgauNhienClicked;
+        public event EventHandler NhapBangTayClicked;
+        public event EventHandler ChayThuatToanClicked;
+        public event EventHandler TamDungThuatToanClicked;
+        public event EventHandler KetThucThuatToanClicked;
+        public event EventHandler ThuatToanChanged;
+        public event EventHandler TocDoChanged;
+        public event EventHandler KieuSapXepChanged;
+        #endregion
+
+        #region IMPLEMENT IMainView - PROPERTIES
+        public int SoPhanTu
         {
-            for (int i = 0; i < so_phan_tu; i++)
+            get => (int)NumericNhapSoPhanTu.Value;
+            set => NumericNhapSoPhanTu.Value = value;
+        }
+
+        public int[] MangA
+        {
+            get => a;
+            set
             {
-                a[i] = 0;
-                node1[i].Text = a[i].ToString();
+                a = value;
+                so_phan_tu = value?.Length ?? 0;
             }
         }
 
-        // Hàm xóa mảng đã tạo
-        public void xoa_Mang(Button[] Node)
+        public string ThuatToanDaChon => NutChonThuatToan.SelectedItem?.ToString();
+
+        public int TocDo => NutChinhTocDoThuatToan.Value;
+
+        public bool TangDan => ChonTangDan.Checked;
+
+        #endregion
+
+        #region IMPLEMENT IMainView - METHODS
+
+        public void VeLaiSortingPanel()
         {
-            Application.DoEvents();
-            this.Invoke((MethodInvoker)delegate
-            {
-                NutNhapBangTay.Enabled = false;
-                NutNhapNgauNhien.Enabled = false;
-                NutChayThuatToan.Enabled = false;
-                if (da_Tao_Mang == true)
-                {
-                    for (i = 0; i < so_phan_tu; i++)
-                    {
-                        this.Controls.Remove(Node[i]);
-                        this.Controls.Remove(chiSo[i]);
-                    }
-                    da_Tao_Mang = false;
-                }
-            });
+            SortingPanelView.Invalidate();
         }
 
-        private void ThayDoiCodeKhiChonTangHoacGiam()
+        public void RefreshSortingPanel()
         {
-            ListBoxCodeC.Items.Clear();
-            ListBoxYTuong.Items.Clear();
-            string ChonThuatToan = NutChonThuatToan.SelectedItem.ToString();
-            if (ChonThuatToan == "Selection Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
+            if (SortingPanelView.InvokeRequired)
             {
-                Code_CPP.SelectionSort(ListBoxCodeC, tang);
-                YTuong_CPP.SelectionSort(ListBoxYTuong);
+                SortingPanelView.Invoke(new Action(() => SortingPanelView.Refresh()));
             }
-
-            if (ChonThuatToan == "Heap Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.HeapSort(ListBoxCodeC, tang);
-                YTuong_CPP.HeapSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Bubble Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.BubbleSort(ListBoxCodeC, tang);
-                YTuong_CPP.BubbleSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Quick Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.QuickSort(ListBoxCodeC, tang);
-                YTuong_CPP.QuickSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Insertion Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.InsertionSort(ListBoxCodeC, tang);
-                YTuong_CPP.InsertionSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Interchange Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.InterchangeSort(ListBoxCodeC, tang);
-                YTuong_CPP.InterchangeSort(ListBoxYTuong);
-            }
-
-            if (ChonThuatToan == "Merge Sort" && (ChonTangDan.Checked || ChonGiamDan.Checked))
-            {
-                Code_CPP.MergeSort(ListBoxCodeC, tang);
-                YTuong_CPP.MergeSort(ListBoxYTuong);
-            }
-        }
-
-        private void KiemTraDieuKienChonThuatToan()
-        {
-            bool daChonKieuSapXep = ChonTangDan.Checked || ChonGiamDan.Checked;
-            bool daChonThuatToan = NutChonThuatToan != null;
-
-            if (daChonKieuSapXep && daChonThuatToan)
-                MoCacNutDieuKhien();
             else
             {
-                // KHÓA các nút điều khiển
-                NutChayThuatToan.Enabled = false;
-                NutTamDungThuatToan.Enabled = false;
-                NutKetThucThuatToan.Enabled = false;
-                NutChinhTocDoThuatToan.Enabled = false;
+                SortingPanelView.Refresh();
             }
         }
 
-        #endregion
+        public void HienThiListBoxYTuong(string[] items)
+        {
+            ListBoxYTuong.Items.Clear();
+            foreach (string item in items)
+                ListBoxYTuong.Items.Add(item);
+        }
 
-        #region CÁC HÀM CHỨC NĂNG ĐỂ TRUY CẬP THUỘC TÍNH/PHƯƠNG THỨC PRIVATE
-        // Hàm vô hiệu hóa các nút khởi tạo khi ctrinh chạy
+        public void HienThiListBoxCode(string[] items)
+        {
+            ListBoxCodeC.Items.Clear();
+            foreach (string item in items)
+                ListBoxCodeC.Items.Add(item);
+        }
+
+        public void HienThiListBoxCacBuoc(string[] items)
+        {
+            ListBoxCacBuoc.Items.Clear();
+            foreach (string item in items)
+                ListBoxCacBuoc.Items.Add(item);
+        }
+
+        public void ThemBuocVaoListBox(string buoc)
+        {
+            if (ListBoxCacBuoc.InvokeRequired)
+            {
+                ListBoxCacBuoc.Invoke(new Action(() =>
+                {
+                    ListBoxCacBuoc.Items.Add(buoc);
+                    ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                    ListBoxCacBuoc.Update();
+                }));
+            }
+            else
+            {
+                ListBoxCacBuoc.Items.Add(buoc);
+                ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                ListBoxCacBuoc.Update();
+            }
+        }
+
+        public void XoaListBoxCacBuoc()
+        {
+            if (ListBoxCacBuoc.InvokeRequired)
+            {
+                ListBoxCacBuoc.Invoke(new Action(() => ListBoxCacBuoc.Items.Clear()));
+            }
+            else
+            {
+                ListBoxCacBuoc.Items.Clear();
+            }
+        }
+
+        public void MoCacNutLuaChonThuatToan()
+        {
+            GroupBoxChonThuatToan.Enabled = true;
+            NutChonThuatToan.Enabled = true;
+        }
+
+        public void MoCacNutDieuKhien()
+        {
+            NutChayThuatToan.Enabled = true;
+            NutTamDungThuatToan.Enabled = true;
+            NutKetThucThuatToan.Enabled = true;
+            NutChinhTocDoThuatToan.Enabled = true;
+        }
+
         public void KhoiChay()
         {
             NutNhapNgauNhien.Enabled = false;
@@ -212,27 +178,83 @@ namespace DoAnLTTQ_DongCodeThuN
             NutChayThuatToan.Enabled = false;
         }
 
-        // Hàm mở tất cả các nút lựa chọn thuật toán
-        public void MoCacNutLuaChonThuatToan()
+        public void KhoaChay()
         {
-            GroupBoxChonThuatToan.Enabled = true;
+            NutNhapNgauNhien.Enabled = true;
+            NutNhapBangTay.Enabled = true;
             NutChonThuatToan.Enabled = true;
+            ChonTangDan.Enabled = true;
+            ChonGiamDan.Enabled = true;
+            KiemTraDieuKienChonThuatToan();
         }
 
-        // Hàm mở tất cả các nút điều khiển
-        public void MoCacNutDieuKhien()
+        public void HienThiThongBao(string message, string title, MessageBoxIcon icon)
         {
-            NutChayThuatToan.Enabled = true;
-            NutTamDungThuatToan.Enabled = true;
-            NutKetThucThuatToan.Enabled = true;
-            NutChinhTocDoThuatToan.Enabled = true;
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
         }
 
-        // Hàm vẽ lại cửa sổ sắp xếp (đối với nhập mảng bằng tay)
-        public void VeLaiSortingPanelView()
+        public void UpdateUI()
         {
-            SortingPanelView.Invalidate(); // gọi Paint
+            Application.DoEvents();
+        }
+
+        #endregion
+
+        #region UI EVENT HANDLERS - RAISE CONTROLLER EVENTS
+
+        private void NhapNgauNhien(object sender, EventArgs e)
+        {
+            NhapNgauNhienClicked?.Invoke(this, e);
+        }
+
+        private void NhapBangTay(object sender, EventArgs e)
+        {
+            // Gọi FormNhapMang
+            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
+            if (so_phan_tu < 2 || so_phan_tu > 20)
+            {
+                MessageBox.Show("Số phần tử phải từ 2 đến 20");
+                NumericNhapSoPhanTu.Value = 5;
+                so_phan_tu = 5;
+                return;
+            }
+
+            FormNhapMang f = new FormNhapMang();
+            f.ShowDialog();
+
+            // Sau khi đóng, a đã được cập nhật
+            MoCacNutLuaChonThuatToan();
         }
         #endregion
+
+        #region PRIVATE HELPER METHODS
+        private void KiemTraDieuKienChonThuatToan()
+        {
+            bool daChonKieuSapXep = ChonTangDan.Checked || ChonGiamDan.Checked;
+            bool daChonThuatToan = NutChonThuatToan.SelectedIndex >= 0;
+
+            if (daChonKieuSapXep && daChonThuatToan)
+                MoCacNutDieuKhien();
+            else
+            {
+                NutChayThuatToan.Enabled = false;
+                NutTamDungThuatToan.Enabled = false;
+                NutKetThucThuatToan.Enabled = false;
+                NutChinhTocDoThuatToan.Enabled = false;
+            }
+        }
+        #endregion
+
+        #region FORM EVENTS
+        private void Form_Load(object sender, EventArgs e)
+        {
+            SortingPanelView.Paint += SortingPanelView_Paint;
+        }
+        #endregion
+
+        public void VeLaiSortingPanelView()
+        {
+            VeLaiSortingPanel();
+        }
     }
 }

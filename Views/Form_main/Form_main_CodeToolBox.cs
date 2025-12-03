@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
@@ -21,29 +19,17 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region KHU VỰC CÁC PANEL
-        private void PanelNen_Paint(object sender, PaintEventArgs e)
-        {
+        private void PanelNen_Paint(object sender, PaintEventArgs e) { }
 
-        }
+        private void PanelMoPhong_Paint(object sender, PaintEventArgs e) { }
 
-        private void PanelMoPhong_Paint(object sender, PaintEventArgs e)
-        {
+        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e) { }
 
-        }
-
-        private void PanelThanhDieuKhien_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        private void Tai_v_ThanhDieuKhien_Paint(object sender, PaintEventArgs e) { }
 
         private void SortingPanelView_Paint(object sender, PaintEventArgs e)
         {
-            if (a == null || a.Length == 0)
+            /*if (a == null || a.Length == 0)
                 return;
 
             Graphics g = e.Graphics;
@@ -121,7 +107,14 @@ namespace DoAnLTTQ_DongCodeThuN
                         x + (barWidth - textSize.Width) / 2,
                         panelHeight - 40);
                 }
-            }
+            }*/
+            if (controller?.VisualService == null) return;
+
+            controller.VisualService.DrawSortingPanel(
+                e.Graphics,
+                SortingPanelView.Width,
+                SortingPanelView.Height
+            );
         }
         #endregion
 
@@ -177,7 +170,7 @@ namespace DoAnLTTQ_DongCodeThuN
         #region KHU VỰC CÁC NÚT BẤM
         private void Tai_v_NutChayThuatToan_Click(object sender, EventArgs e)
         {
-            if (a == null || a.Length == 0)
+            /*if (a == null || a.Length == 0)
             {
                 MessageBox.Show("Bạn chưa khởi tạo mảng!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -261,21 +254,23 @@ namespace DoAnLTTQ_DongCodeThuN
             NutChonThuatToan.Enabled = true;
             ChonTangDan.Enabled = true;
             ChonGiamDan.Enabled = true;
-            KiemTraDieuKienChonThuatToan();
+            KiemTraDieuKienChonThuatToan();*/
+            ChayThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutTamDungThuatToan_Click(object sender, EventArgs e)
         {
-            if (!is_run)
+            /*if (!is_run)
                 return;
 
             kt_tam_dung = !kt_tam_dung;
-            NutTamDungThuatToan.Text = kt_tam_dung ? "Tiếp tục" : "Tạm dừng";
+            NutTamDungThuatToan.Text = kt_tam_dung ? "Tiếp tục" : "Tạm dừng";*/
+            TamDungThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutKetThucThuatToan_Click(object sender, EventArgs e)
         {
-            if (!is_run)
+            /*if (!is_run)
                 return;
 
             is_run = false;
@@ -305,7 +300,8 @@ namespace DoAnLTTQ_DongCodeThuN
             NutChonThuatToan.Enabled = true;
             ChonTangDan.Enabled = true;
             ChonGiamDan.Enabled = true;
-            KiemTraDieuKienChonThuatToan();
+            KiemTraDieuKienChonThuatToan();*/
+            KetThucThuatToanClicked?.Invoke(this, e);
         }
 
         private void Tai_v_NutChonThuatToan_SelectedIndexChanged(object sender, EventArgs e)
@@ -315,34 +311,45 @@ namespace DoAnLTTQ_DongCodeThuN
                 ChonTangDan.Enabled = true;
                 ChonGiamDan.Enabled = true;
             }
+            ThuatToanChanged?.Invoke(this, e);
             KiemTraDieuKienChonThuatToan();
-            ThayDoiCodeKhiChonTangHoacGiam();
         }
 
         private void Tai_v_NutChinhTocDoThuatToan_Scroll(object sender, EventArgs e)
         {
-            toc_Do = NutChinhTocDoThuatToan.Value;
-            if (toc_Do < 1) toc_Do = 1;
+            /*toc_Do = NutChinhTocDoThuatToan.Value;
+            if (toc_Do < 1) toc_Do = 1;*/
+            TocDoChanged?.Invoke(this, e);
         }
 
         private void Tai_v_ChonTangDan_CheckedChanged(object sender, EventArgs e)
         {
-            KiemTraDieuKienChonThuatToan();
+            /*KiemTraDieuKienChonThuatToan();
 
             if (ChonTangDan.Checked)
             {
                 tang = true;
                 ThayDoiCodeKhiChonTangHoacGiam();
+            }*/
+            if (ChonTangDan.Checked)
+            {
+                KieuSapXepChanged?.Invoke(this, e);
+                KiemTraDieuKienChonThuatToan();
             }
         }
 
         private void Tai_v_ChonGiamDan_CheckedChanged(object sender, EventArgs e)
         {
-            KiemTraDieuKienChonThuatToan();
+            /*KiemTraDieuKienChonThuatToan();
             if (ChonGiamDan.Checked)
             {
                 tang = false;
                 ThayDoiCodeKhiChonTangHoacGiam();
+            }*/
+            if (ChonGiamDan.Checked)
+            {
+                KieuSapXepChanged?.Invoke(this, e);
+                KiemTraDieuKienChonThuatToan();
             }
         }
 
@@ -375,5 +382,6 @@ namespace DoAnLTTQ_DongCodeThuN
             FormController.OnUpdate?.Invoke();
         }
         #endregion
+
     }
 }

@@ -46,7 +46,7 @@
             this.TextBoxNhapMang.Name = "TextBoxNhapMang";
             this.TextBoxNhapMang.Size = new System.Drawing.Size(721, 30);
             this.TextBoxNhapMang.TabIndex = 4;
-            this.TextBoxNhapMang.TextChanged += new System.EventHandler(this.TextBoxChiSoMang_TextChanged);
+            this.TextBoxNhapMang.TextChanged += new System.EventHandler(this.TextBoxNhapMang_TextChanged);
             // 
             // NutNhap
             // 
@@ -71,7 +71,6 @@
             this.label1.Size = new System.Drawing.Size(631, 25);
             this.label1.TabIndex = 10;
             this.label1.Text = "- Giá trị của mỗi phần tử trong mảng phải nằm trong khoảng từ 0 đến 99.";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -83,7 +82,6 @@
             this.label2.Size = new System.Drawing.Size(416, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Hãy nhập danh sách các giá trị của mảng:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -95,7 +93,6 @@
             this.label3.Size = new System.Drawing.Size(72, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Lưu ý:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -107,7 +104,6 @@
             this.label4.Size = new System.Drawing.Size(659, 25);
             this.label4.TabIndex = 13;
             this.label4.Text = "- Mỗi giá trị của các phần tử cách nhau bằng một dấu cách, ví dụ: 1 2 3 4 5.";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // FormNhapMang
             // 
@@ -122,7 +118,7 @@
             this.Controls.Add(this.TextBoxNhapMang);
             this.Name = "FormNhapMang";
             this.Text = "Nhập dữ liệu cho mảng";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.FormNhapMang_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

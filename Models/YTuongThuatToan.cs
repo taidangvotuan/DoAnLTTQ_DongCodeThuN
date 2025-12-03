@@ -80,9 +80,10 @@ các phần tử vào đúng vị trí của nó.";
         public void BubbleSort(System.Windows.Forms.ListBox list_Idea)
         {
             string YTuongBubbleSort =
-@"- Ý tưởng của thuật toán Bubble Sort là nhẹ nổi lên
-và nặng chìm xuống.
-- Khái niệm nặng nhẹ là khái niệm trừu tượng.";
+@"- Thuật toán Bubble Sort sắp xếp bằng cách liên
+tục so sánh và hoán vị các cặp phần tử kề nhau. 
+- Phần tử lớn nhất/nhỏ nhất sẽ 'nổi' lên vị trí 
+cuối sau mỗi lượt duyệt.";
             AddIdeaToListBox(list_Idea, YTuongBubbleSort);
             list_Idea.Items.Add("");
         }

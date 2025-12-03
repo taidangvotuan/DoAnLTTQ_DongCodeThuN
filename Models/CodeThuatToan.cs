@@ -387,14 +387,6 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             list_Code.Items.Clear();
 
-            string SwapFunc =
-@"void Swap(int& a, int& b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}";
-
             string CodeTang =
 @"void InsertionSort(int arr[], int n)
 {
@@ -426,8 +418,6 @@ namespace DoAnLTTQ_DongCodeThuN
         arr[j + 1] = key;
     }
 }";
-            AddCodeToListBox(list_Code, SwapFunc);
-            list_Code.Items.Add("");
             AddCodeToListBox(list_Code, tang ? CodeTang : CodeGiam);
         }
     }

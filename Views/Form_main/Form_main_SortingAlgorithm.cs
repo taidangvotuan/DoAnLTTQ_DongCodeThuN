@@ -1,13 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Windows.Forms;
-
-namespace DoAnLTTQ_DongCodeThuN
+﻿namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form_main
     {
         // Biến đếm số bước
-        int Thinh_dem_buoc = 0;
+        /*int Thinh_dem_buoc = 0;
 
         // Hàm kiểm tra tạm dừng
         public void Thinh_v_KiemTraTamDung()
@@ -689,6 +685,6 @@ namespace DoAnLTTQ_DongCodeThuN
             if (!is_run) return;
             if (i < right) Thinh_v_QuickSortGiamDan(arr, i, right);
         }
-        #endregion
+        #endregion*/
     }
 }
