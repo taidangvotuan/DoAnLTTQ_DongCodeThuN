@@ -210,20 +210,49 @@ namespace DoAnLTTQ_DongCodeThuN
         private void NhapBangTay(object sender, EventArgs e)
         {
             // Gọi FormNhapMang
-            so_phan_tu = (int)NumericNhapSoPhanTu.Value;
-            if (so_phan_tu < 2 || so_phan_tu > 20)
+            int soPhanTu = (int)NumericNhapSoPhanTu.Value;
+            if (soPhanTu < 2 || soPhanTu > 20)
             {
-                MessageBox.Show("Số phần tử phải từ 2 đến 20");
+                MessageBox.Show("Số phần tử phải từ 2 đến 20", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NumericNhapSoPhanTu.Value = 5;
-                so_phan_tu = 5;
                 return;
             }
 
-            FormNhapMang f = new FormNhapMang();
-            f.ShowDialog();
+            FormNhapMang formNhap = new FormNhapMang();
+            formNhap.SoPhanTu = soPhanTu;
+            DialogResult result = formNhap.ShowDialog();
 
-            // Sau khi đóng, a đã được cập nhật
-            MoCacNutLuaChonThuatToan();
+            if (result == DialogResult.OK)
+            {
+                // Lấy mảng từ FormNhapMang
+                int[] mangMoi = formNhap.Array;
+
+                if (mangMoi != null && mangMoi.Length == soPhanTu)
+                {
+                    // Cập nhật vào state thông qua Controller
+                    controller.State.a = mangMoi;
+                    controller.State.so_phan_tu = soPhanTu;
+                    controller.State.da_Tao_Mang = true;
+
+                    // Cập nhật biến static cũ (để tương thích)
+                    a = mangMoi;
+                    so_phan_tu = soPhanTu;
+
+                    // Vẽ lại
+                    VeLaiSortingPanel();
+
+                    // Mở các nút lựa chọn thuật toán
+                    MoCacNutLuaChonThuatToan();
+
+                    MessageBox.Show($"Đã nhập thành công {soPhanTu} phần tử!", "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi nhập mảng!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         #endregion
 

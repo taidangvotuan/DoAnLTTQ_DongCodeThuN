@@ -19,17 +19,12 @@ namespace DoAnLTTQ_DongCodeThuN
         // Label để hiển thị lỗi real-time
         private Label lblError;
         private Label lblStatus;
-        //int[] A = new int[20];  // Mảng tối đa 20 phần tử
-        //int n = 0;
-        //bool daNhap = false;
-        //int index = 0;
         #endregion
 
         public FormNhapMang()
         {
             InitializeComponent();
             InitializeValidation();
-            //TextBoxGiaTriMang.Focus();
         }
 
         private void FormNhapMang_Load(object sender, EventArgs e)
@@ -109,9 +104,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (string.IsNullOrWhiteSpace(input))
             {
                 if (showDetailedErrors)
-                {
                     UpdateStatus($"Vui lòng nhập {SoPhanTu} số");
-                }
                 return false;
             }
 
@@ -128,9 +121,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (parts.Length > SoPhanTu)
             {
                 if (showDetailedErrors)
-                {
-                    ShowError($"❌ Bạn đã nhập {parts.Length} số, chỉ cần {SoPhanTu} số!");
-                }
+                    ShowError($"Bạn đã nhập {parts.Length} số, chỉ cần {SoPhanTu} số!");
                 return false;
             }
 
@@ -141,9 +132,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 if (!int.TryParse(parts[i], out int value))
                 {
                     if (showDetailedErrors)
-                    {
                         ShowError($"Giá trị '{parts[i]}' tại vị trí {i + 1} không phải là số hợp lệ!");
-                    }
                     return false;
                 }
 
@@ -151,9 +140,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 if (value < MIN_VALUE || value > MAX_VALUE)
                 {
                     if (showDetailedErrors)
-                    {
                         ShowError($"Số {value} tại vị trí {i + 1} nằm ngoài khoảng [{MIN_VALUE}..{MAX_VALUE}]!");
-                    }
                     return false;
                 }
             }
@@ -174,7 +161,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (string.IsNullOrWhiteSpace(input))
             {
                 result.IsValid = false;
-                result.ErrorMessage = "❌ Vui lòng nhập dữ liệu!";
+                result.ErrorMessage = "Vui lòng nhập dữ liệu!";
                 return result;
             }
 
@@ -182,20 +169,15 @@ namespace DoAnLTTQ_DongCodeThuN
             if (Regex.IsMatch(input, @"[^\d\s]"))
             {
                 result.IsValid = false;
-                result.ErrorMessage = "❌ Chỉ được nhập số và dấu cách!";
-                var invalidChars = Regex.Matches(input, @"[^\d\s]")
-                    .Cast<Match>()
-                    .Select(m => m.Value)
-                    .Distinct();
+                result.ErrorMessage = "Chỉ được nhập số và dấu cách!";
+                var invalidChars = Regex.Matches(input, @"[^\d\s]").Cast<Match>().Select(m => m.Value).Distinct();
                 result.ErrorMessage += $"\nKý tự không hợp lệ: {string.Join(", ", invalidChars)}";
                 return result;
             }
 
             // 3. Kiểm tra nhiều dấu cách liên tiếp
             if (Regex.IsMatch(input, @"\s{2,}"))
-            {
-                result.Warning = "⚠ Phát hiện nhiều dấu cách liên tiếp (sẽ tự động loại bỏ)";
-            }
+                result.Warning = "Phát hiện nhiều dấu cách liên tiếp (sẽ tự động loại bỏ)";
 
             // 4. Tách và validate
             string[] parts = input.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
@@ -204,14 +186,16 @@ namespace DoAnLTTQ_DongCodeThuN
             if (parts.Length < SoPhanTu)
             {
                 result.IsValid = false;
-                result.ErrorMessage = $"❌ Thiếu {SoPhanTu - parts.Length} số! (Đã nhập {parts.Length}/{SoPhanTu})";
+                result.ErrorMessage = $"Thiếu {SoPhanTu - parts.Length} số! (Đã nhập {parts.Length}/{SoPhanTu})";
+                result.ErrorMessage += $"Bạn PHẢI nhập CHÍNH XÁC {SoPhanTu} số, không được thiếu!";
                 return result;
             }
 
             if (parts.Length > SoPhanTu)
             {
                 result.IsValid = false;
-                result.ErrorMessage = $"❌ Thừa {parts.Length - SoPhanTu} số! (Chỉ cần {SoPhanTu} số)";
+                result.ErrorMessage = $"Thừa {parts.Length - SoPhanTu} số! (Chỉ cần {SoPhanTu} số)";
+                result.ErrorMessage += $"Bạn PHẢI nhập CHÍNH XÁC {SoPhanTu} số, không được thừa!";
                 return result;
             }
 
@@ -232,14 +216,14 @@ namespace DoAnLTTQ_DongCodeThuN
             if (invalidValues.Count > 0)
             {
                 result.IsValid = false;
-                result.ErrorMessage = "❌ Các giá trị không hợp lệ:\n" + string.Join(", ", invalidValues);
+                result.ErrorMessage = "Các giá trị không hợp lệ:\n" + string.Join(", ", invalidValues);
                 return result;
             }
 
             if (outOfRangeValues.Count > 0)
             {
                 result.IsValid = false;
-                result.ErrorMessage = $"❌ Các số nằm ngoài khoảng [{MIN_VALUE}..{MAX_VALUE}]:\n" +
+                result.ErrorMessage = $"Các số nằm ngoài khoảng [{MIN_VALUE}..{MAX_VALUE}]:\n" +
                     string.Join(", ", outOfRangeValues);
                 return result;
             }
@@ -251,7 +235,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 .Select(g => $"{g.Key} (xuất hiện {g.Count()} lần)");
 
             if (duplicates.Any())
-                result.Warning = "ℹ Phát hiện giá trị trùng lặp: " + string.Join(", ", duplicates);
+                result.Warning = "Phát hiện giá trị trùng lặp: " + string.Join(", ", duplicates);
 
             return result;
         }
@@ -276,9 +260,7 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 var result = MessageBox.Show(
                     validationResult.Warning + "\n\nBạn có muốn tiếp tục?",
-                    "Cảnh báo",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
+                    "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.No)
                 {
@@ -297,7 +279,10 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (confirmResult == DialogResult.Yes)
             {
-                Array = validationResult.Values.ToArray();
+                // CẬP NHẬT MẢNG VÀO Form_main
+                Form_main.a = Array;
+                Form_main.so_phan_tu = Array.Length;
+
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
