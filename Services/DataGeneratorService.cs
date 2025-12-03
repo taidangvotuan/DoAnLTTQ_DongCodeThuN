@@ -19,9 +19,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
             int[] arr = new int[size];
             for (int i = 0; i < size; i++)
-            {
                 arr[i] = random.Next(100); // Giá trị từ 0-99
-            }
 
             return arr;
         }
@@ -37,7 +35,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 if (val < 0 || val > 99)
                     return false;
             }
-
             return true;
         }
 

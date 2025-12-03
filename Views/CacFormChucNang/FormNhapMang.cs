@@ -255,9 +255,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // Hiển thị warning nếu có
             if (!string.IsNullOrEmpty(validationResult.Warning))
             {
-                var result = MessageBox.Show(
-                    validationResult.Warning + "\n\nBạn có muốn tiếp tục?",
-                    "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var result = MessageBox.Show(validationResult.Warning + "\n\nBạn có muốn tiếp tục?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.No)
                 {

@@ -59,8 +59,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
 
                 if (soPhanTu < 2 || soPhanTu > 50)
                 {
-                    view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi",
-                        MessageBoxIcon.Warning);
+                    view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi", MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -99,8 +98,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             if (state.a == null || state.a.Length == 0)
             {
-                view.HienThiThongBao("Bạn chưa khởi tạo mảng!", "Thông báo",
-                    MessageBoxIcon.Warning);
+                view.HienThiThongBao("Bạn chưa khởi tạo mảng!", "Thông báo", MessageBoxIcon.Warning);
                 return;
             }
 

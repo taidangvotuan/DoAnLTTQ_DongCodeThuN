@@ -13,9 +13,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             this.state = state;
         }
 
-        /// <summary>
-        /// Vẽ các cột sắp xếp - GIỮ NGUYÊN LOGIC TỪ SortingPanelView_Paint
-        /// </summary>
+        // Vẽ các cột sắp xếp - GIỮ NGUYÊN LOGIC TỪ SortingPanelView_Paint
         public void DrawSortingPanel(Graphics g, int panelWidth, int panelHeight)
         {
             if (state.a == null || state.a.Length == 0)
@@ -93,12 +91,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     // Vẽ giá trị
                     string valueStr = state.a[i].ToString();
                     SizeF textSize = g.MeasureString(valueStr, font);
-                    g.DrawString(
-                        valueStr,
-                        font,
-                        textBrush,
-                        x + (barWidth - textSize.Width) / 2,
-                        panelHeight - 40);
+                    g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
                 }
             }
         }

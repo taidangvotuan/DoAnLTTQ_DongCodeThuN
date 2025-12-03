@@ -19,7 +19,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         }
 
         #region HÀM DÙNG CHUNG
-
         // Hàm kiểm tra tạm dừng
         public void Thinh_v_KiemTraTamDung()
         {
@@ -158,11 +157,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 }
             }
         }
-
         #endregion
 
         #region SELECTION SORT
-
         public void Binh_v_SelectionSortTangDan(int[] arr)
         {
             Thinh_v_BatDauLog(arr);
@@ -216,11 +213,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     Binh_v_HoanViTheoViTri(arr, maxIdx, i);
             }
         }
-
         #endregion
 
         #region INSERTION SORT
-
         public void Binh_v_InsertionSortTangDan(int[] arr)
         {
             Thinh_v_BatDauLog(arr);
@@ -266,11 +261,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 }
             }
         }
-
         #endregion
 
         #region HEAP SORT
-
         public void Tai_v_HeapifyTangDan(int[] arr, int n, int i)
         {
             if (!state.is_run) return;
