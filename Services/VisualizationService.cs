@@ -13,7 +13,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             this.state = state;
         }
 
-        // Vẽ các cột sắp xếp - GIỮ NGUYÊN LOGIC TỪ SortingPanelView_Paint
+        // Vẽ các cột sắp xếp
         public void DrawSortingPanel(Graphics g, int panelWidth, int panelHeight)
         {
             if (state.a == null || state.a.Length == 0)

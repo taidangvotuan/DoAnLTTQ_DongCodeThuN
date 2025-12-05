@@ -460,7 +460,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelKhoangGiaTriPhanTu.Name = "LabelKhoangGiaTriPhanTu";
             this.LabelKhoangGiaTriPhanTu.Size = new System.Drawing.Size(155, 19);
             this.LabelKhoangGiaTriPhanTu.TabIndex = 26;
-            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 20)";
+            this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 45)";
             this.LabelKhoangGiaTriPhanTu.Click += new System.EventHandler(this.LabelKhoangGiaTriPhanTu_Click);
             // 
             // LabelSoPhanTu

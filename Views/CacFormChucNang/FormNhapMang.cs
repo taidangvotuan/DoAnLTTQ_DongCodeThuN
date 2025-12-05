@@ -36,7 +36,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void InitializeValidation()
         {
-            // Tạo label hiển thị lỗi (nếu chưa có trong Designer)
+            // Tạo label hiển thị lỗi
             if (lblError == null)
             {
                 lblError = new Label
@@ -97,7 +97,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             string input = TextBoxNhapMang.Text.Trim();
 
-            // 1. Kiểm tra rỗng
+            // Kiểm tra rỗng
             if (string.IsNullOrWhiteSpace(input))
             {
                 if (showDetailedErrors)
@@ -105,10 +105,27 @@ namespace DoAnLTTQ_DongCodeThuN
                 return false;
             }
 
-            // 2. Tách chuỗi
+            // Kiểm tra số quá dài trước khi tách chuỗi
+            string[] rawParts = input.Split(new[] { ' ', '\t' }, StringSplitOptions.None);
+            foreach (string part in rawParts)
+            {
+                if (string.IsNullOrWhiteSpace(part)) continue;
+
+                // Kiểm tra độ dài chuỗi số (số từ 0-99 có tối đa 2 chữ số)
+                if (part.Length > 2)
+                {
+                    if (showDetailedErrors)
+                        ShowError($"Số '{part}' quá dài! Chỉ được nhập số từ {MIN_VALUE} đến {MAX_VALUE}.");
+                    else
+                        UpdateStatus($"Phát hiện số quá dài: {part}");
+                    return false;
+                }
+            }
+
+            // Tách chuỗi
             string[] parts = input.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-            // 3. Kiểm tra số lượng
+            // Kiểm tra số lượng
             if (parts.Length < SoPhanTu)
             {
                 UpdateStatus($"Đã nhập {parts.Length}/{SoPhanTu} số");
@@ -122,7 +139,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 return false;
             }
 
-            // 4. Validate từng số
+            // Validate từng số
             for (int i = 0; i < parts.Length; i++)
             {
                 // Kiểm tra format số
@@ -154,7 +171,7 @@ namespace DoAnLTTQ_DongCodeThuN
             var result = new ValidationResult { IsValid = true };
             string input = TextBoxNhapMang.Text.Trim();
 
-            // 1. Kiểm tra rỗng
+            // Kiểm tra rỗng
             if (string.IsNullOrWhiteSpace(input))
             {
                 result.IsValid = false;
@@ -162,7 +179,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 return result;
             }
 
-            // 2. Kiểm tra ký tự không hợp lệ
+            // Kiểm tra ký tự không hợp lệ
             if (Regex.IsMatch(input, @"[^\d\s]"))
             {
                 result.IsValid = false;
@@ -172,18 +189,34 @@ namespace DoAnLTTQ_DongCodeThuN
                 return result;
             }
 
-            // 3. Kiểm tra nhiều dấu cách liên tiếp
+            // Kiểm tra số quá dài trước
+            string[] rawParts = input.Split(new[] { ' ', '\t' }, StringSplitOptions.None);
+            foreach (string part in rawParts)
+            {
+                if (string.IsNullOrWhiteSpace(part)) continue;
+
+                if (part.Length > 2)
+                {
+                    result.IsValid = false;
+                    result.ErrorMessage = $"Số '{part}' quá dài!\n";
+                    result.ErrorMessage += $"Chỉ được nhập số từ {MIN_VALUE} đến {MAX_VALUE} (tối đa 2 chữ số).\n";
+                    result.ErrorMessage += "Hãy thêm dấu cách giữa các số!";
+                    return result;
+                }
+            }
+
+            // Kiểm tra nhiều dấu cách liên tiếp
             if (Regex.IsMatch(input, @"\s{2,}"))
                 result.Warning = "Phát hiện nhiều dấu cách liên tiếp (sẽ tự động loại bỏ)";
 
-            // 4. Tách và validate
+            // Tách và validate
             string[] parts = input.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-            // 5. Kiểm tra số lượng
+            // Kiểm tra số lượng
             if (parts.Length < SoPhanTu)
             {
                 result.IsValid = false;
-                result.ErrorMessage = $"Thiếu {SoPhanTu - parts.Length} số! (Đã nhập {parts.Length}/{SoPhanTu})";
+                result.ErrorMessage = $"Thiếu {SoPhanTu - parts.Length} số! (Đã nhập {parts.Length}/{SoPhanTu}). ";
                 result.ErrorMessage += $"Bạn PHẢI nhập CHÍNH XÁC {SoPhanTu} số, không được thiếu!";
                 return result;
             }
@@ -196,7 +229,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 return result;
             }
 
-            // 6. Validate từng giá trị
+            // Validate từng giá trị
             var invalidValues = new System.Collections.Generic.List<string>();
             var outOfRangeValues = new System.Collections.Generic.List<string>();
 

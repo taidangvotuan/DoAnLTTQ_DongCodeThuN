@@ -9,17 +9,14 @@ namespace DoAnLTTQ_DongCodeThuN
     public partial class Form_main : Form, IMainView
     {
         #region KHAI BÁO CONTROLLER VÀ BIẾN CŨ
-
         private MainController controller; // Controller MVC
 
         // GIỮ NGUYÊN CÁC BIẾN CŨ ĐỂ TƯƠNG THÍCH
         public static int[] a;
         public static int so_phan_tu;
-
         #endregion
 
         #region CONSTRUCTOR
-
         public Form_main()
         {
             InitializeComponent();
@@ -44,7 +41,6 @@ namespace DoAnLTTQ_DongCodeThuN
 
             SortingPanelView.Paint += SortingPanelView_Paint;
         }
-
         #endregion
 
         #region IMPLEMENT IMainView - EVENTS
@@ -79,11 +75,9 @@ namespace DoAnLTTQ_DongCodeThuN
         public int TocDo => TrackBar_ChinhTocDoThuatToan.Value;
         public bool TangDan => RadioButton_TangDan.Checked;
         public bool GiamDan => RadioButton_GiamDan.Checked;
-
         #endregion
 
         #region IMPLEMENT IMainView - METHODS
-
         public void VeLaiSortingPanel()
         {
             SortingPanelView.Invalidate();
@@ -188,7 +182,6 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             Application.DoEvents();
         }
-
         #endregion
 
         #region UI EVENT HANDLERS - RAISE CONTROLLER EVENTS
@@ -200,11 +193,12 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void NhapBangTay(object sender, EventArgs e)
         {
+            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
             // Gọi FormNhapMang
             int soPhanTu = (int)NumericNhapSoPhanTu.Value;
-            if (soPhanTu < 2 || soPhanTu > 50)
+            if (soPhanTu < 2 || soPhanTu > 45)
             {
-                MessageBox.Show("Số phần tử phải từ 2 đến 20", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Số phần tử phải từ 2 đến 45", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NumericNhapSoPhanTu.Value = 5;
                 return;
             }

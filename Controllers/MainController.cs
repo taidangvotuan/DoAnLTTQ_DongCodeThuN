@@ -55,11 +55,12 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             try
             {
+                // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
                 int soPhanTu = view.SoPhanTu;
 
-                if (soPhanTu < 2 || soPhanTu > 50)
+                if (soPhanTu < 2 || soPhanTu > 45)
                 {
-                    view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi", MessageBoxIcon.Warning);
+                    view.HienThiThongBao("Số phần tử phải từ 2 đến 45!", "Lỗi", MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -81,9 +82,10 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             int soPhanTu = view.SoPhanTu;
 
-            if (soPhanTu < 2 || soPhanTu > 50)
+            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+            if (soPhanTu < 2 || soPhanTu > 45)
             {
-                view.HienThiThongBao("Số phần tử phải từ 2 đến 20!", "Lỗi",
+                view.HienThiThongBao("Số phần tử phải từ 2 đến 45!", "Lỗi",
                     MessageBoxIcon.Warning);
                 return;
             }

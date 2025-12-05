@@ -42,7 +42,7 @@
             this.TextBoxNhapMang.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TextBoxNhapMang.Location = new System.Drawing.Point(16, 199);
             this.TextBoxNhapMang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TextBoxNhapMang.MaxLength = 59;
+            this.TextBoxNhapMang.MaxLength = 2000000000;
             this.TextBoxNhapMang.Name = "TextBoxNhapMang";
             this.TextBoxNhapMang.Size = new System.Drawing.Size(721, 30);
             this.TextBoxNhapMang.TabIndex = 4;
@@ -54,7 +54,7 @@
             this.NutNhap.BackColor = System.Drawing.Color.DodgerBlue;
             this.NutNhap.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NutNhap.ForeColor = System.Drawing.Color.Yellow;
-            this.NutNhap.Location = new System.Drawing.Point(328, 249);
+            this.NutNhap.Location = new System.Drawing.Point(325, 237);
             this.NutNhap.Name = "NutNhap";
             this.NutNhap.Size = new System.Drawing.Size(112, 46);
             this.NutNhap.TabIndex = 7;
