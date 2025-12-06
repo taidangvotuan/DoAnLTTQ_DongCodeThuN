@@ -47,7 +47,6 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             view.TocDoChanged += OnTocDoChanged;
             view.KieuSapXepChanged += OnKieuSapXepChanged;
         }
-
         #endregion
 
         #region EVENT HANDLERS
@@ -55,7 +54,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             try
             {
-                // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+                // Tối đa là 30phần tử thôi nha, chư hơn nữa là khó nhìn lắm
                 int soPhanTu = view.SoPhanTu;
 
                 if (soPhanTu < 2 || soPhanTu > 45)
@@ -82,7 +81,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             int soPhanTu = view.SoPhanTu;
 
-            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+            // Tối đa là 30 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
             if (soPhanTu < 2 || soPhanTu > 45)
             {
                 view.HienThiThongBao("Số phần tử phải từ 2 đến 45!", "Lỗi",

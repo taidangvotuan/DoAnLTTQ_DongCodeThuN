@@ -14,7 +14,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         // Sinh mảng ngẫu nhiên
         public int[] GenerateRandomArray(int size)
         {
-            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+            // Tối đa là 45 phần tử thôi nha, chứ hơn nữa là khó nhìn lắm
             if (size < 2 || size > 45)
                 throw new ArgumentException("Số phần tử phải từ 2 đến 45");
 
@@ -28,7 +28,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         // Validate mảng nhập bằng tay
         public bool ValidateManualArray(int[] arr)
         {
-            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+            // Tối đa là 45 phần tử thôi nha, chứ hơn nữa là khó nhìn lắm
             if (arr == null || arr.Length < 2 || arr.Length > 45)
                 return false;
 

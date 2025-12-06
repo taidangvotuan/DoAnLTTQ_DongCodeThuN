@@ -233,10 +233,7 @@ namespace DoAnLTTQ_DongCodeThuN
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
-                {
-                    MessageBox.Show("Có lỗi khi nhập mảng!", "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Có lỗi khi nhập mảng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion

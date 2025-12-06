@@ -413,6 +413,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // TrackBar_ChinhTocDoThuatToan
             // 
             this.TrackBar_ChinhTocDoThuatToan.Location = new System.Drawing.Point(67, 33);
+            this.TrackBar_ChinhTocDoThuatToan.Maximum = 15;
             this.TrackBar_ChinhTocDoThuatToan.Name = "TrackBar_ChinhTocDoThuatToan";
             this.TrackBar_ChinhTocDoThuatToan.Size = new System.Drawing.Size(471, 56);
             this.TrackBar_ChinhTocDoThuatToan.TabIndex = 15;

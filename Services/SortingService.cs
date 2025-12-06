@@ -88,11 +88,18 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 state.Binh_i_AnimationStep = step;
                 view.RefreshSortingPanel();
 
-                int speed = state.toc_Do;
+                int speed = state.toc_Do; // 1-15
                 if (speed < 1) speed = 1;
-                if (speed > 10) speed = 10;
+                if (speed > 15) speed = 15;
 
-                Thread.Sleep(10 * (11 - speed));
+                // Công thức mới: delay = 510 - (speed * 35)
+                // Level 1  -> 475ms
+                // Level 8  -> 230ms  
+                // Level 15 -> 35ms
+                int delay = 510 - (speed * 35);
+                if (delay < 10) delay = 10; // Minimum 10ms
+
+                Thread.Sleep(delay);
                 Application.DoEvents();
             }
 
