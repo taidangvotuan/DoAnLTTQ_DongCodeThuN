@@ -116,6 +116,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NutNhap);
             this.Controls.Add(this.TextBoxNhapMang);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormNhapMang";
             this.Text = "Nhập dữ liệu cho mảng";
             this.Load += new System.EventHandler(this.FormNhapMang_Load);

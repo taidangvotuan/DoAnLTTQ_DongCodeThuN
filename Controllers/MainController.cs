@@ -54,7 +54,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             try
             {
-                // Tối đa là 30phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+                // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
                 int soPhanTu = view.SoPhanTu;
 
                 if (soPhanTu < 2 || soPhanTu > 45)

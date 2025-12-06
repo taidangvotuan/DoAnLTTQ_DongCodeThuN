@@ -55,9 +55,6 @@
     <Compile Include="Services\SortingService.cs" />
     <Compile Include="Services\VisualizationService.cs" />
     <Compile Include="Views\Interfaces\IMainView.cs" />
-    <Compile Include="Views\Form_main\Form_main_SortingAlgorithm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Views\Form_main\Form_main_CodeToolBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,8 +112,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Form_main\Form_main_CodeToolBox.resx"/>
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\AnhUIT.png" />
-    <None Include="Resources\Screenshot 2025-11-25 1902261.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
