@@ -92,12 +92,16 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 if (speed < 1) speed = 1;
                 if (speed > 15) speed = 15;
 
-                // Công thức mới: delay = 510 - (speed * 35)
-                // Level 1  -> 475ms
-                // Level 8  -> 230ms  
-                // Level 15 -> 35ms
-                int delay = 510 - (speed * 35);
-                if (delay < 10) delay = 10; // Minimum 10ms
+                // Level 1  -> 200ms (chậm nhất)
+                // Level 8  -> 50ms  (trung bình)
+                // Level 15 -> 1ms   (nhanh nhất - gần như tức thời)
+                int delay;
+                if (speed <= 0)
+                    delay = 200;
+                else if (speed >= 15)
+                    delay = 1;
+                else
+                    delay = 200 - (speed * 13); // Giảm 13ms mỗi level
 
                 Thread.Sleep(delay);
                 Application.DoEvents();

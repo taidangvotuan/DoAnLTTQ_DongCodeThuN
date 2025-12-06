@@ -83,13 +83,13 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxYTuong
             // 
-            this.ListBoxYTuong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxYTuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxYTuong.FormattingEnabled = true;
             this.ListBoxYTuong.IntegralHeight = false;
-            this.ListBoxYTuong.ItemHeight = 28;
+            this.ListBoxYTuong.ItemHeight = 23;
             this.ListBoxYTuong.Location = new System.Drawing.Point(2, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
-            this.ListBoxYTuong.Size = new System.Drawing.Size(373, 202);
+            this.ListBoxYTuong.Size = new System.Drawing.Size(354, 202);
             this.ListBoxYTuong.TabIndex = 18;
             this.ListBoxYTuong.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxYTuong_SelectedIndexChanged);
             // 
@@ -101,7 +101,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxCodeC.ItemHeight = 18;
             this.ListBoxCodeC.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCodeC.Name = "ListBoxCodeC";
-            this.ListBoxCodeC.Size = new System.Drawing.Size(439, 202);
+            this.ListBoxCodeC.Size = new System.Drawing.Size(397, 202);
             this.ListBoxCodeC.TabIndex = 20;
             this.ListBoxCodeC.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCodeC_SelectedIndexChanged);
             // 
@@ -111,9 +111,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
             this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(985, 544);
+            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(1026, 544);
             this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
-            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(447, 222);
+            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(403, 222);
             this.GroupBoxChuongTrinhCPP.TabIndex = 15;
             this.GroupBoxChuongTrinhCPP.TabStop = false;
             this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
@@ -193,14 +193,14 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxCacBuoc
             // 
-            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
             this.ListBoxCacBuoc.HorizontalScrollbar = true;
             this.ListBoxCacBuoc.IntegralHeight = false;
-            this.ListBoxCacBuoc.ItemHeight = 28;
+            this.ListBoxCacBuoc.ItemHeight = 23;
             this.ListBoxCacBuoc.Location = new System.Drawing.Point(1, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
-            this.ListBoxCacBuoc.Size = new System.Drawing.Size(358, 202);
+            this.ListBoxCacBuoc.Size = new System.Drawing.Size(422, 202);
             this.ListBoxCacBuoc.TabIndex = 19;
             this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCacBuoc_SelectedIndexChanged);
             // 
@@ -210,9 +210,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
             this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(622, 544);
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(601, 544);
             this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
-            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(364, 222);
+            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(426, 222);
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
             this.GroupBoxCacBuocThucHien.TabStop = false;
             this.GroupBoxCacBuocThucHien.Text = "Các bước thực hiện";
@@ -243,7 +243,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Yellow;
             this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 544);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
-            this.GroupBoxYTuong.Size = new System.Drawing.Size(381, 222);
+            this.GroupBoxYTuong.Size = new System.Drawing.Size(359, 222);
             this.GroupBoxYTuong.TabIndex = 14;
             this.GroupBoxYTuong.TabStop = false;
             this.GroupBoxYTuong.Text = "Ý tưởng";

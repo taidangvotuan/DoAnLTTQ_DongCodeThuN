@@ -65,18 +65,20 @@ namespace DoAnLTTQ_DongCodeThuN
 
             if (visualizationView != null)
             {
-                // Công thức tính delay: Mức càng cao, delay càng thấp
-                // Level 1  -> 500ms (chậm nhất)
-                // Level 8  -> 100ms (trung bình)
-                // Level 15 -> 10ms  (nhanh nhất)
+                // ===== CÔNG THỨC TỐC ĐỘ MỚI =====
+                // Level 1  -> 200ms (chậm nhất)
+                // Level 8  -> 50ms  (trung bình)
+                // Level 15 -> 1ms   (nhanh nhất)
 
-                // Sử dụng công thức logarit để có độ chênh lệch hợp lý
-                // delay = 510 - (level * 35) cho phân bố tuyến tính
-                visualizationView.delayTime = (int)(510 - (level * 35));
+                int delay;
+                if (level <= 0)
+                    delay = 200;
+                else if (level >= 15)
+                    delay = 1; // Cực nhanh
+                else
+                    delay = 200 - (level * 13); // Giảm 13ms mỗi level
 
-                // Đảm bảo delay >= 10ms để tránh quá nhanh
-                if (visualizationView.delayTime < 10)
-                    visualizationView.delayTime = 10;
+                visualizationView.delayTime = delay;
             }
         }
 
@@ -106,7 +108,9 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Tính ngược level từ delayTime
             int delay = visualizationView.delayTime;
-            int level = (510 - delay) / 35;
+
+            // Công thức ngược: level = (200 - delay) / 13
+            int level = (200 - delay) / 13;
 
             // Clamp về range 1-15
             if (level < 1) return 1;

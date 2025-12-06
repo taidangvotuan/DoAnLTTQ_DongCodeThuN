@@ -25,7 +25,9 @@ namespace DoAnLTTQ_DongCodeThuN
 }";
 
             string HeapifyTang =
-@"void Heapify(int arr[], int n, int i)
+@"// Hàm Heapify để điều chỉnh cây con tại vị trí i 
+thành dạng Max-Heap
+void Heapify(int arr[], int n, int i)
 {
     int max = i;
     int left = 2 * i + 1;
@@ -42,7 +44,9 @@ namespace DoAnLTTQ_DongCodeThuN
 }";
 
             string HeapifyGiam =
-@"void Heapify(int arr[], int n, int i)
+@"// Hàm Heapify để điều chỉnh cây con tại vị trí i 
+thành dạng Min-Heap
+void Heapify(int arr[], int n, int i)
 {
     int min = i;
     int left = 2 * i + 1;
@@ -84,8 +88,10 @@ namespace DoAnLTTQ_DongCodeThuN
             string MergeTang =
 @"void Merge(int arr[], int left, int mid, int right)
 {
-    int n1 = mid - left + 1; // Số phần tử mảng con trái
-    int n2 = right - mid;    // Số phần tử mảng con trái
+    int n1 = mid - left + 1; // Số phần tử của mảng 
+con trái
+    int n2 = right - mid;    // Số phần tử của mảng 
+con phải
 
     // Tạo mảng tạm
     int[] arrLeft = new int[n1];
@@ -136,8 +142,10 @@ namespace DoAnLTTQ_DongCodeThuN
             string MergeGiam =
 @"void Merge(int arr[], int left, int mid, int right)
 {
-    int n1 = mid - left + 1; // Số phần tử mảng con trái
-    int n2 = right - mid;    // Số phần tử mảng con trái
+    int n1 = mid - left + 1; // Số phần tử của mảng 
+con trái
+    int n2 = right - mid;    // Số phần tử của mảng 
+con phải
 
     // Tạo mảng tạm
     int[] arrLeft = new int[n1];
@@ -339,7 +347,8 @@ namespace DoAnLTTQ_DongCodeThuN
 @"void QuickSort(int a[], int left, int right)
 {
     int i = left, j = right;
-    int pivot = a[(left + right) / 2];
+    int pivot = a[(left + right) / 2]; // Chọn vị trí
+giữa làm mốc
     while (i <= j)
     {
         while (a[i] < pivot) i++;
@@ -361,7 +370,8 @@ namespace DoAnLTTQ_DongCodeThuN
 @"void QuickSort(int a[], int left, int right)
 {
     int i = left, j = right;
-    int pivot = a[(left + right) / 2];
+    int pivot = a[(left + right) / 2]; // Chọn vị trí
+giữa làm mốc
     while (i <= j)
     {
         while (a[i] > pivot) i++;

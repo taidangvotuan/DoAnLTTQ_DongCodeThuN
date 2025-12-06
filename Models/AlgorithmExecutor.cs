@@ -17,7 +17,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
             {
                 for (int j = 0; j < n-1-i; j++)
                 {
-                    await Task.Delay(500);
+                    await Task.Delay(view.delayTime);
                     view.SetState(j, State.NOR);
                     view.SetState(j+1, State.NOR);
 
@@ -26,7 +26,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
                         await view.Swap(j, j + 1);                    
                     }
 
-                    await Task.Delay(500);
+                    await Task.Delay(view.delayTime);
                     view.SetState(j, State.NORMAL);
                     view.SetState(j + 1, State.NORMAL);
                 }
@@ -57,7 +57,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
             for (int i = left; i < right; i++)
             {
                 view.SetState(i, State.NOR);
-                await Task.Delay(500);
+                await Task.Delay(view.delayTime);
 
                 if (arr[i] < pivot)
                 {
@@ -84,12 +84,12 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
             {
                 int minIdx = i;
                 view.SetState(i, State.NOR);
-                await Task.Delay(300);
+                await Task.Delay(view.delayTime);
 
                 for (int j = i + 1; j < n; j++)
                 {
                     view.SetState(j, State.NOR);
-                    await Task.Delay(300);
+                    await Task.Delay(view.delayTime);
 
                     if (arr[j] < arr[minIdx])
                     {
