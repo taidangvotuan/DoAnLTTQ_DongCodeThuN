@@ -204,7 +204,6 @@ namespace DoAnLTTQ_DongCodeThuN
             if (soPhanTu < 2 || soPhanTu > 45)
             {
                 MessageBox.Show("Số phần tử phải từ 2 đến 45", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                NumericNhapSoPhanTu.Value = 5;
                 return;
             }
 

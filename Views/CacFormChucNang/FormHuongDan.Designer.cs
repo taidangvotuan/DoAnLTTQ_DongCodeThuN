@@ -61,6 +61,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 763);
             this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormHuongDan";
             this.Text = "Hướng dẫn sử dụng";
             this.Load += new System.EventHandler(this.Form3_Load);
