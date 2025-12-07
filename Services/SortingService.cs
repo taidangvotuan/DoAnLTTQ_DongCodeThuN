@@ -25,7 +25,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             while (state.kt_tam_dung && state.is_run)
             {
                 Application.DoEvents();
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
         }
 
@@ -73,11 +73,11 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
             // Setup animation
             state.Binh_i_AnimationStep = 0;
-            state.Binh_i_AnimationStepMax = 15;
+            state.Binh_i_AnimationStepMax = 750; // 750ms / swap
             state.Binh_b_DangAnimation = true;
 
             // Chạy animation
-            for (int step = 0; step <= state.Binh_i_AnimationStepMax; step++)
+            for (int step = 0; step <= state.Binh_i_AnimationStepMax; )
             {
                 if (!state.is_run) return;
                 Binh_v_HandleTamDungVaKetThuc();
@@ -85,25 +85,26 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
                 Thinh_v_KiemTraTamDung();
 
-                state.Binh_i_AnimationStep = step;
-                view.RefreshSortingPanel();
-
                 int speed = state.toc_Do; // 1-15
                 if (speed < 1) speed = 1;
                 if (speed > 15) speed = 15;
 
+                step += 10 * speed;
+
+                state.Binh_i_AnimationStep = step;
+                view.RefreshSortingPanel();
                 // Level 1  -> 200ms (chậm nhất)
                 // Level 8  -> 50ms  (trung bình)
                 // Level 15 -> 1ms   (nhanh nhất - gần như tức thời)
-                int delay;
-                if (speed <= 0)
-                    delay = 200;
-                else if (speed >= 15)
-                    delay = 1;
-                else
-                    delay = 200 - (speed * 13); // Giảm 13ms mỗi level
+                //int delay;
+                //if (speed <= 0)
+                //    delay = 200;
+                //else if (speed >= 15)
+                //    delay = 1;
+                //else
+                //    delay = 200 - (speed * 13); // Giảm 13ms mỗi level
 
-                Thread.Sleep(delay);
+                Thread.Sleep(10); //60 FPS framerate independent
                 Application.DoEvents();
             }
 
@@ -190,7 +191,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     if (!state.is_run) return;
                     Thinh_v_KiemTraTamDung();
 
-                    if (arr[j] < arr[minIdx]) minIdx = j;
+                    if (arr[j] < arr[minIdx]) minIdx = j;  
                 }
 
                 if (minIdx != i)

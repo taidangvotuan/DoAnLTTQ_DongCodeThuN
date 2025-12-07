@@ -53,6 +53,7 @@
     <Compile Include="Models\SortingState.cs" />
     <Compile Include="Services\DataGeneratorService.cs" />
     <Compile Include="Services\SortingService.cs" />
+    <Compile Include="Services\TimeDiagnoseService.cs" />
     <Compile Include="Services\VisualizationService.cs" />
     <Compile Include="Views\Interfaces\IMainView.cs" />
     <Compile Include="Views\Form_main\Form_main_SortingAlgorithm.cs">
@@ -115,8 +116,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Form_main\Form_main_CodeToolBox.resx"/>
-
+    <EmbeddedResource Include="Views\Form_main\Form_main_CodeToolBox.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

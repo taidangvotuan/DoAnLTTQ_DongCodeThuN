@@ -35,6 +35,7 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         void KhoiChay();
         void KhoaChay();
         void HienThiThongBao(string message, string title, MessageBoxIcon icon);
+        void SetRuntimeLabelUI(double t);
 
         // Refresh UI
         void RefreshSortingPanel();

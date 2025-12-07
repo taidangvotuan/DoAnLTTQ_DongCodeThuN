@@ -178,6 +178,11 @@ namespace DoAnLTTQ_DongCodeThuN
             MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
         }
 
+        public void SetRuntimeLabelUI(double t)
+        {
+            runtimeLabel.Text = $"Runtime : {t}ms";
+        }
+
         public void UpdateUI()
         {
             Application.DoEvents();
@@ -266,6 +271,18 @@ namespace DoAnLTTQ_DongCodeThuN
         public void VeLaiSortingPanelView()
         {
             VeLaiSortingPanel();
+        }
+
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            string code = string.Empty;
+            foreach (var item in ListBoxCodeC.Items)
+            {
+                // Do something with each item
+                string itemText = item.ToString();
+                code += itemText + '\n';
+            }
+            Clipboard.SetText(code);
         }
     }
 }

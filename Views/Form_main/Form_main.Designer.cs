@@ -34,6 +34,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxYTuong = new System.Windows.Forms.ListBox();
             this.ListBoxCodeC = new System.Windows.Forms.ListBox();
             this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
+            this.copyButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ButtonNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
             this.SortingPanelView = new System.Windows.Forms.Panel();
+            this.runtimeLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.GroupBoxChuongTrinhCPP.SuspendLayout();
@@ -79,6 +81,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).BeginInit();
             this.PanelMoPhong.SuspendLayout();
+            this.SortingPanelView.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBoxYTuong
@@ -108,6 +111,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxChuongTrinhCPP
             // 
             this.GroupBoxChuongTrinhCPP.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GroupBoxChuongTrinhCPP.Controls.Add(this.copyButton);
             this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
             this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Yellow;
@@ -118,6 +122,17 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChuongTrinhCPP.TabStop = false;
             this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
             this.GroupBoxChuongTrinhCPP.Enter += new System.EventHandler(this.Tai_v_GroupBoxChuongTrinhCPP_Enter);
+            // 
+            // copyButton
+            // 
+            this.copyButton.ForeColor = System.Drawing.Color.Black;
+            this.copyButton.Location = new System.Drawing.Point(314, 26);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(65, 29);
+            this.copyButton.TabIndex = 21;
+            this.copyButton.Text = "Copy";
+            this.copyButton.UseVisualStyleBackColor = true;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
             // panel3
             // 
@@ -539,11 +554,21 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
-            this.SortingPanelView.Location = new System.Drawing.Point(2, 0);
+            this.SortingPanelView.Controls.Add(this.runtimeLabel);
+            this.SortingPanelView.Location = new System.Drawing.Point(2, 6);
             this.SortingPanelView.Name = "SortingPanelView";
-            this.SortingPanelView.Size = new System.Drawing.Size(1187, 422);
+            this.SortingPanelView.Size = new System.Drawing.Size(1187, 416);
             this.SortingPanelView.TabIndex = 2;
             this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
+            // 
+            // runtimeLabel
+            // 
+            this.runtimeLabel.AutoSize = true;
+            this.runtimeLabel.Location = new System.Drawing.Point(939, -3);
+            this.runtimeLabel.Name = "runtimeLabel";
+            this.runtimeLabel.Size = new System.Drawing.Size(155, 25);
+            this.runtimeLabel.TabIndex = 0;
+            this.runtimeLabel.Text = "Runtime : 0 ms";
             // 
             // timer1
             // 
@@ -553,11 +578,11 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // Form_main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 763);
             this.Controls.Add(this.ThanhDieuKhien);
-            this.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
@@ -581,6 +606,8 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericNhapSoPhanTu)).EndInit();
             this.PanelMoPhong.ResumeLayout(false);
+            this.SortingPanelView.ResumeLayout(false);
+            this.SortingPanelView.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -626,5 +653,7 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.Label LabelSoPhanTu;
         private System.Windows.Forms.NumericUpDown NumericNhapSoPhanTu;
         private System.Windows.Forms.Label LabelKhoangGiaTriPhanTu;
+        private System.Windows.Forms.Label runtimeLabel;
+        private System.Windows.Forms.Button copyButton;
     }
 }

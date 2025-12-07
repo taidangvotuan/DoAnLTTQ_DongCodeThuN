@@ -1,4 +1,5 @@
 ﻿using DoAnLTTQ_DongCodeThuN.Models;
+using System;
 using System.Drawing;
 using System.Linq;
 
@@ -42,8 +43,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 if (state.Binh_b_DangAnimation && state.Binh_i_AnimationStepMax > 0)
                 {
                     t = (float)state.Binh_i_AnimationStep / (float)state.Binh_i_AnimationStepMax;
-                    if (t < 0f) t = 0f;
-                    if (t > 1f) t = 1f;
+                    t = Math.Min(Math.Max(t, 0f), 1f);
                 }
 
                 // Vẽ từng cột

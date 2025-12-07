@@ -124,11 +124,16 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             visualService.ResetHighlight();
 
             view.KhoiChay();
+            view.SetRuntimeLabelUI(0);
 
+            //chay mo phong thuat toan
+            double rt = TimeDiagnoseService.ChayMoPhongThuatToan(state.a, thuatToan, state.tang);
+            view.SetRuntimeLabelUI(rt);
             // Chạy thuật toán
             RunSelectedAlgorithm(thuatToan, state.tang);
 
             // Kết thúc
+            
             state.Reset();
             view.KhoaChay();
             view.VeLaiSortingPanel();
