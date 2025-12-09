@@ -25,8 +25,7 @@ namespace DoAnLTTQ_DongCodeThuN
             controller = new MainController(this);
 
             // Setup double-buffer
-            typeof(Panel).InvokeMember(
-                "DoubleBuffered",
+            typeof(Panel).InvokeMember("DoubleBuffered",
                 BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                 null, SortingPanelView, new object[] { true });
 
@@ -190,7 +189,6 @@ namespace DoAnLTTQ_DongCodeThuN
         #endregion
 
         #region UI EVENT HANDLERS - RAISE CONTROLLER EVENTS
-
         private void NhapNgauNhien(object sender, EventArgs e)
         {
             NhapNgauNhienClicked?.Invoke(this, e);

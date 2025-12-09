@@ -76,7 +76,8 @@ namespace DoAnLTTQ_DongCodeThuN
         private void TextBoxNhapMang_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép: số, space, backspace, delete
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back
+            && e.KeyChar != (char)Keys.Delete)
             {
                 e.Handled = true;
                 ShowError("Chỉ được nhập số và dấu cách!");
@@ -224,7 +225,7 @@ namespace DoAnLTTQ_DongCodeThuN
             if (parts.Length > SoPhanTu)
             {
                 result.IsValid = false;
-                result.ErrorMessage = $"Thừa {parts.Length - SoPhanTu} số! (Chỉ cần {SoPhanTu} số)";
+                result.ErrorMessage = $"Thừa {parts.Length - SoPhanTu} số! (Chỉ cần {SoPhanTu} số). ";
                 result.ErrorMessage += $"Bạn PHẢI nhập CHÍNH XÁC {SoPhanTu} số, không được thừa!";
                 return result;
             }
@@ -288,7 +289,8 @@ namespace DoAnLTTQ_DongCodeThuN
             // Hiển thị warning nếu có
             if (!string.IsNullOrEmpty(validationResult.Warning))
             {
-                var result = MessageBox.Show(validationResult.Warning + "\n\nBạn có muốn tiếp tục?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var result = MessageBox.Show(validationResult.Warning + "\n\nBạn có muốn tiếp tục?", "Cảnh báo",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.No)
                 {
@@ -299,11 +301,8 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Hiển thị preview trước khi confirm
             string preview = string.Join(" → ", validationResult.Values);
-            var confirmResult = MessageBox.Show(
-                $"Mảng đã nhập:\n\n{preview}\n\nXác nhận sử dụng mảng này?",
-                "Xác nhận",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            var confirmResult = MessageBox.Show($"Mảng đã nhập:\n\n{preview}\n\nXác nhận sử dụng mảng này?", "Xác nhận",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmResult == DialogResult.Yes)
             {
