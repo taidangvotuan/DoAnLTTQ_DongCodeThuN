@@ -58,6 +58,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.TrackBar_ChinhTocDoThuatToan = new System.Windows.Forms.TrackBar();
             this.LabelTocDo = new System.Windows.Forms.Label();
             this.GroupBoxKhoiTaoMang = new System.Windows.Forms.GroupBox();
+            this.ButtonNhapFile = new System.Windows.Forms.Button();
             this.LabelKhoangGiaTriPhanTu = new System.Windows.Forms.Label();
             this.LabelSoPhanTu = new System.Windows.Forms.Label();
             this.NumericNhapSoPhanTu = new System.Windows.Forms.NumericUpDown();
@@ -451,6 +452,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // GroupBoxKhoiTaoMang
             // 
             this.GroupBoxKhoiTaoMang.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GroupBoxKhoiTaoMang.Controls.Add(this.ButtonNhapFile);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelKhoangGiaTriPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.LabelSoPhanTu);
             this.GroupBoxKhoiTaoMang.Controls.Add(this.NumericNhapSoPhanTu);
@@ -466,6 +468,21 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.TabStop = false;
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
             this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
+            // 
+            // ButtonNhapFile
+            // 
+            this.ButtonNhapFile.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonNhapFile.FlatAppearance.BorderSize = 0;
+            this.ButtonNhapFile.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ButtonNhapFile.ForeColor = System.Drawing.Color.Black;
+            this.ButtonNhapFile.Location = new System.Drawing.Point(210, 78);
+            this.ButtonNhapFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonNhapFile.Name = "ButtonNhapFile";
+            this.ButtonNhapFile.Size = new System.Drawing.Size(82, 32);
+            this.ButtonNhapFile.TabIndex = 27;
+            this.ButtonNhapFile.Text = "Nhập File";
+            this.ButtonNhapFile.UseVisualStyleBackColor = false;
+            this.ButtonNhapFile.Click += new System.EventHandler(this.NhapFileText);
             // 
             // LabelKhoangGiaTriPhanTu
             // 
@@ -509,7 +526,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ButtonNhapNgauNhien.Location = new System.Drawing.Point(11, 78);
             this.ButtonNhapNgauNhien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonNhapNgauNhien.Name = "ButtonNhapNgauNhien";
-            this.ButtonNhapNgauNhien.Size = new System.Drawing.Size(138, 32);
+            this.ButtonNhapNgauNhien.Size = new System.Drawing.Size(101, 32);
             this.ButtonNhapNgauNhien.TabIndex = 4;
             this.ButtonNhapNgauNhien.Text = "Ngẫu nhiên";
             this.ButtonNhapNgauNhien.UseVisualStyleBackColor = false;
@@ -534,10 +551,10 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ButtonNhapBangTay.FlatAppearance.BorderSize = 0;
             this.ButtonNhapBangTay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ButtonNhapBangTay.ForeColor = System.Drawing.Color.Black;
-            this.ButtonNhapBangTay.Location = new System.Drawing.Point(155, 78);
+            this.ButtonNhapBangTay.Location = new System.Drawing.Point(120, 78);
             this.ButtonNhapBangTay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonNhapBangTay.Name = "ButtonNhapBangTay";
-            this.ButtonNhapBangTay.Size = new System.Drawing.Size(138, 32);
+            this.ButtonNhapBangTay.Size = new System.Drawing.Size(82, 32);
             this.ButtonNhapBangTay.TabIndex = 5;
             this.ButtonNhapBangTay.Text = "Bằng tay";
             this.ButtonNhapBangTay.UseVisualStyleBackColor = false;
@@ -655,5 +672,6 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.Label LabelKhoangGiaTriPhanTu;
         private System.Windows.Forms.Label runtimeLabel;
         private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.Button ButtonNhapFile;
     }
 }

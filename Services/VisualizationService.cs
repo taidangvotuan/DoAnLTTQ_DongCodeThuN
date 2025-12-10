@@ -14,7 +14,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             this.state = state;
         }
 
-        // Vẽ các cột sắp xếp
+        // Vẽ các cột sắp xếp (Vẽ node)
         public void DrawSortingPanel(Graphics g, int panelWidth, int panelHeight)
         {
             if (state.a == null || state.a.Length == 0)

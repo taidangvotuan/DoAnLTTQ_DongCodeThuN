@@ -238,6 +238,12 @@ namespace DoAnLTTQ_DongCodeThuN
                     MessageBox.Show("Có lỗi khi nhập mảng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void NhapFileText(object sender, EventArgs e)
+        {
+            string txtFile;
+            
+        }
         #endregion
 
         #region PRIVATE HELPER METHODS

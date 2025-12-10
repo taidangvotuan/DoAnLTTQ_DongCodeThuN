@@ -50,9 +50,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
                 for (int j = 0; j < n - 1 - i; j++)
                 {
                     if (compareFunc(arr[j], arr[j + 1]))
-                    {
                         Swap(ref arr[j], ref arr[j + 1]);
-                    }
                 }
             }
         }
