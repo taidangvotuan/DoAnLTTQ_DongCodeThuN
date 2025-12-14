@@ -40,6 +40,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             view.NhapNgauNhienClicked += OnNhapNgauNhien;
             view.NhapBangTayClicked += OnNhapBangTay;
+            view.NhapFileClicked += OnNhapFile;
             view.ChayThuatToanClicked += OnChayThuatToan;
             view.TamDungThuatToanClicked += OnTamDungThuatToan;
             view.KetThucThuatToanClicked += OnKetThucThuatToan;

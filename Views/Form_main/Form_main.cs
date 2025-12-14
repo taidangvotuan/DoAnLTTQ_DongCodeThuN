@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DoAnLTTQ_DongCodeThuN.Controllers;
+using DoAnLTTQ_DongCodeThuN.Views.Interfaces;
+using System;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
-using DoAnLTTQ_DongCodeThuN.Views.Interfaces;
-using DoAnLTTQ_DongCodeThuN.Controllers;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
@@ -39,6 +40,10 @@ namespace DoAnLTTQ_DongCodeThuN
             RadioButton_TangDan.Enabled = false;
 
             SortingPanelView.Paint += SortingPanelView_Paint;
+
+            // Set ListBoxCacBuoc to OwnerDraw để tùy chỉnh màu sắc
+            ListBoxCacBuoc.DrawMode = DrawMode.OwnerDrawFixed;
+            ListBoxCacBuoc.DrawItem += ListBoxCacBuoc_DrawItem;
         }
         #endregion
 
@@ -51,6 +56,7 @@ namespace DoAnLTTQ_DongCodeThuN
         public event EventHandler ThuatToanChanged;
         public event EventHandler TocDoChanged;
         public event EventHandler KieuSapXepChanged;
+        public event EventHandler NhapFileClicked;
         #endregion
 
         #region IMPLEMENT IMainView - PROPERTIES
@@ -125,6 +131,29 @@ namespace DoAnLTTQ_DongCodeThuN
             else
             {
                 ListBoxCacBuoc.Items.Add(buoc);
+                ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                ListBoxCacBuoc.Update();
+            }
+        }
+
+        // Thêm bước với thông tin vị trí hoán vị để highlight màu
+        public void ThemBuocVaoListBoxCoMau(string buoc, int viTri1, int viTri2)
+        {
+            if (ListBoxCacBuoc.InvokeRequired)
+            {
+                ListBoxCacBuoc.Invoke(new Action(() =>
+                {
+                    // Lưu thông tin vị trí hoán vị vào Tag
+                    var item = new ListBoxItem { Text = buoc, SwapPos1 = viTri1, SwapPos2 = viTri2 };
+                    ListBoxCacBuoc.Items.Add(item);
+                    ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                    ListBoxCacBuoc.Update();
+                }));
+            }
+            else
+            {
+                var item = new ListBoxItem { Text = buoc, SwapPos1 = viTri1, SwapPos2 = viTri2 };
+                ListBoxCacBuoc.Items.Add(item);
                 ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
                 ListBoxCacBuoc.Update();
             }
@@ -213,7 +242,6 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 // Lấy mảng từ FormNhapMang
                 int[] mangMoi = formNhap.Array;
-
                 if (mangMoi != null && mangMoi.Length == soPhanTu)
                 {
                     // Cập nhật vào state thông qua Controller
@@ -241,8 +269,81 @@ namespace DoAnLTTQ_DongCodeThuN
 
         private void NhapFileText(object sender, EventArgs e)
         {
-            string txtFile;
-            
+            NhapFileClicked?.Invoke(this, e);
+        }
+        #endregion
+
+        #region CUSTOM DRAWING FOR LISTBOX
+        private void ListBoxCacBuoc_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            e.DrawBackground();
+
+            var item = ListBoxCacBuoc.Items[e.Index];
+            string text;
+            int swapPos1 = -1, swapPos2 = -1;
+
+            if (item is ListBoxItem listBoxItem)
+            {
+                text = listBoxItem.Text;
+                swapPos1 = listBoxItem.SwapPos1;
+                swapPos2 = listBoxItem.SwapPos2;
+            }
+            else
+            {
+                text = item.ToString();
+            }
+
+            // Vẽ text với màu sắc tùy chỉnh
+            using (Brush textBrush = new SolidBrush(e.ForeColor))
+            {
+                if (swapPos1 >= 0 && swapPos2 >= 0)
+                {
+                    // Tìm và highlight các số tại vị trí hoán vị
+                    DrawHighlightedText(e.Graphics, text, e.Bounds, swapPos1, swapPos2);
+                }
+                else
+                    e.Graphics.DrawString(text, e.Font, textBrush, e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
+        private void DrawHighlightedText(Graphics g, string text, Rectangle bounds, int pos1, int pos2)
+        {
+            // Parse text để tìm các số và vị trí của chúng
+            string[] parts = text.Split(new[] { ":" }, StringSplitOptions.None);
+            if (parts.Length < 2)
+            {
+                g.DrawString(text, ListBoxCacBuoc.Font, Brushes.Black, bounds);
+                return;
+            }
+
+            string prefix = parts[0] + ": ";
+            string numbers = parts[1].Trim();
+            string[] nums = numbers.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+
+            float x = bounds.X;
+            float y = bounds.Y;
+
+            // Vẽ prefix
+            g.DrawString(prefix, ListBoxCacBuoc.Font, Brushes.Black, x, y);
+            SizeF prefixSize = g.MeasureString(prefix, ListBoxCacBuoc.Font);
+            x += prefixSize.Width;
+
+            // Vẽ từng số với màu sắc phù hợp
+            for (int i = 0; i < nums.Length; i++)
+            {
+                Brush brush = Brushes.Black;
+
+                if (i == pos1 || i == pos2)
+                    brush = Brushes.Red; // Highlight số đang hoán vị
+
+                g.DrawString(nums[i], ListBoxCacBuoc.Font, brush, x, y);
+                SizeF numSize = g.MeasureString(nums[i] + "  ", ListBoxCacBuoc.Font);
+                x += numSize.Width;
+            }
         }
         #endregion
 
@@ -264,12 +365,25 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        #region FORM EVENTS
+        #region LISTBOX ITEM CLASS
+        private class ListBoxItem
+        {
+            public string Text { get; set; }
+            public int SwapPos1 { get; set; } = -1;
+            public int SwapPos2 { get; set; } = -1;
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+        #endregion
+
+
         private void Form_Load(object sender, EventArgs e)
         {
             SortingPanelView.Paint += SortingPanelView_Paint;
         }
-        #endregion
 
         public void VeLaiSortingPanelView()
         {

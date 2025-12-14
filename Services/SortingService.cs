@@ -38,6 +38,16 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             view.ThemBuocVaoListBox($"Dãy chưa sắp : {chuoiMang}");
         }
 
+        // Ghi bước với màu sắc cho vị trí hoán vị
+        public void Thinh_v_GhiBuocCoMau(int[] arr, int viTri1, int viTri2)
+        {
+            state.Thinh_dem_buoc++;
+            string chuoiMang = string.Join("  ", arr);
+            string noiDung = $"Bước {state.Thinh_dem_buoc} : {chuoiMang}";
+            view.ThemBuocVaoListBoxCoMau(noiDung, viTri1, viTri2);
+            Application.DoEvents();
+        }
+
         // Hàm ghi lại các bước hoán vị
         public void Thinh_v_GhiBuoc(int[] arr)
         {
@@ -58,7 +68,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Application.DoEvents();
                 Thread.Sleep(10);
             }
-
             Application.DoEvents();
         }
 
@@ -93,18 +102,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
                 state.Binh_i_AnimationStep = step;
                 view.RefreshSortingPanel();
-                // Level 1  -> 200ms (chậm nhất)
-                // Level 8  -> 50ms  (trung bình)
-                // Level 15 -> 1ms   (nhanh nhất - gần như tức thời)
-                //int delay;
-                //if (speed <= 0)
-                //    delay = 200;
-                //else if (speed >= 15)
-                //    delay = 1;
-                //else
-                //    delay = 200 - (speed * 13); // Giảm 13ms mỗi level
-
-                Thread.Sleep(10); //60 FPS framerate independent
+                Thread.Sleep(10);
                 Application.DoEvents();
             }
 
@@ -117,7 +115,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             arr[j] = temp;
 
             view.RefreshSortingPanel();
-            Thinh_v_GhiBuoc(arr);
+            Thinh_v_GhiBuocCoMau(arr, i, j);
         }
         #endregion
 

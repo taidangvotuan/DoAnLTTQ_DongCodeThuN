@@ -49,6 +49,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             string[] parts = input.Split(new char[] { ' ', '\t' },
                 StringSplitOptions.RemoveEmptyEntries);
 
+            if (parts.Length < 2)
+                throw new ArgumentException("Phải có ít nhất 2 số");
+
             if (parts.Length > expectedSize)
                 throw new ArgumentException($"Bạn đã nhập quá {expectedSize} phần tử");
 
