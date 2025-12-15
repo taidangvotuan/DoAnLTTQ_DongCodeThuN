@@ -295,17 +295,54 @@ namespace DoAnLTTQ_DongCodeThuN
                 text = item.ToString();
             }
 
-            // Vẽ text với màu sắc tùy chỉnh
-            using (Brush textBrush = new SolidBrush(e.ForeColor))
+            // Xác định màu sắc và font dựa trên nội dung
+            Font drawFont = e.Font;
+            Brush textBrush = Brushes.Black;
+
+            // Kiểm tra các từ khóa đặc biệt để tô màu
+            if (text.Contains("BẮT ĐẦU MERGE SORT") || text.Contains("HOÀN THÀNH MERGE SORT"))
             {
-                if (swapPos1 >= 0 && swapPos2 >= 0)
-                {
-                    // Tìm và highlight các số tại vị trí hoán vị
-                    DrawHighlightedText(e.Graphics, text, e.Bounds, swapPos1, swapPos2);
-                }
-                else
-                    e.Graphics.DrawString(text, e.Font, textBrush, e.Bounds);
+                // Header màu xanh dương đậm, in đậm
+                textBrush = Brushes.DarkBlue;
+                drawFont = new Font(e.Font, FontStyle.Bold);
             }
+            else if (text.StartsWith("CHIA:"))
+            {
+                // Dòng chia màu cam/vàng
+                textBrush = Brushes.DarkOrange;
+                drawFont = new Font(e.Font, FontStyle.Bold);
+            }
+            else if (text.StartsWith("BẮT ĐẦU TRỘN:"))
+            {
+                // Dòng bắt đầu trộn màu xanh lá
+                textBrush = Brushes.Green;
+                drawFont = new Font(e.Font, FontStyle.Bold);
+            }
+            else if (text.StartsWith("HOÀN THÀNH:"))
+            {
+                // Dòng hoàn thành màu xanh lá đậm
+                textBrush = Brushes.DarkGreen;
+                drawFont = new Font(e.Font, FontStyle.Bold);
+            }
+            else if (text.StartsWith("---"))
+            {
+                // Đường kẻ phân cách màu xám
+                textBrush = Brushes.Gray;
+            }
+            else if (swapPos1 >= 0 && swapPos2 >= 0)
+            {
+                // Các bước thông thường với highlight màu đỏ
+                DrawHighlightedText(e.Graphics, text, e.Bounds, swapPos1, swapPos2);
+                e.DrawFocusRectangle();
+                return;
+            }
+
+            // Vẽ text với màu sắc đã chọn
+            e.Graphics.DrawString(text, drawFont, textBrush, e.Bounds);
+
+            // Cleanup font nếu đã tạo mới
+            if (drawFont != e.Font)
+                drawFont.Dispose();
 
             e.DrawFocusRectangle();
         }
