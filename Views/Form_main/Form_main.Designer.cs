@@ -211,6 +211,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
+            this.ListBoxCacBuoc.HorizontalExtent = 1500;
             this.ListBoxCacBuoc.HorizontalScrollbar = true;
             this.ListBoxCacBuoc.IntegralHeight = false;
             this.ListBoxCacBuoc.ItemHeight = 23;

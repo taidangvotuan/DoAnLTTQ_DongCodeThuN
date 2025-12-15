@@ -37,7 +37,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 // Định nghĩa các màu
                 Brush normalBrush = Brushes.Blue;           // Màu mặc định
                 Brush swapBrush = Brushes.Red;              // Màu đỏ - đang hoán vị
-                Brush divideBrush = Brushes.Orange;         // Màu cam - đang chia (Merge Sort)
+                Brush divideBrush = Brushes.Purple;         // Màu tím - đang chia (Merge Sort)
                 Brush mergingBrush = Brushes.LimeGreen;     // Màu xanh lá - đang trộn (Merge Sort)
                 Brush completedBrush = Brushes.Green;       // Màu xanh đậm - hoàn thành
                 Brush textBrush = Brushes.Black;
@@ -96,16 +96,16 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     {
                         // Highlight đặc biệt cho Merge Sort
                         // Dùng AnimationStep để phân biệt giai đoạn:
-                        // 0 = Đang chia (cam)
-                        // 1 = Đang trộn (xanh lá)
-                        // 2 = Đang xét vùng (vàng)
+                        // 0 = Đang chia (Tím)
+                        // 1 = Đang trộn (Xanh lá)
+                        // 2 = Đang xét vùng (Cam)
 
                         if (state.Binh_i_AnimationStep == 0)
-                            brushToUse = divideBrush;       // Cam - đang chia
+                            brushToUse = divideBrush;       // Tím - đang chia
                         else if (state.Binh_i_AnimationStep == 1)
                             brushToUse = mergingBrush;      // Xanh lá - đang trộn
                         else if (state.Binh_i_AnimationStep == 2)
-                            brushToUse = Brushes.Gold;      // Vàng - đang xét
+                            brushToUse = Brushes.Orange;      // Cam - đang xét
                         else
                             brushToUse = swapBrush;         // Đỏ - hoán vị thông thường
                     }
@@ -139,9 +139,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 {
                     new { Color = Color.Blue, Text = "Chưa xử lý" },
                     new { Color = Color.Red, Text = "Đang hoán vị" },
-                    new { Color = Color.Orange, Text = "Đang chia (Merge)" },
+                    new { Color = Color.Purple, Text = "Đang chia (Merge)" },
                     new { Color = Color.LimeGreen, Text = "Đang trộn (Merge)" },
-                    new { Color = Color.Gold, Text = "Đang xét vùng" }
+                    new { Color = Color.Orange, Text = "Đang xét vùng" }
                 };
 
                 for (int i = 0; i < legends.Length; i++)
@@ -156,8 +156,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     }
 
                     // Vẽ text
-                    g.DrawString(legends[i].Text, legendFont, Brushes.Black,
-                        legendX + boxSize + spacing, y - 2);
+                    g.DrawString(legends[i].Text, legendFont, Brushes.Black, legendX + boxSize + spacing, y - 2);
                 }
             }
         }

@@ -35,7 +35,6 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         public VisualizationService VisualService => visualService;
 
         #region WIRE UP EVENTS
-
         private void WireUpEvents()
         {
             view.NhapNgauNhienClicked += OnNhapNgauNhien;
@@ -290,11 +289,9 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             state.tang = view.TangDan;
             UpdateCodeAndIdea();
         }
-
         #endregion
 
         #region PRIVATE METHODS
-
         private void RunSelectedAlgorithm(string tenThuatToan, bool tang)
         {
             switch (tenThuatToan)

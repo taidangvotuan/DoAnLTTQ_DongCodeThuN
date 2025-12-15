@@ -308,14 +308,14 @@ namespace DoAnLTTQ_DongCodeThuN
             }
             else if (text.StartsWith("CHIA:"))
             {
-                // Dòng chia màu cam/vàng
-                textBrush = Brushes.DarkOrange;
+                // Dòng chia màu tím
+                textBrush = Brushes.Purple;
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
             else if (text.StartsWith("BẮT ĐẦU TRỘN:"))
             {
                 // Dòng bắt đầu trộn màu xanh lá
-                textBrush = Brushes.Green;
+                textBrush = Brushes.LimeGreen;
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
             else if (text.StartsWith("HOÀN THÀNH:"))
@@ -415,7 +415,6 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
         #endregion
-
 
         private void Form_Load(object sender, EventArgs e)
         {
