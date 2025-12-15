@@ -81,7 +81,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
                         x = (int)(fromX + (toX - fromX) * t);
                     }
-
                     int y = panelHeight - barHeight - 50;
 
                     // Chọn màu
@@ -119,44 +118,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     string valueStr = state.a[i].ToString();
                     SizeF textSize = g.MeasureString(valueStr, font);
                     g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
-                }
-                // Vẽ chú thích màu (Legend)
-                DrawLegend(g, panelWidth, panelHeight);
-            }
-        }
-
-        // Vẽ chú thích màu
-        private void DrawLegend(Graphics g, int panelWidth, int panelHeight)
-        {
-            int legendX = 10;
-            int legendY = 10;
-            int boxSize = 15;
-            int spacing = 5;
-
-            using (Font legendFont = new Font("Arial", 9, FontStyle.Regular))
-            {
-                var legends = new[]
-                {
-                    new { Color = Color.Blue, Text = "Chưa xử lý" },
-                    new { Color = Color.Red, Text = "Đang hoán vị" },
-                    new { Color = Color.Purple, Text = "Đang chia (Merge)" },
-                    new { Color = Color.LimeGreen, Text = "Đang trộn (Merge)" },
-                    new { Color = Color.Orange, Text = "Đang xét vùng" }
-                };
-
-                for (int i = 0; i < legends.Length; i++)
-                {
-                    int y = legendY + i * (boxSize + spacing + 5);
-
-                    // Vẽ ô màu
-                    using (SolidBrush brush = new SolidBrush(legends[i].Color))
-                    {
-                        g.FillRectangle(brush, legendX, y, boxSize, boxSize);
-                        g.DrawRectangle(Pens.Black, legendX, y, boxSize, boxSize);
-                    }
-
-                    // Vẽ text
-                    g.DrawString(legends[i].Text, legendFont, Brushes.Black, legendX + boxSize + spacing, y - 2);
                 }
             }
         }

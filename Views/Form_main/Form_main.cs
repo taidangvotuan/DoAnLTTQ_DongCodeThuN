@@ -11,8 +11,8 @@ namespace DoAnLTTQ_DongCodeThuN
     {
         #region KHAI BÁO CONTROLLER VÀ BIẾN CŨ
         private MainController controller; // Controller MVC
+        private Panel legendPanel; // Panel chứa legend
 
-        // GIỮ NGUYÊN CÁC BIẾN CŨ ĐỂ TƯƠNG THÍCH
         public static int[] a;
         public static int so_phan_tu;
         #endregion
@@ -24,6 +24,9 @@ namespace DoAnLTTQ_DongCodeThuN
 
             // Khởi tạo Controller
             controller = new MainController(this);
+
+            // Tạo Panel cho legend ngay sau khi InitializeComponent
+            InitializeLegendPanel();
 
             // Setup double-buffer
             typeof(Panel).InvokeMember("DoubleBuffered",
@@ -44,6 +47,70 @@ namespace DoAnLTTQ_DongCodeThuN
             // Set ListBoxCacBuoc to OwnerDraw để tùy chỉnh màu sắc
             ListBoxCacBuoc.DrawMode = DrawMode.OwnerDrawFixed;
             ListBoxCacBuoc.DrawItem += ListBoxCacBuoc_DrawItem;
+        }
+
+        private void InitializeLegendPanel()
+        {
+            legendPanel = new Panel
+            {
+                Location = new Point(0, 316), // Dưới nút "Về tác giả"
+                Size = new Size(240, 200),
+                BackColor = Color.AliceBlue,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            legendPanel.Paint += LegendPanel_Paint;
+
+            // Thêm vào PanelNen
+            PanelNen.Controls.Add(legendPanel);
+            legendPanel.BringToFront();
+        }
+
+        private void LegendPanel_Paint(object sender, PaintEventArgs e)
+        {
+            if (controller?.VisualService == null) return;
+
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Clear(Color.AliceBlue);
+
+            int legendX = 15;
+            int legendY = 15;
+            int boxSize = 20;
+            int spacing = 8;
+
+            using (Font titleFont = new Font("Arial", 11, FontStyle.Bold))
+            using (Font legendFont = new Font("Arial", 9.5F, FontStyle.Regular))
+            {
+                // Vẽ tiêu đề
+                g.DrawString("Chú thích màu:", titleFont, Brushes.DarkBlue, legendX, legendY);
+                legendY += 30;
+
+                var legends = new[]
+                {
+                    new { Color = Color.Blue, Text = "Chưa xử lý" },
+                    new { Color = Color.Red, Text = "Đang hoán vị" },
+                    new { Color = Color.Purple, Text = "Đang chia (Merge)" },
+                    new { Color = Color.LimeGreen, Text = "Đang trộn (Merge)" },
+                    new { Color = Color.Orange, Text = "Đang xét vùng" }
+                };
+
+                for (int i = 0; i < legends.Length; i++)
+                {
+                    int y = legendY + i * (boxSize + spacing + 3);
+
+                    // Vẽ ô màu
+                    using (SolidBrush brush = new SolidBrush(legends[i].Color))
+                    {
+                        g.FillRectangle(brush, legendX, y, boxSize, boxSize);
+                        g.DrawRectangle(Pens.Black, legendX, y, boxSize, boxSize);
+                    }
+
+                    // Vẽ text
+                    g.DrawString(legends[i].Text, legendFont, Brushes.Black,
+                                legendX + boxSize + spacing, y + 2);
+                }
+            }
         }
         #endregion
 
@@ -86,6 +153,7 @@ namespace DoAnLTTQ_DongCodeThuN
         public void VeLaiSortingPanel()
         {
             SortingPanelView.Invalidate();
+            legendPanel?.Invalidate();
         }
 
         public void RefreshSortingPanel()
@@ -94,6 +162,8 @@ namespace DoAnLTTQ_DongCodeThuN
                 SortingPanelView.Invoke(new Action(() => SortingPanelView.Refresh()));
             else
                 SortingPanelView.Refresh();
+
+            legendPanel?.Refresh();
         }
 
         public void HienThiListBoxYTuong(string[] items)
@@ -291,9 +361,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 swapPos2 = listBoxItem.SwapPos2;
             }
             else
-            {
                 text = item.ToString();
-            }
 
             // Xác định màu sắc và font dựa trên nội dung
             Font drawFont = e.Font;
