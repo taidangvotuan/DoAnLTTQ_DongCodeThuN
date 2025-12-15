@@ -55,7 +55,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             try
             {
-                // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+                // Tối đa là 45 phần tử thôi nha, chứ hơn nữa là khó nhìn lắm
                 int soPhanTu = view.SoPhanTu;
 
                 if (soPhanTu < 2 || soPhanTu > 45)
@@ -82,7 +82,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             int soPhanTu = view.SoPhanTu;
 
-            // Tối đa là 30 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
+            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
             if (soPhanTu < 2 || soPhanTu > 45)
             {
                 view.HienThiThongBao("Số phần tử phải từ 2 đến 45!", "Lỗi",
@@ -94,6 +94,111 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
 
             // FormNhapMang sẽ tự cập nhật Form_main.a
             // Sau khi FormNhapMang đóng, View sẽ gọi VeLaiSortingPanel
+        }
+
+        private void OnNhapFile(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.Title = "Chọn file chứa mảng số";
+                    openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = openFileDialog.FileName;
+                        string fileContent = System.IO.File.ReadAllText(filePath);
+                        fileContent = fileContent.Trim();
+
+                        // Xử lý nội dung file
+                        string[] parts = fileContent.Split(new[] { ' ', '\t', '\r', '\n' },
+                            StringSplitOptions.RemoveEmptyEntries);
+
+                        System.Diagnostics.Debug.WriteLine($"Số phần tử tìm thấy: {parts.Length}");
+                        System.Diagnostics.Debug.WriteLine($"Nội dung: {string.Join(", ", parts)}");
+
+                        if (parts.Length < 2)
+                        {
+                            view.HienThiThongBao(
+                                $"File phải chứa ít nhất 2 số!\nHiện tại chỉ tìm thấy {parts.Length} số.",
+                                "Lỗi", MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (parts.Length > 45)
+                        {
+                            view.HienThiThongBao(
+                                $"File chứa quá nhiều số!\nTối đa: 45 số\nTìm thấy: {parts.Length} số\n\n",
+                                "Lỗi", MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        int[] arr = new int[parts.Length];
+                        System.Collections.Generic.List<string> invalidValues = new System.Collections.Generic.List<string>();
+
+                        for (int i = 0; i < parts.Length; i++)
+                        {
+                            if (!int.TryParse(parts[i], out arr[i]))
+                                invalidValues.Add($"'{parts[i]}' (vị trí {i + 1})");
+                            else if (arr[i] < 0 || arr[i] > 99)
+                                invalidValues.Add($"{arr[i]} (vị trí {i + 1}) - ngoài khoảng [0-99]");
+                        }
+
+                        // Nếu có giá trị không hợp lệ
+                        if (invalidValues.Count > 0)
+                        {
+                            string errorMessage = "Các giá trị không hợp lệ:\n\n" + string.Join("\n", invalidValues) +
+                            "\n\nChỉ chấp nhận số nguyên từ 0 đến 99!";
+
+                            view.HienThiThongBao(errorMessage, "Lỗi", MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Cập nhật state
+                        state.so_phan_tu = arr.Length;
+                        state.a = arr;
+                        state.da_Tao_Mang = true;
+
+                        view.MangA = state.a;
+                        view.SoPhanTu = state.so_phan_tu;
+                        view.VeLaiSortingPanel();
+                        view.MoCacNutLuaChonThuatToan();
+
+                        // Hiển thị thông báo thành công với preview
+                        string preview = string.Join(" ", arr);
+                        if (preview.Length > 100)
+                            preview = preview.Substring(0, 100) + "...";
+
+                        view.HienThiThongBao(
+                           $"✓ Đã nhập thành công {arr.Length} phần tử từ file!\n\n" +
+                           $"File: {System.IO.Path.GetFileName(filePath)}\n" +
+                           $"Preview: {preview}",
+                           "Thành công", MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (System.IO.IOException ioEx)
+            {
+                view.HienThiThongBao(
+                    $"Lỗi đọc file:\n{ioEx.Message}\n\n" +
+                    "Có thể file đang được mở bởi chương trình khác.",
+                    "Lỗi", MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException uaEx)
+            {
+                view.HienThiThongBao(
+                    $"Không có quyền truy cập file:\n{uaEx.Message}",
+                    "Lỗi", MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                view.HienThiThongBao(
+                    $"Lỗi không xác định:\n{ex.Message}\n\n" +
+                    $"Chi tiết: {ex.GetType().Name}",
+                    "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
         private void OnChayThuatToan(object sender, EventArgs e)

@@ -34,8 +34,12 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
             using (Font font = new Font("Arial", 12, FontStyle.Bold))
             {
-                Brush barBrush = Brushes.Blue;
-                Brush highlightBrush = Brushes.Red;
+                // Định nghĩa các màu
+                Brush normalBrush = Brushes.Blue;           // Màu mặc định
+                Brush swapBrush = Brushes.Red;              // Màu đỏ - đang hoán vị
+                Brush divideBrush = Brushes.Orange;         // Màu cam - đang chia (Merge Sort)
+                Brush mergingBrush = Brushes.LimeGreen;     // Màu xanh lá - đang trộn (Merge Sort)
+                Brush completedBrush = Brushes.Green;       // Màu xanh đậm - hoàn thành
                 Brush textBrush = Brushes.Black;
 
                 // Tính toán animation progress
@@ -81,9 +85,32 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     int y = panelHeight - barHeight - 50;
 
                     // Chọn màu
-                    Brush brushToUse = barBrush;
-                    if (i == state.Binh_i_ViTriSwap1 || i == state.Binh_i_ViTriSwap2)
-                        brushToUse = highlightBrush;
+                    Brush brushToUse = normalBrush;
+                    if (state.Binh_b_DangAnimation)
+                    {
+                        // Đang animation hoán vị
+                        if (i == state.Binh_i_ViTriSwap1 || i == state.Binh_i_ViTriSwap2)
+                            brushToUse = swapBrush;
+                    }
+                    else if (i == state.Binh_i_ViTriSwap1)
+                    {
+                        // Highlight đặc biệt cho Merge Sort
+                        // Dùng AnimationStep để phân biệt giai đoạn:
+                        // 0 = Đang chia (cam)
+                        // 1 = Đang trộn (xanh lá)
+                        // 2 = Đang xét vùng (vàng)
+
+                        if (state.Binh_i_AnimationStep == 0)
+                            brushToUse = divideBrush;       // Cam - đang chia
+                        else if (state.Binh_i_AnimationStep == 1)
+                            brushToUse = mergingBrush;      // Xanh lá - đang trộn
+                        else if (state.Binh_i_AnimationStep == 2)
+                            brushToUse = Brushes.Gold;      // Vàng - đang xét
+                        else
+                            brushToUse = swapBrush;         // Đỏ - hoán vị thông thường
+                    }
+                    else if (i == state.Binh_i_ViTriSwap2)
+                        brushToUse = swapBrush;
 
                     // Vẽ cột
                     g.FillRectangle(brushToUse, x, y, barWidth, barHeight);
@@ -92,6 +119,45 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     string valueStr = state.a[i].ToString();
                     SizeF textSize = g.MeasureString(valueStr, font);
                     g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
+                }
+                // Vẽ chú thích màu (Legend)
+                DrawLegend(g, panelWidth, panelHeight);
+            }
+        }
+
+        // Vẽ chú thích màu
+        private void DrawLegend(Graphics g, int panelWidth, int panelHeight)
+        {
+            int legendX = 10;
+            int legendY = 10;
+            int boxSize = 15;
+            int spacing = 5;
+
+            using (Font legendFont = new Font("Arial", 9, FontStyle.Regular))
+            {
+                var legends = new[]
+                {
+                    new { Color = Color.Blue, Text = "Chưa xử lý" },
+                    new { Color = Color.Red, Text = "Đang hoán vị" },
+                    new { Color = Color.Orange, Text = "Đang chia (Merge)" },
+                    new { Color = Color.LimeGreen, Text = "Đang trộn (Merge)" },
+                    new { Color = Color.Gold, Text = "Đang xét vùng" }
+                };
+
+                for (int i = 0; i < legends.Length; i++)
+                {
+                    int y = legendY + i * (boxSize + spacing + 5);
+
+                    // Vẽ ô màu
+                    using (SolidBrush brush = new SolidBrush(legends[i].Color))
+                    {
+                        g.FillRectangle(brush, legendX, y, boxSize, boxSize);
+                        g.DrawRectangle(Pens.Black, legendX, y, boxSize, boxSize);
+                    }
+
+                    // Vẽ text
+                    g.DrawString(legends[i].Text, legendFont, Brushes.Black,
+                        legendX + boxSize + spacing, y - 2);
                 }
             }
         }
@@ -102,6 +168,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             state.Binh_i_ViTriSwap1 = -1;
             state.Binh_i_ViTriSwap2 = -1;
             state.Binh_b_DangAnimation = false;
+            state.Binh_i_AnimationStep = 0;
         }
 
         // Highlight 2 cột
@@ -109,6 +176,14 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Binh_i_ViTriSwap1 = index1;
             state.Binh_i_ViTriSwap2 = index2;
+        }
+
+        // Highlight 1 cột với màu đặc biệt (cho Merge Sort)
+        public void HighlightColumnWithState(int index, int colorState)
+        {
+            state.Binh_i_ViTriSwap1 = index;
+            state.Binh_i_ViTriSwap2 = -1;
+            state.Binh_i_AnimationStep = colorState; // 0=Cam, 1=Xanh lá, 2=Vàng
         }
     }
 }

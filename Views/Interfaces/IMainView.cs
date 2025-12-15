@@ -9,6 +9,7 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         event EventHandler NhapNgauNhienClicked;
         event EventHandler NhapBangTayClicked;
         event EventHandler ChayThuatToanClicked;
+        event EventHandler NhapFileClicked;
         event EventHandler TamDungThuatToanClicked;
         event EventHandler KetThucThuatToanClicked;
         event EventHandler ThuatToanChanged;
