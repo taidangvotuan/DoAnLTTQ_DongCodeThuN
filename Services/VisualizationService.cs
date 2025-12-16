@@ -40,7 +40,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Brush divideBrush = Brushes.Purple;         // Màu tím - đang chia (Merge Sort)
                 Brush mergingBrush = Brushes.LimeGreen;     // Màu xanh lá - đang trộn (Merge Sort)
                 Brush completedBrush = Brushes.Green;       // Màu xanh đậm - hoàn thành
-                Brush textBrush = Brushes.Black;
 
                 // Tính toán animation progress
                 float t = 0f;
@@ -83,7 +82,22 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     }
                     int y = panelHeight - barHeight - 50;
 
-                    // Chọn màu
+                    bool isHighlighted = false;
+
+                    if (state.Binh_b_DangAnimation)
+                    {
+                        // Đang animation
+                        if (i == state.Binh_i_ViTriSwap1 || i == state.Binh_i_ViTriSwap2)
+                            isHighlighted = true;
+                    }
+                    else
+                    {
+                        // Không animation nhưng vẫn có thể highlight
+                        if (i == state.Binh_i_ViTriSwap1 || i == state.Binh_i_ViTriSwap2)
+                            isHighlighted = true;
+                    }
+
+                    // Chọn màu cho cột
                     Brush brushToUse = normalBrush;
                     if (state.Binh_b_DangAnimation)
                     {
@@ -94,10 +108,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     else if (i == state.Binh_i_ViTriSwap1)
                     {
                         // Highlight đặc biệt cho Merge Sort
-                        // Dùng AnimationStep để phân biệt giai đoạn:
-                        // 0 = Đang chia (Tím)
-                        // 1 = Đang trộn (Xanh lá)
-                        // 2 = Đang xét vùng (Cam)
 
                         if (state.Binh_i_AnimationStep == 0)
                             brushToUse = divideBrush;       // Tím - đang chia
@@ -117,6 +127,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     // Vẽ giá trị
                     string valueStr = state.a[i].ToString();
                     SizeF textSize = g.MeasureString(valueStr, font);
+
+                    Brush textBrush = isHighlighted ? Brushes.Red : Brushes.Black;
+
                     g.DrawString(valueStr, font, textBrush, x + (barWidth - textSize.Width) / 2, panelHeight - 40);
                 }
             }
