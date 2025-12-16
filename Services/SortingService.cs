@@ -11,6 +11,16 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         private readonly SortingState state;
         private readonly VisualizationService visualService;
 
+        // Class helper để lưu trạng thái trước merge
+        private class MergeState
+        {
+            public int[] ArrayBefore { get; set; }
+            public int Left { get; set; }
+            public int Right { get; set; }
+        }
+
+        private System.Collections.Generic.Stack<MergeState> mergeStack = new System.Collections.Generic.Stack<MergeState>();
+
         public SortingService(IMainView view, SortingState state, VisualizationService visualService)
         {
             this.view = view;
@@ -36,6 +46,18 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             view.XoaListBoxCacBuoc();
             string chuoiMang = string.Join("  ", arr);
             view.ThemBuocVaoListBox($"Dãy chưa sắp : {chuoiMang}");
+        }
+
+        public void Thinh_v_GhiBuocCoNhieuMau(int[] arr, int[] cacViTri, string prefix = "")
+        {
+            state.Thinh_dem_buoc++;
+            string chuoiMang = string.Join("  ", arr);
+            string noiDung = string.IsNullOrEmpty(prefix)
+                ? $"Bước {state.Thinh_dem_buoc} : {chuoiMang}"
+                : $"{prefix} : {chuoiMang}";
+
+            view.ThemBuocVaoListBoxCoNhieuMau(noiDung, cacViTri);
+            Application.DoEvents();
         }
 
         // Ghi bước với màu sắc cho vị trí hoán vị
@@ -449,18 +471,40 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             if (speed > 10) speed = 10;
 
             Thread.Sleep(50 * (11 - speed));
-            Thinh_v_GhiBuoc(arr);
+        }
+
+        // So sánh và tìm các vị trí có giá trị thay đổi
+        private System.Collections.Generic.List<int> FindChangedPositions(int[] before, int[] after, int left, int right)
+        {
+            var changed = new System.Collections.Generic.List<int>();
+
+            for (int i = left; i <= right; i++)
+                if (before[i] != after[i])
+                    changed.Add(i);
+            return changed;
         }
 
         // Log với màu và thông tin chi tiết
-        private void LogMergeStep(string action, int left, int mid, int right, int[] arr)
+        private void LogMergeStep(int[] arrayBefore, int[] arrayAfter, int left, int right)
         {
             if (!state.is_run) return;
 
-            string range = $"[{left}..{mid}] và [{mid + 1}..{right}]";
-            string values = string.Join("  ", arr);
+            // Tìm các vị trí có giá trị thay đổi
+            var changedPositions = FindChangedPositions(arrayBefore, arrayAfter, left, right);
 
-            view.ThemBuocVaoListBox($"{action}: {range} → {values}");
+            if (changedPositions.Count > 0)
+            {
+                state.Thinh_dem_buoc++;
+                string chuoiMang = string.Join(" ", arrayAfter);
+                string noiDung = $"KẾT QUẢ [{left}..{right}]: {chuoiMang}";
+
+                view.ThemBuocVaoListBoxCoNhieuMau(noiDung, changedPositions.ToArray());
+            }
+            else
+            {
+                // Không có thay đổi
+                view.ThemBuocVaoListBox($"KẾT QUẢ [{left}..{right}]: {string.Join(" ", arrayAfter)} (không đổi)");
+            }
         }
 
         public void Tai_v_MergeTangDan(int[] arr, int left, int mid, int right)
@@ -469,7 +513,11 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             Binh_v_HandleTamDungVaKetThuc();
             if (!state.is_run) return;
 
-            LogMergeStep("BẮT ĐẦU TRỘN", left, mid, right, arr);
+            // Lưu trạng thái mảng trước khi merge
+            int[] arrayBefore = new int[arr.Length];
+            System.Array.Copy(arr, arrayBefore, arr.Length);
+
+            view.ThemBuocVaoListBox($"Trộn [{left}..{mid}] và [{mid + 1}..{right}]");
 
             int n1 = mid - left + 1;
             int n2 = right - mid;
@@ -533,8 +581,8 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 iR++;
                 k++;
             }
-            // Log kết thúc merge
-            LogMergeStep("HOÀN THÀNH", left, mid, right, arr);
+            // Log kết quả với highlight các vị trí đã merge
+            LogMergeStep(arrayBefore, arr, left, right);
 
             // Highlight vùng đã merge xong với màu xanh lá
             for (int i = left; i <= right; i++)
@@ -543,7 +591,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 state.Binh_i_AnimationStep = 1; // Màu xanh lá - hoàn thành
                 view.RefreshSortingPanel();
             }
-            Thread.Sleep(500); // Dừng lại để quan sát
+            Thread.Sleep(400); // Dừng lại để quan sát
         }
 
         public void Tai_v_MergeGiamDan(int[] arr, int left, int mid, int right)
@@ -552,7 +600,12 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             Binh_v_HandleTamDungVaKetThuc();
             if (!state.is_run) return;
 
-            LogMergeStep("BẮT ĐẦU TRỘN", left, mid, right, arr);
+            // Lưu trạng thái mảng trước khi merge
+            int[] arrayBefore = new int[arr.Length];
+            System.Array.Copy(arr, arrayBefore, arr.Length);
+
+            // Log bắt đầu merge
+            view.ThemBuocVaoListBox($"Trộn [{left}..{mid}] và [{mid + 1}..{right}]");
 
             int n1 = mid - left + 1;
             int n2 = right - mid;
@@ -615,8 +668,8 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 k++;
             }
 
-            // Log kết thúc merge
-            LogMergeStep("HOÀN THÀNH", left, mid, right, arr);
+            // Log kết quả
+            LogMergeStep(arrayBefore, arr, left, right);
 
             // Highlight vùng đã merge xong với màu xanh lá
             for (int i = left; i <= right; i++)
@@ -625,7 +678,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 state.Binh_i_AnimationStep = 1; // Màu xanh lá - hoàn thành
                 view.RefreshSortingPanel();
             }
-            Thread.Sleep(500); // Dừng lại để quan sát
+            Thread.Sleep(400); // Dừng lại để quan sát
         }
 
         public void Tai_v_MergeSortTangDan(int[] arr, int left, int right)
@@ -633,9 +686,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             if (left == 0 && right == arr.Length - 1)
             {
                 Thinh_v_BatDauLog(arr);
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
                 view.ThemBuocVaoListBox("BẮT ĐẦU MERGE SORT");
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
             }
             if (!state.is_run) return;
             Binh_v_HandleTamDungVaKetThuc();
@@ -654,7 +707,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                     state.Binh_i_AnimationStep = 2; // Màu vàng - đang chia
                     view.RefreshSortingPanel();
                 }
-                Thread.Sleep(400);
+                Thread.Sleep(350);
 
                 // Đệ quy chia mảng
                 Tai_v_MergeSortTangDan(arr, left, mid);
@@ -667,9 +720,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             }
             if (left == 0 && right == arr.Length - 1)
             {
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
                 view.ThemBuocVaoListBox("HOÀN THÀNH MERGE SORT!");
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
             }
         }
 
@@ -678,9 +731,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             if (left == 0 && right == arr.Length - 1)
             {
                 Thinh_v_BatDauLog(arr);
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
                 view.ThemBuocVaoListBox("BẮT ĐẦU MERGE SORT");
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
             }
             if (!state.is_run) return;
             Binh_v_HandleTamDungVaKetThuc();
@@ -709,9 +762,9 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             }
             if (left == 0 && right == arr.Length - 1)
             {
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
                 view.ThemBuocVaoListBox("HOÀN THÀNH MERGE SORT!");
-                view.ThemBuocVaoListBox("---------------------------");
+                view.ThemBuocVaoListBox("------------------------");
             }
         }
         #endregion

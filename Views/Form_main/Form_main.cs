@@ -229,6 +229,35 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
+        public void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri)
+        {
+            if (ListBoxCacBuoc.InvokeRequired)
+            {
+                ListBoxCacBuoc.Invoke(new Action(() =>
+                {
+                    var item = new ListBoxItem
+                    {
+                        Text = buoc,
+                        MultiplePositions = cacViTri
+                    };
+                    ListBoxCacBuoc.Items.Add(item);
+                    ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                    ListBoxCacBuoc.Update();
+                }));
+            }
+            else
+            {
+                var item = new ListBoxItem
+                {
+                    Text = buoc,
+                    MultiplePositions = cacViTri
+                };
+                ListBoxCacBuoc.Items.Add(item);
+                ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
+                ListBoxCacBuoc.Update();
+            }
+        }
+
         public void XoaListBoxCacBuoc()
         {
             if (ListBoxCacBuoc.InvokeRequired)
@@ -353,12 +382,14 @@ namespace DoAnLTTQ_DongCodeThuN
             var item = ListBoxCacBuoc.Items[e.Index];
             string text;
             int swapPos1 = -1, swapPos2 = -1;
+            int[] multiplePos = null;
 
             if (item is ListBoxItem listBoxItem)
             {
                 text = listBoxItem.Text;
                 swapPos1 = listBoxItem.SwapPos1;
                 swapPos2 = listBoxItem.SwapPos2;
+                multiplePos = listBoxItem.MultiplePositions;
             }
             else
                 text = item.ToString();
@@ -372,7 +403,7 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 // Header màu xanh dương đậm, in đậm
                 textBrush = Brushes.DarkBlue;
-                drawFont = new Font(e.Font, FontStyle.Bold);
+                drawFont = new Font(e.Font.FontFamily, e.Font.Size + 1, FontStyle.Bold);
             }
             else if (text.StartsWith("CHIA:"))
             {
@@ -380,15 +411,22 @@ namespace DoAnLTTQ_DongCodeThuN
                 textBrush = Brushes.Purple;
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
-            else if (text.StartsWith("BẮT ĐẦU TRỘN:"))
+            else if (text.StartsWith("Trộn:"))
             {
                 // Dòng bắt đầu trộn màu xanh lá
                 textBrush = Brushes.LimeGreen;
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
-            else if (text.StartsWith("HOÀN THÀNH:"))
+            else if (text.StartsWith("KẾT QUẢ:"))
             {
-                // Dòng hoàn thành màu xanh lá đậm
+                // Kết quả merge - có highlight
+                if (multiplePos != null && multiplePos.Length > 0)
+                {
+                    DrawHighlightedTextMultiple(e.Graphics, text, e.Bounds, multiplePos);
+                    e.DrawFocusRectangle();
+                    return;
+                }
+                // Dòng kết quả màu xanh lá đậm
                 textBrush = Brushes.DarkGreen;
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
@@ -413,6 +451,61 @@ namespace DoAnLTTQ_DongCodeThuN
                 drawFont.Dispose();
 
             e.DrawFocusRectangle();
+        }
+
+        private void DrawHighlightedTextMultiple(Graphics g, string text, Rectangle bounds, int[] positions)
+        {
+            // Parse text - tìm phần sau dấu ":"
+            int colonIndex = text.LastIndexOf(':');
+            if (colonIndex < 0)
+            {
+                g.DrawString(text, ListBoxCacBuoc.Font, Brushes.Black, bounds);
+                return;
+            }
+
+            string prefix = text.Substring(0, colonIndex + 1) + " ";
+            string numbersString = text.Substring(colonIndex + 1).Trim();
+
+            // Split bằng dấu cách
+            string[] nums = numbersString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            float x = bounds.X;
+            float y = bounds.Y;
+
+            // Vẽ prefix với màu xanh đậm và bold
+            Font prefixFont = new Font(ListBoxCacBuoc.Font, FontStyle.Bold);
+            g.DrawString(prefix, prefixFont, Brushes.DarkGreen, x, y);
+            SizeF prefixSize = g.MeasureString(prefix, prefixFont);
+            x += prefixSize.Width;
+            prefixFont.Dispose();
+
+            // Vẽ từng số
+            for (int i = 0; i < nums.Length; i++)
+            {
+                Brush brush = Brushes.Black;
+                Font numFont = ListBoxCacBuoc.Font;
+
+                // Kiểm tra xem index này có trong danh sách cần highlight không
+                bool shouldHighlight = System.Array.Exists(positions, p => p == i);
+
+                if (shouldHighlight)
+                {
+                    // Tô đỏ và in đậm số đã được merge
+                    brush = Brushes.Red;
+                    numFont = new Font(ListBoxCacBuoc.Font, FontStyle.Bold);
+                }
+
+                // Vẽ số
+                string numText = nums[i];
+                g.DrawString(numText, numFont, brush, x, y);
+
+                // Tính khoảng cách đến số tiếp theo (bao gồm space)
+                SizeF numSize = g.MeasureString(numText + "  ", numFont);
+                x += numSize.Width;
+
+                if (numFont != ListBoxCacBuoc.Font)
+                    numFont.Dispose();
+            }
         }
 
         private void DrawHighlightedText(Graphics g, string text, Rectangle bounds, int pos1, int pos2)
@@ -476,6 +569,7 @@ namespace DoAnLTTQ_DongCodeThuN
             public string Text { get; set; }
             public int SwapPos1 { get; set; } = -1;
             public int SwapPos2 { get; set; } = -1;
+            public int[] MultiplePositions { get; set; } = null; // Thêm để hỗ trợ nhiều vị trí
 
             public override string ToString()
             {
