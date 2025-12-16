@@ -31,7 +31,7 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         void HienThiListBoxCacBuoc(string[] items);
         void ThemBuocVaoListBox(string buoc);
         void ThemBuocVaoListBoxCoMau(string buoc, int viTri1, int viTri2);
-        void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri);
+        void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri, int left, int right);
         void XoaListBoxCacBuoc();
         void MoCacNutLuaChonThuatToan();
         void MoCacNutDieuKhien();

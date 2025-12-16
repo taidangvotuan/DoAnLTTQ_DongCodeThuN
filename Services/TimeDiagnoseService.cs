@@ -1,10 +1,6 @@
 ﻿using DoAnLTTQ_DongCodeThuN.ThuatToan;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnLTTQ_DongCodeThuN.Services
 {
@@ -25,7 +21,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
         public static double ChayMoPhongThuatToan(int[] arr, string thuattoan, bool tang)
         {
-
             Func<int, int, bool> compareFunc = (x, y) =>
             {
                 return tang ? (x > y) : (x < y);

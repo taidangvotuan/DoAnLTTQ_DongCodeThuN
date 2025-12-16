@@ -59,10 +59,7 @@
     <Compile Include="Views\Form_main\Form_main_CodeToolBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Components\ColumnComponent.cs" />
-    <Compile Include="Views\Components\SortingView.cs" />
     <Compile Include="Models\CodeThuatToan.cs" />
-    <Compile Include="Views\Components\ViewConfigCalculate.cs" />
     <Compile Include="Views\CacFormChucNang\FormTacGia.cs">
       <SubType>Form</SubType>
     </Compile>

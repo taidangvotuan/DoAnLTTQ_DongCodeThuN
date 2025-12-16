@@ -229,7 +229,8 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        public void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri)
+        // Trong Form_main.cs
+        public void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri, int left, int right)
         {
             if (ListBoxCacBuoc.InvokeRequired)
             {
@@ -238,7 +239,9 @@ namespace DoAnLTTQ_DongCodeThuN
                     var item = new ListBoxItem
                     {
                         Text = buoc,
-                        MultiplePositions = cacViTri
+                        MultiplePositions = cacViTri,
+                        MergeLeft = left,
+                        MergeRight = right
                     };
                     ListBoxCacBuoc.Items.Add(item);
                     ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
@@ -250,7 +253,9 @@ namespace DoAnLTTQ_DongCodeThuN
                 var item = new ListBoxItem
                 {
                     Text = buoc,
-                    MultiplePositions = cacViTri
+                    MultiplePositions = cacViTri,
+                    MergeLeft = left,
+                    MergeRight = right
                 };
                 ListBoxCacBuoc.Items.Add(item);
                 ListBoxCacBuoc.TopIndex = ListBoxCacBuoc.Items.Count - 1;
@@ -284,6 +289,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             ButtonNhapNgauNhien.Enabled = false;
             ButtonNhapBangTay.Enabled = false;
+            ButtonNhapFile.Enabled = false;
             ComboBox_ChonThuatToan.Enabled = false;
             RadioButton_TangDan.Enabled = false;
             RadioButton_GiamDan.Enabled = false;
@@ -294,6 +300,7 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             ButtonNhapNgauNhien.Enabled = true;
             ButtonNhapBangTay.Enabled = true;
+            ButtonNhapFile.Enabled = true;
             ComboBox_ChonThuatToan.Enabled = true;
             RadioButton_TangDan.Enabled = true;
             RadioButton_GiamDan.Enabled = true;
@@ -383,6 +390,7 @@ namespace DoAnLTTQ_DongCodeThuN
             string text;
             int swapPos1 = -1, swapPos2 = -1;
             int[] multiplePos = null;
+            int mergeLeft = 0;
 
             if (item is ListBoxItem listBoxItem)
             {
@@ -390,72 +398,68 @@ namespace DoAnLTTQ_DongCodeThuN
                 swapPos1 = listBoxItem.SwapPos1;
                 swapPos2 = listBoxItem.SwapPos2;
                 multiplePos = listBoxItem.MultiplePositions;
+                mergeLeft = listBoxItem.MergeLeft >= 0 ? listBoxItem.MergeLeft : 0;
             }
             else
                 text = item.ToString();
 
-            // Xác định màu sắc và font dựa trên nội dung
             Font drawFont = e.Font;
             Brush textBrush = Brushes.Black;
 
-            // Kiểm tra các từ khóa đặc biệt để tô màu
             if (text.Contains("BẮT ĐẦU MERGE SORT") || text.Contains("HOÀN THÀNH MERGE SORT"))
             {
-                // Header màu xanh dương đậm, in đậm
-                textBrush = Brushes.DarkBlue;
+                textBrush = new SolidBrush(Color.FromArgb(0, 0, 139));
                 drawFont = new Font(e.Font.FontFamily, e.Font.Size + 1, FontStyle.Bold);
             }
             else if (text.StartsWith("CHIA:"))
             {
-                // Dòng chia màu tím
-                textBrush = Brushes.Purple;
+                textBrush = new SolidBrush(Color.Purple);
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
-            else if (text.StartsWith("Trộn:"))
+            else if (text.StartsWith("Trộn ["))
             {
-                // Dòng bắt đầu trộn màu xanh lá
-                textBrush = Brushes.LimeGreen;
+                textBrush = new SolidBrush(Color.DodgerBlue);
                 drawFont = new Font(e.Font, FontStyle.Bold);
             }
-            else if (text.StartsWith("KẾT QUẢ:"))
+            else if (text.Contains("KẾT QUẢ"))
             {
-                // Kết quả merge - có highlight
                 if (multiplePos != null && multiplePos.Length > 0)
                 {
-                    DrawHighlightedTextMultiple(e.Graphics, text, e.Bounds, multiplePos);
+                    // Gọi với left để tính offset đúng
+                    DrawHighlightedTextMultiple(e.Graphics, text, e.Bounds, multiplePos, mergeLeft);
                     e.DrawFocusRectangle();
                     return;
                 }
-                // Dòng kết quả màu xanh lá đậm
-                textBrush = Brushes.DarkGreen;
+                textBrush = new SolidBrush(Color.FromArgb(0, 100, 0));
                 drawFont = new Font(e.Font, FontStyle.Bold);
+            }
+            else if (text.Contains("(không đổi)"))
+            {
+                textBrush = Brushes.Gray;
+                drawFont = new Font(e.Font, FontStyle.Regular);
             }
             else if (text.StartsWith("---"))
             {
-                // Đường kẻ phân cách màu xám
-                textBrush = Brushes.Gray;
+                textBrush = Brushes.LightGray;
             }
-            else if (swapPos1 >= 0 && swapPos2 >= 0)
+            else if (text.StartsWith("Bước") && (swapPos1 >= 0 && swapPos2 >= 0))
             {
-                // Các bước thông thường với highlight màu đỏ
                 DrawHighlightedText(e.Graphics, text, e.Bounds, swapPos1, swapPos2);
                 e.DrawFocusRectangle();
                 return;
             }
 
-            // Vẽ text với màu sắc đã chọn
             e.Graphics.DrawString(text, drawFont, textBrush, e.Bounds);
 
-            // Cleanup font nếu đã tạo mới
             if (drawFont != e.Font)
                 drawFont.Dispose();
 
             e.DrawFocusRectangle();
         }
 
-        private void DrawHighlightedTextMultiple(Graphics g, string text, Rectangle bounds, int[] positions)
+        private void DrawHighlightedTextMultiple(Graphics g, string text, Rectangle bounds, int[] positions, int left = 0)
         {
-            // Parse text - tìm phần sau dấu ":"
+            // Parse text
             int colonIndex = text.LastIndexOf(':');
             if (colonIndex < 0)
             {
@@ -466,46 +470,49 @@ namespace DoAnLTTQ_DongCodeThuN
             string prefix = text.Substring(0, colonIndex + 1) + " ";
             string numbersString = text.Substring(colonIndex + 1).Trim();
 
-            // Split bằng dấu cách
-            string[] nums = numbersString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (numbersString.Contains("(không đổi)"))
+                numbersString = numbersString.Replace("(không đổi)", "").Trim();
+
+            string[] nums = numbersString.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
 
             float x = bounds.X;
             float y = bounds.Y;
 
-            // Vẽ prefix với màu xanh đậm và bold
-            Font prefixFont = new Font(ListBoxCacBuoc.Font, FontStyle.Bold);
-            g.DrawString(prefix, prefixFont, Brushes.DarkGreen, x, y);
+            // Vẽ prefix
+            Font prefixFont = new Font(ListBoxCacBuoc.Font.FontFamily, ListBoxCacBuoc.Font.Size, FontStyle.Bold);
+            Brush prefixBrush = new SolidBrush(Color.FromArgb(0, 100, 0));
+
+            g.DrawString(prefix, prefixFont, prefixBrush, x, y);
             SizeF prefixSize = g.MeasureString(prefix, prefixFont);
             x += prefixSize.Width;
             prefixFont.Dispose();
 
             // Vẽ từng số
+            Font normalFont = ListBoxCacBuoc.Font;
+            Font boldFont = new Font(ListBoxCacBuoc.Font.FontFamily, ListBoxCacBuoc.Font.Size + 1, FontStyle.Bold);
+
             for (int i = 0; i < nums.Length; i++)
             {
                 Brush brush = Brushes.Black;
-                Font numFont = ListBoxCacBuoc.Font;
+                Font numFont = normalFont;
 
-                // Kiểm tra xem index này có trong danh sách cần highlight không
-                bool shouldHighlight = System.Array.Exists(positions, p => p == i);
+                // i là index trong chuỗi hiển thị
+                // actualIndex là index trong mảng gốc (offset bởi left)
+                int actualIndex = left + i;
+
+                // Kiểm tra actualIndex có trong positions không
+                bool shouldHighlight = positions != null && System.Array.Exists(positions, p => p == actualIndex);
 
                 if (shouldHighlight)
-                {
-                    // Tô đỏ và in đậm số đã được merge
-                    brush = Brushes.Red;
-                    numFont = new Font(ListBoxCacBuoc.Font, FontStyle.Bold);
-                }
+                    brush = new SolidBrush(Color.Red);
 
-                // Vẽ số
-                string numText = nums[i];
+                string numText = nums[i].Trim();
                 g.DrawString(numText, numFont, brush, x, y);
 
-                // Tính khoảng cách đến số tiếp theo (bao gồm space)
                 SizeF numSize = g.MeasureString(numText + "  ", numFont);
                 x += numSize.Width;
-
-                if (numFont != ListBoxCacBuoc.Font)
-                    numFont.Dispose();
             }
+            boldFont.Dispose();
         }
 
         private void DrawHighlightedText(Graphics g, string text, Rectangle bounds, int pos1, int pos2)
@@ -570,6 +577,8 @@ namespace DoAnLTTQ_DongCodeThuN
             public int SwapPos1 { get; set; } = -1;
             public int SwapPos2 { get; set; } = -1;
             public int[] MultiplePositions { get; set; } = null; // Thêm để hỗ trợ nhiều vị trí
+            public int MergeLeft { get; set; } = -1;  // Thêm mới
+            public int MergeRight { get; set; } = -1;
 
             public override string ToString()
             {

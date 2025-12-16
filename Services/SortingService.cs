@@ -48,18 +48,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             view.ThemBuocVaoListBox($"Dãy chưa sắp : {chuoiMang}");
         }
 
-        public void Thinh_v_GhiBuocCoNhieuMau(int[] arr, int[] cacViTri, string prefix = "")
-        {
-            state.Thinh_dem_buoc++;
-            string chuoiMang = string.Join("  ", arr);
-            string noiDung = string.IsNullOrEmpty(prefix)
-                ? $"Bước {state.Thinh_dem_buoc} : {chuoiMang}"
-                : $"{prefix} : {chuoiMang}";
-
-            view.ThemBuocVaoListBoxCoNhieuMau(noiDung, cacViTri);
-            Application.DoEvents();
-        }
-
         // Ghi bước với màu sắc cho vị trí hoán vị
         public void Thinh_v_GhiBuocCoMau(int[] arr, int viTri1, int viTri2)
         {
@@ -473,37 +461,31 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             Thread.Sleep(50 * (11 - speed));
         }
 
-        // So sánh và tìm các vị trí có giá trị thay đổi
-        private System.Collections.Generic.List<int> FindChangedPositions(int[] before, int[] after, int left, int right)
-        {
-            var changed = new System.Collections.Generic.List<int>();
-
-            for (int i = left; i <= right; i++)
-                if (before[i] != after[i])
-                    changed.Add(i);
-            return changed;
-        }
-
         // Log với màu và thông tin chi tiết
         private void LogMergeStep(int[] arrayBefore, int[] arrayAfter, int left, int right)
         {
             if (!state.is_run) return;
 
-            // Tìm các vị trí có giá trị thay đổi
-            var changedPositions = FindChangedPositions(arrayBefore, arrayAfter, left, right);
+            var changedInfo = new System.Collections.Generic.List<int>();
 
-            if (changedPositions.Count > 0)
+            for (int i = left; i <= right; i++)
+                if (arrayBefore[i] != arrayAfter[i])
+                    changedInfo.Add(i);
+
+            if (changedInfo.Count > 0)
             {
                 state.Thinh_dem_buoc++;
-                string chuoiMang = string.Join(" ", arrayAfter);
-                string noiDung = $"KẾT QUẢ [{left}..{right}]: {chuoiMang}";
+                string chuoiMang = string.Join("  ", arrayAfter);
+                string noiDung = $"Bước {state.Thinh_dem_buoc} - KẾT QUẢ [{left}..{right}]: {chuoiMang}";
 
-                view.ThemBuocVaoListBoxCoNhieuMau(noiDung, changedPositions.ToArray());
+                // Truyền thêm left, right
+                view.ThemBuocVaoListBoxCoNhieuMau(noiDung, changedInfo.ToArray(), left, right);
             }
             else
             {
-                // Không có thay đổi
-                view.ThemBuocVaoListBox($"KẾT QUẢ [{left}..{right}]: {string.Join(" ", arrayAfter)} (không đổi)");
+                state.Thinh_dem_buoc++;
+                string chuoiMang = string.Join("  ", arrayAfter);
+                view.ThemBuocVaoListBox($"Bước {state.Thinh_dem_buoc} - [{left}..{right}]: {chuoiMang} (không đổi)");
             }
         }
 
