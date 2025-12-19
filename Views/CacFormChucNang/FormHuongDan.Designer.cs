@@ -37,7 +37,8 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 30;
             this.listBox1.Items.AddRange(new object[] {
-            "Để tạo mảng: Bạn có thể lựa chọn nhập mảng ngẫu nhiên hoặc bằng tay:",
+            "Để tạo mảng: Bạn có thể lựa chọn nhập mảng ngẫu nhiên, bằng tay hoặc nhập từ file" +
+                " .txt:",
             "- Tạo mảng ngẫu nhiên: Người dùng chỉ cần nhập số phần tử, sau đó nhấn nút \"Ngẫu " +
                 "nhiên\" để tạo mảng giá trị các phần tử ",
             "trong mảng với các con số ngẫu nhiên.",
@@ -48,7 +49,25 @@
                 " phần tử cách nhau bằng dấu cách.",
             "   + Sau khi nhập xong, bạn nhấn nút \"Nhập\", lúc này các phần tử của mảng sẽ hiện" +
                 " giá trị và thứ tự tương ứng với thứ tự giá trị ",
-            "bạn đã nhập trong mảng."});
+            "bạn đã nhập trong mảng.",
+            "- Tạo mảng từ file .txt: ",
+            "   + Người dùng nhấn nút \"Nhập FIle\", lúc này sẽ hiện cửa sổ để nhập file .txt.",
+            "   + Sau đó người dùng chọn 1 file .txt có chứa các giá trị phần tử.",
+            "   + Khi chọn xong, chương trình sẽ tự động hiện số lượng phần tử và các giá trị " +
+                "của phần tử trong mảng lên màn hình.",
+            "",
+            "Để chạy mô phỏng thuật toán:",
+            "- Bước 1: Người dùng lựa chọn thuật toán cần mô phỏng.",
+            "- Bước 2: Người dùng lựa chọn chế độ sắp xếp tăng dần hoặc giảm dần.",
+            "- Bước 3 (Tùy chọn): Người dùng có thể chỉnh tốc độ tùy ý",
+            "- Bước 4: Nhấn nút \"Chạy\" để bắt đầu chạy mô phỏng thuật toán.",
+            "",
+            "Khi đang chạy mô phỏng thuật toán, người dùng có thể chỉnh tốc độ hoặc tạm dừng b" +
+                "ất cứ lúc nào.",
+            "",
+            "Khi nhấn nút \"Tạm dừng\", người dùng có thể nhấn nút \"Tiếp tục\" để tiếp tục quá tr" +
+                "ình mô phỏng hoặc nhấn nút \"Kết thúc\"",
+            "để kết thúc mô phỏng thuật toán."});
             this.listBox1.Location = new System.Drawing.Point(2, 1);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(1420, 754);

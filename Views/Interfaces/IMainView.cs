@@ -40,6 +40,7 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         void HienThiThongBao(string message, string title, MessageBoxIcon icon);
         void SetRuntimeLabelUI(double t); // Hiển thị thời gian khi không theo mô phỏng
         void SetActualTimeUI(double actualTime); // Hiển thị thời gian thực tế khi mô phỏng
+        void SetPauseButtonText(string text); // Đổi text nút khi nhấn Tạm dừng
 
         // Refresh UI
         void RefreshSortingPanel();

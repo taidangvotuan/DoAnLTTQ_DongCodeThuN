@@ -102,7 +102,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.Filter = "Text files (*.txt)|*.txt";
                     openFileDialog.Title = "Chọn file chứa mảng số";
                     openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
@@ -229,6 +229,9 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             view.SetRuntimeLabelUI(0);
             view.SetActualTimeUI(0);
 
+            // Đảm bảo nút hiển thị "Tạm dừng" khi bắt đầu chạy
+            view.SetPauseButtonText("Tạm dừng");
+
             // Chạy mô phỏng để tính runtime (khi không có animation)
             double rt = TimeDiagnoseService.ChayMoPhongThuatToan(state.a, thuatToan, state.tang);
 
@@ -249,12 +252,21 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             state.Reset();
             view.KhoaChay();
             view.VeLaiSortingPanel();
+
+            // Reset nút về "Tạm dừng" sau khi hoàn thành
+            view.SetPauseButtonText("Tạm dừng");
         }
 
         private void OnTamDungThuatToan(object sender, EventArgs e)
         {
             if (!state.is_run) return;
             state.kt_tam_dung = !state.kt_tam_dung;
+
+            // Cập nhật văn bản nút dựa trên trạng thái
+            if (state.kt_tam_dung)
+                view.SetPauseButtonText("Tiếp tục");
+            else
+                view.SetPauseButtonText("Tạm dừng");
         }
 
         private void OnKetThucThuatToan(object sender, EventArgs e)
@@ -276,9 +288,11 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
                     Array.Reverse(state.a);
                 }
             }
-
             view.VeLaiSortingPanel();
             view.KhoaChay();
+
+            // Reset nút về "Tạm dừng" khi kết thúc
+            view.SetPauseButtonText("Tạm dừng");
         }
 
         private void OnThuatToanChanged(object sender, EventArgs e)

@@ -334,6 +334,19 @@ namespace DoAnLTTQ_DongCodeThuN
             else
                 actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
         }
+
+        public void SetPauseButtonText(string text)
+        {
+            if (ButtonTamDungThuatToan.InvokeRequired)
+            {
+                ButtonTamDungThuatToan.Invoke(new Action(() =>
+                {
+                    ButtonTamDungThuatToan.Text = text;
+                }));
+            }
+            else
+                ButtonTamDungThuatToan.Text = text;
+        }
         #endregion
 
         #region UI EVENT HANDLERS - RAISE CONTROLLER EVENTS
