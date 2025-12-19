@@ -2,6 +2,7 @@
 using DoAnLTTQ_DongCodeThuN.Services;
 using DoAnLTTQ_DongCodeThuN.Views.Interfaces;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN.Controllers
@@ -172,8 +173,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
 
                         view.HienThiThongBao(
                            $"✓ Đã nhập thành công {arr.Length} phần tử từ file!\n\n" +
-                           $"File: {System.IO.Path.GetFileName(filePath)}\n" +
-                           $"Preview: {preview}",
+                           $"File: {System.IO.Path.GetFileName(filePath)}\n" + $"Preview: {preview}",
                            "Thành công", MessageBoxIcon.Information);
                     }
                 }
@@ -181,21 +181,18 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             catch (System.IO.IOException ioEx)
             {
                 view.HienThiThongBao(
-                    $"Lỗi đọc file:\n{ioEx.Message}\n\n" +
-                    "Có thể file đang được mở bởi chương trình khác.",
+                    $"Lỗi đọc file:\n{ioEx.Message}\n\n" + "Có thể file đang được mở bởi chương trình khác.",
                     "Lỗi", MessageBoxIcon.Error);
             }
             catch (UnauthorizedAccessException uaEx)
             {
                 view.HienThiThongBao(
-                    $"Không có quyền truy cập file:\n{uaEx.Message}",
-                    "Lỗi", MessageBoxIcon.Error);
+                    $"Không có quyền truy cập file:\n{uaEx.Message}", "Lỗi", MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 view.HienThiThongBao(
-                    $"Lỗi không xác định:\n{ex.Message}\n\n" +
-                    $"Chi tiết: {ex.GetType().Name}",
+                    $"Lỗi không xác định:\n{ex.Message}\n\n" + $"Chi tiết: {ex.GetType().Name}",
                     "Lỗi", MessageBoxIcon.Error);
             }
         }
@@ -230,15 +227,25 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
 
             view.KhoiChay();
             view.SetRuntimeLabelUI(0);
+            view.SetActualTimeUI(0);
 
-            //chay mo phong thuat toan
+            // Chạy mô phỏng để tính runtime (khi không có animation)
             double rt = TimeDiagnoseService.ChayMoPhongThuatToan(state.a, thuatToan, state.tang);
-            
-            // Chạy thuật toán
+
+            // Đo thời gian thực tế của thuật toán có animation
+            Stopwatch actualStopwatch = new Stopwatch();
+            actualStopwatch.Start();
+
+            // Chạy thuật toán với animation
             RunSelectedAlgorithm(thuatToan, state.tang);
+
+            actualStopwatch.Stop();
+            double actualTime = actualStopwatch.Elapsed.TotalMilliseconds;
 
             // Kết thúc
             view.SetRuntimeLabelUI(rt);
+            view.SetActualTimeUI(actualTime);
+
             state.Reset();
             view.KhoaChay();
             view.VeLaiSortingPanel();

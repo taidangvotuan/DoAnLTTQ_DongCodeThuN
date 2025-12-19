@@ -321,6 +321,19 @@ namespace DoAnLTTQ_DongCodeThuN
         {
             Application.DoEvents();
         }
+
+        public void SetActualTimeUI(double actualTime)
+        {
+            if (actualTimeLabel.InvokeRequired)
+            {
+                actualTimeLabel.Invoke(new Action(() =>
+                {
+                    actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+                }));
+            }
+            else
+                actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+        }
         #endregion
 
         #region UI EVENT HANDLERS - RAISE CONTROLLER EVENTS

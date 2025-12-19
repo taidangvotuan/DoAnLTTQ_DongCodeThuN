@@ -31,6 +31,7 @@ namespace DoAnLTTQ_DongCodeThuN
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
             this.ListBoxYTuong = new System.Windows.Forms.ListBox();
             this.ListBoxCodeC = new System.Windows.Forms.ListBox();
             this.GroupBoxChuongTrinhCPP = new System.Windows.Forms.GroupBox();
@@ -67,6 +68,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ButtonNhapBangTay = new System.Windows.Forms.Button();
             this.PanelMoPhong = new System.Windows.Forms.Panel();
             this.SortingPanelView = new System.Windows.Forms.Panel();
+            this.actualTimeLabel = new System.Windows.Forms.Label();
             this.runtimeLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -572,6 +574,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // SortingPanelView
             // 
+            this.SortingPanelView.Controls.Add(this.actualTimeLabel);
             this.SortingPanelView.Controls.Add(this.runtimeLabel);
             this.SortingPanelView.Location = new System.Drawing.Point(2, 6);
             this.SortingPanelView.Name = "SortingPanelView";
@@ -579,10 +582,20 @@ namespace DoAnLTTQ_DongCodeThuN
             this.SortingPanelView.TabIndex = 2;
             this.SortingPanelView.Paint += new System.Windows.Forms.PaintEventHandler(this.SortingPanelView_Paint);
             // 
+            // actualTimeLabel
+            // 
+            this.actualTimeLabel.AutoSize = true;
+            this.actualTimeLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.actualTimeLabel.Location = new System.Drawing.Point(650, -3);
+            this.actualTimeLabel.Name = "actualTimeLabel";
+            this.actualTimeLabel.Size = new System.Drawing.Size(192, 25);
+            this.actualTimeLabel.TabIndex = 1;
+            this.actualTimeLabel.Text = "Actual Time : 0 ms";
+            // 
             // runtimeLabel
             // 
             this.runtimeLabel.AutoSize = true;
-            this.runtimeLabel.Location = new System.Drawing.Point(939, -3);
+            this.runtimeLabel.Location = new System.Drawing.Point(942, -3);
             this.runtimeLabel.Name = "runtimeLabel";
             this.runtimeLabel.Size = new System.Drawing.Size(155, 25);
             this.runtimeLabel.TabIndex = 0;
@@ -602,6 +615,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.Controls.Add(this.ThanhDieuKhien);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(50, 51);
@@ -674,5 +688,6 @@ namespace DoAnLTTQ_DongCodeThuN
         private System.Windows.Forms.Label runtimeLabel;
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.Button ButtonNhapFile;
+        private System.Windows.Forms.Label actualTimeLabel;
     }
 }
