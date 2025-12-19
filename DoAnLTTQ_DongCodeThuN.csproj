@@ -127,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AnhUIT.ico" />
+    <Content Include="Resources\AnhTacGia.png" />
+    <Content Include="Resources\AnhUIT.ico" />
     <Content Include="Resources\AnhUIT.png" />
   </ItemGroup>
   <ItemGroup />
