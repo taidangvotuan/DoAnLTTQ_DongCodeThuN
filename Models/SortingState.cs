@@ -4,7 +4,7 @@
     {
         public int[] a { get; set; }                    // Mảng dữ liệu
         public int so_phan_tu { get; set; }             // Số phần tử
-        public int toc_Do { get; set; }                 // Tốc độ (1-10)
+        public int toc_Do { get; set; }                 // Tốc độ (chưa thành 15 mức)
         public bool tang { get; set; }                  // true: tăng dần, false: giảm dần
         public bool da_Tao_Mang { get; set; }           // Đã tạo mảng chưa
         public bool kt_tam_dung { get; set; }           // Kiểm tra tạm dừng

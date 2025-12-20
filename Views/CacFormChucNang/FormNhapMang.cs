@@ -27,6 +27,19 @@ namespace DoAnLTTQ_DongCodeThuN
             InitializeValidation();
         }
 
+        private class ValidationResult
+        {
+            public bool IsValid { get; set; }
+            public string ErrorMessage { get; set; }
+            public string Warning { get; set; }
+            public System.Collections.Generic.List<int> Values { get; set; }
+
+            public ValidationResult()
+            {
+                Values = new System.Collections.Generic.List<int>();
+            }
+        }
+
         private void FormNhapMang_Load(object sender, EventArgs e)
         {
             // Hiển thị hướng dẫn
@@ -72,7 +85,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.Load += FormNhapMang_Load;
         }
 
-        #region Real-time Validation
+        #region KIỂM TRA THEO THỜI GIAN THỰC
         private void TextBoxNhapMang_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép: số, space, backspace, delete
@@ -160,13 +173,13 @@ namespace DoAnLTTQ_DongCodeThuN
                 }
             }
 
-            // 5. Tất cả hợp lệ
+            // Tất cả hợp lệ
             UpdateStatus($"Đã nhập đúng {parts.Length} số hợp lệ");
             return true;
         }
         #endregion
 
-        #region Advanced Validation
+        #region KIỂM TRA MỞ RỘNG
         private ValidationResult ValidateInputDetailed()
         {
             var result = new ValidationResult { IsValid = true };
@@ -259,7 +272,7 @@ namespace DoAnLTTQ_DongCodeThuN
                 return result;
             }
 
-            // 7. Kiểm tra trùng lặp (warning only)
+            // Kiểm tra trùng lặp (chỉ cảnh báo)
             var duplicates = result.Values
                 .GroupBy(x => x)
                 .Where(g => g.Count() > 1)
@@ -272,7 +285,7 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        #region Button Events
+        #region BUTTON EVENTS
         private void NutNhap_Click(object sender, EventArgs e)
         {
             // Validate chi tiết
@@ -319,7 +332,7 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        #region Helper Methods
+        #region HELPER METHODS
         private void ShowError(string message)
         {
             lblError.Text = message;
@@ -335,22 +348,6 @@ namespace DoAnLTTQ_DongCodeThuN
         private void UpdateStatus(string message)
         {
             lblStatus.Text = message;
-        }
-        #endregion
-
-        #region Validation Result Class
-
-        private class ValidationResult
-        {
-            public bool IsValid { get; set; }
-            public string ErrorMessage { get; set; }
-            public string Warning { get; set; }
-            public System.Collections.Generic.List<int> Values { get; set; }
-
-            public ValidationResult()
-            {
-                Values = new System.Collections.Generic.List<int>();
-            }
         }
         #endregion
     }

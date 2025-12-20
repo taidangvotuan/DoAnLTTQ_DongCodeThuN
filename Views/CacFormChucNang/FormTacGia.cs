@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DoAnLTTQ_DongCodeThuN
 {
@@ -8,11 +7,6 @@ namespace DoAnLTTQ_DongCodeThuN
         public FormTacGia()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

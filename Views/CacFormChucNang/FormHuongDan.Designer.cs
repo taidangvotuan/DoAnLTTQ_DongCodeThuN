@@ -72,7 +72,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(1420, 754);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // FormHuongDan
             // 
@@ -84,7 +83,6 @@
             this.MaximizeBox = false;
             this.Name = "FormHuongDan";
             this.Text = "Hướng dẫn sử dụng";
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
 
         }

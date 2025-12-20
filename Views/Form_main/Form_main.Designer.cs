@@ -97,7 +97,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxYTuong.Name = "ListBoxYTuong";
             this.ListBoxYTuong.Size = new System.Drawing.Size(354, 202);
             this.ListBoxYTuong.TabIndex = 18;
-            this.ListBoxYTuong.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxYTuong_SelectedIndexChanged);
             // 
             // ListBoxCodeC
             // 
@@ -109,7 +108,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxCodeC.Name = "ListBoxCodeC";
             this.ListBoxCodeC.Size = new System.Drawing.Size(397, 202);
             this.ListBoxCodeC.TabIndex = 20;
-            this.ListBoxCodeC.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCodeC_SelectedIndexChanged);
             // 
             // GroupBoxChuongTrinhCPP
             // 
@@ -124,7 +122,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChuongTrinhCPP.TabIndex = 15;
             this.GroupBoxChuongTrinhCPP.TabStop = false;
             this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
-            this.GroupBoxChuongTrinhCPP.Enter += new System.EventHandler(this.Tai_v_GroupBoxChuongTrinhCPP_Enter);
             // 
             // copyButton
             // 
@@ -154,7 +151,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -221,7 +217,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
             this.ListBoxCacBuoc.Size = new System.Drawing.Size(422, 202);
             this.ListBoxCacBuoc.TabIndex = 19;
-            this.ListBoxCacBuoc.SelectedIndexChanged += new System.EventHandler(this.Tai_v_ListBoxCacBuoc_SelectedIndexChanged);
             // 
             // GroupBoxCacBuocThucHien
             // 
@@ -235,7 +230,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
             this.GroupBoxCacBuocThucHien.TabStop = false;
             this.GroupBoxCacBuocThucHien.Text = "Các bước thực hiện";
-            this.GroupBoxCacBuocThucHien.Enter += new System.EventHandler(this.Tai_v_GroupBoxCacBuocThucHien_Enter);
             // 
             // ThanhDieuKhien
             // 
@@ -266,7 +260,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxYTuong.TabIndex = 14;
             this.GroupBoxYTuong.TabStop = false;
             this.GroupBoxYTuong.Text = "Ý tưởng";
-            this.GroupBoxYTuong.Enter += new System.EventHandler(this.Tai_v_GroupBoxYTuong_Enter);
             // 
             // GroupBoxChonThuatToan
             // 
@@ -284,7 +277,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChonThuatToan.TabIndex = 19;
             this.GroupBoxChonThuatToan.TabStop = false;
             this.GroupBoxChonThuatToan.Text = "Lựa chọn thuật toán";
-            this.GroupBoxChonThuatToan.Enter += new System.EventHandler(this.Tai_v_GroupBoxChonThuatToan_Enter);
             // 
             // LabelChonThuatToan
             // 
@@ -297,7 +289,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelChonThuatToan.Size = new System.Drawing.Size(143, 19);
             this.LabelChonThuatToan.TabIndex = 10;
             this.LabelChonThuatToan.Text = "Chọn thuật toán:";
-            this.LabelChonThuatToan.Click += new System.EventHandler(this.Tai_v_LabelChonThuatToan_Click);
             // 
             // LabelLoaiSapXep
             // 
@@ -310,7 +301,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelLoaiSapXep.Size = new System.Drawing.Size(114, 19);
             this.LabelLoaiSapXep.TabIndex = 16;
             this.LabelLoaiSapXep.Text = "Loại sắp xếp:";
-            this.LabelLoaiSapXep.Click += new System.EventHandler(this.Tai_v_LabelLoaiSapXep_Click);
             // 
             // RadioButton_TangDan
             // 
@@ -381,7 +371,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxDieuKhien.TabIndex = 20;
             this.GroupBoxDieuKhien.TabStop = false;
             this.GroupBoxDieuKhien.Text = "Thanh điều khiển";
-            this.GroupBoxDieuKhien.Enter += new System.EventHandler(this.Tai_v_GroupBoxDieuKhien_Enter);
             // 
             // ButtonKetThucThuatToan
             // 
@@ -450,7 +439,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelTocDo.Size = new System.Drawing.Size(69, 19);
             this.LabelTocDo.TabIndex = 13;
             this.LabelTocDo.Text = "Tốc độ:";
-            this.LabelTocDo.Click += new System.EventHandler(this.Tai_v_LabelTocDo_Click);
             // 
             // GroupBoxKhoiTaoMang
             // 
@@ -470,7 +458,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxKhoiTaoMang.TabIndex = 18;
             this.GroupBoxKhoiTaoMang.TabStop = false;
             this.GroupBoxKhoiTaoMang.Text = "Khởi tạo mảng";
-            this.GroupBoxKhoiTaoMang.Enter += new System.EventHandler(this.Tai_v_GroupBoxKhoiTaoMang_Enter);
             // 
             // ButtonNhapFile
             // 
@@ -497,7 +484,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelKhoangGiaTriPhanTu.Size = new System.Drawing.Size(155, 19);
             this.LabelKhoangGiaTriPhanTu.TabIndex = 26;
             this.LabelKhoangGiaTriPhanTu.Text = "(Giá trị từ 2 đến 45)";
-            this.LabelKhoangGiaTriPhanTu.Click += new System.EventHandler(this.LabelKhoangGiaTriPhanTu_Click);
             // 
             // LabelSoPhanTu
             // 
@@ -509,7 +495,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelSoPhanTu.Size = new System.Drawing.Size(228, 19);
             this.LabelSoPhanTu.TabIndex = 25;
             this.LabelSoPhanTu.Text = "Nhập số phần tử của mảng:";
-            this.LabelSoPhanTu.Click += new System.EventHandler(this.LabelSoPhanTu_Click);
             // 
             // NumericNhapSoPhanTu
             // 
@@ -518,7 +503,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.NumericNhapSoPhanTu.Name = "NumericNhapSoPhanTu";
             this.NumericNhapSoPhanTu.Size = new System.Drawing.Size(80, 27);
             this.NumericNhapSoPhanTu.TabIndex = 24;
-            this.NumericNhapSoPhanTu.ValueChanged += new System.EventHandler(this.NumericNhapSoPhanTu_ValueChanged);
             // 
             // ButtonNhapNgauNhien
             // 
@@ -546,7 +530,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.LabelNhapGiaTriMang.Size = new System.Drawing.Size(176, 19);
             this.LabelNhapGiaTriMang.TabIndex = 7;
             this.LabelNhapGiaTriMang.Text = "Tạo giá trị cho mảng:";
-            this.LabelNhapGiaTriMang.Click += new System.EventHandler(this.Tai_v_LabelNhapGiaTriMang_Click);
             // 
             // ButtonNhapBangTay
             // 
@@ -642,10 +625,6 @@ namespace DoAnLTTQ_DongCodeThuN
             this.SortingPanelView.PerformLayout();
             this.ResumeLayout(false);
 
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
         }
 
         #endregion

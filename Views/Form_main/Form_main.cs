@@ -114,6 +114,11 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
+        private void Form_Load(object sender, EventArgs e)
+        {
+            SortingPanelView.Paint += SortingPanelView_Paint;
+        }
+
         #region IMPLEMENT IMainView - EVENTS
         public event EventHandler NhapNgauNhienClicked;
         public event EventHandler NhapBangTayClicked;
@@ -229,7 +234,6 @@ namespace DoAnLTTQ_DongCodeThuN
             }
         }
 
-        // Trong Form_main.cs
         public void ThemBuocVaoListBoxCoNhieuMau(string buoc, int[] cacViTri, int left, int right)
         {
             if (ListBoxCacBuoc.InvokeRequired)
@@ -613,26 +617,9 @@ namespace DoAnLTTQ_DongCodeThuN
         }
         #endregion
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            SortingPanelView.Paint += SortingPanelView_Paint;
-        }
-
         public void VeLaiSortingPanelView()
         {
             VeLaiSortingPanel();
-        }
-
-        private void copyButton_Click(object sender, EventArgs e)
-        {
-            string code = string.Empty;
-            foreach (var item in ListBoxCodeC.Items)
-            {
-                // Do something with each item
-                string itemText = item.ToString();
-                code += itemText + '\n';
-            }
-            Clipboard.SetText(code);
         }
     }
 }

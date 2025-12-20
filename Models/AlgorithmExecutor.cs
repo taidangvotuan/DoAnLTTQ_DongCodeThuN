@@ -13,9 +13,7 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         #region BUBBLE SORT
         public static void BubbleSort(int[] arr, Func<int, int, bool> compareFunc)
         {
-            //List<int> arr = view.listInt;
             int n = arr.Length;
-
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n - 1 - i; j++)
@@ -45,7 +43,6 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
 
         private static int Partition(int[] arr, int left, int right, Func<int, int, bool> compareFunc)
         {
-
             int pivot = arr[right];
             int low = left - 1;
 
@@ -66,16 +63,13 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         public static void SelectionSort(int[] arr, Func<int, int, bool> compareFunc)
         {
             int n = arr.Length;
-
             for (int i = 0; i < n - 1; i++)
             {
                 int minIdx = i;
                 for (int j = i + 1; j < n; j++)
                 {
                     if (!compareFunc(arr[j], arr[minIdx]))
-                    {
                         minIdx = j;
-                    }
                 }
                 if (minIdx != i)
                     Swap(ref arr[i], ref arr[minIdx]);
@@ -99,7 +93,6 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
         public static void InsertionSort(int[] arr, Func<int, int, bool> compareFunc)
         {
             int n = arr.Length;
-
             for (int i = 1; i < n; ++i)
             {
                 int key = arr[i];
@@ -177,14 +170,11 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
             int n = arr.Length;
 
             for (int i = n / 2 - 1; i >= 0; i--)
-            {
                 Heapify(arr, n, i, compareFunc);
-            }
 
             for (int i = n - 1; i > 0; i--)
             {
                 Swap(ref arr[0], ref arr[i]);
-
                 Heapify(arr, i, 0, compareFunc);
             }
         }
@@ -196,19 +186,14 @@ namespace DoAnLTTQ_DongCodeThuN.ThuatToan
             int right = 2 * i + 2;
 
             if (left < n && compareFunc(arr[left], arr[largest]))
-            {
                 largest = left;
-            }
 
             if (right < n && compareFunc(arr[right], arr[largest]))
-            {
                 largest = right;
-            }
 
             if (largest != i)
             {
                 Swap(ref arr[i], ref arr[largest]);
-
                 Heapify(arr, n, largest, compareFunc);
             }
         }

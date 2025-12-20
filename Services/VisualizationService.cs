@@ -156,7 +156,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Binh_i_ViTriSwap1 = index;
             state.Binh_i_ViTriSwap2 = -1;
-            state.Binh_i_AnimationStep = colorState; // 0=Cam, 1=Xanh lá, 2=Vàng
+            state.Binh_i_AnimationStep = colorState; // 0 = Tím, 1 = Xanh lá, 2 = Cam
         }
     }
 }

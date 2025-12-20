@@ -5,17 +5,6 @@ namespace DoAnLTTQ_DongCodeThuN
 {
     public partial class Form_main
     {
-        #region KHU VỰC CÁC LABEL
-        private void Tai_v_LabelNhapSoPhanTu_Click(object sender, EventArgs e) { }
-        private void Tai_v_LabelChuThichSoPhanTu_Click(object sender, EventArgs e) { }
-        private void Tai_v_LabelNhapGiaTriMang_Click(object sender, EventArgs e) { }
-        private void Tai_v_LabelChonThuatToan_Click(object sender, EventArgs e) { }
-        private void Tai_v_LabelLoaiSapXep_Click(object sender, EventArgs e) { }
-        private void Tai_v_LabelTocDo_Click(object sender, EventArgs e) { }
-        private void LabelSoPhanTu_Click(object sender, EventArgs e) { }
-        private void LabelKhoangGiaTriPhanTu_Click(object sender, EventArgs e) { }
-        #endregion
-
         #region KHU VỰC CÁC PANEL
         private void PanelNen_Paint(object sender, PaintEventArgs e) { }
         private void PanelMoPhong_Paint(object sender, PaintEventArgs e) { }
@@ -26,21 +15,6 @@ namespace DoAnLTTQ_DongCodeThuN
             if (controller?.VisualService == null) return;
             controller.VisualService.DrawSortingPanel(e.Graphics, SortingPanelView.Width, SortingPanelView.Height);
         }
-        #endregion
-
-        #region KHU VỰC CÁC LISTBOX
-        private void Tai_v_ListBoxYTuong_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void Tai_v_ListBoxCacBuoc_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void Tai_v_ListBoxCodeC_SelectedIndexChanged(object sender, EventArgs e) { }
-        #endregion
-
-        #region KHU VỰC CÁC GROUPBOX
-        private void Tai_v_GroupBoxYTuong_Enter(object sender, EventArgs e) { }
-        private void Tai_v_GroupBoxCacBuocThucHien_Enter(object sender, EventArgs e) { }
-        private void Tai_v_GroupBoxChuongTrinhCPP_Enter(object sender, EventArgs e) { }
-        private void Tai_v_GroupBoxKhoiTaoMang_Enter(object sender, EventArgs e) { }
-        private void Tai_v_GroupBoxChonThuatToan_Enter(object sender, EventArgs e) { }
-        private void Tai_v_GroupBoxDieuKhien_Enter(object sender, EventArgs e) { }
         #endregion
 
         #region KHU VỰC CÁC NÚT BẤM
@@ -104,10 +78,22 @@ namespace DoAnLTTQ_DongCodeThuN
             FormTacGia f = new FormTacGia();
             f.Show();
         }
+
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            string code = string.Empty;
+            foreach (var item in ListBoxCodeC.Items)
+            {
+                // Do something with each item
+                string itemText = item.ToString();
+                code += itemText + '\n';
+            }
+            Clipboard.SetText(code);
+        }
+
         #endregion
 
         #region KHU VỰC CÁC NÚT CHỨC NĂNG KHÁC
-        private void NumericNhapSoPhanTu_ValueChanged(object sender, EventArgs e) { }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
         private void timer1_Tick(object sender, EventArgs e)
         {

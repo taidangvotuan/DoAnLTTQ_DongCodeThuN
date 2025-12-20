@@ -31,7 +31,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             WireUpEvents();
         }
 
-        // Cho phép truy cập state từ View (để vẽ)
+        // Cho phép truy cập state từ View để vẽ
         public SortingState State => state;
         public VisualizationService VisualService => visualService;
 
@@ -55,7 +55,6 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             try
             {
-                // Tối đa là 45 phần tử thôi nha, chứ hơn nữa là khó nhìn lắm
                 int soPhanTu = view.SoPhanTu;
 
                 if (soPhanTu < 2 || soPhanTu > 45)
@@ -82,7 +81,6 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
         {
             int soPhanTu = view.SoPhanTu;
 
-            // Tối đa là 45 phần tử thôi nha, chư hơn nữa là khó nhìn lắm
             if (soPhanTu < 2 || soPhanTu > 45)
             {
                 view.HienThiThongBao("Số phần tử phải từ 2 đến 45!", "Lỗi",

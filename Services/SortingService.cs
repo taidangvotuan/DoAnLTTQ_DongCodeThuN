@@ -19,8 +19,6 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             public int Right { get; set; }
         }
 
-        private System.Collections.Generic.Stack<MergeState> mergeStack = new System.Collections.Generic.Stack<MergeState>();
-
         public SortingService(IMainView view, SortingState state, VisualizationService visualService)
         {
             this.view = view;
