@@ -110,7 +110,7 @@ con phải
 
     while (iLeft < n1 && iRight < n2)
     {
-        if (arrLeft[iLeft] <= arrRight[iRight])
+        if (arrLeft[iLeft] < arrRight[iRight])
         {
             arr[k] = arrLeft[iLeft];
             iLeft++;
@@ -164,7 +164,7 @@ con phải
 
     while (iLeft < n1 && iRight < n2)
     {
-        if (arrLeft[iLeft] >= arrRight[iRight])
+        if (arrLeft[iLeft] > arrRight[iRight])
         {
             arr[k] = arrLeft[iLeft];
             iLeft++;

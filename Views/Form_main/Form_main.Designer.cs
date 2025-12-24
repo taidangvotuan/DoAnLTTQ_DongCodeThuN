@@ -569,7 +569,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             this.actualTimeLabel.AutoSize = true;
             this.actualTimeLabel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.actualTimeLabel.Location = new System.Drawing.Point(650, -3);
+            this.actualTimeLabel.Location = new System.Drawing.Point(719, -3);
             this.actualTimeLabel.Name = "actualTimeLabel";
             this.actualTimeLabel.Size = new System.Drawing.Size(192, 25);
             this.actualTimeLabel.TabIndex = 1;

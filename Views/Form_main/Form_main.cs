@@ -58,7 +58,8 @@ namespace DoAnLTTQ_DongCodeThuN
                 BackColor = Color.AliceBlue,
                 BorderStyle = BorderStyle.FixedSingle
             };
-
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, legendPanel, new object[] { true }); legendPanel.Paint += LegendPanel_Paint;
             legendPanel.Paint += LegendPanel_Paint;
 
             // Thêm vào PanelNen
@@ -328,15 +329,16 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void SetActualTimeUI(double actualTime)
         {
+            double actualTimeinSecond = actualTime / 1000;
             if (actualTimeLabel.InvokeRequired)
             {
                 actualTimeLabel.Invoke(new Action(() =>
                 {
-                    actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+                    actualTimeLabel.Text = $"Actual Time : {actualTimeinSecond:F1} s";
                 }));
             }
             else
-                actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+                actualTimeLabel.Text = $"Actual Time : {actualTimeinSecond:F1} s";
         }
 
         public void SetPauseButtonText(string text)
