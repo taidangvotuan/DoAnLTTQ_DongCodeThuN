@@ -47,4 +47,3 @@ namespace DoAnLTTQ_DongCodeThuN.Views.Interfaces
         void UpdateUI();
     }
 }
-     

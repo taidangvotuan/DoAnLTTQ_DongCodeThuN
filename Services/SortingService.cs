@@ -43,7 +43,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             state.Thinh_dem_buoc = 0;
             view.XoaListBoxCacBuoc();
             string chuoiMang = string.Join("  ", arr);
-            view.ThemBuocVaoListBox($"Dãy chưa sắp : {chuoiMang}");
+            view.ThemBuocVaoListBox($"Dãy chưa sắp: {chuoiMang}");
         }
 
         // Ghi bước với màu sắc cho vị trí hoán vị
@@ -51,7 +51,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Thinh_dem_buoc++;
             string chuoiMang = string.Join("  ", arr);
-            string noiDung = $"Bước {state.Thinh_dem_buoc} : {chuoiMang}";
+            string noiDung = $"Bước {state.Thinh_dem_buoc}: {chuoiMang}";
             view.ThemBuocVaoListBoxCoMau(noiDung, viTri1, viTri2);
             Application.DoEvents();
         }
@@ -61,7 +61,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Thinh_dem_buoc++;
             string chuoiMang = string.Join("  ", arr);
-            string noiDung = $"Bước {state.Thinh_dem_buoc} : {chuoiMang}";
+            string noiDung = $"Bước {state.Thinh_dem_buoc}: {chuoiMang}";
             view.ThemBuocVaoListBox(noiDung);
             Application.DoEvents();
         }

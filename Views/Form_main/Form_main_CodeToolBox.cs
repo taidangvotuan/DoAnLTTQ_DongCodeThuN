@@ -90,7 +90,6 @@ namespace DoAnLTTQ_DongCodeThuN
             }
             Clipboard.SetText(code);
         }
-
         #endregion
 
         #region KHU VỰC CÁC NÚT CHỨC NĂNG KHÁC
