@@ -319,7 +319,7 @@ namespace DoAnLTTQ_DongCodeThuN
 
         public void SetRuntimeLabelUI(double t)
         {
-            runtimeLabel.Text = $"Runtime : {t}ms";
+            runtimeLabel.Text = $"Runtime : {t} ms";
         }
 
         public void UpdateUI()
