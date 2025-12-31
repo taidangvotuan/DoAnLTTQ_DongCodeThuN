@@ -604,7 +604,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.MinimumSize = new System.Drawing.Size(50, 51);
             this.Name = "Form_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Mô phỏng thuật toán";
+            this.Text = "Mô phỏng các thuật toán sắp xếp";
             this.Load += new System.EventHandler(this.Form_Load);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
