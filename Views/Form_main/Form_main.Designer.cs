@@ -571,9 +571,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.actualTimeLabel.ForeColor = System.Drawing.Color.RoyalBlue;
             this.actualTimeLabel.Location = new System.Drawing.Point(719, -3);
             this.actualTimeLabel.Name = "actualTimeLabel";
-            this.actualTimeLabel.Size = new System.Drawing.Size(193, 25);
+            this.actualTimeLabel.Size = new System.Drawing.Size(175, 25);
             this.actualTimeLabel.TabIndex = 1;
-            this.actualTimeLabel.Text = "Actual Time : 0,0 s";
+            this.actualTimeLabel.Text = "Actual Time : 0 s";
             // 
             // runtimeLabel
             // 
