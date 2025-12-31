@@ -241,11 +241,11 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             RunSelectedAlgorithm(thuatToan, state.tang);
 
             actualStopwatch.Stop();
-            double actualTime = actualStopwatch.Elapsed.TotalMilliseconds;
+            double actualTime = actualStopwatch.Elapsed.TotalMilliseconds / 1000;
 
             // Kết thúc
             view.SetRuntimeLabelUI(rt);
-            view.SetActualTimeUI(actualTime);
+            view.SetActualTimeUI(Math.Round(actualTime,2));
 
             state.Reset();
             view.KhoaChay();

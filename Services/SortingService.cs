@@ -10,6 +10,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         private readonly IMainView view;
         private readonly SortingState state;
         private readonly VisualizationService visualService;
+        int frameRate = 1000 / 60;
 
         // Class helper để lưu trạng thái trước merge
         private class MergeState
@@ -90,7 +91,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
             // Setup animation
             state.Binh_i_AnimationStep = 0;
-            state.Binh_i_AnimationStepMax = 750; // 750ms / swap
+            state.Binh_i_AnimationStepMax = 400; // 750ms / swap
             state.Binh_b_DangAnimation = true;
 
             // Chạy animation
@@ -106,11 +107,11 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 if (speed < 1) speed = 1;
                 if (speed > 15) speed = 15;
 
-                step += 10 * speed;
+                step += frameRate * speed;
 
                 state.Binh_i_AnimationStep = step;
                 view.RefreshSortingPanel();
-                Thread.Sleep(10);
+                Thread.Sleep(frameRate);
                 Application.DoEvents();
             }
 

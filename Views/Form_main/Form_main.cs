@@ -60,7 +60,9 @@ namespace DoAnLTTQ_DongCodeThuN
             };
 
             legendPanel.Paint += LegendPanel_Paint;
-
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, legendPanel, new object[] { true });
             // Thêm vào PanelNen
             PanelNen.Controls.Add(legendPanel);
             legendPanel.BringToFront();
@@ -332,11 +334,11 @@ namespace DoAnLTTQ_DongCodeThuN
             {
                 actualTimeLabel.Invoke(new Action(() =>
                 {
-                    actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+                    actualTimeLabel.Text = $"Actual Time : {actualTime} s";
                 }));
             }
             else
-                actualTimeLabel.Text = $"Actual Time : {actualTime} ms";
+                actualTimeLabel.Text = $"Actual Time : {actualTime} s";
         }
 
         public void SetPauseButtonText(string text)
