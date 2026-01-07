@@ -89,10 +89,10 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxYTuong
             // 
-            this.ListBoxYTuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxYTuong.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxYTuong.FormattingEnabled = true;
             this.ListBoxYTuong.IntegralHeight = false;
-            this.ListBoxYTuong.ItemHeight = 23;
+            this.ListBoxYTuong.ItemHeight = 31;
             this.ListBoxYTuong.Location = new System.Drawing.Point(2, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
             this.ListBoxYTuong.Size = new System.Drawing.Size(471, 202);
@@ -100,10 +100,10 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxCodeC
             // 
-            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCodeC.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCodeC.FormattingEnabled = true;
             this.ListBoxCodeC.IntegralHeight = false;
-            this.ListBoxCodeC.ItemHeight = 18;
+            this.ListBoxCodeC.ItemHeight = 23;
             this.ListBoxCodeC.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCodeC.Name = "ListBoxCodeC";
             this.ListBoxCodeC.Size = new System.Drawing.Size(472, 202);
@@ -207,12 +207,12 @@ namespace DoAnLTTQ_DongCodeThuN
             // 
             // ListBoxCacBuoc
             // 
-            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ListBoxCacBuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ListBoxCacBuoc.FormattingEnabled = true;
             this.ListBoxCacBuoc.HorizontalExtent = 1500;
             this.ListBoxCacBuoc.HorizontalScrollbar = true;
             this.ListBoxCacBuoc.IntegralHeight = false;
-            this.ListBoxCacBuoc.ItemHeight = 23;
+            this.ListBoxCacBuoc.ItemHeight = 28;
             this.ListBoxCacBuoc.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
             this.ListBoxCacBuoc.Size = new System.Drawing.Size(470, 202);

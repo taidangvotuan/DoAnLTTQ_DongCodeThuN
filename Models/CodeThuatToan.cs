@@ -88,10 +88,10 @@ void Heapify(int arr[], int n, int i)
             string MergeTang =
 @"void Merge(int arr[], int left, int mid, int right)
 {
-    int n1 = mid - left + 1; // Số phần tử của mảng 
-con trái
-    int n2 = right - mid;    // Số phần tử của mảng 
-con phải
+    int n1 = mid - left + 1; // Số phần tử của
+mảng con trái
+    int n2 = right - mid;    // Số phần tử của
+mảng con phải
 
     // Tạo mảng tạm
     int[] arrLeft = new int[n1];
