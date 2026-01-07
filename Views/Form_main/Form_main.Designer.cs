@@ -95,7 +95,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxYTuong.ItemHeight = 23;
             this.ListBoxYTuong.Location = new System.Drawing.Point(2, 18);
             this.ListBoxYTuong.Name = "ListBoxYTuong";
-            this.ListBoxYTuong.Size = new System.Drawing.Size(354, 202);
+            this.ListBoxYTuong.Size = new System.Drawing.Size(471, 202);
             this.ListBoxYTuong.TabIndex = 18;
             // 
             // ListBoxCodeC
@@ -106,7 +106,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxCodeC.ItemHeight = 18;
             this.ListBoxCodeC.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCodeC.Name = "ListBoxCodeC";
-            this.ListBoxCodeC.Size = new System.Drawing.Size(397, 202);
+            this.ListBoxCodeC.Size = new System.Drawing.Size(472, 202);
             this.ListBoxCodeC.TabIndex = 20;
             // 
             // GroupBoxChuongTrinhCPP
@@ -116,9 +116,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxChuongTrinhCPP.Controls.Add(this.ListBoxCodeC);
             this.GroupBoxChuongTrinhCPP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxChuongTrinhCPP.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(1026, 544);
+            this.GroupBoxChuongTrinhCPP.Location = new System.Drawing.Point(952, 544);
             this.GroupBoxChuongTrinhCPP.Name = "GroupBoxChuongTrinhCPP";
-            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(403, 222);
+            this.GroupBoxChuongTrinhCPP.Size = new System.Drawing.Size(477, 222);
             this.GroupBoxChuongTrinhCPP.TabIndex = 15;
             this.GroupBoxChuongTrinhCPP.TabStop = false;
             this.GroupBoxChuongTrinhCPP.Text = "Code C/C++";
@@ -186,7 +186,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.PanelNen.Controls.Add(this.ButtonHuongDan);
             this.PanelNen.Location = new System.Drawing.Point(3, 3);
             this.PanelNen.Name = "PanelNen";
-            this.PanelNen.Size = new System.Drawing.Size(240, 765);
+            this.PanelNen.Size = new System.Drawing.Size(240, 538);
             this.PanelNen.TabIndex = 21;
             this.PanelNen.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelNen_Paint);
             // 
@@ -197,7 +197,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ButtonTacGia.FlatAppearance.BorderSize = 0;
             this.ButtonTacGia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonTacGia.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonTacGia.Location = new System.Drawing.Point(0, 251);
+            this.ButtonTacGia.Location = new System.Drawing.Point(0, 253);
             this.ButtonTacGia.Name = "ButtonTacGia";
             this.ButtonTacGia.Size = new System.Drawing.Size(240, 65);
             this.ButtonTacGia.TabIndex = 23;
@@ -213,9 +213,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.ListBoxCacBuoc.HorizontalScrollbar = true;
             this.ListBoxCacBuoc.IntegralHeight = false;
             this.ListBoxCacBuoc.ItemHeight = 23;
-            this.ListBoxCacBuoc.Location = new System.Drawing.Point(1, 18);
+            this.ListBoxCacBuoc.Location = new System.Drawing.Point(2, 18);
             this.ListBoxCacBuoc.Name = "ListBoxCacBuoc";
-            this.ListBoxCacBuoc.Size = new System.Drawing.Size(422, 202);
+            this.ListBoxCacBuoc.Size = new System.Drawing.Size(470, 202);
             this.ListBoxCacBuoc.TabIndex = 19;
             // 
             // GroupBoxCacBuocThucHien
@@ -224,9 +224,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxCacBuocThucHien.Controls.Add(this.ListBoxCacBuoc);
             this.GroupBoxCacBuocThucHien.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxCacBuocThucHien.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(601, 544);
+            this.GroupBoxCacBuocThucHien.Location = new System.Drawing.Point(479, 544);
             this.GroupBoxCacBuocThucHien.Name = "GroupBoxCacBuocThucHien";
-            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(426, 222);
+            this.GroupBoxCacBuocThucHien.Size = new System.Drawing.Size(475, 222);
             this.GroupBoxCacBuocThucHien.TabIndex = 20;
             this.GroupBoxCacBuocThucHien.TabStop = false;
             this.GroupBoxCacBuocThucHien.Text = "Các bước thực hiện";
@@ -254,9 +254,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.GroupBoxYTuong.Controls.Add(this.ListBoxYTuong);
             this.GroupBoxYTuong.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GroupBoxYTuong.ForeColor = System.Drawing.Color.Yellow;
-            this.GroupBoxYTuong.Location = new System.Drawing.Point(243, 544);
+            this.GroupBoxYTuong.Location = new System.Drawing.Point(4, 544);
             this.GroupBoxYTuong.Name = "GroupBoxYTuong";
-            this.GroupBoxYTuong.Size = new System.Drawing.Size(359, 222);
+            this.GroupBoxYTuong.Size = new System.Drawing.Size(475, 222);
             this.GroupBoxYTuong.TabIndex = 14;
             this.GroupBoxYTuong.TabStop = false;
             this.GroupBoxYTuong.Text = "Ý tưởng";
