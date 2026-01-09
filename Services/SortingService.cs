@@ -91,7 +91,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
 
             // Setup animation
             state.Binh_i_AnimationStep = 0;
-            state.Binh_i_AnimationStepMax = 400; // 750ms / swap
+            state.Binh_i_AnimationStepMax = 300; // 750ms / swap
             state.Binh_b_DangAnimation = true;
 
             // Chạy animation

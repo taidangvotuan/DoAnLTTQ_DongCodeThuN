@@ -571,9 +571,9 @@ namespace DoAnLTTQ_DongCodeThuN
             this.actualTimeLabel.ForeColor = System.Drawing.Color.RoyalBlue;
             this.actualTimeLabel.Location = new System.Drawing.Point(719, -3);
             this.actualTimeLabel.Name = "actualTimeLabel";
-            this.actualTimeLabel.Size = new System.Drawing.Size(193, 25);
+            this.actualTimeLabel.Size = new System.Drawing.Size(175, 25);
             this.actualTimeLabel.TabIndex = 1;
-            this.actualTimeLabel.Text = "Actual Time : 0,0 s";
+            this.actualTimeLabel.Text = "Actual Time : 0 s";
             // 
             // runtimeLabel
             // 
@@ -604,7 +604,7 @@ namespace DoAnLTTQ_DongCodeThuN
             this.MinimumSize = new System.Drawing.Size(50, 51);
             this.Name = "Form_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Mô phỏng thuật toán";
+            this.Text = "Mô phỏng các thuật toán sắp xếp";
             this.Load += new System.EventHandler(this.Form_Load);
             this.GroupBoxChuongTrinhCPP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
