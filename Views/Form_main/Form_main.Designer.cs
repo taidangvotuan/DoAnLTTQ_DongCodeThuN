@@ -126,7 +126,7 @@ namespace DoAnLTTQ_DongCodeThuN
             // copyButton
             // 
             this.copyButton.ForeColor = System.Drawing.Color.Black;
-            this.copyButton.Location = new System.Drawing.Point(314, 26);
+            this.copyButton.Location = new System.Drawing.Point(389, 26);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(65, 29);
             this.copyButton.TabIndex = 21;
