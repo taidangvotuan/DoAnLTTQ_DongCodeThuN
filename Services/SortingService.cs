@@ -44,7 +44,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
             state.Thinh_dem_buoc = 0;
             view.XoaListBoxCacBuoc();
             string chuoiMang = string.Join("  ", arr);
-            view.ThemBuocVaoListBox($"Dãy chưa sắp : {chuoiMang}");
+            view.ThemBuocVaoListBox($"Dãy chưa sắp: {chuoiMang}");
         }
 
         // Ghi bước với màu sắc cho vị trí hoán vị
@@ -52,7 +52,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Thinh_dem_buoc++;
             string chuoiMang = string.Join("  ", arr);
-            string noiDung = $"Bước {state.Thinh_dem_buoc} : {chuoiMang}";
+            string noiDung = $"Bước {state.Thinh_dem_buoc}: {chuoiMang}";
             view.ThemBuocVaoListBoxCoMau(noiDung, viTri1, viTri2);
             Application.DoEvents();
         }
@@ -62,7 +62,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
         {
             state.Thinh_dem_buoc++;
             string chuoiMang = string.Join("  ", arr);
-            string noiDung = $"Bước {state.Thinh_dem_buoc} : {chuoiMang}";
+            string noiDung = $"Bước {state.Thinh_dem_buoc}: {chuoiMang}";
             view.ThemBuocVaoListBox(noiDung);
             Application.DoEvents();
         }
@@ -341,7 +341,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Tai_v_HeapifyTangDan(arr, n, i);
             }
 
-            for (int i = n - 1; i >= 0; i--)
+            for (int i = n - 1; i > 0; i--)
             {
                 if (!state.is_run) return;
                 Binh_v_HandleTamDungVaKetThuc();
@@ -369,7 +369,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Tai_v_HeapifyGiamDan(arr, n, i);
             }
 
-            for (int i = n - 1; i >= 0; i--)
+            for (int i = n - 1; i > 0; i--)
             {
                 if (!state.is_run) return;
                 Binh_v_HandleTamDungVaKetThuc();
@@ -527,7 +527,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Binh_v_HandleTamDungVaKetThuc();
                 if (!state.is_run) return;
 
-                if (arrLeft[iL] <= arrRight[iR])
+                if (arrLeft[iL] < arrRight[iR])
                 {
                     Binh_v_SetAndDrawMerge(arr, k, arrLeft[iL]);
                     iL++;
@@ -614,7 +614,7 @@ namespace DoAnLTTQ_DongCodeThuN.Services
                 Binh_v_HandleTamDungVaKetThuc();
                 if (!state.is_run) return;
 
-                if (arrLeft[iL] >= arrRight[iR])
+                if (arrLeft[iL] > arrRight[iR])
                 {
                     Binh_v_SetAndDrawMerge(arr, k, arrLeft[iL]);
                     iL++;
