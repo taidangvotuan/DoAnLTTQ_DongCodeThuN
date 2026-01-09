@@ -241,7 +241,7 @@ namespace DoAnLTTQ_DongCodeThuN.Controllers
             RunSelectedAlgorithm(thuatToan, state.tang);
 
             actualStopwatch.Stop();
-            double actualTime = actualStopwatch.Elapsed.TotalMilliseconds / 1000;
+            double actualTime = actualStopwatch.Elapsed.TotalMilliseconds;
 
             // Kết thúc
             view.SetRuntimeLabelUI(rt);
